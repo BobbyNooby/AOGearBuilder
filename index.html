@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<!-- Item default format <option value="itemname" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Item Name</option> -->
+
+
+<form>
+    
+    <label for="accessory1">Select Accessory 1:</label>
+    <select id="accessory1" name="accessory1">
+        <option value="calvusCrown" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">The Lost Crown of Ravenna</option>
+        <option value="calvusCape" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Mantello of Ravenna's Fallen King</option>
+        <option value="cernyxAmulet" data-power="0" data-defense="225" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Archon Quartz Amulet</option>
+        <option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
+    </select>
+        
+
+    <br>
+
+
+    <label for="accessory2">Select Accessory 2:</label>
+    <select id="accessory2" name="accessory2">
+        <option value="calvusCrown" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">The Lost Crown of Ravenna</option>
+        <option value="calvusCape" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Mantello of Ravenna's Fallen King</option>
+        <option value="cernyxAmulet" data-power="0" data-defense="225" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Archon Quartz Amulet</option>
+        <option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
+    </select>
+
+    <br>
+
+
+
+    <label for="accessory3">Select Accessory 3:</label>
+    <select id="accessory3" name="accessory3">
+        <option value="calvusCrown" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">The Lost Crown of Ravenna</option>
+        <option value="calvusCape" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Mantello of Ravenna's Fallen King</option>
+        <option value="cernyxAmulet" data-power="0" data-defense="225" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Archon Quartz Amulet</option>
+        <option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
+    </select>
+
+
+    <br>
+
+
+    <label for="chestpiece">Select Chestpiece:</label>
+    <select id="chestpiece" name="chestpiece">
+        <option value="calvusChestplate" data-power="21" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="18" data-intensity="0">Ravenna Fallen King Armor</option>
+        <option value="cernyxChestplate" data-power="0" data-defense="210" data-agility="0" data-attackspeed="32" data-attacksize="0" data-intensity="0">Cernyx's Sleeveless Robe</option>
+    </select>
+
+
+    <br>
+
+
+    <label for="pants">Select Pants:</label>
+    <select id="pants" name="pants">
+        <option value="calvusBoots" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Ravenna Fallen King Boots</option>
+        <option value="cernyxBoots" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's boots</option>
+    </select>
+        
+    <br>
+
+    <button type="button" onclick="calculate()">Calculate</button>
+</form>
+      
+<p>Total power: <span id="power"></span></p>
+<p>Total defense: <span id="defense"></span></p>
+<p>Total agility: <span id="agility"></span></p>
+<p>Total attack speed: <span id="attackspeed"></span></p>
+<p>Total attack size: <span id="attacksize"></span></p>
+<p>Total intensity: <span id="intensity"></span></p>
+ 
+
+<script src="index.js"></script> 
+
+</body>
+</html>
+
