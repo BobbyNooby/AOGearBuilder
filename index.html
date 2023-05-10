@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
 <body>
+<style>
+    .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 
+}
+    
+</style>
 
 <!-- Item default format <option value="itemname" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Item Name</option> -->
 
+<div class="center">
+<h2>BobbyNooby's Arcane Odyssey Gear Builder!</h2>
+<p>This gear builder features the important endgame gearsets for Arcane Odyssey.</p>
+<p>If i missed anything or if you'd like to contribute, message me on discord at BobbyNooby#8993</p>
+<p>or look at the source code at <a href="https://github.com/BobbyNooby/AOGearBuilder">here</a></p>
+<p>The project is currently in its barebones/prototype stage. CSS will be done soon</p>
+<p><a href="https://www.twitch.tv/bobbynooby">Twitch</a> | <a href="https://www.youtube.com/@bobbynooby/">Youtube</a> | <a href="https://twitter.com/bobbynoobyu">Twitter</a></p>
+</div>
 
-<form>
+<form class="center">
     
     <label for="accessory1">Select Accessory 1:</label>
-    <select id="accessory1" name="accessory1">
+    <select id="accessory1" name="accessory1" >
         <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
         <option value="agilityAmulet" data-power="0" data-defense="0" data-agility="62" data-attackspeed="0" data-attacksize="0" data-intensity="0">Agility Amulet</option>
         <option value="cernyxAmulet" data-power="0" data-defense="225" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Archon Quartz Amulet</option>
@@ -175,12 +195,15 @@
     <button type="button" onclick="calculate()">Calculate</button>
 </form>
       
-<p>Total power: <span id="power"></span></p>
-<p>Total defense: <span id="defense"></span></p>
-<p>Total agility: <span id="agility"></span></p>
-<p>Total attack speed: <span id="attackspeed"></span></p>
-<p>Total attack size: <span id="attacksize"></span></p>
-<p>Total intensity: <span id="intensity"></span></p>
+<div class="center">
+    <p>Total power: <span id="power"></span></p>
+    <p>Total defense: <span id="defense"></span></p>
+    <p>Total agility: <span id="agility"></span></p>
+    <p>Total attack speed: <span id="attackspeed"></span></p>
+    <p>Total attack size: <span id="attacksize"></span></p>
+    <p>Total intensity: <span id="intensity"></span></p>
+</div>
+
  
 
 <script src="index.js"></script> 
