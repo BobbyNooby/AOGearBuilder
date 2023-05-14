@@ -1,207 +1,281 @@
 <!DOCTYPE html>
 <html>
-<body>
-<style>
-    .center {
-  margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
-  text-align: center;
-  font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
 
-}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<link href="main.css" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+
+<body onLoad="startup()" class="pagebackground">
+
     
-</style>
 
 <!-- Item default format <option value="itemname" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Item Name</option> -->
-
+<br>
 <div class="center">
 <h2>BobbyNooby's Arcane Odyssey Gear Builder!</h2>
 <p>This gear builder features the important endgame gearsets for Arcane Odyssey.</p>
 <p>If i missed anything or if you'd like to contribute, message me on discord at BobbyNooby#8993</p>
 <p>or look at the source code at <a href="https://github.com/BobbyNooby/AOGearBuilder">here</a></p>
-<p>The project is currently in its barebones/prototype stage. CSS and design will be done soon</p>
+<p>The project is currently in its prototype stage. Do NOT expect a polished product.</p>
 <p><a href="https://www.twitch.tv/bobbynooby">Twitch</a> | <a href="https://www.youtube.com/@bobbynooby/">Youtube</a> | <a href="https://twitter.com/bobbynoobyu">Twitter</a></p>
 </div>
 
+<br>
+
 <form class="center">
-    
-    <label for="accessory1">Select Accessory 1:</label>
-    <select id="accessory1" name="accessory1" >
-        <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
-        <option value="agilityAmulet" data-power="0" data-defense="0" data-agility="62" data-attackspeed="0" data-attacksize="0" data-intensity="0">Agility Amulet</option>
-        <option value="cernyxAmulet" data-power="0" data-defense="225" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Archon Quartz Amulet</option>
-        <option value="Arcsphere" data-power="21" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Arcsphere</option>
-        <option value="attackSizeAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="62" data-intensity="0">Attack Size Amulet</option>
-        <option value="attackSpeedAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="62" data-attacksize="0" data-intensity="0">Attack Speed Amluet</option>
-        <option value="argosCape" data-power="0" data-defense="0" data-agility="24" data-attackspeed="0" data-attacksize="0" data-intensity="29">Cape of Ravenna Loyalty</option>
-        <option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
-        <option value="eliusCape" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Collared Cape</option>
-        <option value="defenseAmulet" data-power="0" data-defense="259" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Defense Amulet</option>
-        <option value="intensityAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="62">Intensity Amulet</option>
-        <option value="argosHelmet" data-power="0" data-defense="157" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="24">Lion of Ravenna Helmet</option>
-        <option value="calvusCape" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Mantello of Ravenna's Fallen King</option>
-        <option value="powerAmulet" data-power="26" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Power Amulet</option>
-        <option value="carinaBracelets" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Bracelets</option>
-        <option value="carinaFaulds" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Faulds</option>
-        <option value="carinaPauldrons" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Pauldrons</option>
-        <option value="eliusMask" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Shroud</option>
-        <option value="sunkenHelmet" data-power="0" data-defense="113" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Sunken Iron Helmet</option>
-        <option value="calvusCrown" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">The Lost Crown of Ravenna</option>
-    </select>
-    
-    <label for="enchant1">Enchant:</label>
-    <select id="enchant1" name="enchant1">
-        <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
-        <option value="powerEnchant" data-power="7" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Strong</option>
-        <option value="defenseEnchant" data-power="0" data-defense="72" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Hard</option>
-        <option value="agilityEnchant" data-power="0" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Nimble</option>
-        <option value="intensityEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="18">Amplified</option>
-        <option value="attackSizeEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Bursting</option>
-        <option value="attackSpeedEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Swift</option>
-    </select>
-
-    <br>
 
 
-    <label for="accessory2">Select Accessory 2:</label>
-    <select id="accessory2" name="accessory2">
-        <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
-        <option value="agilityAmulet" data-power="0" data-defense="0" data-agility="62" data-attackspeed="0" data-attacksize="0" data-intensity="0">Agility Amulet</option>
-        <option value="cernyxAmulet" data-power="0" data-defense="225" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Archon Quartz Amulet</option>
-        <option value="Arcsphere" data-power="21" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Arcsphere</option>
-        <option value="attackSizeAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="62" data-intensity="0">Attack Size Amulet</option>
-        <option value="attackSpeedAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="62" data-attacksize="0" data-intensity="0">Attack Speed Amluet</option>
-        <option value="argosCape" data-power="0" data-defense="0" data-agility="24" data-attackspeed="0" data-attacksize="0" data-intensity="29">Cape of Ravenna Loyalty</option>
-        <option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
-        <option value="eliusCape" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Collared Cape</option>
-        <option value="defenseAmulet" data-power="0" data-defense="259" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Defense Amulet</option>
-        <option value="intensityAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="62">Intensity Amulet</option>
-        <option value="argosHelmet" data-power="0" data-defense="157" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="24">Lion of Ravenna Helmet</option>
-        <option value="calvusCape" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Mantello of Ravenna's Fallen King</option>
-        <option value="powerAmulet" data-power="26" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Power Amulet</option>
-        <option value="carinaBracelets" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Bracelets</option>
-        <option value="carinaFaulds" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Faulds</option>
-        <option value="carinaPauldrons" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Pauldrons</option>
-        <option value="eliusMask" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Shroud</option>
-        <option value="sunkenHelmet" data-power="0" data-defense="113" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Sunken Iron Helmet</option>
-        <option value="calvusCrown" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">The Lost Crown of Ravenna</option>
-    </select>
+    <!-- FIRST ROW -->
 
-    <label for="enchant2">Enchant:</label>
-    <select id="enchant2" name="enchant2">
-        <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
-        <option value="powerEnchant" data-power="7" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Strong</option>
-        <option value="defenseEnchant" data-power="0" data-defense="72" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Hard</option>
-        <option value="agilityEnchant" data-power="0" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Nimble</option>
-        <option value="intensityEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="18">Amplified</option>
-        <option value="attackSizeEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Bursting</option>
-        <option value="attackSpeedEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Swift</option>
-    </select>
+    <div class="row">
+        <div class="col">
+            <label for="accessory1">Accessory 1:</label>
+        </div>
 
-    <br>
+        <div class="col">
+            <select id="accessory1" name="accessory1" class="form-select gear-width" > <!-- Accessory 1 -->
+                <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
+                <option value="agilityAmulet" data-power="0" data-defense="0" data-agility="62" data-attackspeed="0" data-attacksize="0" data-intensity="0">Agility Amulet</option>
+                <option value="cernyxAmulet" data-power="0" data-defense="225" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Archon Quartz Amulet</option>
+                <option value="Arcsphere" data-power="21" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Arcsphere</option>
+                <option value="attackSizeAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="62" data-intensity="0">Attack Size Amulet</option>
+                <option value="attackSpeedAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="62" data-attacksize="0" data-intensity="0">Attack Speed Amluet</option>
+                <option value="argosCape" data-power="0" data-defense="0" data-agility="24" data-attackspeed="0" data-attacksize="0" data-intensity="29">Cape of Ravenna Loyalty</option>
+                <option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
+                <option value="eliusCape" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Collared Cape</option>
+                <option value="defenseAmulet" data-power="0" data-defense="259" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Defense Amulet</option>
+                <option value="intensityAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="62">Intensity Amulet</option>
+                <option value="argosHelmet" data-power="0" data-defense="157" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="24">Lion of Ravenna Helmet</option>
+                <option value="calvusCape" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Mantello of Ravenna's Fallen King</option>
+                <option value="powerAmulet" data-power="26" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Power Amulet</option>
+                <option value="carinaBracelets" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Bracelets</option>
+                <option value="carinaFaulds" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Faulds</option>
+                <option value="carinaPauldrons" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Pauldrons</option>
+                <option value="eliusMask" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Shroud</option>
+                <option value="sunkenHelmet" data-power="0" data-defense="113" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Sunken Iron Helmet</option>
+                <option value="calvusCrown" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">The Lost Crown of Ravenna</option>
+            </select>
+        </div>
 
+        <div class="col">
+            <label for="enchant1">Enchant:</label>
+        </div>
+          
+        <div class="col">
+            <select id="enchant1" name="enchant1" class="form-select enchant-width">
+                <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
+                <option value="powerEnchant" data-power="7" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Strong</option>
+                <option value="defenseEnchant" data-power="0" data-defense="72" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Hard</option>
+                <option value="agilityEnchant" data-power="0" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Nimble</option>
+                <option value="intensityEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="18">Amplified</option>
+                <option value="attackSizeEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Bursting</option>
+                <option value="attackSpeedEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Swift</option>
+            </select>
+        </div>
 
+      </div>
 
-    <label for="accessory3">Select Accessory 3:</label>
-    <select id="accessory3" name="accessory3">
-        <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
-        <option value="agilityAmulet" data-power="0" data-defense="0" data-agility="62" data-attackspeed="0" data-attacksize="0" data-intensity="0">Agility Amulet</option>
-        <option value="cernyxAmulet" data-power="0" data-defense="225" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Archon Quartz Amulet</option>
-        <option value="Arcsphere" data-power="21" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Arcsphere</option>
-        <option value="attackSizeAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="62" data-intensity="0">Attack Size Amulet</option>
-        <option value="attackSpeedAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="62" data-attacksize="0" data-intensity="0">Attack Speed Amluet</option>
-        <option value="argosCape" data-power="0" data-defense="0" data-agility="24" data-attackspeed="0" data-attacksize="0" data-intensity="29">Cape of Ravenna Loyalty</option>
-        <option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
-        <option value="eliusCape" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Collared Cape</option>
-        <option value="defenseAmulet" data-power="0" data-defense="259" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Defense Amulet</option>
-        <option value="intensityAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="62">Intensity Amulet</option>
-        <option value="argosHelmet" data-power="0" data-defense="157" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="24">Lion of Ravenna Helmet</option>
-        <option value="calvusCape" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Mantello of Ravenna's Fallen King</option>
-        <option value="powerAmulet" data-power="26" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Power Amulet</option>
-        <option value="carinaBracelets" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Bracelets</option>
-        <option value="carinaFaulds" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Faulds</option>
-        <option value="carinaPauldrons" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Pauldrons</option>
-        <option value="eliusMask" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Shroud</option>
-        <option value="sunkenHelmet" data-power="0" data-defense="113" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Sunken Iron Helmet</option>
-        <option value="calvusCrown" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">The Lost Crown of Ravenna</option>
-    </select>
-
-    <label for="enchant3">Enchant:</label>
-    <select id="enchant3" name="enchant3">
-        <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
-        <option value="powerEnchant" data-power="7" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Strong</option>
-        <option value="defenseEnchant" data-power="0" data-defense="72" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Hard</option>
-        <option value="agilityEnchant" data-power="0" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Nimble</option>
-        <option value="intensityEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="18">Amplified</option>
-        <option value="attackSizeEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Bursting</option>
-        <option value="attackSpeedEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Swift</option>
-    </select>
-
-    <br>
-
-
-    <label for="chestpiece">Select Chestpiece:</label>
-    <select id="chestpiece" name="chestpiece">
-        <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
-        <option value="cernyxRobe" data-power="0" data-defense="210" data-agility="0" data-attackspeed="32" data-attacksize="0" data-intensity="0">Cernyx's Sleeveless Robe</option>
-        <option value="argosChestplate" data-power="0" data-defense="210" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="32">Lion of Ravenna Armor</option>
-        <option value="carinaGi" data-power="21" data-defense="0" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Ravenna Apostle Gi</option>
-        <option value="calvusChestplate" data-power="21" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="18" data-intensity="0">Ravenna Fallen King Armor</option>
-        <option value="eliusChestplate" data-power="21" data-defense="0" data-agility="24" data-attackspeed="0" data-attacksize="0" data-intensity="0">Ravenna Noble Armor</option>
-        <option value="sunkenChestplate" data-power="0" data-defense="226" data-agility="0" data-attackspeed="0" data-attacksize="36" data-intensity="0">Sunken Iron Armor</option>
-    </select>
-
-    <label for="enchant4">Enchant:</label>
-    <select id="enchant4" name="enchant4">
-        <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
-        <option value="powerEnchant" data-power="7" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Strong</option>
-        <option value="defenseEnchant" data-power="0" data-defense="72" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Hard</option>
-        <option value="agilityEnchant" data-power="0" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Nimble</option>
-        <option value="intensityEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="18">Amplified</option>
-        <option value="attackSizeEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Bursting</option>
-        <option value="attackSpeedEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Swift</option>
-    </select>
-
-    <br>
-
-
-    <label for="pants">Select Pants:</label>
-    <select id="pants" name="pants">
-        <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
-        <option value="cernyxBoots" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Boots</option>
-        <option value="argosBoots" data-power="0" data-defense="157" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="24">Lion of Ravenna Leggings</option>
-        <option value="carinaBoots" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Leggings</option>
-        <option value="calvusBoots" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Ravenna Fallen King Boots</option>
-        <option value="eliusBoots" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Ravenna Noble Boots</option>
-        <option value="sunkenBoots" data-power="0" data-defense="170" data-agility="0" data-attackspeed="0" data-attacksize="26" data-intensity="0">Sunken Iron Boots</option>
-    </select>
-        
-    <label for="enchant5">Enchant:</label>
-    <select id="enchant5" name="enchant5">
-        <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
-        <option value="powerEnchant" data-power="7" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Strong</option>
-        <option value="defenseEnchant" data-power="0" data-defense="72" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Hard</option>
-        <option value="agilityEnchant" data-power="0" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Nimble</option>
-        <option value="intensityEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="18">Amplified</option>
-        <option value="attackSizeEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Bursting</option>
-        <option value="attackSpeedEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Swift</option>
-    </select>
-
-    <br>
-
-    <button type="button" onclick="calculate()">Calculate</button>
-</form>
       
-<div class="center">
-    <p>Total power: <span id="power"></span></p>
-    <p>Total defense: <span id="defense"></span></p>
-    <p>Total agility: <span id="agility"></span></p>
-    <p>Total attack speed: <span id="attackspeed"></span></p>
-    <p>Total attack size: <span id="attacksize"></span></p>
-    <p>Total intensity: <span id="intensity"></span></p>
+    <!-- SECOND ROW -->
+
+    <div class="row">
+        <div class="col">
+            <label for="accessory2">Accessory 2:</label>
+        </div>
+
+        <div class="col">
+            <select id="accessory2" name="accessory2" class="form-select gear-width">  <!-- Accessory 2 -->
+                <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
+                <option value="agilityAmulet" data-power="0" data-defense="0" data-agility="62" data-attackspeed="0" data-attacksize="0" data-intensity="0">Agility Amulet</option>
+                <option value="cernyxAmulet" data-power="0" data-defense="225" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Archon Quartz Amulet</option>
+                <option value="Arcsphere" data-power="21" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Arcsphere</option>
+                <option value="attackSizeAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="62" data-intensity="0">Attack Size Amulet</option>
+                <option value="attackSpeedAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="62" data-attacksize="0" data-intensity="0">Attack Speed Amluet</option>
+                <option value="argosCape" data-power="0" data-defense="0" data-agility="24" data-attackspeed="0" data-attacksize="0" data-intensity="29">Cape of Ravenna Loyalty</option>
+                <option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
+                <option value="eliusCape" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Collared Cape</option>
+                <option value="defenseAmulet" data-power="0" data-defense="259" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Defense Amulet</option>
+                <option value="intensityAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="62">Intensity Amulet</option>
+                <option value="argosHelmet" data-power="0" data-defense="157" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="24">Lion of Ravenna Helmet</option>
+                <option value="calvusCape" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Mantello of Ravenna's Fallen King</option>
+                <option value="powerAmulet" data-power="26" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Power Amulet</option>
+                <option value="carinaBracelets" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Bracelets</option>
+                <option value="carinaFaulds" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Faulds</option>
+                <option value="carinaPauldrons" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Pauldrons</option>
+                <option value="eliusMask" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Shroud</option>
+                <option value="sunkenHelmet" data-power="0" data-defense="113" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Sunken Iron Helmet</option>
+                <option value="calvusCrown" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">The Lost Crown of Ravenna</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <label for="enchant2">Enchant:</label>
+        </div>
+          
+        <div class="col">
+            <select id="enchant2" name="enchant2" class="form-select enchant-width">
+                <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
+                <option value="powerEnchant" data-power="7" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Strong</option>
+                <option value="defenseEnchant" data-power="0" data-defense="72" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Hard</option>
+                <option value="agilityEnchant" data-power="0" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Nimble</option>
+                <option value="intensityEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="18">Amplified</option>
+                <option value="attackSizeEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Bursting</option>
+                <option value="attackSpeedEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Swift</option>
+            </select>
+        </div>
+
+      </div>
+
+      
+
+
+    <!-- THIRD ROW -->
+
+
+    <div class="row">
+        <div class="col">
+            <label for="accessory3">Accessory 3:</label>
+        </div>
+
+        <div class="col">
+            <select id="accessory3" name="accessory3" class="form-select gear-width">  <!-- Accessory 3 -->
+                <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
+                <option value="agilityAmulet" data-power="0" data-defense="0" data-agility="62" data-attackspeed="0" data-attacksize="0" data-intensity="0">Agility Amulet</option>
+                <option value="cernyxAmulet" data-power="0" data-defense="225" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Archon Quartz Amulet</option>
+                <option value="Arcsphere" data-power="21" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Arcsphere</option>
+                <option value="attackSizeAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="62" data-intensity="0">Attack Size Amulet</option>
+                <option value="attackSpeedAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="62" data-attacksize="0" data-intensity="0">Attack Speed Amluet</option>
+                <option value="argosCape" data-power="0" data-defense="0" data-agility="24" data-attackspeed="0" data-attacksize="0" data-intensity="29">Cape of Ravenna Loyalty</option>
+                <option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
+                <option value="eliusCape" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Collared Cape</option>
+                <option value="defenseAmulet" data-power="0" data-defense="259" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Defense Amulet</option>
+                <option value="intensityAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="62">Intensity Amulet</option>
+                <option value="argosHelmet" data-power="0" data-defense="157" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="24">Lion of Ravenna Helmet</option>
+                <option value="calvusCape" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Mantello of Ravenna's Fallen King</option>
+                <option value="powerAmulet" data-power="26" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Power Amulet</option>
+                <option value="carinaBracelets" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Bracelets</option>
+                <option value="carinaFaulds" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Faulds</option>
+                <option value="carinaPauldrons" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Pauldrons</option>
+                <option value="eliusMask" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Shroud</option>
+                <option value="sunkenHelmet" data-power="0" data-defense="113" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Sunken Iron Helmet</option>
+                <option value="calvusCrown" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">The Lost Crown of Ravenna</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <label for="enchant3">Enchant:</label>
+        </div>
+          
+        <div class="col">
+            <select id="enchant3" name="enchant3" class="form-select enchant-width">
+                <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
+                <option value="powerEnchant" data-power="7" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Strong</option>
+                <option value="defenseEnchant" data-power="0" data-defense="72" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Hard</option>
+                <option value="agilityEnchant" data-power="0" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Nimble</option>
+                <option value="intensityEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="18">Amplified</option>
+                <option value="attackSizeEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Bursting</option>
+                <option value="attackSpeedEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Swift</option>
+            </select>
+        </div>
+
+    </div>
+
+
+
+    <!-- FORTH ROW -->
+
+    <div class="row">
+        <div class="col">
+            <label for="chestpiece">Chestpiece:</label>
+        </div>
+
+        <div class="col">
+            <select id="chestpiece" name="chestpiece" class="form-select gear-width">  <!-- Chest Piss -->
+                <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
+                <option value="cernyxRobe" data-power="0" data-defense="210" data-agility="0" data-attackspeed="32" data-attacksize="0" data-intensity="0">Cernyx's Sleeveless Robe</option>
+                <option value="argosChestplate" data-power="0" data-defense="210" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="32">Lion of Ravenna Armor</option>
+                <option value="carinaGi" data-power="21" data-defense="0" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Ravenna Apostle Gi</option>
+                <option value="calvusChestplate" data-power="21" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="18" data-intensity="0">Ravenna Fallen King Armor</option>
+                <option value="eliusChestplate" data-power="21" data-defense="0" data-agility="24" data-attackspeed="0" data-attacksize="0" data-intensity="0">Ravenna Noble Armor</option>
+                <option value="sunkenChestplate" data-power="0" data-defense="226" data-agility="0" data-attackspeed="0" data-attacksize="36" data-intensity="0">Sunken Iron Armor</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <label for="enchant4">Enchant:</label>
+        </div>
+          
+        <div class="col">
+            <select id="enchant4" name="enchant4" class="form-select enchant-width">
+                <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
+                <option value="powerEnchant" data-power="7" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Strong</option>
+                <option value="defenseEnchant" data-power="0" data-defense="72" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Hard</option>
+                <option value="agilityEnchant" data-power="0" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Nimble</option>
+                <option value="intensityEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="18">Amplified</option>
+                <option value="attackSizeEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Bursting</option>
+                <option value="attackSpeedEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Swift</option>
+            </select>
+        </div>
+
+    </div>
+
+    <!-- FIFTH ROW -->
+
+    
+    <div class="row">
+        <div class="col">
+            <label for="pants">Pants:</label>
+        </div>
+
+        <div class="col">
+            <select id="pants" name="pants" class="form-select gear-width">  <!-- Pants -->
+                <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
+                <option value="cernyxBoots" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Boots</option>
+                <option value="argosBoots" data-power="0" data-defense="157" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="24">Lion of Ravenna Leggings</option>
+                <option value="carinaBoots" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Leggings</option>
+                <option value="calvusBoots" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">Ravenna Fallen King Boots</option>
+                <option value="eliusBoots" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Ravenna Noble Boots</option>
+                <option value="sunkenBoots" data-power="0" data-defense="170" data-agility="0" data-attackspeed="0" data-attacksize="26" data-intensity="0">Sunken Iron Boots</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <label for="enchant5">Enchant:</label>
+        </div>
+          
+        <div class="col">
+            <select id="enchant5" name="enchant5" class="form-select enchant-width">
+                <option value="Empty" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">None</option>
+                <option value="powerEnchant" data-power="7" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Strong</option>
+                <option value="defenseEnchant" data-power="0" data-defense="72" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Hard</option>
+                <option value="agilityEnchant" data-power="0" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Nimble</option>
+                <option value="intensityEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="18">Amplified</option>
+                <option value="attackSizeEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Bursting</option>
+                <option value="attackSpeedEnchant" data-power="0" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Swift</option>
+            </select>
+        </div>
+
+    </div>
+
+      
+
+
+</form>
+<br>    
+
+<div class="center2">
+    <p class="powerResult"><img src="images/power.webp">+ <span id="power"></span> POWER</p>
+    <p class="defenseResult"><img src="images/defense.webp">+ <span id="defense"></span> DEFENSE</p>
+    <p class="agilityResult"><img src="images/agility.webp">+ <span id="agility"></span> AGILITY</p>
+    <p class="attackSpeedResult"><img src="images/attackspeed.webp">+ <span id="attackspeed"></span> ATTACK SPEED</p>
+    <p class="attackSizeResult"><img src="images/attacksize.webp">+ <span id="attacksize"></span> ATTACK SIZE</p>
+    <p class="intensityResult"><img src="images/intensity.webp">+ <span id="intensity"></span> INTENSITY</p>
 </div>
 
  

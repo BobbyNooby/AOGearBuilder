@@ -1,3 +1,30 @@
+const accessoryMenu1 = document.getElementById("accessory1");
+const accessoryMenu2 = document.getElementById("accessory2");
+const accessoryMenu3 = document.getElementById("accessory3");
+const chestplateMenu = document.getElementById("chestpiece");
+const pantsMenu = document.getElementById("pants");
+
+const enchantMenu1 = document.getElementById("enchant1");
+const enchantMenu2 = document.getElementById("enchant2");
+const enchantMenu3 = document.getElementById("enchant3");
+const enchantMenu4 = document.getElementById("enchant4");
+const enchantMenu5 = document.getElementById("enchant5");
+
+
+function startup(){
+
+  document.getElementById("power").textContent = 0;
+  document.getElementById("defense").textContent = 0;
+  document.getElementById("agility").textContent = 0;
+  document.getElementById("attackspeed").textContent = 0;
+  document.getElementById("attacksize").textContent = 0;
+  document.getElementById("intensity").textContent = 0;
+
+}
+
+
+
+
 function calculate() {
     // Get the selected values from the dropdown menus
     var accessory1 = document.getElementById("accessory1");
@@ -99,4 +126,16 @@ function calculate() {
     document.getElementById("attacksize").textContent = totalAttackSize;
     document.getElementById("intensity").textContent = totalIntensity;
   }
-  
+
+
+accessoryMenu1.addEventListener("change", calculate);
+accessoryMenu2.addEventListener("change", calculate);
+accessoryMenu3.addEventListener("change", calculate);
+chestplateMenu.addEventListener("change", calculate);
+pantsMenu.addEventListener("change", calculate);
+
+enchantMenu1.addEventListener("change", calculate);
+enchantMenu2.addEventListener("change", calculate);
+enchantMenu3.addEventListener("change", calculate);
+enchantMenu4.addEventListener("change", calculate);
+enchantMenu5.addEventListener("change", calculate);
