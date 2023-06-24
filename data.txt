@@ -1,8 +1,8 @@
 Cernyx
--Cernyx's Faulds 157 DEF 24 ATTACK SPEED
+-Cernyx's Faulds 157 DEF 18 ATTACK SPEED
 -Archon Quartz Amulet 225 DEF 18 ATTACK SPEED
--Cernyx's Sleeveless Robe 210 DEF 32 ATTACK SPEED
--Cernyx's Boots 157 DEF 24 ATTACKSPEED
+-Cernyx's Sleeveless Robe 210 DEF 24 ATTACK SPEED
+-Cernyx's Boots 157 DEF 18 ATTACKSPEED
 
 Elius
 -Shroud 15 POWER 18 AGILITY
@@ -74,7 +74,7 @@ The Lost Crown of Ravenna 15 POWER 13 AGILITY 13 ATTACK SIZE
 <option value="attackSizeAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="62" data-intensity="0">Attack Size Amulet</option>
 <option value="attackSpeedAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="62" data-attacksize="0" data-intensity="0">Attack Speed Amluet</option>
 <option value="argosCape" data-power="0" data-defense="0" data-agility="24" data-attackspeed="0" data-attacksize="0" data-intensity="29">Cape of Ravenna Loyalty</option>
-<option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="24" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
+<option value="cernyxFaulds" data-power="0" data-defense="157" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Cernyx's Faulds</option>
 <option value="eliusCape" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Collared Cape</option>
 <option value="defenseAmulet" data-power="0" data-defense="259" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="0">Defense Amulet</option>
 <option value="intensityAmulet" data-power="0" data-defense="0" data-agility="0" data-attackspeed="0" data-attacksize="0" data-intensity="62">Intensity Amulet</option>
@@ -85,7 +85,7 @@ The Lost Crown of Ravenna 15 POWER 13 AGILITY 13 ATTACK SIZE
 <option value="carinaFaulds" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Faulds</option>
 <option value="carinaPauldrons" data-power="15" data-defense="0" data-agility="0" data-attackspeed="18" data-attacksize="0" data-intensity="0">Ravenna Apostle Pauldrons</option>
 <option value="eliusMask" data-power="15" data-defense="0" data-agility="18" data-attackspeed="0" data-attacksize="0" data-intensity="0">Shroud</option>
-<option value="sunkenHelmet" data-power="0" data-defense="113" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Sunken Iron Helmet</option>
+<option value="sunkenHelmet" data-power="0" data-defense="157" data-agility="0" data-attackspeed="0" data-attacksize="18" data-intensity="0">Sunken Iron Helmet</option>
 <option value="calvusCrown" data-power="15" data-defense="0" data-agility="13" data-attackspeed="0" data-attacksize="13" data-intensity="0">The Lost Crown of Ravenna</option>
 
 
