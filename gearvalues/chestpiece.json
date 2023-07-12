@@ -1,0 +1,94 @@
+{
+    "chestpiece" : [
+
+        {
+            "name" : "None",
+            "power" : 0,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 0
+    
+        },
+    
+        {
+            "name" : "Cernyx's Sleeveless Robe",
+            "power" : 0,
+            "defense" : 210,
+            "agility" : 0,
+            "attackspeed" : 24,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Lion of Ravenna Armor",
+            "power" : 0,
+            "defense" : 210,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 32,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Ravenna Apostle Gi",
+            "power" : 21,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 24,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Ravenna Fallen King Armor",
+            "power" : 21,
+            "defense" : 0,
+            "agility" : 18,
+            "attackspeed" : 0,
+            "attacksize" : 18,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Ravenna Noble Armor",
+            "power" : 21,
+            "defense" : 0,
+            "agility" : 24,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Sunken Iron Armor",
+            "power" : 0,
+            "defense" : 226,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 36,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        }
+        
+    
+
+
+    ]
+
+
+}

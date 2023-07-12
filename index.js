@@ -1,141 +1,214 @@
-const accessoryMenu1 = document.getElementById("accessory1");
-const accessoryMenu2 = document.getElementById("accessory2");
-const accessoryMenu3 = document.getElementById("accessory3");
-const chestplateMenu = document.getElementById("chestpiece");
-const pantsMenu = document.getElementById("pants");
+$(document).ready(function() {
+  $.getJSON("gearvalues/accessories.json", function(data) {
+    populateOptions("accessory1-options", data.accessories);
+    populateOptions("accessory2-options", data.accessories);
+    populateOptions("accessory3-options", data.accessories);
 
-const enchantMenu1 = document.getElementById("enchant1");
-const enchantMenu2 = document.getElementById("enchant2");
-const enchantMenu3 = document.getElementById("enchant3");
-const enchantMenu4 = document.getElementById("enchant4");
-const enchantMenu5 = document.getElementById("enchant5");
+    $("input[type='text']").on("input", function() {
+      var selectedId = $(this).attr("id");
+      var selectedValue = $(this).val();
+
+      if (selectedId === "accessory1") {
+        disableOption("accessory2", selectedValue);
+        disableOption("accessory3", selectedValue);
+      } else if (selectedId === "accessory2") {
+        disableOption("accessory1", selectedValue);
+        disableOption("accessory3", selectedValue);
+      } else if (selectedId === "accessory3") {
+        disableOption("accessory1", selectedValue);
+        disableOption("accessory2", selectedValue);
+      }
+
+      calculateTotalStats();
+    });
+  });
+
+  $.getJSON("gearvalues/chestpiece.json", function(data) {
+    populateOptions("chestpiece-options", data.chestpiece);
+    $("input[type='text']").on("input", function() {
+      calculateTotalStats();
+    });
+  });
+
+  $.getJSON("gearvalues/pants.json", function(data) {
+    populateOptions("pants-options", data.pants);
+    $("input[type='text']").on("input", function() {
+      calculateTotalStats();
+    });
+  });
+});
+
+function populateOptions(datalistId, gearOptions) {
+  var options = '';
+  $.each(gearOptions, function(index, gear) {
+    options += '<option value="' + gear.name + '">';
+  });
+  $('#' + datalistId).html(options);
+}
+
+function disableOption(selectId, optionValue) {
+  $('#' + selectId + ' option').each(function() {
+    var option = $(this);
+    var optionName = option.val();
+    
+    if (optionName === "None") {
+      option.prop("disabled", false);
+    } else if (optionName === optionValue) {
+      option.prop("disabled", true);
+    } else {
+      option.prop("disabled", false);
+    }
+  });
+}
+
+function enableOption(inputId, optionValue) {
+  var option = $("#" + inputId).siblings("datalist").children('option[value="' + optionValue + '"]');
+  option.prop("disabled", false);
+}
+
+// Rest of the code...
 
 
-function startup(){
 
-  document.getElementById("power").textContent = 0;
-  document.getElementById("defense").textContent = 0;
-  document.getElementById("agility").textContent = 0;
-  document.getElementById("attackspeed").textContent = 0;
-  document.getElementById("attacksize").textContent = 0;
-  document.getElementById("intensity").textContent = 0;
+function calculateTotalStats() {
 
+  var selectedAccessories = [
+    { id: "accessory1", enchantId: "accessory1-enchant" },
+    { id: "accessory2", enchantId: "accessory2-enchant" },
+    { id: "accessory3", enchantId: "accessory3-enchant" }
+  ];
+  
+  var accessoryTypes = [];
+  var isDuplicate = false;
+
+  for (var i = 0; i < selectedAccessories.length; i++) {
+    var accessoryId = selectedAccessories[i].id;
+    var enchantId = selectedAccessories[i].enchantId;
+    var selectedAccessory = $("#" + accessoryId).val();
+    
+    if (selectedAccessory && accessoryTypes.includes(selectedAccessory)) {
+      isDuplicate = true;
+      $("#" + accessoryId).val(""); // Reset the current duplicate selection
+      $("#" + enchantId).val(""); // Reset the associated enchant selection
+      disableOption(accessoryId, selectedAccessory); // Disable the duplicate accessory option in the datalist
+      enableOption(accessoryId, "None"); // Enable the "None" option in the previous datalist
+      break;
+    }
+    
+    accessoryTypes.push(selectedAccessory);
+
+  }
+  
+  if (isDuplicate) {
+    console.log("Cannot select two accessories of the same type.");
+    return;
+  }
+  var totalStats = {
+    power: 0,
+    defense: 0,
+    agility: 0,
+    attackspeed: 0,
+    attacksize: 0,
+    intensity: 0
+  };
+
+  var selectedAccessory1 = $("#accessory1").val();
+  if (selectedAccessory1) {
+    $.getJSON("gearvalues/accessories.json", function(data) {
+      var gear = data.accessories.find(g => g.name === selectedAccessory1);
+      var enchant = $("#accessory1-enchant").val();
+      totalStats = calculateStats(totalStats, gear, enchant);
+      updateStats(totalStats);
+    });
+  }
+
+  var selectedAccessory2 = $("#accessory2").val();
+  if (selectedAccessory2) {
+    $.getJSON("gearvalues/accessories.json", function(data) {
+      var gear = data.accessories.find(g => g.name === selectedAccessory2);
+      var enchant = $("#accessory2-enchant").val();
+      totalStats = calculateStats(totalStats, gear, enchant);
+      updateStats(totalStats);
+    });
+  }
+
+  var selectedAccessory3 = $("#accessory3").val();
+  if (selectedAccessory3) {
+    $.getJSON("gearvalues/accessories.json", function(data) {
+      var gear = data.accessories.find(g => g.name === selectedAccessory3);
+      var enchant = $("#accessory3-enchant").val();
+      totalStats = calculateStats(totalStats, gear, enchant);
+      updateStats(totalStats);
+    });
+  }
+
+  var selectedChestpiece = $("#chestpiece").val();
+  if (selectedChestpiece) {
+    $.getJSON("gearvalues/chestpiece.json", function(data) {
+      var gear = data.chestpiece.find(g => g.name === selectedChestpiece);
+      var enchant = $("#chestpiece-enchant").val();
+      totalStats = calculateStats(totalStats, gear, enchant);
+      updateStats(totalStats);
+    });
+  }
+
+  var selectedPants = $("#pants").val();
+  if (selectedPants) {
+    $.getJSON("gearvalues/pants.json", function(data) {
+      var gear = data.pants.find(g => g.name === selectedPants);
+      var enchant = $("#pants-enchant").val();
+      totalStats = calculateStats(totalStats, gear, enchant);
+      updateStats(totalStats);
+    });
+  }
 }
 
 
+function calculateStats(totalStats, gear, enchant) {
+  var levelmultiplier = gear.levelmultiplier || 0;
+  var enchantMultiplier = getEnchantMultiplier(enchant);
 
+  var power = gear.power || 0;
+  var defense = gear.defense || 0;
+  var agility = gear.agility || 0;
+  var attackspeed = gear.attackspeed || 0;
+  var attacksize = gear.attacksize || 0;
+  var intensity = gear.intensity || 0;
 
-function calculate() {
-    // Get the selected values from the dropdown menus
-    var accessory1 = document.getElementById("accessory1");
-    var accessory1Power = parseInt(accessory1.options[accessory1.selectedIndex].getAttribute("data-power"));
-    var accessory1Defense = parseInt(accessory1.options[accessory1.selectedIndex].getAttribute("data-defense"));
-    var accessory1Agility = parseInt(accessory1.options[accessory1.selectedIndex].getAttribute("data-agility"));
-    var accessory1AttackSpeed = parseInt(accessory1.options[accessory1.selectedIndex].getAttribute("data-attackspeed"));
-    var accessory1AttackSize = parseInt(accessory1.options[accessory1.selectedIndex].getAttribute("data-attacksize"));
-    var accessory1Intensity = parseInt(accessory1.options[accessory1.selectedIndex].getAttribute("data-intensity"));
-    
+  totalStats.power += Math.floor((power + (enchantMultiplier["power"] * levelmultiplier)));
+  totalStats.defense += Math.floor((defense + (enchantMultiplier["defense"] * levelmultiplier)));
+  totalStats.agility += Math.floor((agility + (enchantMultiplier["agility"] * levelmultiplier)));
+  totalStats.attackspeed += Math.floor((attackspeed + (enchantMultiplier["attackspeed"] * levelmultiplier)));
+  totalStats.attacksize += Math.floor((attacksize + (enchantMultiplier["attacksize"] * levelmultiplier)));
+  totalStats.intensity += Math.floor((intensity + (enchantMultiplier["intensity"] * levelmultiplier)));
 
-    var accessory2 = document.getElementById("accessory2");
-    var accessory2Power = parseInt(accessory2.options[accessory2.selectedIndex].getAttribute("data-power"));
-    var accessory2Defense = parseInt(accessory2.options[accessory2.selectedIndex].getAttribute("data-defense"));
-    var accessory2Agility = parseInt(accessory2.options[accessory2.selectedIndex].getAttribute("data-agility"));
-    var accessory2AttackSpeed = parseInt(accessory2.options[accessory2.selectedIndex].getAttribute("data-attackspeed"));
-    var accessory2AttackSize = parseInt(accessory2.options[accessory2.selectedIndex].getAttribute("data-attacksize"));
-    var accessory2Intensity = parseInt(accessory2.options[accessory2.selectedIndex].getAttribute("data-intensity"));
+  return totalStats;
+}
 
-    var accessory3 = document.getElementById("accessory3");
-    var accessory3Power = parseInt(accessory3.options[accessory3.selectedIndex].getAttribute("data-power"));
-    var accessory3Defense = parseInt(accessory3.options[accessory3.selectedIndex].getAttribute("data-defense"));
-    var accessory3Agility = parseInt(accessory3.options[accessory3.selectedIndex].getAttribute("data-agility"));
-    var accessory3AttackSpeed = parseInt(accessory3.options[accessory3.selectedIndex].getAttribute("data-attackspeed"));
-    var accessory3AttackSize = parseInt(accessory3.options[accessory3.selectedIndex].getAttribute("data-attacksize"));
-    var accessory3Intensity = parseInt(accessory3.options[accessory3.selectedIndex].getAttribute("data-intensity"));
-
-    var chestpiece = document.getElementById("chestpiece");
-    var chestpiecePower = parseInt(chestpiece.options[chestpiece.selectedIndex].getAttribute("data-power"));
-    var chestpieceDefense = parseInt(chestpiece.options[chestpiece.selectedIndex].getAttribute("data-defense"));
-    var chestpieceAgility = parseInt(chestpiece.options[chestpiece.selectedIndex].getAttribute("data-agility"));
-    var chestpieceAttackSpeed = parseInt(chestpiece.options[chestpiece.selectedIndex].getAttribute("data-attackspeed"));
-    var chestpieceAttackSize = parseInt(chestpiece.options[chestpiece.selectedIndex].getAttribute("data-attacksize"));
-    var chestpieceIntensity = parseInt(chestpiece.options[chestpiece.selectedIndex].getAttribute("data-intensity"));
-
-    var pants = document.getElementById("pants");
-    var pantsPower = parseInt(pants.options[pants.selectedIndex].getAttribute("data-power"));
-    var pantsDefense = parseInt(pants.options[pants.selectedIndex].getAttribute("data-defense"));
-    var pantsAgility = parseInt(pants.options[pants.selectedIndex].getAttribute("data-agility"));
-    var pantsAttackSpeed = parseInt(pants.options[pants.selectedIndex].getAttribute("data-attackspeed"));
-    var pantsAttackSize = parseInt(pants.options[pants.selectedIndex].getAttribute("data-attacksize"));
-    var pantsIntensity = parseInt(pants.options[pants.selectedIndex].getAttribute("data-intensity"));
-
-    var enchant1 = document.getElementById("enchant1");
-    var enchant1Power = parseInt(enchant1.options[enchant1.selectedIndex].getAttribute("data-power"));
-    var enchant1Defense = parseInt(enchant1.options[enchant1.selectedIndex].getAttribute("data-defense"));
-    var enchant1Agility = parseInt(enchant1.options[enchant1.selectedIndex].getAttribute("data-agility"));
-    var enchant1AttackSpeed = parseInt(enchant1.options[enchant1.selectedIndex].getAttribute("data-attackspeed"));
-    var enchant1AttackSize = parseInt(enchant1.options[enchant1.selectedIndex].getAttribute("data-attacksize"));
-    var enchant1Intensity = parseInt(enchant1.options[enchant1.selectedIndex].getAttribute("data-intensity"));
-
-    var enchant2 = document.getElementById("enchant2");
-    var enchant2Power = parseInt(enchant2.options[enchant2.selectedIndex].getAttribute("data-power"));
-    var enchant2Defense = parseInt(enchant2.options[enchant2.selectedIndex].getAttribute("data-defense"));
-    var enchant2Agility = parseInt(enchant2.options[enchant2.selectedIndex].getAttribute("data-agility"));
-    var enchant2AttackSpeed = parseInt(enchant2.options[enchant2.selectedIndex].getAttribute("data-attackspeed"));
-    var enchant2AttackSize = parseInt(enchant2.options[enchant2.selectedIndex].getAttribute("data-attacksize"));
-    var enchant2Intensity = parseInt(enchant2.options[enchant2.selectedIndex].getAttribute("data-intensity"));
-
-    var enchant3 = document.getElementById("enchant3");
-    var enchant3Power = parseInt(enchant3.options[enchant3.selectedIndex].getAttribute("data-power"));
-    var enchant3Defense = parseInt(enchant3.options[enchant3.selectedIndex].getAttribute("data-defense"));
-    var enchant3Agility = parseInt(enchant3.options[enchant3.selectedIndex].getAttribute("data-agility"));
-    var enchant3AttackSpeed = parseInt(enchant3.options[enchant3.selectedIndex].getAttribute("data-attackspeed"));
-    var enchant3AttackSize = parseInt(enchant3.options[enchant3.selectedIndex].getAttribute("data-attacksize"));
-    var enchant3Intensity = parseInt(enchant3.options[enchant3.selectedIndex].getAttribute("data-intensity"));
-
-    var enchant4 = document.getElementById("enchant4");
-    var enchant4Power = parseInt(enchant4.options[enchant4.selectedIndex].getAttribute("data-power"));
-    var enchant4Defense = parseInt(enchant4.options[enchant4.selectedIndex].getAttribute("data-defense"));
-    var enchant4Agility = parseInt(enchant4.options[enchant4.selectedIndex].getAttribute("data-agility"));
-    var enchant4AttackSpeed = parseInt(enchant4.options[enchant4.selectedIndex].getAttribute("data-attackspeed"));
-    var enchant4AttackSize = parseInt(enchant4.options[enchant4.selectedIndex].getAttribute("data-attacksize"));
-    var enchant4Intensity = parseInt(enchant4.options[enchant4.selectedIndex].getAttribute("data-intensity"));
-
-    var enchant5 = document.getElementById("enchant5");
-    var enchant5Power = parseInt(enchant5.options[enchant5.selectedIndex].getAttribute("data-power"));
-    var enchant5Defense = parseInt(enchant5.options[enchant5.selectedIndex].getAttribute("data-defense"));
-    var enchant5Agility = parseInt(enchant5.options[enchant5.selectedIndex].getAttribute("data-agility"));
-    var enchant5AttackSpeed = parseInt(enchant5.options[enchant5.selectedIndex].getAttribute("data-attackspeed"));
-    var enchant5AttackSize = parseInt(enchant5.options[enchant5.selectedIndex].getAttribute("data-attacksize"));
-    var enchant5Intensity = parseInt(enchant5.options[enchant5.selectedIndex].getAttribute("data-intensity"));
-
-    
-  
-    // Add the power and defense values together
-    var totalPower = accessory1Power + accessory2Power + accessory3Power + chestpiecePower + pantsPower + enchant1Power + enchant2Power + enchant3Power + enchant4Power + enchant5Power;
-    var totalDefense = accessory1Defense + accessory2Defense + accessory3Defense + chestpieceDefense + pantsDefense + enchant1Defense + enchant2Defense + enchant3Defense + enchant4Defense + enchant5Defense;
-    var totalAgility = accessory1Agility + accessory2Agility + accessory3Agility + chestpieceAgility + pantsAgility + enchant1Agility + enchant2Agility + enchant3Agility + enchant4Agility + enchant5Agility;
-    var totalAttackSpeed = accessory1AttackSpeed + accessory2AttackSpeed + accessory3AttackSpeed + chestpieceAttackSpeed + pantsAttackSpeed + enchant1AttackSpeed + enchant2AttackSpeed + enchant3AttackSpeed + enchant4AttackSpeed + enchant5AttackSpeed;
-    var totalAttackSize = accessory1AttackSize + accessory2AttackSize + accessory3AttackSize + chestpieceAttackSize + pantsAttackSize + enchant1AttackSize + enchant2AttackSize + enchant3AttackSize + enchant4AttackSize + enchant5AttackSize;
-    var totalIntensity = accessory1Intensity + accessory2Intensity + accessory3Intensity + chestpieceIntensity + pantsIntensity + enchant1Intensity + enchant2Intensity + enchant3Intensity + enchant4Intensity + enchant5Intensity;
-  
-    // Update the values on the page
-    document.getElementById("power").textContent = totalPower;
-    document.getElementById("defense").textContent = totalDefense;
-    document.getElementById("agility").textContent = totalAgility;
-    document.getElementById("attackspeed").textContent = totalAttackSpeed;
-    document.getElementById("attacksize").textContent = totalAttackSize;
-    document.getElementById("intensity").textContent = totalIntensity;
+function getEnchantMultiplier(enchant) {
+  switch (enchant) {
+    case "strong":
+      return { power: 0.65, defense: 0, agility: 0, attackspeed: 0, attacksize: 0, intensity: 0 };
+    case "hard":
+      return { power: 0, defense: 6, agility: 0, attackspeed: 0, attacksize: 0, intensity: 0 };
+    case "nimble":
+      return { power: 0, defense: 0, agility: 1.5, attackspeed: 0, attacksize: 0, intensity: 0 };
+    case "amplified":
+      return { power: 0, defense: 0, agility: 0, attackspeed: 0, attacksize: 0, intensity: 1.5 };
+    case "bursting":
+      return { power: 0, defense: 0, agility: 0, attackspeed: 0, attacksize: 1.5, intensity: 0 };
+    case "swift":
+      return { power: 0, defense: 0, agility: 0, attackspeed: 1.5, attacksize: 0, intensity: 0 };
+    case "none":
+      return { power: 0, defense: 0, agility: 0, attackspeed: 0, attacksize: 0, intensity: 0 };
   }
+}
 
-
-accessoryMenu1.addEventListener("change", calculate);
-accessoryMenu2.addEventListener("change", calculate);
-accessoryMenu3.addEventListener("change", calculate);
-chestplateMenu.addEventListener("change", calculate);
-pantsMenu.addEventListener("change", calculate);
-
-enchantMenu1.addEventListener("change", calculate);
-enchantMenu2.addEventListener("change", calculate);
-enchantMenu3.addEventListener("change", calculate);
-enchantMenu4.addEventListener("change", calculate);
-enchantMenu5.addEventListener("change", calculate);
+function updateStats(stats) {
+  $("#power").text(stats.power);
+  $("#defense").text(stats.defense);
+  $("#agility").text(stats.agility);
+  $("#attackspeed").text(stats.attackspeed);
+  $("#attacksize").text(stats.attacksize);
+  $("#intensity").text(stats.intensity);
+}

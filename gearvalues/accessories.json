@@ -1,0 +1,248 @@
+{
+    "accessories" : [
+
+        {
+            "name" : "None",
+            "power" : 0,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 0
+    
+        },
+    
+    
+        {
+            "name" : "Agility Amulet",
+            "power" : 0,
+            "defense" : 0,
+            "agility" : 62,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Archon Quartz Amulet",
+            "power" : 0,
+            "defense" : 225,
+            "agility" : 0,
+            "attackspeed" : 18,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Arcsphere",
+            "power" : 21,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Attack Size Amulet",
+            "power" : 0,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 62,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Attack Speed Amulet",
+            "power" : 0,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 62,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Cape of Ravenna Loyalty",
+            "power" : 0,
+            "defense" : 0,
+            "agility" : 24,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 29,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Cernyx's Faulds",
+            "power" : 0,
+            "defense" : 157,
+            "agility" : 0,
+            "attackspeed" : 18,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Collared Cape",
+            "power" : 15,
+            "defense" : 0,
+            "agility" : 18,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Defense Amulet",
+            "power" : 0,
+            "defense" : 259,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Intensity Amulet",
+            "power" : 0,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 62,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Lion of Ravenna Helmet",
+            "power" : 0,
+            "defense" : 157,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 24,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Mantello of Ravenna's Fallen King",
+            "power" : 15,
+            "defense" : 0,
+            "agility" : 13,
+            "attackspeed" : 0,
+            "attacksize" : 13,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Power Amulet",
+            "power" : 26,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Ravenna Apostle Bracelets",
+            "power" : 15,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 18,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Ravenna Apostle Faulds",
+            "power" : 15,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 18,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Ravenna Apostle Pauldrons",
+            "power" : 15,
+            "defense" : 0,
+            "agility" : 0,
+            "attackspeed" : 18,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Shroud",
+            "power" : 15,
+            "defense" : 0,
+            "agility" : 18,
+            "attackspeed" : 0,
+            "attacksize" : 0,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "Sunken Iron Helmet",
+            "power" : 0,
+            "defense" : 170,
+            "agility" : 0,
+            "attackspeed" : 0,
+            "attacksize" : 18,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        },
+    
+        {
+            "name" : "The Lost Crown of Ravenna",
+            "power" : 15,
+            "defense" : 0,
+            "agility" : 13,
+            "attackspeed" : 0,
+            "attacksize" : 13,
+            "intensity" : 0,
+            "levelmultiplier" : 12
+    
+        }
+
+    ]
+
+
+}

@@ -6,6 +6,10 @@
     width: 150px; /* set the desired width */
   }
 
+datalist {
+    display: none;
+  }
+
 
 .center {
     margin: auto;
