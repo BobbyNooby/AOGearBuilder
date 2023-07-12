@@ -4,6 +4,9 @@ Who wouldve thought my first ever coding project would be because of a roblox ga
 
 website : https://bobbynooby.github.io/AOGearBuilder/
 
+
+## Changelogs
+
 12 July 2023 - Added JSON and JQuery usage to make future additions easier.
 
 10 July 2023 - Added metadata link preview stuff, and sunken defense fix
@@ -17,3 +20,5 @@ website : https://bobbynooby.github.io/AOGearBuilder/
 10 May 2023 - Barebones Update
 
 9 May 2023 - First Page
+
+
