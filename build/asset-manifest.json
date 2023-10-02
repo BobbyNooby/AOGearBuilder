@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/AOGearBuilder/static/css/main.a98b35ed.css",
+    "main.js": "/AOGearBuilder/static/js/main.b089ce33.js",
+    "static/js/787.223550ad.chunk.js": "/AOGearBuilder/static/js/787.223550ad.chunk.js",
+    "static/media/background.jpg": "/AOGearBuilder/static/media/background.e059ebda8292f997e797.jpg",
+    "static/media/click.mp3": "/AOGearBuilder/static/media/click.0acfb7422297b53043bf.mp3",
+    "static/media/error.mp3": "/AOGearBuilder/static/media/error.18ba10236003624f8910.mp3",
+    "index.html": "/AOGearBuilder/index.html",
+    "main.a98b35ed.css.map": "/AOGearBuilder/static/css/main.a98b35ed.css.map",
+    "main.b089ce33.js.map": "/AOGearBuilder/static/js/main.b089ce33.js.map",
+    "787.223550ad.chunk.js.map": "/AOGearBuilder/static/js/787.223550ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a98b35ed.css",
+    "static/js/main.b089ce33.js"
+  ]
+}
