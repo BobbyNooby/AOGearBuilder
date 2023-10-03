@@ -11,7 +11,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 0,
         imageId : "https://i.imgur.com/ynJYNoA.jpg",
-        gemNo : 0
+        gemNo : 0,
+        accessoryType : "",
 
     },
 
@@ -26,7 +27,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/jBitY1S.jpg",
-        gemNo : 0
+        gemNo : 0,
+        accessoryType : "Amulet",
 
     },
     
@@ -41,7 +43,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/2FppDYo.jpg",
-        gemNo : 0
+        gemNo : 0,
+        accessoryType : "Amulet",
 
     },
 
@@ -56,7 +59,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/6XLzqal.jpg",
-        gemNo : 2
+        gemNo : 2,
+        accessoryType : "Head",
 
     },
 
@@ -71,7 +75,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/DgEPOxY.jpg",
-        gemNo : 0
+        gemNo : 0,
+        accessoryType : "Amulet",
 
     },
 
@@ -86,7 +91,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/Hxc2Y6i.jpg",
-        gemNo : 0
+        gemNo : 0,
+        accessoryType : "Amulet",
 
     },
 
@@ -101,7 +107,8 @@ export const accessories = [
         intensity : 29,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/jfvpC6Q.jpg",
-        gemNo : 2
+        gemNo : 2,
+        accessoryType : "Back",
 
     },
 
@@ -116,7 +123,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/fzZ9FjU.jpg",
-        gemNo : 2
+        gemNo : 2,
+        accessoryType : "Waist",
 
     },
 
@@ -131,7 +139,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/Rx0KQN3.jpg",
-        gemNo : 1
+        gemNo : 1,
+        accessoryType : "Back",
 
     },
 
@@ -146,7 +155,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/Ka1PPTD.jpg",
-        gemNo : 0
+        gemNo : 0,
+        accessoryType : "Amulet",
 
     },
 
@@ -161,7 +171,8 @@ export const accessories = [
         intensity : 62,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/24TDE2K.jpg",
-        gemNo : 0
+        gemNo : 0,
+        accessoryType : "Amulet",
 
     },
 
@@ -176,7 +187,8 @@ export const accessories = [
         intensity : 24,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/xMss19W.jpg",
-        gemNo : 2
+        gemNo : 2,
+        accessoryType : "Helmet",
 
     },
 
@@ -191,7 +203,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/p3ljTRo.jpg",
-        gemNo : 2
+        gemNo : 2,
+        accessoryType : "Head",
 
     },
 
@@ -206,7 +219,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/NBSMPEw.jpg",
-        gemNo : 0
+        gemNo : 0,
+        accessoryType : "Amulet",
 
 
     },
@@ -222,7 +236,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/vAK4RMn.jpg",
-        gemNo : 2
+        gemNo : 2,
+        accessoryType : "Arms",
 
     },
 
@@ -237,7 +252,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/xANT1CO.jpg",
-        gemNo : 2
+        gemNo : 2,
+        accessoryType : "Waist",
 
     },
 
@@ -252,7 +268,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/FQ5hJbZ.jpg",
-        gemNo : 2
+        gemNo : 2,
+        accessoryType : "Back",
 
     },
 
@@ -267,7 +284,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/wIHlqMY.jpg",
-        gemNo : 1
+        gemNo : 1,
+        accessoryType : "Face",
 
     },
 
@@ -282,7 +300,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/fg5aYLT.jpg",
-        gemNo : 2
+        gemNo : 2,
+        accessoryType : "Helmet",
 
     },
 
@@ -297,7 +316,8 @@ export const accessories = [
         intensity : 0,
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/2Fxep24.jpg",
-        gemNo : 2
+        gemNo : 2,
+        accessoryType : "Head",
 
     },
 

@@ -31,6 +31,7 @@ function App() {
     intensity : 0,
     levelMultiplier :0,
     gemNo : 0,
+    accessoryType : "",
 
   });
 
@@ -44,6 +45,7 @@ function App() {
     intensity : 0,
     levelMultiplier :0,
     gemNo : 0,
+    accessoryType : "",
 
   });
 
@@ -57,6 +59,7 @@ function App() {
     intensity : 0,
     levelMultiplier :0,
     gemNo : 0,
+    accessoryType : "",
 
   });
 
@@ -288,15 +291,15 @@ function App() {
 
 
 
-<div class="centertop"> {/*  Information Box Above */}
-<h2>BobbyNooby's Arcane Odyssey Gear Builder! (1.13.3.6) </h2>
-<p>This gear builder features the important endgame gearsets for Arcane Odyssey.</p>
-<p>If i missed anything or if you'd like to contribute, message me on discord at BobbyNooby#8993</p>
-<p>If you'd like to contribute to the Arcane Odyssey Database Project, join the discord <a href='https://discord.gg/wuczy67us7'>here</a></p>
-<p>or look at the source code for the website  at <a href="https://github.com/BobbyNooby/AOGearBuilder">here</a></p>
-<p>Go to the github link to see update logs.</p>
-<p><a href="https://www.twitch.tv/bobbynooby">Twitch</a> | <a href="https://www.youtube.com/@bobbynooby/">Youtube</a> | <a href="https://twitter.com/bobbynoobyu">Twitter</a> | <a href="https://github.com/BobbyNooby/AOGearBuilder">Github</a></p>
-</div>
+  <div class="centertop"> {/*  Information Box Above */}
+  <h2>BobbyNooby's Arcane Odyssey Gear Builder! (1.13.3.6) </h2>
+  <p>This gear builder features the important endgame gearsets for Arcane Odyssey.</p>
+  <p>If i missed anything or if you'd like to contribute, message me on discord at BobbyNooby#8993</p>
+  <p>If you'd like to contribute to the Arcane Odyssey Database Project, join the discord <a href='https://discord.gg/wuczy67us7'>here</a></p>
+  <p>or look at the source code for the website  at <a href="https://github.com/BobbyNooby/AOGearBuilder">here</a></p>
+  <p>Go to the github link to see update logs.</p>
+  <p><a href="https://www.twitch.tv/bobbynooby">Twitch</a> | <a href="https://www.youtube.com/@bobbynooby/">Youtube</a> | <a href="https://twitter.com/bobbynoobyu">Twitter</a> | <a href="https://github.com/BobbyNooby/AOGearBuilder">Github</a></p>
+  </div>
 
 <br></br>
 
