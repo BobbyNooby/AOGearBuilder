@@ -139,9 +139,9 @@ function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, set
             || (category == 'enchant3' && item.name == enchant3.name) 
             || (category == 'enchant4' && item.name == enchant4.name) 
             || (category == 'enchant5' && item.name == enchant5.name)
-            || item.accessoryType == accessory1.accessoryType
-            || item.accessoryType == accessory2.accessoryType
-            || item.accessoryType == accessory2.accessoryType
+            || (item.name == accessory1.name && ((item.accessoryType == "Amulet") && (accessory1.accessoryType == "Amulet")))
+            || (item.name == accessory2.name && ((item.accessoryType == "Amulet") && (accessory2.accessoryType == "Amulet")))
+            || (item.name == accessory3.name && ((item.accessoryType == "Amulet") && (accessory3.accessoryType == "Amulet")))
            ) ) {
           playWrong();
         } else {

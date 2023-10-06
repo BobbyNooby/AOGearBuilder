@@ -6,6 +6,8 @@ website : https://bobbynooby.github.io/AOGearBuilder/
 
 ## Changelogs
 
+3 October 2023 - Fixed duplicate amulets
+
 2 October 2023 - Revamped whole website with GUI and added Jewels.
 
 12 July 2023 - Added JSON and JQuery usage to make future additions easier.
