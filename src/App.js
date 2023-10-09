@@ -435,7 +435,7 @@ function App() {
 
 
 
-    <div class="center">
+    <div class="centerbottom">
 
       <div class="row">
 
