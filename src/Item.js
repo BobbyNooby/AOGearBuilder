@@ -5,7 +5,7 @@ import { playCorrect } from './playAudioUtil';
 import { playWrong } from './playAudioUtil';
 
 
-function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, setAccessory2, setAccessory3, setChestplate1, setPants1, accessory1, accessory2, accessory3, chestplate1, pants1, setEnchant1, setEnchant2, setEnchant3, setEnchant4, setEnchant5, enchant1, enchant2, enchant3, enchant4, enchant5, setAcc1Gem1, setAcc1Gem2, setAcc2Gem1, setAcc2Gem2, setAcc3Gem1, setAcc3Gem2, setChest1Gem1, setChest1Gem2, setPants1Gem1, setPants1Gem2, acc1gem1, acc1gem2, acc2gem1, acc2gem2, acc3gem1, acc3gem2, chest1gem1, chest1gem2, pants1gem1, pants1gem2}) {
+function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, setAccessory2, setAccessory3, setChestplate1, setPants1, accessory1, accessory2, accessory3, chestplate1, pants1, setEnchant1, setEnchant2, setEnchant3, setEnchant4, setEnchant5, enchant1, enchant2, enchant3, enchant4, enchant5, setAcc1Gem1, setAcc1Gem2, setAcc2Gem1, setAcc2Gem2, setAcc3Gem1, setAcc3Gem2, setChest1Gem1, setChest1Gem2, setPants1Gem1, setPants1Gem2, acc1gem1, acc1gem2, acc2gem1, acc2gem2, acc3gem1, acc3gem2, chest1gem1, chest1gem2, pants1gem1, pants1gem2, acc1gem3, acc2gem3, acc3gem3, chest1gem3, pants1gem3, setAcc1Gem3, setAcc2Gem3, setAcc3Gem3, setChest1Gem3, setPants1Gem3}) {
 
   
   const [isHovering, setIsHovering] = useState(false);
@@ -61,32 +61,38 @@ function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, set
 
     if (category == 'accessories1') {
       setAccessory1(item);
-      setAcc1Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setAcc1Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setAcc1Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setAcc1Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setAcc1Gem3({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
 
     } else if (category == 'accessories2') {
       setAccessory2(item);
-      setAcc2Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setAcc2Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setAcc2Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setAcc2Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setAcc2Gem3({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
 
     }
     else if (category == 'accessories3') {
       setAccessory3(item);
-      setAcc3Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setAcc3Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setAcc3Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setAcc3Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setAcc3Gem3({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
 
     }
     else if (category == 'chestplates') {
       setChestplate1(item);
-      setChest1Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setChest1Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setChest1Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setChest1Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setChest1Gem3({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
 
 
     }
     else if (category == 'pants') {
       setPants1(item);
-      setPants1Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setPants1Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setPants1Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setPants1Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+      setPants1Gem3({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+
 
     }
 
@@ -129,7 +135,7 @@ function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, set
 
         if ( 
           item.name != "None" && 
-          (  item.name == accessory1.name 
+          ( item.name == accessory1.name 
             || item.name == accessory2.name 
             || item.name == accessory3.name 
             || item.name == chestplate1.name 
@@ -139,15 +145,19 @@ function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, set
             || (category == 'enchant3' && item.name == enchant3.name) 
             || (category == 'enchant4' && item.name == enchant4.name) 
             || (category == 'enchant5' && item.name == enchant5.name)
-            || (item.name == accessory1.name && ((item.accessoryType == "Amulet") && (accessory1.accessoryType == "Amulet")))
-            || (item.name == accessory2.name && ((item.accessoryType == "Amulet") && (accessory2.accessoryType == "Amulet")))
-            || (item.name == accessory3.name && ((item.accessoryType == "Amulet") && (accessory3.accessoryType == "Amulet")))
+            // || (((item.accessoryType == "Amulet") && (accessory1.accessoryType == "Amulet")))
+            // || (((item.accessoryType == "Amulet") && (accessory2.accessoryType == "Amulet")))
+            // || (((item.accessoryType == "Amulet") && (accessory3.accessoryType == "Amulet"))) 
+            || (((category == 'accessories1') && (item.accessoryType == "Amulet")) && ((accessory2.accessoryType == "Amulet") || (accessory3.accessoryType == "Amulet")))
+            || (((category == 'accessories2') && (item.accessoryType == "Amulet")) && ((accessory1.accessoryType == "Amulet") || (accessory3.accessoryType == "Amulet")))
+            || (((category == 'accessories3') && (item.accessoryType == "Amulet")) && ((accessory1.accessoryType == "Amulet") || (accessory2.accessoryType == "Amulet")))
            ) ) {
           playWrong();
         } else {
           handleClose();
           handleImageChange();
           handleStatChange(category);
+          
       
         }
         

@@ -9,8 +9,30 @@ export const pants = [
         attackSize : 0,
         attackSpeed : 0,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/U9Z0chG.jpg"
+        imageId : "https://i.imgur.com/U9Z0chG.jpg",
+        gemNo : 2,
+
+    },
+
+    {
+        name : "Aereus Pants",
+        legend : "A set of black robe bottoms lined with bronze, obtained from a Dark Sealed Chest.",
+        defense : 0,
+        power : 0,
+        agility : 0,
+        attackSize : 29,
+        attackSpeed : 0,
+        intensity : 20,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
+        levelMultiplier : 12,
+        imageId : "https://i.imgur.com/Nqef809.jpg",
+        gemNo : 2,
 
     },
     
@@ -23,8 +45,30 @@ export const pants = [
         attackSize : 0,
         attackSpeed : 18,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 12,
-        imageId : "https://i.imgur.com/WT6Aamd.jpg"
+        imageId : "https://i.imgur.com/WT6Aamd.jpg",
+        gemNo : 2,
+
+    },
+
+    {
+        name : "Dark Bronze Boots",
+        legend : "A set of finely crafted black iron boots with trims of bronze, obtained from a Dark Sealed Chest.",
+        defense : 72,
+        power : 0,
+        agility : 0,
+        attackSize : 0,
+        attackSpeed : 26,
+        intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
+        levelMultiplier : 12,
+        imageId : "https://i.imgur.com/Iop3BDn.jpg",
+        gemNo : 2,
 
     },
 
@@ -37,8 +81,12 @@ export const pants = [
         attackSize : 0,
         attackSpeed : 0,
         intensity : 24,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 12,
-        imageId : "https://i.imgur.com/dkMuW5B.jpg"
+        imageId : "https://i.imgur.com/dkMuW5B.jpg",
+        gemNo : 2,
 
     },
 
@@ -51,8 +99,12 @@ export const pants = [
         attackSize : 0,
         attackSpeed : 18,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 12,
-        imageId : "https://i.imgur.com/wOepRsB.jpg"
+        imageId : "https://i.imgur.com/wOepRsB.jpg",
+        gemNo : 2,
 
     },
 
@@ -65,8 +117,12 @@ export const pants = [
         attackSize : 13,
         attackSpeed : 0,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 12,
-        imageId : "https://i.imgur.com/A8l3Fl9.jpg"
+        imageId : "https://i.imgur.com/A8l3Fl9.jpg",
+        gemNo : 2,
 
     },
 
@@ -79,8 +135,30 @@ export const pants = [
         attackSize : 0,
         attackSpeed : 0,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 12,
-        imageId : "https://i.imgur.com/tmP5o4W.jpg"
+        imageId : "https://i.imgur.com/tmP5o4W.jpg",
+        gemNo : 2,
+
+    },
+
+    {
+        name : "Siren Pants",
+        legend : "A white robe usually worn by Sirens, which are dangerous mythical creatures found in the Dark Sea. They appear as beautiful women, singing, only to lure in sailors and kill them with their wings and fangs.",
+        defense : 0,
+        power : 0,
+        agility : 14,
+        attackSize : 0,
+        attackSpeed : 23    ,
+        intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
+        levelMultiplier : 12,
+        imageId : "https://i.imgur.com/MjKdsFo.jpg",
+        gemNo : 2,
 
     },
 
@@ -93,8 +171,48 @@ export const pants = [
         attackSize : 26,
         attackSpeed : 0,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 12,
-        imageId : "https://i.imgur.com/v3D3oZQ.jpg"
+        imageId : "https://i.imgur.com/v3D3oZQ.jpg",
+        gemNo : 2,
+
+    },
+
+    {
+        name : "Theurgist Pants",
+        legend : "The lower part of a robe once worn by a powerful mage, which seems to provide some kind of divine protection when worn. It seems to be designed to fit three socketed jewels instead of two.",
+        defense : 0,
+        power : 0,
+        agility : 0,
+        attackSize : 0,
+        attackSpeed : 18,
+        intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 1,
+        levelMultiplier : 12,
+        imageId : "https://i.imgur.com/AcL8QDQ.jpg",
+        gemNo : 3,
+
+    },
+
+    {
+        name : "Vatrachos Boots",
+        legend : "A set of brightly colored boots imbued with some strange kind of power, it seems to grant the wearer great power... at a price.",
+        defense : 72,
+        power : 28,
+        agility : 0,
+        attackSize : 0,
+        attackSpeed : 0,
+        intensity : 0,
+        insanity : 0,
+        drawback : 1,
+        warding : 0,
+        levelMultiplier : 12,
+        imageId : "https://i.imgur.com/dTHnjT0.jpg",
+        gemNo : 2,
 
     },
 

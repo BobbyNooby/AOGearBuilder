@@ -9,17 +9,6 @@ import GemButton from './gemButton';
 
 function App() {
 
-  const [popupVisible, setPopupVisible] = useState(false);
-
-  const errorShow = () => {
-    setPopupVisible(true);
-
-    // Hide the popup after a few seconds (optional)
-    setTimeout(() => {
-      setPopupVisible(false);
-    }, 3000); // 3000 milliseconds (3 seconds)
-  };
-
 
   const [accessory1, setAccessory1] = useState({
     name : "",
@@ -29,6 +18,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
     gemNo : 0,
     accessoryType : "",
@@ -43,6 +35,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
     gemNo : 0,
     accessoryType : "",
@@ -57,6 +52,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
     gemNo : 0,
     accessoryType : "",
@@ -71,6 +69,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
     gemNo : 0,
 
@@ -84,6 +85,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
     gemNo : 0,
 
@@ -97,6 +101,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
   });
@@ -109,6 +116,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
   });
@@ -121,6 +131,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
   });
@@ -133,6 +146,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
   });
@@ -145,6 +161,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
   });
@@ -157,6 +176,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
 
@@ -170,6 +192,25 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
+    levelMultiplier :0,
+
+
+  });
+  
+  const [acc1gem3, setAcc1Gem3] = useState({
+    name : "None",
+    defense : 0,
+    power : 0,
+    agility : 0,
+    attackSize : 0,
+    attackSpeed : 0,
+    intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
 
@@ -183,6 +224,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
 
@@ -196,6 +240,25 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
+    levelMultiplier :0,
+
+
+  });
+
+  const [acc2gem3, setAcc2Gem3] = useState({
+    name : "None",
+    defense : 0,
+    power : 0,
+    agility : 0,
+    attackSize : 0,
+    attackSpeed : 0,
+    intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
 
@@ -209,6 +272,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
 
@@ -222,6 +288,25 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
+    levelMultiplier :0,
+
+
+  });
+
+  const [acc3gem3, setAcc3Gem3] = useState({
+    name : "None",
+    defense : 0,
+    power : 0,
+    agility : 0,
+    attackSize : 0,
+    attackSpeed : 0,
+    intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
 
@@ -235,6 +320,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
 
@@ -248,6 +336,25 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
+    levelMultiplier :0,
+
+
+  });
+
+  const [chest1gem3, setChest1Gem3] = useState({
+    name : "None",
+    defense : 0,
+    power : 0,
+    agility : 0,
+    attackSize : 0,
+    attackSpeed : 0,
+    intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
 
@@ -261,6 +368,9 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
 
@@ -274,6 +384,25 @@ function App() {
     attackSize : 0,
     attackSpeed : 0,
     intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
+    levelMultiplier :0,
+
+
+  });
+
+  const [pants1gem3, setPants1Gem3] = useState({
+    name : "None",
+    defense : 0,
+    power : 0,
+    agility : 0,
+    attackSize : 0,
+    attackSpeed : 0,
+    intensity : 0,
+    insanity : 0,
+    drawback : 0,
+    warding : 0,
     levelMultiplier :0,
 
 
@@ -292,7 +421,7 @@ function App() {
 
 
   <div class="centertop"> {/*  Information Box Above */}
-  <h2>BobbyNooby's Arcane Odyssey Gear Builder! (1.13.3.6) </h2>
+  <h2>BobbyNooby's Arcane Odyssey Gear Builder! (1.14.4) </h2>
   <p>This gear builder features the important endgame gearsets for Arcane Odyssey.</p>
   <p>If i missed anything or if you'd like to contribute, message me on discord at BobbyNooby#8993</p>
   <p>If you'd like to contribute to the Arcane Odyssey Database Project, join the discord <a href='https://discord.gg/wuczy67us7'>here</a></p>
@@ -315,11 +444,11 @@ function App() {
         <div class="column">
 
           <div>
-            <GearButton  category={"accessories1"} setAccessory1={setAccessory1} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2}/>
-            <GearButton category={"accessories2"} setAccessory2={setAccessory2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2}/>
-            <GearButton category={"accessories3"} setAccessory3={setAccessory3} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2}/>
-            <GearButton category={"chestplates"} setChestplate1={setChestplate1} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2}/>
-            <GearButton category={"pants"} setPants1={setPants1} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2}/>
+            <GearButton  category={"accessories1"} setAccessory1={setAccessory1} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GearButton category={"accessories2"} setAccessory2={setAccessory2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GearButton category={"accessories3"} setAccessory3={setAccessory3} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GearButton category={"chestplates"} setChestplate1={setChestplate1} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GearButton category={"pants"} setPants1={setPants1} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
           </div>
         
         </div>
@@ -327,22 +456,33 @@ function App() {
         <div class="column">
 
           <div >
-            <GemButton category={"acc1gem1"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1}/>
-            <GemButton category={"acc2gem1"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1}/>
-            <GemButton category={"acc3gem1"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1}/>
-            <GemButton category={"chest1gem1"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1}/>
-            <GemButton category={"pants1gem1"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1}/>
+            <GemButton category={"acc1gem1"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"acc2gem1"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"acc3gem1"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"chest1gem1"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"pants1gem1"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
           </div>
         </div>
 
         <div class="column">
 
           <div >
-            <GemButton category={"acc1gem2"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1}/>
-            <GemButton category={"acc2gem2"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1}/>
-            <GemButton category={"acc3gem2"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1}/>
-            <GemButton category={"chest1gem2"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1}/>
-            <GemButton category={"pants1gem2"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1}/>   
+            <GemButton category={"acc1gem2"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"acc2gem2"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"acc3gem2"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"chest1gem2"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"pants1gem2"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>   
+          </div>
+        </div>
+
+        <div class="column">
+
+          <div >
+            <GemButton category={"acc1gem3"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"acc2gem3"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"acc3gem3"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"chest1gem3"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <GemButton category={"pants1gem3"} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>   
           </div>
         </div>
 
@@ -370,11 +510,11 @@ function App() {
             <img style={{height:'1.5em'}} src="https://i.imgur.com/Qnt1WCW.png"/>+ 
             <span>
               {
-                accessory1.power + Math.floor(accessory1.levelMultiplier * enchant1.power) + acc1gem1.power + acc1gem2.power +
-                accessory2.power + Math.floor(accessory2.levelMultiplier * enchant2.power) + acc2gem1.power + acc2gem2.power +
-                accessory3.power + Math.floor(accessory3.levelMultiplier * enchant3.power) + acc3gem1.power + acc3gem2.power +
-                chestplate1.power + Math.floor(chestplate1.levelMultiplier * enchant4.power) + chest1gem1.power + chest1gem2.power +
-                pants1.power + Math.floor(pants1.levelMultiplier * enchant5.power) + pants1gem1.power + pants1gem2.power
+                accessory1.power + Math.floor(accessory1.levelMultiplier * enchant1.power) + acc1gem1.power + acc1gem2.power + acc1gem3.power +
+                accessory2.power + Math.floor(accessory2.levelMultiplier * enchant2.power) + acc2gem1.power + acc2gem2.power + acc2gem3.power +
+                accessory3.power + Math.floor(accessory3.levelMultiplier * enchant3.power) + acc3gem1.power + acc3gem2.power + acc3gem3.power +
+                chestplate1.power + Math.floor(chestplate1.levelMultiplier * enchant4.power) + chest1gem1.power + chest1gem2.power + chest1gem3.power +
+                pants1.power + Math.floor(pants1.levelMultiplier * enchant5.power) + pants1gem1.power + pants1gem2.power + pants1gem3.power
               }
             </span> POWER</p>
             </div>
@@ -384,11 +524,11 @@ function App() {
               <img style={{height:'1.5em'}} src="https://i.imgur.com/xm6Io7L.png"/>+ 
               <span id="defense">
                 {
-                  accessory1.defense + Math.floor(accessory1.levelMultiplier * enchant1.defense) + acc1gem1.defense + acc1gem2.defense +
-                  accessory2.defense + Math.floor(accessory2.levelMultiplier * enchant2.defense) + acc2gem1.defense + acc2gem2.defense +
-                  accessory3.defense + Math.floor(accessory3.levelMultiplier * enchant3.defense) + acc3gem1.defense + acc3gem2.defense +
-                  chestplate1.defense + Math.floor(chestplate1.levelMultiplier * enchant4.defense) + chest1gem1.defense + chest1gem2.defense +
-                  pants1.defense + Math.floor(pants1.levelMultiplier * enchant5.defense) + pants1gem1.defense + pants1gem2.defense
+                  accessory1.defense + Math.floor(accessory1.levelMultiplier * enchant1.defense) + acc1gem1.defense + acc1gem2.defense + acc1gem3.defense +
+                  accessory2.defense + Math.floor(accessory2.levelMultiplier * enchant2.defense) + acc2gem1.defense + acc2gem2.defense + acc2gem3.defense +
+                  accessory3.defense + Math.floor(accessory3.levelMultiplier * enchant3.defense) + acc3gem1.defense + acc3gem2.defense + acc3gem3.defense +
+                  chestplate1.defense + Math.floor(chestplate1.levelMultiplier * enchant4.defense) + chest1gem1.defense + chest1gem2.defense + chest1gem3.defense +
+                  pants1.defense + Math.floor(pants1.levelMultiplier * enchant5.defense) + pants1gem1.defense + pants1gem2.defense + pants1gem3.defense
                 }
               </span> DEFENSE</p>
           </div>
@@ -399,11 +539,11 @@ function App() {
               <img style={{height:'1.5em'}} src="https://i.imgur.com/ul1c2Ta.png"/>+ 
               <span id="agility">
                 {
-                  accessory1.agility + Math.floor(accessory1.levelMultiplier * enchant1.agility) + acc1gem1.agility + acc1gem2.agility +
-                  accessory2.agility + Math.floor(accessory2.levelMultiplier * enchant2.agility) + acc2gem1.agility + acc2gem2.agility +
-                  accessory3.agility + Math.floor(accessory3.levelMultiplier * enchant3.agility) + acc3gem1.agility + acc3gem2.agility +
-                  chestplate1.agility + Math.floor(chestplate1.levelMultiplier * enchant4.agility) + chest1gem1.agility + chest1gem2.agility +
-                  pants1.agility + Math.floor(pants1.levelMultiplier * enchant5.agility) + pants1gem1.agility + pants1gem2.agility
+                  accessory1.agility + Math.floor(accessory1.levelMultiplier * enchant1.agility) + acc1gem1.agility + acc1gem2.agility + acc1gem3.agility +
+                  accessory2.agility + Math.floor(accessory2.levelMultiplier * enchant2.agility) + acc2gem1.agility + acc2gem2.agility + acc2gem3.agility +
+                  accessory3.agility + Math.floor(accessory3.levelMultiplier * enchant3.agility) + acc3gem1.agility + acc3gem2.agility + acc3gem3.agility +
+                  chestplate1.agility + Math.floor(chestplate1.levelMultiplier * enchant4.agility) + chest1gem1.agility + chest1gem2.agility + chest1gem3.agility +
+                  pants1.agility + Math.floor(pants1.levelMultiplier * enchant5.agility) + pants1gem1.agility + pants1gem2.agility + pants1gem3.agility
                 }
               </span> AGILITY</p>
           </div>
@@ -414,11 +554,11 @@ function App() {
               <img style={{height:'1.5em'}} src="https://i.imgur.com/KWzGEI7.png"/>+ 
               <span id="attackspeed">
                 {
-                  accessory1.attackSpeed + Math.floor(accessory1.levelMultiplier * enchant1.attackSpeed) + acc1gem1.attackSpeed + acc1gem2.attackSpeed +
-                  accessory2.attackSpeed + Math.floor(accessory2.levelMultiplier * enchant2.attackSpeed) + acc2gem1.attackSpeed + acc2gem2.attackSpeed +
-                  accessory3.attackSpeed + Math.floor(accessory3.levelMultiplier * enchant3.attackSpeed) + acc3gem1.attackSpeed + acc3gem2.attackSize +
-                  chestplate1.attackSpeed + Math.floor(chestplate1.levelMultiplier * enchant4.attackSpeed) + chest1gem1.attackSpeed + chest1gem2.attackSpeed +
-                  pants1.attackSpeed + Math.floor(pants1.levelMultiplier * enchant5.attackSpeed) + pants1gem1.attackSpeed + pants1gem2.attackSpeed
+                  accessory1.attackSpeed + Math.floor(accessory1.levelMultiplier * enchant1.attackSpeed) + acc1gem1.attackSpeed + acc1gem2.attackSpeed + acc1gem3.attackSpeed +
+                  accessory2.attackSpeed + Math.floor(accessory2.levelMultiplier * enchant2.attackSpeed) + acc2gem1.attackSpeed + acc2gem2.attackSpeed + acc2gem3.attackSpeed +
+                  accessory3.attackSpeed + Math.floor(accessory3.levelMultiplier * enchant3.attackSpeed) + acc3gem1.attackSpeed + acc3gem2.attackSize + acc3gem3.attackSpeed +
+                  chestplate1.attackSpeed + Math.floor(chestplate1.levelMultiplier * enchant4.attackSpeed) + chest1gem1.attackSpeed + chest1gem2.attackSpeed + chest1gem3.attackSpeed +
+                  pants1.attackSpeed + Math.floor(pants1.levelMultiplier * enchant5.attackSpeed) + pants1gem1.attackSpeed + pants1gem2.attackSpeed + pants1gem3.attackSpeed
                 }
               </span> ATTACK SPEED</p>
           </div>
@@ -429,11 +569,11 @@ function App() {
             <img style={{height:'1.5em'}} src="https://i.imgur.com/TwDybjN.png"/>+ 
             <span id="attacksize">
               {
-                accessory1.attackSize + Math.floor(accessory1.levelMultiplier * enchant1.attackSize) + acc1gem1.attackSize + acc1gem2.attackSize +
-                accessory2.attackSize + Math.floor(accessory2.levelMultiplier * enchant2.attackSize) + acc2gem1.attackSize + acc2gem2.attackSize +
-                accessory3.attackSize + Math.floor(accessory3.levelMultiplier * enchant3.attackSize) + acc3gem1.attackSize + acc3gem2.attackSize +
-                chestplate1.attackSize + Math.floor(chestplate1.levelMultiplier * enchant4.attackSize) + chest1gem1.attackSize + chest1gem2.attackSize +
-                pants1.attackSize + Math.floor(pants1.levelMultiplier * enchant5.attackSize)  + pants1gem1.attackSize + pants1gem2.attackSize
+                accessory1.attackSize + Math.floor(accessory1.levelMultiplier * enchant1.attackSize) + acc1gem1.attackSize + acc1gem2.attackSize + acc1gem3.attackSize +
+                accessory2.attackSize + Math.floor(accessory2.levelMultiplier * enchant2.attackSize) + acc2gem1.attackSize + acc2gem2.attackSize + acc2gem3.attackSize +
+                accessory3.attackSize + Math.floor(accessory3.levelMultiplier * enchant3.attackSize) + acc3gem1.attackSize + acc3gem2.attackSize + acc3gem3.attackSize +
+                chestplate1.attackSize + Math.floor(chestplate1.levelMultiplier * enchant4.attackSize) + chest1gem1.attackSize + chest1gem2.attackSize + chest1gem3.attackSize +
+                pants1.attackSize + Math.floor(pants1.levelMultiplier * enchant5.attackSize)  + pants1gem1.attackSize + pants1gem2.attackSize + pants1gem3.attackSize
               }
             </span> ATTACK SIZE</p>
           </div>
@@ -444,15 +584,60 @@ function App() {
             <img style={{height:'1.5em'}} src="https://i.imgur.com/Qgqq9fz.png"/>+ 
             <span id="intensity">
               {
-                accessory1.intensity + Math.floor(accessory1.levelMultiplier * enchant1.intensity) + acc1gem1.intensity + acc1gem2.intensity +
-                accessory2.intensity + Math.floor(accessory2.levelMultiplier * enchant2.intensity) + acc2gem1.intensity + acc2gem2.intensity +
-                accessory3.intensity + Math.floor(accessory3.levelMultiplier * enchant3.intensity) + acc3gem1.intensity + acc3gem2.intensity +
-                chestplate1.intensity + Math.floor(chestplate1.levelMultiplier * enchant4.intensity) + chest1gem1.intensity + chest1gem2.intensity +
-                pants1.intensity + Math.floor(pants1.levelMultiplier * enchant5.intensity) + pants1gem1.intensity + pants1gem2.intensity
+                accessory1.intensity + Math.floor(accessory1.levelMultiplier * enchant1.intensity) + acc1gem1.intensity + acc1gem2.intensity + acc1gem3.intensity +
+                accessory2.intensity + Math.floor(accessory2.levelMultiplier * enchant2.intensity) + acc2gem1.intensity + acc2gem2.intensity + acc2gem3.intensity +
+                accessory3.intensity + Math.floor(accessory3.levelMultiplier * enchant3.intensity) + acc3gem1.intensity + acc3gem2.intensity + acc3gem3.intensity +
+                chestplate1.intensity + Math.floor(chestplate1.levelMultiplier * enchant4.intensity) + chest1gem1.intensity + chest1gem2.intensity + chest1gem3.intensity +
+                pants1.intensity + Math.floor(pants1.levelMultiplier * enchant5.intensity) + pants1gem1.intensity + pants1gem2.intensity + pants1gem3.intensity
               }
             </span> INTENSITY</p>
           </div>
-          
+              
+          <div>
+            <p class="insanityResult">
+            <img style={{height:'1.5em'}} src="https://i.imgur.com/zuPji7I.png"/>+ 
+            <span id="insanity">
+              {
+                accessory1.insanity + (accessory1.levelMultiplier > 0 ? enchant1.insanity : 0) + acc1gem1.insanity + acc1gem2.insanity + acc1gem3.insanity +
+                accessory2.insanity + (accessory2.levelMultiplier > 0 ? enchant2.insanity : 0) + acc2gem1.insanity + acc2gem2.insanity + acc2gem3.insanity +
+                accessory3.insanity + (accessory3.levelMultiplier > 0 ? enchant3.insanity : 0) + acc3gem1.insanity + acc3gem2.insanity + acc3gem3.insanity +
+                chestplate1.insanity + (chestplate1.levelMultiplier > 0 ? enchant4.insanity : 0) + chest1gem1.insanity + chest1gem2.insanity + chest1gem3.insanity +
+                pants1.insanity + (pants1.levelMultiplier > 0 ? enchant5.insanity : 0) + pants1gem1.insanity + pants1gem2.insanity + pants1gem3.insanity
+              }
+            </span> INSANITY</p>
+          </div>
+
+
+          <div>
+            <p class="drawbackResult">
+            <img style={{height:'1.5em'}} src="https://i.imgur.com/43RZKlz.png"/>+ 
+            <span id="drawback">
+              {
+                accessory1.drawback + (accessory1.levelMultiplier > 0 ? enchant1.drawback : 0) + acc1gem1.drawback + acc1gem2.drawback + acc1gem3.drawback +
+                accessory2.drawback + (accessory2.levelMultiplier > 0 ? enchant2.drawback : 0) + acc2gem1.drawback + acc2gem2.drawback + acc2gem3.drawback +
+                accessory3.drawback + (accessory3.levelMultiplier > 0 ? enchant3.drawback : 0) + acc3gem1.drawback + acc3gem2.drawback + acc3gem3.drawback +
+                chestplate1.drawback + (chestplate1.levelMultiplier > 0 ? enchant4.drawback : 0) + chest1gem1.drawback + chest1gem2.drawback + chest1gem3.drawback +
+                pants1.drawback + (pants1.levelMultiplier > 0 ? enchant5.drawback : 0) + pants1gem1.drawback + pants1gem2.drawback + pants1gem3.drawback
+              }
+            </span> DRAWBACK</p>
+          </div>
+
+
+          <div>
+            <p class="wardingResult">
+            <img style={{height:'1.5em'}} src="https://i.imgur.com/ZMoqTvi.png"/>+ 
+            <span id="warding">
+              {
+                accessory1.warding + (accessory1.levelMultiplier > 0 ? enchant1.warding : 0) + acc1gem1.warding + acc1gem2.warding + acc1gem3.warding +
+                accessory2.warding + (accessory2.levelMultiplier > 0 ? enchant2.warding : 0) + acc2gem1.warding + acc2gem2.warding + acc2gem3.warding +
+                accessory3.warding + (accessory3.levelMultiplier > 0 ? enchant3.warding : 0) + acc3gem1.warding + acc3gem2.warding + acc3gem3.warding +
+                chestplate1.warding + (chestplate1.levelMultiplier > 0 ? enchant4.warding : 0) + chest1gem1.warding + chest1gem2.warding + chest1gem3.warding +
+                pants1.warding + (pants1.levelMultiplier > 0 ? enchant5.warding : 0) + pants1gem1.warding + pants1gem2.warding + pants1gem3.warding
+              }
+            </span> WARDING</p>
+          </div>
+
+
           </div>
         </div>
         

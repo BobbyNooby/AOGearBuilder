@@ -44,8 +44,8 @@
     flex-wrap: wrap;
     align-items: center;
     align-content: center;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
   
   .grid-item {
@@ -132,6 +132,38 @@
     -webkit-text-stroke: 1.2px;
     -webkit-text-stroke-color: #712402;
     text-align: center;
+}
+
+.insanityResult {
+
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  -webkit-text-fill-color: #8B27DB;
+  -webkit-text-stroke: 1.2px;
+  -webkit-text-stroke-color: #DB0C45;
+  text-align: center;
+}
+
+.drawbackResult {
+
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  -webkit-text-fill-color: #DC4040;
+  -webkit-text-stroke: 1.2px;
+  text-align: center;
+}
+
+.wardingResult {
+
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  -webkit-text-fill-color: #FFFFFF;
+  -webkit-text-stroke: 1.2px;
+  -webkit-text-stroke-color: #CBCB55;
+  text-align: center;
 }
 
 .center3 {

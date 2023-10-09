@@ -9,6 +9,9 @@ export const gems = [
         attackSize : 0,
         attackSpeed : 0,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 0,
         imageId : "https://i.imgur.com/5pGLWmQ.jpg"
 
@@ -23,6 +26,9 @@ export const gems = [
         attackSize : 0,
         attackSpeed : 0,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 0,
         imageId : "https://i.imgur.com/QfIMijY.jpg"
 
@@ -37,6 +43,9 @@ export const gems = [
         attackSize : 0,
         attackSpeed : 0,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 0,
         imageId : "https://i.imgur.com/uKo7HIn.jpg"
 
@@ -51,6 +60,9 @@ export const gems = [
         attackSize : 0,
         attackSpeed : 0,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 0,
         imageId : "https://i.imgur.com/U2dVzoO.jpg"
 
@@ -65,6 +77,9 @@ export const gems = [
         attackSize : 6,
         attackSpeed : 0,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 0,
         imageId : "https://i.imgur.com/f3jIixE.jpg"
 
@@ -79,6 +94,9 @@ export const gems = [
         attackSize : 0,
         attackSpeed : 6,
         intensity : 0,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 0,
         imageId : "https://i.imgur.com/ReyXsmN.jpg"
 
@@ -93,6 +111,9 @@ export const gems = [
         attackSize : 0,
         attackSpeed : 0,
         intensity : 6,
+        insanity : 0,
+        drawback : 0,
+        warding : 0,
         levelMultiplier : 0,
         imageId : "https://i.imgur.com/UVdQh1A.jpg"
 
