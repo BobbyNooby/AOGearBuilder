@@ -57,7 +57,7 @@ export const chestplates = [
     {
         name : "Dark Bronze Armor",
         legend : "A set of finely crafted black iron armor with trims of bronze, obtained from a Dark Sealed Chest.",
-        defense : 96,
+        defense : 97,
         power : 0,
         agility : 0,
         attackSize : 0,
