@@ -21,7 +21,7 @@ export const chestplates = [
     {
         name : "Aereus Robes",
         legend : "A set of dark purple robes lined with bronze, obtained from a Dark Sealed Chest.",
-        defense : 210,
+        defense : 0,
         power : 0,
         agility : 0,
         attackSize : 39,
