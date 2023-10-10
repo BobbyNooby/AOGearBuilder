@@ -556,7 +556,7 @@ function App() {
                 {
                   accessory1.attackSpeed + Math.floor(accessory1.levelMultiplier * enchant1.attackSpeed) + acc1gem1.attackSpeed + acc1gem2.attackSpeed + acc1gem3.attackSpeed +
                   accessory2.attackSpeed + Math.floor(accessory2.levelMultiplier * enchant2.attackSpeed) + acc2gem1.attackSpeed + acc2gem2.attackSpeed + acc2gem3.attackSpeed +
-                  accessory3.attackSpeed + Math.floor(accessory3.levelMultiplier * enchant3.attackSpeed) + acc3gem1.attackSpeed + acc3gem2.attackSize + acc3gem3.attackSpeed +
+                  accessory3.attackSpeed + Math.floor(accessory3.levelMultiplier * enchant3.attackSpeed) + acc3gem1.attackSpeed + acc3gem2.attackSpeed + acc3gem3.attackSpeed +
                   chestplate1.attackSpeed + Math.floor(chestplate1.levelMultiplier * enchant4.attackSpeed) + chest1gem1.attackSpeed + chest1gem2.attackSpeed + chest1gem3.attackSpeed +
                   pants1.attackSpeed + Math.floor(pants1.levelMultiplier * enchant5.attackSpeed) + pants1gem1.attackSpeed + pants1gem2.attackSpeed + pants1gem3.attackSpeed
                 }
