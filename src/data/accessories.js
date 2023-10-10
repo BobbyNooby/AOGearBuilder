@@ -16,6 +16,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/ynJYNoA.jpg",
         gemNo : 0,
         accessoryType : "",
+        rarityColor : "#7D7D7F",
 
     },
 

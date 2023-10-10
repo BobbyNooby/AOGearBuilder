@@ -13,7 +13,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/PzIWvMv.jpg"
+        imageId : "https://i.imgur.com/PzIWvMv.jpg",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -30,7 +31,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/p0Zguuy.jpg"
+        imageId : "https://i.imgur.com/p0Zguuy.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -47,7 +49,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/WkFeLGD.jpg"
+        imageId : "https://i.imgur.com/WkFeLGD.jpg",
+        rarityColor : "#6765EC",
 
     },
 
@@ -64,7 +67,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/XAMemmw.jpg"
+        imageId : "https://i.imgur.com/XAMemmw.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -81,7 +85,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/sof2TFZ.jpg"
+        imageId : "https://i.imgur.com/sof2TFZ.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -98,7 +103,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/TnNqJI9.jpg"
+        imageId : "https://i.imgur.com/TnNqJI9.jpg",
+        rarityColor : "#6765EC",
 
     },
 
@@ -115,7 +121,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/3NPD8Kv.jpg"
+        imageId : "https://i.imgur.com/3NPD8Kv.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -132,7 +139,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/AHP8sbj.jpg"
+        imageId : "https://i.imgur.com/AHP8sbj.jpg",
+        rarityColor : "#6765EC",
 
     },
 
@@ -149,7 +157,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/TmnZC5R.jpg"
+        imageId : "https://i.imgur.com/TmnZC5R.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -166,7 +175,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/2YQNufF.jpg"
+        imageId : "https://i.imgur.com/2YQNufF.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -183,7 +193,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/hMOcRd6.jpg"
+        imageId : "https://i.imgur.com/hMOcRd6.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -200,7 +211,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/374cVZA.jpg"
+        imageId : "https://i.imgur.com/374cVZA.jpg",
+        rarityColor : "#6765EC",
 
     },
 
@@ -217,7 +229,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/EqHjqkx.jpg"
+        imageId : "https://i.imgur.com/EqHjqkx.jpg",
+        rarityColor : "#6765EC",
 
     },
 
@@ -234,7 +247,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/tYJZ0qq.jpg"
+        imageId : "https://i.imgur.com/tYJZ0qq.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -251,7 +265,8 @@ export const enchants = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/4TG9sWt.jpg"
+        imageId : "https://i.imgur.com/4TG9sWt.jpg",
+        rarityColor : "#6765EC",
 
     },
 
@@ -268,7 +283,8 @@ export const enchants = [
         drawback : 0,
         warding : 1,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/caatZjd.jpg"
+        imageId : "https://i.imgur.com/caatZjd.jpg",
+        rarityColor : "#ED120E",
 
     },
 

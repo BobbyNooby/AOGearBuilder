@@ -15,6 +15,7 @@ export const pants = [
         levelMultiplier : 0,
         imageId : "https://i.imgur.com/U9Z0chG.jpg",
         gemNo : 2,
+        rarityColor : "#7D7D7F",
 
     },
 

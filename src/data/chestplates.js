@@ -15,6 +15,7 @@ export const chestplates = [
         levelMultiplier : 0,
         imageId : "https://i.imgur.com/Uj7r6Fm.jpg",
         gemNo : 2,
+        rarityColor : "#7D7D7F",
 
     },
 
