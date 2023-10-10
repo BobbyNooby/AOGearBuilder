@@ -53,8 +53,8 @@ export const enchants = [
 
     {
         name : "Armored",
-        legend : "(UNVERIFIED) An enchant that gives +13.67 points of Defense for every 10 levels of an item.",
-        defense : 13.67,
+        legend : "(UNVERIFIED) An enchant that gives +9 points of Defense for every 10 levels of an item.",
+        defense : 9,
         power : 0,
         agility : 0,
         attackSize : 0,
