@@ -169,7 +169,7 @@ export const pants = [
     {
         name : "Sunken Iron Boots",
         legend : "A set of boots made out of arcanium metal that have spent hundreds of years underwater, causing their properties to change. They seem to constantly produce water.",
-        defense : 170,
+        defense : 153,
         power : 0,
         agility : 0,
         attackSize : 26,
