@@ -6,6 +6,8 @@ website : https://bobbynooby.github.io/AOGearBuilder/
 
 ## Changelogs
 
+10 October 2023 - Added the new gems. Should have most of the things now
+
 9 October 2023 - Added most of the dark sea update gear content (new gear and enchants) except for jewels. Fixed amulet selection operators (again). Fixed jewels not resetting every gear change.
 
 6 October 2023 - Fixed arcsphere being unable to be selected if crown or any head item is equipped.
