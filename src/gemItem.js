@@ -187,7 +187,8 @@ function GemItem({item, handleClose, setButtonImgSrc, category, setAcc1Gem1, set
             width: '300px',
             padding: '10px',
             boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
-            border: '3px solid white',
+            border: '3px solid',
+            borderColor: item.rarityColor,
             
             
 

@@ -181,6 +181,7 @@ function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, set
             padding: '10px',
             boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
             border: '3px solid white',
+            borderColor: item.rarityColor,
             
             
 

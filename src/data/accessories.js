@@ -35,6 +35,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/NeqZTZV.jpg",
         gemNo : 2,
         accessoryType : "Head",
+        rarityColor : "#817346",
 
     },
 
@@ -54,6 +55,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/xnCtmYM.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
     },
     
@@ -73,6 +75,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/jBitY1S.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#817346",
 
     },
 
@@ -92,6 +95,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/jdZNKV0.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -111,6 +115,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/w5gO6Mm.jpg",
         gemNo : 2,
         accessoryType : "Arms",
+        rarityColor : "#817346",
 
     },
     
@@ -130,6 +135,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/2FppDYo.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#6765EC",
 
     },
 
@@ -149,6 +155,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/6XLzqal.jpg",
         gemNo : 2,
         accessoryType : "Head",
+        rarityColor : "#817346",
 
     },
 
@@ -168,6 +175,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/ejnwQTF.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -187,6 +195,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/DgEPOxY.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#817346",
 
     },
 
@@ -206,6 +215,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/E0u4EKC.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -225,6 +235,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/bPdHIwT.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -244,6 +255,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/Hxc2Y6i.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#817346",
 
     },
 
@@ -263,6 +275,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/1wOssZU.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -282,6 +295,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/jfvpC6Q.jpg",
         gemNo : 2,
         accessoryType : "Back",
+        rarityColor : "#6765EC",
 
     },
 
@@ -301,6 +315,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/fzZ9FjU.jpg",
         gemNo : 2,
         accessoryType : "Waist",
+        rarityColor : "#6765EC",
 
     },
 
@@ -320,6 +335,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/JUIQgS5.jpg",
         gemNo : 2,
         accessoryType : "Back",
+        rarityColor : "#6765EC",
 
     },
 
@@ -339,6 +355,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/PxtJYep.jpg",
         gemNo : 2,
         accessoryType : "Helmet",
+        rarityColor : "#817346",
 
     },
 
@@ -358,6 +375,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/szJpKiY.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -377,6 +395,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/Ka1PPTD.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#817346",
 
     },
 
@@ -396,6 +415,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/5LF6ZcO.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -415,6 +435,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/pDH6zon.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -431,6 +452,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/24TDE2K.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#817346",
 
     },
 
@@ -450,6 +472,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/3zLlEI1.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -469,6 +492,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/xMss19W.jpg",
         gemNo : 2,
         accessoryType : "Helmet",
+        rarityColor : "#6765EC",
 
     },
 
@@ -488,6 +512,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/p3ljTRo.jpg",
         gemNo : 2,
         accessoryType : "Head",
+        rarityColor : "#6765EC",
 
     },
 
@@ -507,6 +532,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/xZckXsl.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
 
     },
@@ -527,6 +553,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/NBSMPEw.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#817346",
 
 
     },
@@ -547,6 +574,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/IhnCS7Y.jpg",
         gemNo : 0,
         accessoryType : "Amulet",
+        rarityColor : "#7D7D7F",
 
 
     },
@@ -567,6 +595,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/vAK4RMn.jpg",
         gemNo : 2,
         accessoryType : "Arms",
+        rarityColor : "#6765EC",
 
     },
 
@@ -586,6 +615,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/xANT1CO.jpg",
         gemNo : 2,
         accessoryType : "Waist",
+        rarityColor : "#6765EC",
 
     },
 
@@ -605,6 +635,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/M1YATlb.jpg",
         gemNo : 2,
         accessoryType : "Back",
+        rarityColor : "#6765EC",
 
     },
 
@@ -624,6 +655,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/XjlFXQy.jpg",
         gemNo : 2,
         accessoryType : "Face",
+        rarityColor : "#6765EC",
 
     },
 
@@ -643,6 +675,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/fg5aYLT.jpg",
         gemNo : 2,
         accessoryType : "Helmet",
+        rarityColor : "#6765EC",
 
     },
 
@@ -662,6 +695,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/2Fxep24.jpg",
         gemNo : 2,
         accessoryType : "Head",
+        rarityColor : "#6765EC",
 
     },
 
@@ -681,6 +715,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/L40oIiI.jpg",
         gemNo : 3,
         accessoryType : "Back",
+        rarityColor : "#6765EC",
 
     },
 
@@ -700,6 +735,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/ppOrR0Z.jpg",
         gemNo : 3,
         accessoryType : "Head",
+        rarityColor : "#6765EC",
 
     },
 
@@ -719,6 +755,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/qaZpDtM.jpg",
         gemNo : 2,
         accessoryType : "Helmet",
+        rarityColor : "#6765EC",
 
     },
 
@@ -738,6 +775,7 @@ export const accessories = [
         imageId : "https://i.imgur.com/2ekcbpz.jpg",
         gemNo : 2,
         accessoryType : "Helmet",
+        rarityColor : "#6765EC",
 
     },
 

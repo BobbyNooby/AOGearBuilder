@@ -13,7 +13,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/5pGLWmQ.jpg"
+        imageId : "https://i.imgur.com/5pGLWmQ.jpg",
+        rarityColor : "#7D7D7F",
 
     },
     
@@ -30,7 +31,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/QfIMijY.jpg"
+        imageId : "https://i.imgur.com/QfIMijY.jpg",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -47,7 +49,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/uKo7HIn.jpg"
+        imageId : "https://i.imgur.com/uKo7HIn.jpg",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -64,7 +67,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/U2dVzoO.jpg"
+        imageId : "https://i.imgur.com/U2dVzoO.jpg",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -81,7 +85,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/f3jIixE.jpg"
+        imageId : "https://i.imgur.com/f3jIixE.jpg",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -98,7 +103,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/ReyXsmN.jpg"
+        imageId : "https://i.imgur.com/ReyXsmN.jpg",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -115,7 +121,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/UVdQh1A.jpg"
+        imageId : "https://i.imgur.com/UVdQh1A.jpg",
+        rarityColor : "#7D7D7F",
 
     },
 
@@ -132,7 +139,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/BQDfTI4.jpg"
+        imageId : "https://i.imgur.com/BQDfTI4.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -149,7 +157,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/7dsbroX.jpg"
+        imageId : "https://i.imgur.com/7dsbroX.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -166,13 +175,15 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/04BqwKI.jpg"
+        imageId : "https://i.imgur.com/04BqwKI.jpg",
+        rarityColor : "#ED120E",
 
     },
 
     {
         name : "Perfect Lapiz Lazuli",
         legend : "MINECRAFT REFERENCE?!!?!?@112",
+        rarityColor : "#ED120E",
         defense : 0,
         power : 0,
         agility : 9,
@@ -183,7 +194,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/GOzVpsB.jpg"
+        imageId : "https://i.imgur.com/GOzVpsB.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -200,7 +212,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/XAOoJMx.jpg"
+        imageId : "https://i.imgur.com/XAOoJMx.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -217,7 +230,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/CXvDUmK.jpg"
+        imageId : "https://i.imgur.com/CXvDUmK.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -234,7 +248,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/VbaStjk.jpg"
+        imageId : "https://i.imgur.com/VbaStjk.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -251,7 +266,8 @@ export const gems = [
         drawback : 1,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/P7oWvjZ.jpg"
+        imageId : "https://i.imgur.com/P7oWvjZ.jpg",
+        rarityColor : "#ED120E",
 
     },
 
@@ -268,7 +284,8 @@ export const gems = [
         drawback : 0,
         warding : 0,
         levelMultiplier : 0,
-        imageId : "https://i.imgur.com/tHe7MUP.jpg"
+        imageId : "https://i.imgur.com/tHe7MUP.jpg",
+        rarityColor : "#ED120E",
 
     },
 

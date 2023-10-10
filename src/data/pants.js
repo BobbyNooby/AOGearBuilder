@@ -33,6 +33,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/Nqef809.jpg",
         gemNo : 2,
+        rarityColor : "#817346",
 
     },
     
@@ -69,6 +70,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/Iop3BDn.jpg",
         gemNo : 2,
+        rarityColor : "#817346",
 
     },
 
@@ -151,7 +153,7 @@ export const pants = [
         power : 0,
         agility : 14,
         attackSize : 0,
-        attackSpeed : 23    ,
+        attackSpeed : 23,
         intensity : 0,
         insanity : 0,
         drawback : 0,
@@ -159,6 +161,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/MjKdsFo.jpg",
         gemNo : 2,
+        rarityColor : "#817346",
 
     },
 

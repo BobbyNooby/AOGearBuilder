@@ -33,6 +33,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/x4A2Luy.jpg",
         gemNo : 2,
+        rarityColor : "#817346",
 
     },
     
@@ -51,6 +52,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/9KOG3mY.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -69,6 +71,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/oeo2gAa.jpg",
         gemNo : 2,
+        rarityColor : "#817346",
 
     },
 
@@ -87,6 +90,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/wOCyqPb.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -105,6 +109,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/YsTvHp6.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -123,6 +128,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/CtDlG8G.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -141,6 +147,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/1rOXCYi.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -159,6 +166,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/AZu3qhk.jpg",
         gemNo : 2,
+        rarityColor : "#817346",
 
     },
 
@@ -177,6 +185,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/MSM7WOL.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -195,6 +204,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/EM1JO68.jpg",
         gemNo : 3,
+        rarityColor : "#6765EC",
 
     },
 
@@ -213,6 +223,7 @@ export const chestplates = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/jBEqyRi.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
