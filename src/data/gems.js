@@ -21,7 +21,7 @@ export const gems = [
     {
         name : "Defense",
         legend : "Max Defense Gem Innit",
-        defense : 31,
+        defense : 28,
         power : 0,
         agility : 0,
         attackSize : 0,
@@ -129,7 +129,7 @@ export const gems = [
     {
         name : "Perfect Agate",
         legend : "Agaga goo goo gaa gaa",
-        defense : 31,
+        defense : 28,
         power : 0,
         agility : 0,
         attackSize : 9,
