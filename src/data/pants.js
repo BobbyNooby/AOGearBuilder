@@ -41,7 +41,7 @@ export const pants = [
     {
         name : "Cernyx's Boots",
         legend : "A pair of rough grey pants with sturdy black boots, made to be worn in the muddy swamp of the Forest of Cernunno.",
-        defense : 157,
+        defense : 142,
         power : 0,
         agility : 0,
         attackSize : 0,
