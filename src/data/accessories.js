@@ -666,7 +666,7 @@ export const accessories = [
         defense : 153,
         power : 0,
         agility : 0,
-        attackSize : 18,
+        attackSize : 26,
         attackSpeed : 0,
         intensity : 0,
         insanity : 0,
