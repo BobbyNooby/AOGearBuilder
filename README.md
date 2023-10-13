@@ -6,6 +6,8 @@ website : https://bobbynooby.github.io/AOGearBuilder/
 
 ## Changelogs
 
+13 October 2023 - Added Atlantean Modifier. Bug fixes.
+
 10 October 2023 - Added the new gems. Should have most of the things now
 
 9 October 2023 - Added most of the dark sea update gear content (new gear and enchants) except for jewels. Fixed amulet selection operators (again). Fixed jewels not resetting every gear change.

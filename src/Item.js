@@ -5,7 +5,7 @@ import { playCorrect } from './playAudioUtil';
 import { playWrong } from './playAudioUtil';
 
 
-function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, setAccessory2, setAccessory3, setChestplate1, setPants1, accessory1, accessory2, accessory3, chestplate1, pants1, setEnchant1, setEnchant2, setEnchant3, setEnchant4, setEnchant5, enchant1, enchant2, enchant3, enchant4, enchant5, setAcc1Gem1, setAcc1Gem2, setAcc2Gem1, setAcc2Gem2, setAcc3Gem1, setAcc3Gem2, setChest1Gem1, setChest1Gem2, setPants1Gem1, setPants1Gem2, acc1gem1, acc1gem2, acc2gem1, acc2gem2, acc3gem1, acc3gem2, chest1gem1, chest1gem2, pants1gem1, pants1gem2, acc1gem3, acc2gem3, acc3gem3, chest1gem3, pants1gem3, setAcc1Gem3, setAcc2Gem3, setAcc3Gem3, setChest1Gem3, setPants1Gem3}) {
+function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, setAccessory2, setAccessory3, setChestplate1, setPants1, accessory1, accessory2, accessory3, chestplate1, pants1, setEnchant1, setEnchant2, setEnchant3, setEnchant4, setEnchant5, enchant1, enchant2, enchant3, enchant4, enchant5, setAcc1Gem1, setAcc1Gem2, setAcc2Gem1, setAcc2Gem2, setAcc3Gem1, setAcc3Gem2, setChest1Gem1, setChest1Gem2, setPants1Gem1, setPants1Gem2, acc1gem1, acc1gem2, acc2gem1, acc2gem2, acc3gem1, acc3gem2, chest1gem1, chest1gem2, pants1gem1, pants1gem2, acc1gem3, acc2gem3, acc3gem3, chest1gem3, pants1gem3, setAcc1Gem3, setAcc2Gem3, setAcc3Gem3, setChest1Gem3, setPants1Gem3, setModifier1, setModifier2, setModifier3, setModifier4, setModifier5, modifier1, modifier2, modifier3, modifier4, modifier5}) {
 
   
   const [isHovering, setIsHovering] = useState(false);
@@ -59,66 +59,85 @@ function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, set
 
   const handleStatChange = (category) => {
 
-    if (category == 'accessories1') {
-      setAccessory1(item);
-      setAcc1Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setAcc1Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setAcc1Gem3({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
+    switch (category) {
+      case 'accessories1':
+        setAccessory1(item);
+        setAcc1Gem1({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        setAcc1Gem2({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        setAcc1Gem3({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        break;
+    
+      case 'accessories2':
+        setAccessory2(item);
+        setAcc2Gem1({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        setAcc2Gem2({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        setAcc2Gem3({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        break;
+    
+      case 'accessories3':
+        setAccessory3(item);
+        setAcc3Gem1({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        setAcc3Gem2({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        setAcc3Gem3({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        break;
+    
+      case 'chestplates':
+        setChestplate1(item);
+        setChest1Gem1({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        setChest1Gem2({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        setChest1Gem3({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        break;
+    
+      case 'pants':
+        setPants1(item);
+        setPants1Gem1({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        setPants1Gem2({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        setPants1Gem3({ name: "None", legend: "Nothing Lol", defense: 0, power: 0, agility: 0, attackSize: 0, attackSpeed: 0, intensity: 0, insanity: 0, drawback: 0, warding: 0, levelMultiplier: 0, imageId: "https://i.imgur.com/PzIWvMv.jpg" });
+        break;
+    
+      case 'enchant1':
+        setEnchant1(item);
+        break;
+    
+      case 'enchant2':
+        setEnchant2(item);
+        break;
+    
+      case 'enchant3':
+        setEnchant3(item);
+        break;
+    
+      case 'enchant4':
+        setEnchant4(item);
+        break;
+    
+      case 'enchant5':
+        setEnchant5(item);
+        break;
 
-    } else if (category == 'accessories2') {
-      setAccessory2(item);
-      setAcc2Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0, levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setAcc2Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setAcc2Gem3({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-
-    }
-    else if (category == 'accessories3') {
-      setAccessory3(item);
-      setAcc3Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setAcc3Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setAcc3Gem3({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-
-    }
-    else if (category == 'chestplates') {
-      setChestplate1(item);
-      setChest1Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setChest1Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setChest1Gem3({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-
-
-    }
-    else if (category == 'pants') {
-      setPants1(item);
-      setPants1Gem1({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setPants1Gem2({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-      setPants1Gem3({name : "None", legend : "Nothing Lol", defense : 0, power : 0, agility : 0, attackSize : 0, attackSpeed : 0, intensity : 0, insanity : 0, drawback : 0, warding : 0,  levelMultiplier : 0, imageId : "https://i.imgur.com/PzIWvMv.jpg"});
-
-
-    }
-
-    else if (category == 'enchant1') {
-      setEnchant1(item);
-
-    }
-
-    else if (category == 'enchant2') {
-      setEnchant2(item);
-
-    }
-
-    else if (category == 'enchant3') {
-      setEnchant3(item);
-
-    }
-
-    else if (category == 'enchant4') {
-      setEnchant4(item);
-
-    }
-
-    else if (category == 'enchant5') {
-      setEnchant5(item);
-
+      case 'modifier1':
+        setModifier1(item);
+        break;
+    
+      case 'modifier2':
+        setModifier2(item);
+        break;
+    
+      case 'modifier3':
+        setModifier3(item);
+        break;
+    
+      case 'modifier4':
+        setModifier4(item);
+        break;
+    
+      case 'modifier5':
+        setModifier5(item);
+        break;
+    
+      default:
+        // Handle any other category here, if needed.
+        break;
     }
   }
 

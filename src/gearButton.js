@@ -6,7 +6,7 @@ import { playSound } from './playAudioUtil';
 import { playCorrect } from './playAudioUtil';
 import { playWrong } from './playAudioUtil';
 
-const GearButton = ({category, setAccessory1, setAccessory2, setAccessory3, setChestplate1, setPants1, updateFinalStats, accessory1, accessory2, accessory3, chestplate1, pants1, setEnchant1, setEnchant2, setEnchant3, setEnchant4, setEnchant5, enchant1, enchant2, enchant3, enchant4, enchant5, setAcc1Gem1, setAcc1Gem2, setAcc2Gem1, setAcc2Gem2, setAcc3Gem1, setAcc3Gem2, setChest1Gem1, setChest1Gem2, setPants1Gem1, setPants1Gem2, acc1gem1, acc1gem2, acc2gem1, acc2gem2, acc3gem1, acc3gem2, chest1gem1, chest1gem2, pants1gem1, pants1gem2, acc1gem3, acc2gem3, acc3gem3, chest1gem3, pants1gem3, setAcc1Gem3, setAcc2Gem3, setAcc3Gem3, setChest1Gem3, setPants1Gem3}) => {
+const GearButton = ({category, setAccessory1, setAccessory2, setAccessory3, setChestplate1, setPants1, updateFinalStats, accessory1, accessory2, accessory3, chestplate1, pants1, setEnchant1, setEnchant2, setEnchant3, setEnchant4, setEnchant5, enchant1, enchant2, enchant3, enchant4, enchant5, setAcc1Gem1, setAcc1Gem2, setAcc2Gem1, setAcc2Gem2, setAcc3Gem1, setAcc3Gem2, setChest1Gem1, setChest1Gem2, setPants1Gem1, setPants1Gem2, acc1gem1, acc1gem2, acc2gem1, acc2gem2, acc3gem1, acc3gem2, chest1gem1, chest1gem2, pants1gem1, pants1gem2, acc1gem3, acc2gem3, acc3gem3, chest1gem3, pants1gem3, setAcc1Gem3, setAcc2Gem3, setAcc3Gem3, setChest1Gem3, setPants1Gem3, setModifier1, setModifier2, setModifier3, setModifier4, setModifier5, modifier1, modifier2, modifier3, modifier4, modifier5}) => {
 
   const [showMenu, setShowMenu] = useState(false);
   
@@ -23,6 +23,11 @@ const GearButton = ({category, setAccessory1, setAccessory2, setAccessory3, setC
     enchant3 : 'https://i.imgur.com/PzIWvMv.jpg',
     enchant4 : 'https://i.imgur.com/PzIWvMv.jpg',
     enchant5 : 'https://i.imgur.com/PzIWvMv.jpg',
+    modifier1 : 'https://i.imgur.com/iKfI8Cp.jpg',
+    modifier2 : 'https://i.imgur.com/iKfI8Cp.jpg',
+    modifier3 : 'https://i.imgur.com/iKfI8Cp.jpg',
+    modifier4 : 'https://i.imgur.com/iKfI8Cp.jpg',
+    modifier5 : 'https://i.imgur.com/iKfI8Cp.jpg',
   };  
 
   const handleClick = () => {
@@ -70,6 +75,20 @@ const GearButton = ({category, setAccessory1, setAccessory2, setAccessory3, setC
       break;
     case 'enchant5':
       itemType = "enchant5";
+    case 'modifier1':
+      itemType = "modifier1";
+      break;
+    case 'modifier2':
+      itemType = "modifier2";
+      break;
+    case 'modifier3':
+      itemType = "modifier3";
+      break;
+    case 'modifier4':
+      itemType = "modifier4";
+      break;
+    case 'modifier5':
+      itemType = "modifier5";
       break;
     default:
       break;
@@ -109,7 +128,7 @@ const GearButton = ({category, setAccessory1, setAccessory2, setAccessory3, setC
         >
           <div className="item-grid">
             <img className="grid-item" src="https://i.imgur.com/4UqeZGb.jpg" onClick={handleClose}/>
-            <ItemMenu category={itemType} handleClose={handleClose} buttonImgSrc={buttonImgSrc} setButtonImgSrc={setButtonImgSrc} setAccessory1={setAccessory1} setAccessory2={setAccessory2} setAccessory3={setAccessory3} setChestplate1={setChestplate1} setPants1={setPants1} updateFinalStats={updateFinalStats} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} setEnchant1={setEnchant1} setEnchant2={setEnchant2} setEnchant3={setEnchant3} setEnchant4={setEnchant4} setEnchant5={setEnchant5} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3}/>
+            <ItemMenu category={itemType} handleClose={handleClose} buttonImgSrc={buttonImgSrc} setButtonImgSrc={setButtonImgSrc} setAccessory1={setAccessory1} setAccessory2={setAccessory2} setAccessory3={setAccessory3} setChestplate1={setChestplate1} setPants1={setPants1} updateFinalStats={updateFinalStats} accessory1={accessory1} accessory2={accessory2} accessory3={accessory3} chestplate1={chestplate1} pants1={pants1} setEnchant1={setEnchant1} setEnchant2={setEnchant2} setEnchant3={setEnchant3} setEnchant4={setEnchant4} setEnchant5={setEnchant5} enchant1={enchant1} enchant2={enchant2} enchant3={enchant3} enchant4={enchant4} enchant5={enchant5} acc1gem1={acc1gem1} acc1gem2={acc1gem2} acc2gem1={acc2gem1} acc2gem2={acc2gem2} acc3gem1={acc3gem1} acc3gem2={acc3gem2} chest1gem1={chest1gem1} chest1gem2={chest1gem2} pants1gem1={pants1gem1} pants1gem2={pants1gem2} setAcc1Gem1={setAcc1Gem1} setAcc1Gem2={setAcc1Gem2} setAcc2Gem1={setAcc2Gem1} setAcc2Gem2={setAcc2Gem2} setAcc3Gem1={setAcc3Gem1} setAcc3Gem2={setAcc3Gem2} setChest1Gem1={setChest1Gem1} setChest1Gem2={setChest1Gem2} setPants1Gem1={setPants1Gem1} setPants1Gem2={setPants1Gem2} acc1gem3={acc1gem3} acc2gem3={acc2gem3} acc3gem3={acc3gem3} chest1gem3={chest1gem3} pants1gem3={pants1gem3} setAcc1Gem3={setAcc1Gem3} setAcc2Gem3={setAcc2Gem3} setAcc3Gem3={setAcc1Gem3} setChest1Gem3={setChest1Gem3} setPants1Gem3={setPants1Gem3} setModifier1={setModifier1} setModifier2={setModifier2} setModifier3={setModifier3} setModifier4={setModifier4} setModifier5={setModifier5} modifier1={modifier1} modifier2={modifier2} modifier3={modifier3} modifier4={modifier4} modifier5={modifier5}/>
             
           </div>
         </div>

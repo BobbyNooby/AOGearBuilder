@@ -755,7 +755,7 @@ export const accessories = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/qaZpDtM.jpg",
         gemNo : 2,
-        accessoryType : "Helmet",
+        accessoryType : "Back",
         rarityColor : "#6765EC",
 
     },
