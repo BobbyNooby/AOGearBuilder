@@ -151,6 +151,9 @@ function Item({ item, handleClose, setButtonImgSrc, category, setAccessory1, set
             || (((category == 'accessories1') && (item.accessoryType == "Amulet")) && ((accessory2.accessoryType == "Amulet") || (accessory3.accessoryType == "Amulet")))
             || (((category == 'accessories2') && (item.accessoryType == "Amulet")) && ((accessory1.accessoryType == "Amulet") || (accessory3.accessoryType == "Amulet")))
             || (((category == 'accessories3') && (item.accessoryType == "Amulet")) && ((accessory1.accessoryType == "Amulet") || (accessory2.accessoryType == "Amulet")))
+            || (((category == 'accessories1') && (item.accessoryType == "Helmet")) && ((accessory2.accessoryType == "Helmet") || (accessory3.accessoryType == "Helmet")))
+            || (((category == 'accessories2') && (item.accessoryType == "Helmet")) && ((accessory1.accessoryType == "Helmet") || (accessory3.accessoryType == "Helmet")))
+            || (((category == 'accessories3') && (item.accessoryType == "Helmet")) && ((accessory1.accessoryType == "Helmet") || (accessory2.accessoryType == "Helmet")))
            ) ) {
           playWrong();
         } else {
