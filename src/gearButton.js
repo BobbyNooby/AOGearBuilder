@@ -75,6 +75,7 @@ const GearButton = ({category, setAccessory1, setAccessory2, setAccessory3, setC
       break;
     case 'enchant5':
       itemType = "enchant5";
+      break;
     case 'modifier1':
       itemType = "modifier1";
       break;
