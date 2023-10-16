@@ -767,7 +767,7 @@ export const accessories = [
         name : "Vatrachos Helmet",
         legend : "A brightly colored helmet imbued with some strange kind of power, it seems to grant the wearer great power... at a price.",
         defense : 72,
-        power : 28,
+        power : 18,
         agility : 0,
         attackSize : 0,
         attackSpeed : 0,
