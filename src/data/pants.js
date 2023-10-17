@@ -53,6 +53,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/WT6Aamd.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -78,7 +79,7 @@ export const pants = [
     {
         name : "Lion of Ravenna Leggings",
         legend : "A pair of scarlet leggings trimmed in bronze, emblazoned with the symbol of the Ravenna Realm. These leggings were specifically made for General Argos, the Lion of Old Ravenna, and were stolen from him after he was killed in the dungeons of Fort Talos in the Bronze Sea.",
-        defense : 157,
+        defense : 142,
         power : 0,
         agility : 0,
         attackSize : 0,
@@ -90,6 +91,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/dkMuW5B.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -108,6 +110,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/wOepRsB.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -126,6 +129,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/A8l3Fl9.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -144,6 +148,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/tmP5o4W.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -181,6 +186,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/v3D3oZQ.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
@@ -199,6 +205,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/AcL8QDQ.jpg",
         gemNo : 3,
+        rarityColor : "#6765EC",
 
     },
 
@@ -217,6 +224,7 @@ export const pants = [
         levelMultiplier : 12,
         imageId : "https://i.imgur.com/dTHnjT0.jpg",
         gemNo : 2,
+        rarityColor : "#6765EC",
 
     },
 
