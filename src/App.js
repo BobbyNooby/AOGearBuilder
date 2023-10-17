@@ -505,11 +505,6 @@ function App() {
   <p><a href="https://www.twitch.tv/bobbynooby">Twitch</a> | <a href="https://www.youtube.com/@bobbynooby/">Youtube</a> | <a href="https://twitter.com/bobbynoobyu">Twitter</a> | <a href="https://github.com/BobbyNooby/AOGearBuilder">Github</a></p>
   </div>
 
-<br></br>
-
-
-
-
     <div class="centerbottom">
 
       <div class="row">
