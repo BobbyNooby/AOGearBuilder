@@ -1,10 +1,16 @@
 /* styles.css */@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Open+Sans:wght@700&display=swap');
+body.page-freeze {
+  overflow: hidden; /* Prevent background scrolling when the menu is open */
+}
+
 .pagebackground {
     
   background-image: url(images/background.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;  
   background-size: cover;
+  
+
   
 }
 
@@ -13,12 +19,12 @@
 
 }
 
-/* Clear floats after the columns */
+
 
 
 .row {
   display: flex;
-  justify-content: space-between; /* Adjust as needed */
+  justify-content: space-between; 
   align-items: center;
 
 }
@@ -27,14 +33,17 @@
     flex-wrap: wrap;
     align-items: center;
     align-content: center;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    overflow-y: auto;
+    z-index: 3;
   }
   
   .grid-item {
     
     margin: 10px;
     cursor: pointer;
+    z-index: 4;
   }
   
   
