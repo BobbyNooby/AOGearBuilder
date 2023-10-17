@@ -4,14 +4,24 @@ body.page-freeze {
 }
 
 .pagebackground {
-    
-  background-image: url(images/background.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;  
-  background-size: cover;
-  
+    background-image: url(images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 
-  
+    position: fixed; /* yep */
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh; /* cover it all! */
+
+    /* flexbox.help | make the layout slightly more natural */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
 }
 
 .column {
@@ -24,7 +34,7 @@ body.page-freeze {
 
 .row {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
 
 }
@@ -38,20 +48,20 @@ body.page-freeze {
     overflow-y: auto;
     z-index: 3;
   }
-  
+
   .grid-item {
-    
+
     margin: 10px;
     cursor: pointer;
     z-index: 4;
   }
-  
-  
+
+
 .legendstyle {
 
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  
+
 
 }
 
@@ -159,7 +169,7 @@ body.page-freeze {
 }
 
 .center3 {
-  
+
   width: 40%;
   padding: 10px;
   text-align: center;
