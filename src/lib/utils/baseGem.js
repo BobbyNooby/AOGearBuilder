@@ -1,0 +1,21 @@
+export const baseGem = {
+	id: 0,
+	name: 'None',
+	legend: 'Nothing Lol',
+	defense: 0,
+	power: 0,
+	agility: 0,
+	attackSize: 0,
+	attackSpeed: 0,
+	intensity: 0,
+	insanity: 0,
+	drawback: 0,
+	warding: 0,
+	maxLevel: 0,
+	gemNo: 0,
+	mainType: 'None',
+	subType: 'None',
+	rarity: 'None',
+	rarityColor: '#FFFFFF',
+	imageId: 'https://i.imgur.com/5pGLWmQ.jpg'
+};
