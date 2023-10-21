@@ -142,7 +142,7 @@ export const enchants = [
 		legend:
 			'(UNVERIFIED) An enchant that gives +0.5 points of Power and +1.5 points of Intensity for every 10 levels of an item rounded down.',
 		defense: 0,
-		power: 0.5,
+		power: 0.65,
 		agility: 0,
 		attackSize: 0,
 		attackSpeed: 0,
