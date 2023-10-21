@@ -96,9 +96,9 @@
 
 	{#if item.drawback > 0}
 		<div class="flex items-center justify-center">
-			<img class="h-6" src="https://i.imgur.com/ZMoqTvi.png" alt="Drawback" />
+			<img class="h-6" src="https://i.imgur.com/43RZKlz.png" alt="Drawback" />
 			<p
-				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #DC4040; -webkit-text-stroke: 1.5px; text-align: center;"
+				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #DC4040; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #000000; text-align: center;"
 			>
 				+
 				<span>{item.drawback}</span>
