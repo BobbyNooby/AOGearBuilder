@@ -7,6 +7,7 @@
 	import Sort from '$lib/components/Sort.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { resetAllStores } from '$lib/utils/statsStore';
+	import { base } from '$app/paths';
 
 	let ready = false;
 	onMount(() => {
@@ -33,8 +34,26 @@
 </script>
 
 <svelte:head>
+	<!-- Primary Meta Tags -->
 	<title>Gear Builder</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="title" content="Gear Builder" />
+	<meta name="description" content="Gear Builder for Arcane Odyssey by BobbyNooby" />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://tools.arcaneodyssey.net/" />
+	<meta property="og:title" content="Gear Builder" />
+	<meta property="og:description" content="Gear Builder for Arcane Odyssey by BobbyNooby" />
+	<meta property="og:image" content="https://i.imgur.com/VPet6tn.png" />
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://tools.arcaneodyssey.net/" />
+	<meta property="twitter:title" content="Gear Builder" />
+	<meta property="twitter:description" content="Gear Builder for Arcane Odyssey by BobbyNooby" />
+	<meta property="twitter:image" content="https://i.imgur.com/VPet6tn.png" />
+
+	<!-- Meta Tags Generated with https://metatags.io -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link

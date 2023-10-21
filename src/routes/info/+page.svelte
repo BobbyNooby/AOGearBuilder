@@ -2,14 +2,33 @@
 	import { fly } from 'svelte/transition';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 
 	let ready = false;
 	onMount(() => (ready = true));
 </script>
 
 <svelte:head>
-	<title>Potion Builder</title>
-	<meta name="description" content="Svelte demo app" />
+	<!-- Primary Meta Tags -->
+	<title>Info</title>
+	<meta name="title" content="Info" />
+	<meta name="description" content="Links to discord, and data spreadsheets." />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://tools.arcaneodyssey.net/" />
+	<meta property="og:title" content="Info" />
+	<meta property="og:description" content="Links to discord, and data spreadsheets." />
+	<meta property="og:image" content="https://i.imgur.com/VPet6tn.png" />
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://tools.arcaneodyssey.net/" />
+	<meta property="twitter:title" content="Info" />
+	<meta property="twitter:description" content="Links to discord, and data spreadsheets." />
+	<meta property="twitter:image" content="https://i.imgur.com/VPet6tn.png" />
+
+	<!-- Meta Tags Generated with https://metatags.io -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link
