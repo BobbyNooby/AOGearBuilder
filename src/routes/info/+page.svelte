@@ -56,6 +56,20 @@
 					in:fade={{ delay: 250, duration: 300 }}
 					out:fade={{ delay: 250, duration: 300 }}
 					on:click={() => {
+						window.open('https://github.com/BobbyNooby/AOGearBuilder/');
+					}}
+				>
+					Source Code
+				</button>
+			</li>
+
+			<li class="p-4">
+				<button
+					class=" border border-slate-300 bg-gray-900 hover:bg-gray-800 px-4 py-2 flex items-center text-xl font-medium text-gray-300 text-center rounded-lg"
+					style="font-family: Merriweather;"
+					in:fade={{ delay: 250, duration: 300 }}
+					out:fade={{ delay: 250, duration: 300 }}
+					on:click={() => {
 						window.open('https://discord.gg/wuczy67us7');
 					}}
 				>
