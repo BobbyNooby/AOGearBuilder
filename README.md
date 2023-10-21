@@ -1,38 +1,35 @@
-# create-svelte
+# Arcane Odyssey Gear Builder
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Who wouldve thought my first ever coding project would be because of a roblox game 🤷🏼‍♂️
 
-## Creating a project
+website : https://tools.arcaneodyssey.net
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Changelogs
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+21 October 2023 - Ported to Svelte, GUI Revamp, Mobile Compatability, and foundaion for other tools. Renamed to Arcane Odyssey Tools
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+13 October 2023 - Added Atlantean Modifier. Bug fixes.
 
-## Developing
+10 October 2023 - Added the new gems. Should have most of the things now
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+9 October 2023 - Added most of the dark sea update gear content (new gear and enchants) except for jewels. Fixed amulet selection operators (again). Fixed jewels not resetting every gear change.
 
-```bash
-npm run dev
+6 October 2023 - Fixed arcsphere being unable to be selected if crown or any head item is equipped.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+3 October 2023 - Fixed duplicate amulets
 
-## Building
+2 October 2023 - Revamped whole website with GUI and added Jewels.
 
-To create a production version of your app:
+12 July 2023 - Added JSON and JQuery usage to make future additions easier.
 
-```bash
-npm run build
-```
+10 July 2023 - Added metadata link preview stuff, and sunken defense fix
 
-You can preview the production build with `npm run preview`.
+24 June 2023 - 1.13 Item Buffs/Nerfs (Cenyx/Sunken)
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+16 May 2023 - Added page and title icon
+
+14 May 2023 - Release, Design Update
+
+10 May 2023 - Barebones Update
+
+9 May 2023 - First Page
