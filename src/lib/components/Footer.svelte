@@ -1,11 +1,10 @@
 <script>
 	import { page, navigating } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { base } from '$app/paths';
 
+	// Fade in initiator.
 	let ready = false;
 	onMount(() => (ready = true));
 </script>

@@ -1,9 +1,8 @@
 <script>
-	import { fly } from 'svelte/transition';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import { base } from '$app/paths';
 
+	// Fade in initiator
 	let ready = false;
 	onMount(() => (ready = true));
 </script>
@@ -19,16 +18,18 @@
 	<meta property="og:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="og:title" content="Potion Builder" />
 	<meta property="og:description" content="Potion Builder for Arcane Odyssey by BobbyNooby" />
-	<meta property="og:image" content="https://i.imgur.com/VPet6tn.png" />
+	<meta property="og:image" content="https://i.imgur.com/axkyVz8.png" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="twitter:title" content="Potion Builder" />
 	<meta property="twitter:description" content="Potion Builder for Arcane Odyssey by BobbyNooby" />
-	<meta property="twitter:image" content="https://i.imgur.com/VPet6tn.png" />
+	<meta property="twitter:image" content="https://i.imgur.com/axkyVz8.png" />
 
 	<!-- Meta Tags Generated with https://metatags.io -->
+
+	<!-- Google Fonts Link -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link

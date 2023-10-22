@@ -2,7 +2,7 @@
 	import { sortType } from '$lib/utils/sortStore';
 	import { fade } from 'svelte/transition';
 	import { sortList } from '$lib/data/sortList';
-	import { playCorrect, playWrong } from '$lib/utils/sound';
+	import { playCorrect } from '$lib/utils/sound';
 
 	function setSortType(value) {
 		sortType.set(value);

@@ -1,14 +1,13 @@
 <script>
-	import { fade, fly } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import GearButton from '$lib/components/gearBuilder/GearButton.svelte';
 	import StatsFinal from '$lib/components/gearBuilder/StatsFinal.svelte';
 	import Filter from '$lib/components/Filter.svelte';
 	import Sort from '$lib/components/Sort.svelte';
-	import Footer from '$lib/components/Footer.svelte';
 	import { resetAllStores } from '$lib/utils/statsStore';
-	import { base } from '$app/paths';
 
+	// Fade in initiator. Reset stores.
 	let ready = false;
 	onMount(() => {
 		ready = true;
@@ -17,8 +16,9 @@
 
 	let deviceWidth = 0;
 
+	//Test device width to check for mobile conditions in the html
 	onMount(() => {
-		// Ensure this code is only executed in a browser environment
+		// Make sure this only works in browser
 		if (typeof window !== 'undefined') {
 			deviceWidth = window.innerWidth;
 			window.addEventListener('resize', () => {
@@ -27,6 +27,7 @@
 		}
 	});
 
+	//Define categories here for the GearButton so i can just map it out with a for loop instead of manually adding one by one.
 	let categories = ['accessory1', 'accessory2', 'accessory3', 'chestplate1', 'pants1'];
 
 	let filterType = 'all';
@@ -44,16 +45,18 @@
 	<meta property="og:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="og:title" content="Gear Builder" />
 	<meta property="og:description" content="Gear Builder for Arcane Odyssey by BobbyNooby" />
-	<meta property="og:image" content="https://i.imgur.com/VPet6tn.png" />
+	<meta property="og:image" content="https://i.imgur.com/axkyVz8.png" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="twitter:title" content="Gear Builder" />
 	<meta property="twitter:description" content="Gear Builder for Arcane Odyssey by BobbyNooby" />
-	<meta property="twitter:image" content="https://i.imgur.com/VPet6tn.png" />
+	<meta property="twitter:image" content="https://i.imgur.com/axkyVz8.png" />
 
 	<!-- Meta Tags Generated with https://metatags.io -->
+
+	<!-- Google Fonts Link -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link
@@ -79,10 +82,7 @@
 			</div>
 
 			<div class="flex">
-				<!-- Left Content -->
-
 				<div class="w-100">
-					<!-- Rest of the left content -->
 					{#each categories as category (category)}
 						<div class="flex space-x-4">
 							<GearButton {category} {filterType} {sortType} />
@@ -97,7 +97,6 @@
 					{/each}
 				</div>
 
-				<!-- StatsFinal on the right -->
 				<div
 					class="w-80 ml-4 flex justify-center items-center rounded border-2 w-100 border-slate-300 bg-opacity-40 bg-black p-5"
 				>

@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
+	// Fade in initiator. Reset stores.
 	let ready = false;
 	onMount(() => (ready = true));
 </script>

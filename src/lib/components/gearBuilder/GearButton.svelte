@@ -32,12 +32,14 @@
 		pants1Gem3,
 		pants1Enchant,
 		pants1Modifier
-	} from '$lib/utils/statsStore';
+	} from '$lib/utils/statsStore'; //Store import
 	import { fade } from 'svelte/transition';
 	import ItemMenu from './ItemMenu.svelte';
 	import { playCorrect, playWrong } from '$lib/utils/sound';
 
 	export let category, filterType, sortType; //Props import
+
+	// Button Image Stuff
 
 	const defaultImages = {
 		//Default img urls for the buttons
@@ -78,12 +80,15 @@
 		pants1Modifier: 'https://i.imgur.com/iKfI8Cp.jpg'
 	};
 
-	let menuIsActive = false;
 	let buttonImgSrc = defaultImages[category];
 
 	function setButtonImgSrc(value) {
+		//Function for setting button image
 		buttonImgSrc = value;
 	}
+
+	// Menu toggle Stuff
+	let menuIsActive = false;
 
 	function menuToggle() {
 		menuIsActive = !menuIsActive;
@@ -91,8 +96,8 @@
 
 	// Set the button image to default if the gem name is None.
 	// I use this method as when item is changed it resets the gems in its row to None
-	// The stats change but the button doesnt, so i use this dynamic method to set the image to default if the name of the gem button is None.
-
+	// The stats change but the button doesnt, so i use this reactive method to set the image to default if the name of the gem button is None.
+	// Similar to reacts UseState
 	$: {
 		if (
 			($accessory1Gem1.name === 'None' && category === 'accessory1Gem1') ||
@@ -116,8 +121,7 @@
 	}
 
 	//Check for if the gear has a required gemslots
-	//Wont open menu if the gear doesnt meet the conditions
-
+	//Wont open menu if the gear doesnt meet the condition
 	const handleClick = () => {
 		if (
 			(category == 'accessory1Gem1' && $accessory1.gemNo < 1) ||

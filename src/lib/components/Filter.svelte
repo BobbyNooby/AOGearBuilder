@@ -2,7 +2,7 @@
 	import { filterType } from '$lib/utils/filterStore';
 	import { fade } from 'svelte/transition';
 	import { filterList } from '$lib/data/filterList';
-	import { playCorrect, playWrong } from '$lib/utils/sound';
+	import { playCorrect } from '$lib/utils/sound';
 
 	function setFilterType(value) {
 		filterType.set(value);

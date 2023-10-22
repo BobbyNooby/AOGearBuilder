@@ -1,8 +1,6 @@
 <script>
-	import { fly } from 'svelte/transition';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import { base } from '$app/paths';
 
 	let ready = false;
 	onMount(() => (ready = true));
@@ -19,16 +17,18 @@
 	<meta property="og:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="og:title" content="Info" />
 	<meta property="og:description" content="Links to discord, and data spreadsheets." />
-	<meta property="og:image" content="https://i.imgur.com/VPet6tn.png" />
+	<meta property="og:image" content="https://i.imgur.com/axkyVz8.png" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="twitter:title" content="Info" />
 	<meta property="twitter:description" content="Links to discord, and data spreadsheets." />
-	<meta property="twitter:image" content="https://i.imgur.com/VPet6tn.png" />
+	<meta property="twitter:image" content="https://i.imgur.com/axkyVz8.png" />
 
 	<!-- Meta Tags Generated with https://metatags.io -->
+
+	<!-- Google Fonts Link -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link

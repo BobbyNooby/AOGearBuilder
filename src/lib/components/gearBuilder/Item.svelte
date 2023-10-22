@@ -31,18 +31,32 @@
 		pants1Enchant,
 		pants1Modifier
 	} from '$lib/utils/statsStore';
-
 	import { playCorrect, playWrong } from '$lib/utils/sound';
 	import { baseGem } from '$lib/utils/baseGem';
 	import Itemstat from './Itemstat.svelte';
 	import { writable } from 'svelte/store';
 
-	export let menuToggle, item, category, setButtonImgSrc;
+	export let menuToggle, item, category, setButtonImgSrc; // Props
 
+	//Mouse hover and position detection for tooltip
 	let isHovering = false;
 	let mousePosition = { x: 0, y: 0 };
+	let hoverWidth = writable(300);
 
-	// Handling stat change. Changing accessory resets gems.
+	function handleMouseOver(event) {
+		isHovering = true;
+		mousePosition = { x: event.clientX, y: event.clientY };
+
+		if (mousePosition.x + $hoverWidth > window.innerWidth) {
+			mousePosition.x = mousePosition.x - 40 - $hoverWidth;
+		}
+	}
+
+	function handleMouseOut() {
+		isHovering = false;
+	}
+
+	// Handling stat change depending on category (basically depends on which button you click). Changing accessory resets gems.
 	const handleStatChange = (category) => {
 		switch (category) {
 			case 'accessory1':
@@ -287,21 +301,6 @@
 			playCorrect();
 			menuToggle();
 		}
-	}
-
-	let hoverWidth = writable(300);
-
-	function handleMouseOver(event) {
-		isHovering = true;
-		mousePosition = { x: event.clientX, y: event.clientY };
-
-		if (mousePosition.x + $hoverWidth > window.innerWidth) {
-			mousePosition.x = mousePosition.x - 40 - $hoverWidth;
-		}
-	}
-
-	function handleMouseOut() {
-		isHovering = false;
 	}
 </script>
 

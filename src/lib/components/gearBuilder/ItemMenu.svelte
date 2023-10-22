@@ -7,16 +7,16 @@
 	import { statTemplate } from '$lib/utils/statTemplate';
 	import { gems } from '$lib/data/gems';
 	import Item from './Item.svelte';
-	import Filter from '../Filter.svelte';
-	import Sort from '../Sort.svelte';
 	import { filterType } from '$lib/utils/filterStore';
 	import { sortType } from '$lib/utils/sortStore';
 	import { playCorrect, playWrong } from '$lib/utils/sound';
 
 	export let menuToggle, setButtonImgSrc, category;
 
+	//Initializing the itemType Variable as placeholder statTemplate
 	let itemType = [statTemplate];
 
+	//Detection method to decide what to show depending on category (which button is pressed)
 	switch (category) {
 		case 'accessory1':
 			itemType = accessories;
@@ -110,6 +110,7 @@
 			break;
 	}
 
+	//Search, Filter, and Sort Code
 	let searchQuery = '';
 
 	$: filteredItems = itemType.filter((item) => {

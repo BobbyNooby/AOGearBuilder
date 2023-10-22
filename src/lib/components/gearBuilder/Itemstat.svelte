@@ -1,8 +1,11 @@
 <script>
-	export let item;
+	export let item; //importing the item that was selected cos thats the only thing thats needed
+
+	//Split the code up here too cos idw the Item component to get too long
 </script>
 
 <div class="text-center z-30">
+	<!-- Only show the stat if its value is more than zero -->
 	{#if item.power > 0}
 		<div class="flex items-center justify-center">
 			<img class="h-6" src="https://i.imgur.com/Qnt1WCW.png" alt="Power" />
