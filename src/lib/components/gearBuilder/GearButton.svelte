@@ -152,7 +152,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div>
 	<!-- Button to open overlay -->
-	<button on:click={handleClick}><img src={buttonImgSrc} alt="Gear Button" /></button>
+	<button on:click={handleClick}><img src={buttonImgSrc} alt="{category} Button" /></button>
 
 	<!-- Overlay with item menu -->
 	{#if menuIsActive}
