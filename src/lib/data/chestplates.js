@@ -260,5 +260,26 @@ export const chestplates = [
 		rarity: 'Rare',
 		rarityColor: '#6765EC',
 		imageId: 'https://i.imgur.com/jBEqyRi.jpg'
+	},
+	{
+		id: 12,
+		name: 'Titanium / Deluxe Iron Armor',
+		legend: 'Why are they both the same defense WHAT...',
+		defense: 194,
+		power: 0,
+		agility: 0,
+		attackSize: 0,
+		attackSpeed: 0,
+		intensity: 0,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 120,
+		gemNo: 2,
+		mainType: 'Chestplate',
+		subType: 'None',
+		rarity: 'Uncommon',
+		rarityColor: '#817346',
+		imageId: 'https://i.imgur.com/Fnu2uiY.gif'
 	}
 ];

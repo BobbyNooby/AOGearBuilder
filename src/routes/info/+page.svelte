@@ -2,6 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
+	// Fade in initiator
 	let ready = false;
 	onMount(() => (ready = true));
 </script>

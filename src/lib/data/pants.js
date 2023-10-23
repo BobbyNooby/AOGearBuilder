@@ -260,5 +260,26 @@ export const pants = [
 		rarity: 'Rare',
 		rarityColor: '#6765EC',
 		imageId: 'https://i.imgur.com/dTHnjT0.jpg'
+	},
+	{
+		id: 12,
+		name: 'Titanium / Deluxe Iron Boots',
+		legend: 'Why are they both the same defense WHAT...',
+		defense: 145,
+		power: 0,
+		agility: 0,
+		attackSize: 0,
+		attackSpeed: 0,
+		intensity: 0,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 120,
+		gemNo: 2,
+		mainType: 'Pants',
+		subType: 'None',
+		rarity: 'Uncommon',
+		rarityColor: '#817346',
+		imageId: 'https://i.imgur.com/XWOR3Sz.gif'
 	}
 ];
