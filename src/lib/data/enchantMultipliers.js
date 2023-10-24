@@ -25,7 +25,7 @@ export const enchants = [
 		id: 1,
 		name: 'Agile',
 		legend:
-			'(UNVERIFIED) An enchant that gives +3 points of Agility for every 10 levels of an item, rounded down.',
+			'An enchant that gives +3 points of Agility for every 10 levels of an item, rounded down.',
 		defense: 0,
 		power: 0,
 		agility: 3,
@@ -70,8 +70,7 @@ export const enchants = [
 	{
 		id: 3,
 		name: 'Armored',
-		legend:
-			'(UNVERIFIED) An enchant that gives +9 points of Defense for every 10 levels of an item.',
+		legend: 'An enchant that gives +9 points of Defense for every 10 levels of an item.',
 		defense: 9,
 		power: 0,
 		agility: 0,
@@ -94,7 +93,7 @@ export const enchants = [
 		id: 4,
 		name: 'Brisk',
 		legend:
-			'(UNVERIFIED) An enchant that gives +3 points of Attack Speed for every 10 levels of an item, rounded down.',
+			'An enchant that gives +3 points of Attack Speed for every 10 levels of an item, rounded down.',
 		defense: 0,
 		power: 0,
 		agility: 0,
@@ -162,8 +161,7 @@ export const enchants = [
 	{
 		id: 7,
 		name: 'Hard',
-		legend:
-			'(UNVERIFIED) An enchant that gives +4.5 points of Defense for every 10 levels of an item.',
+		legend: 'An enchant that gives +4.5 points of Defense for every 10 levels of an item.',
 		defense: 4.5,
 		power: 0,
 		agility: 0,
@@ -186,7 +184,7 @@ export const enchants = [
 		id: 8,
 		name: 'Enhanced',
 		legend:
-			'(UNVERIFIED) An enchant that gives +3 points of Intensity for every 10 levels of an item rounded down.',
+			'An enchant that gives +3 points of Intensity for every 10 levels of an item rounded down.',
 		defense: 0,
 		power: 0,
 		agility: 0,
@@ -209,7 +207,7 @@ export const enchants = [
 		id: 9,
 		name: 'Explosive',
 		legend:
-			'(UNVERIFIED) An enchant that gives +3 points of Attack Size for every 10 levels of an item, rounded down.',
+			'An enchant that gives +3 points of Attack Size for every 10 levels of an item, rounded down.',
 		defense: 0,
 		power: 0,
 		agility: 0,
@@ -232,7 +230,7 @@ export const enchants = [
 		id: 10,
 		name: 'Hasty',
 		legend:
-			'(UNVERIFIED) An enchant that gives +1.5 points of Agility and +1.5 points of Attack Speed for every 10 levels of an item, rounded down.',
+			'An enchant that gives +1.5 points of Agility and +1.5 points of Attack Speed for every 10 levels of an item, rounded down.',
 		defense: 0,
 		power: 0,
 		agility: 1.5,
@@ -278,9 +276,9 @@ export const enchants = [
 		id: 12,
 		name: 'Strong',
 		legend:
-			'(UNVERIFIED) An enchant that gives +0.5525 points of Power for every 10 levels of an item, rounded down.',
+			'An enchant that gives +0.5 points of Power for every 10 levels of an item, rounded down.',
 		defense: 0,
-		power: 0.5525,
+		power: 0.5,
 		agility: 0,
 		attackSize: 0,
 		attackSpeed: 0,
@@ -301,7 +299,7 @@ export const enchants = [
 		id: 13,
 		name: 'Powerful',
 		legend:
-			'(UNVERIFIED) An enchant that gives +1 points of Power for every 10 levels of an item, rounded down.',
+			'An enchant that gives +1 points of Power for every 10 levels of an item, rounded down.',
 		defense: 0,
 		power: 1,
 		agility: 0,
@@ -347,7 +345,7 @@ export const enchants = [
 		id: 15,
 		name: 'Virtuous',
 		legend:
-			'*UNVERIFIED) An enchant that gives +4.5 points of Defense for every 10 levels of an item, rounded down, and +1 Warding.',
+			'An enchant that gives +4.5 points of Defense for every 10 levels of an item, rounded down, and +1 Warding.',
 		defense: 4.5,
 		power: 0,
 		agility: 0,

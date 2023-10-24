@@ -34,7 +34,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -55,7 +55,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -76,7 +76,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -97,7 +97,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -118,7 +118,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -139,7 +139,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -160,7 +160,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -181,7 +181,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -202,7 +202,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -223,7 +223,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -244,7 +244,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -266,7 +266,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -287,7 +287,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -308,7 +308,7 @@ export const gems = [
 		drawback: 1,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',
@@ -329,7 +329,7 @@ export const gems = [
 		drawback: 0,
 		warding: 0,
 		maxLevel: 0,
-		gemNo: 0, // Added gemNo property
+		gemNo: 0,
 		rarity: 'None',
 		mainType: 'None',
 		subType: 'None',

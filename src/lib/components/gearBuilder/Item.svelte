@@ -64,37 +64,31 @@
 				accessory1Gem1.set(baseGem);
 				accessory1Gem2.set(baseGem);
 				accessory1Gem3.set(baseGem);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory1Gem1':
 				accessory1Gem1.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory1Gem2':
 				accessory1Gem2.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory1Gem3':
 				accessory1Gem3.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory1Enchant':
 				accessory1Enchant.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory1Modifier':
 				accessory1Modifier.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
@@ -103,37 +97,31 @@
 				accessory2Gem1.set(baseGem);
 				accessory2Gem2.set(baseGem);
 				accessory2Gem3.set(baseGem);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory2Gem1':
 				accessory2Gem1.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory2Gem2':
 				accessory2Gem2.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory2Gem3':
 				accessory2Gem3.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory2Enchant':
 				accessory2Enchant.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory2Modifier':
 				accessory2Modifier.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
@@ -142,37 +130,31 @@
 				accessory3Gem1.set(baseGem);
 				accessory3Gem2.set(baseGem);
 				accessory3Gem3.set(baseGem);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory3Gem1':
 				accessory3Gem1.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory3Gem2':
 				accessory3Gem2.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory3Gem3':
 				accessory3Gem3.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory3Enchant':
 				accessory3Enchant.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'accessory3Modifier':
 				accessory3Modifier.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
@@ -181,37 +163,31 @@
 				chestplate1Gem1.set(baseGem);
 				chestplate1Gem2.set(baseGem);
 				chestplate1Gem3.set(baseGem);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'chestplate1Gem1':
 				chestplate1Gem1.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'chestplate1Gem2':
 				chestplate1Gem2.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'chestplate1Gem3':
 				chestplate1Gem3.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'chestplate1Enchant':
 				chestplate1Enchant.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'chestplate1Modifier':
 				chestplate1Modifier.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
@@ -220,37 +196,31 @@
 				pants1Gem1.set(baseGem);
 				pants1Gem2.set(baseGem);
 				pants1Gem3.set(baseGem);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'pants1Gem1':
 				pants1Gem1.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'pants1Gem2':
 				pants1Gem2.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'pants1Gem3':
 				pants1Gem3.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'pants1Enchant':
 				pants1Enchant.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 
 			case 'pants1Modifier':
 				pants1Modifier.set(item);
-				setButtonImgSrc(item.imageId);
 				menuToggle();
 				break;
 

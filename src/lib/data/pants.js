@@ -241,7 +241,7 @@ export const pants = [
 	},
 	{
 		id: 11,
-		name: 'Vatrachus Boots',
+		name: 'Vatrachos Boots',
 		legend:
 			'A set of brightly colored boots imbued with some strange kind of power, it seems to grant the wearer great power... at a price.',
 		defense: 72,

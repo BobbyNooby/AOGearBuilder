@@ -6,6 +6,8 @@
 	import Filter from '$lib/components/Filter.svelte';
 	import Sort from '$lib/components/Sort.svelte';
 	import { resetAllStores } from '$lib/utils/statsStore';
+	import GenerateCode from '$lib/components/gearBuilder/GenerateCode.svelte';
+	import LoadCode from '$lib/components/gearBuilder/LoadCode.svelte';
 
 	// Fade in initiator. Reset stores.
 	let ready = false;
@@ -76,7 +78,11 @@
 			>
 				Gear Builder
 			</p>
-			<div class="flex items-center space-x-4">
+			<div class="flex items-center justify-center space-x-4 pb-5">
+				<GenerateCode />
+				<LoadCode />
+			</div>
+			<div class="flex items-center justify-between space-x-4">
 				<Filter />
 				<Sort />
 			</div>
