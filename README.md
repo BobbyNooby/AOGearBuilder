@@ -6,6 +6,8 @@ website : https://tools.arcaneodyssey.net
 
 ## Changelogs
 
+24 October 2023 - Added generating and loading build codes for easier sharing.
+
 21 October 2023 - Ported to Svelte, GUI Revamp, Mobile Compatability, and foundaion for other tools. Renamed to Arcane Odyssey Tools
 
 13 October 2023 - Added Atlantean Modifier. Bug fixes.
