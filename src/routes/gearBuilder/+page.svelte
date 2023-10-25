@@ -127,9 +127,19 @@
 			>
 				<StatsFinal />
 			</div>
-			<div class="mt-4">
-				<Filter />
-				<Sort />
+			<div class="mt-4 flex flex-col items-center">
+				<div class="mb-4">
+					<GenerateCode />
+				</div>
+				<div class="mb-4">
+					<LoadCode />
+				</div>
+				<div class="mb-4">
+					<Filter />
+				</div>
+				<div class="mb-4">
+					<Sort />
+				</div>
 			</div>
 
 			{#each categories as category (category)}
