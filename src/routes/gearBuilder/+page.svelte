@@ -8,6 +8,7 @@
 	import { resetAllStores } from '$lib/utils/statsStore';
 	import GenerateCode from '$lib/components/gearBuilder/GenerateCode.svelte';
 	import LoadCode from '$lib/components/gearBuilder/LoadCode.svelte';
+	import RandomButton from '$lib/components/gearBuilder/RandomButton.svelte';
 
 	// Fade in initiator. Reset stores.
 	let ready = false;
@@ -81,6 +82,7 @@
 			<div class="flex items-center justify-center space-x-4 pb-5">
 				<GenerateCode />
 				<LoadCode />
+				<RandomButton />
 			</div>
 			<div class="flex items-center justify-between space-x-4">
 				<Filter />

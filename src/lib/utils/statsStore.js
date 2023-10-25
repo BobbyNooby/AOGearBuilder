@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 import {
 	accessoryTemplate,
 	chestplateTemplate,
@@ -80,4 +80,27 @@ export function resetAllStores() {
 	pants1Gem3.set(gemTemplate);
 	pants1Enchant.set(enchantTemplate);
 	pants1Modifier.set(modifierTemplate);
+}
+
+// Validate that the item may be entered by checking the item is not a duplicate or same sub type as another item
+export function validateEntry(item) {
+	/*
+
+	input: item to be validated
+
+	return: returns true if item is valid, returns false if item is not valid
+	*/
+
+	if (item.name == get(accessory1).name ||
+		item.name == get(accessory2).name ||
+		item.name == get(accessory3).name ||
+		item.name == get(chestplate1).name ||
+		item.name == get(pants1).name ||
+		(item.subType == 'Amulet' && (get(accessory1).subType == 'Amulet'|| get(accessory2).subType == 'Amulet' || get(accessory3).subType == 'Amulet')) ||
+		(item.subType == 'Helmet' && (get(accessory1).subType == 'Helmet'|| get(accessory2).subType == 'Helmet' || get(accessory3).subType == 'Helmet'))) 
+	{
+		return false;
+	} else {
+		return true;
+	}
 }
