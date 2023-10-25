@@ -52,6 +52,7 @@
         return item;
     }
 
+	// Get random gem in free slots
     function getRandomGem(data, slot, item, includeZero = false){
         if (slot > item.gemNo) {
             return data[0];
@@ -59,9 +60,10 @@
         return getRandom(data, includeZero);
     }
 
-	// Check for required gem slots and open the menu
+	// Handle click and set random entries
 	function handleClick() {
 
+		// Randomise items
         $accessory1 = getRandom(accessories);
         $accessory1Gem1 = getRandomGem(gems, 1, $accessory1);
         $accessory1Gem2 = getRandomGem(gems, 2, $accessory1);
@@ -96,29 +98,6 @@
         $pants1Gem3 = getRandomGem(gems, 3, $pants1);
         $pants1Enchant = getRandom(enchants);
         $pants1Modifier = getRandom(modifiers, true);
-
-		/*if (
-			(category == 'accessory1Gem1' && $accessory1.gemNo < 1) ||
-			(category == 'accessory1Gem2' && $accessory1.gemNo < 2) ||
-			(category == 'accessory1Gem3' && $accessory1.gemNo < 3) ||
-			(category == 'accessory2Gem1' && $accessory2.gemNo < 1) ||
-			(category == 'accessory2Gem2' && $accessory2.gemNo < 2) ||
-			(category == 'accessory2Gem3' && $accessory2.gemNo < 3) ||
-			(category == 'accessory3Gem1' && $accessory3.gemNo < 1) ||
-			(category == 'accessory3Gem2' && $accessory3.gemNo < 2) ||
-			(category == 'accessory3Gem3' && $accessory3.gemNo < 3) ||
-			(category == 'chestplate1Gem1' && $chestplate1.gemNo < 1) ||
-			(category == 'chestplate1Gem2' && $chestplate1.gemNo < 2) ||
-			(category == 'chestplate1Gem3' && $chestplate1.gemNo < 3) ||
-			(category == 'pants1Gem1' && $pants1.gemNo < 1) ||
-			(category == 'pants1Gem2' && $pants1.gemNo < 2) ||
-			(category == 'pants1Gem3' && $pants1.gemNo < 3)
-		) {
-			playWrong();
-		} else {
-			menuToggle();
-			playCorrect();
-		}*/
 	}
 </script>
 
