@@ -5,15 +5,22 @@
 	import StatsFinal from '$lib/components/gearBuilder/StatsFinal.svelte';
 	import Filter from '$lib/components/Filter.svelte';
 	import Sort from '$lib/components/Sort.svelte';
-	import { resetAllStores } from '$lib/utils/statsStore';
+	import { loadCode, resetAllStores } from '$lib/utils/statsStore';
 	import GenerateCode from '$lib/components/gearBuilder/GenerateCode.svelte';
 	import LoadCode from '$lib/components/gearBuilder/LoadCode.svelte';
+	import ShareButton from '$lib/components/gearBuilder/ShareButton.svelte';
+
+	function loadHash() {
+		loadCode(window.location.hash.substring(1));
+		history.replaceState({}, document.title, window.location.href.split('#')[0]);
+	}
 
 	// Fade in initiator. Reset stores.
 	let ready = false;
 	onMount(() => {
 		ready = true;
 		resetAllStores();
+		loadHash();
 	});
 
 	let deviceWidth = 0;
@@ -81,6 +88,7 @@
 			<div class="flex items-center justify-center space-x-4 pb-5">
 				<GenerateCode />
 				<LoadCode />
+				<ShareButton />
 			</div>
 			<div class="flex items-center justify-between space-x-4">
 				<Filter />
