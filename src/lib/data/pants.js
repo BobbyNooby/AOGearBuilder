@@ -226,7 +226,7 @@ export const pants = [
 		power: 0,
 		agility: 0,
 		attackSize: 0,
-		attackSpeed: 18,
+		attackSpeed: 26,
 		intensity: 0,
 		insanity: 0,
 		drawback: 0,
