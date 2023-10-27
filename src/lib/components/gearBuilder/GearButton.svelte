@@ -41,6 +41,9 @@
 
 	let imageSrc = '';
 
+	// Used to identify if a gem slot is valid and change opacity of item image
+	let validGems = validateGem();
+
 	// Switched to this reactive method of showing the image Src to prep for loading and saving builds. Removes use of a setButtonImg function.
 	$: {
 		switch (category) {
@@ -138,6 +141,9 @@
 				imageSrc = '';
 				break;
 		}
+
+		// Checks if gem slot is vaild on item refresh
+		validGems = validateGem();
 	}
 
 	// Menu toggle Stuff
@@ -147,10 +153,13 @@
 		menuIsActive = !menuIsActive;
 	}
 
-	// Set the imageId based on the selected category
+	// Validates if item has enough gem slots
+	function validateGemNo() {
+		/*
 
-	// Check for required gem slots and open the menu
-	function handleClick() {
+		return: returns false if the gem is not valid, returns true if gem is valid
+
+		*/
 		if (
 			(category == 'accessory1Gem1' && $accessory1.gemNo < 1) ||
 			(category == 'accessory1Gem2' && $accessory1.gemNo < 2) ||
@@ -168,6 +177,36 @@
 			(category == 'pants1Gem2' && $pants1.gemNo < 2) ||
 			(category == 'pants1Gem3' && $pants1.gemNo < 3)
 		) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	// Validates if gem should be loaded by item having enough slots or if no item is selected
+	function validateGem() {
+		/*
+
+		return: returns false if gem is not value and item is selected, returns true if gem is valid or no item is selected
+
+		*/
+		if ( (
+			(category.startsWith("accessory1") && $accessory1.name != 'None') ||
+			(category.startsWith("accessory2") && $accessory2.name != 'None') ||
+			(category.startsWith("accessory3") && $accessory3.name != 'None') ||
+			(category.startsWith("chestplate1") && $chestplate1.name != 'None') ||
+			(category.startsWith("pants1") && $pants1.name != 'None')) && 
+			(!validateGemNo())
+		) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	// Check for required gem slots and open the menu
+	function handleClick() {
+		if (!validateGemNo()) {
 			playWrong();
 		} else {
 			menuToggle();
@@ -178,7 +217,7 @@
 
 <div>
 	<!-- Button to open overlay -->
-	<button on:click={handleClick}><img src={imageSrc} alt="{category} Button" /></button>
+	<button on:click={handleClick}><img src={imageSrc} alt="{category} Button" style="opacity: {validGems ? '1' : '0'}" /></button>
 
 	<!-- Overlay with item menu -->
 	{#if menuIsActive}
