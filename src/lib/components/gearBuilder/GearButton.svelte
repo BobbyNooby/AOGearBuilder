@@ -217,7 +217,7 @@
 
 <div>
 	<!-- Button to open overlay -->
-	<button on:click={handleClick}><img src={imageSrc} alt="{category} Button" style="opacity: {validGems ? '1' : '0'}" /></button>
+	<button on:click={handleClick} disabled={!validGems}><img src={imageSrc} alt="{category} Button" style="opacity: {validGems ? '1' : '0'}" /></button>
 
 	<!-- Overlay with item menu -->
 	{#if menuIsActive}
