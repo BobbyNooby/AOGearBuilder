@@ -9,12 +9,21 @@
 	import GenerateCode from '$lib/components/gearBuilder/GenerateCode.svelte';
 	import LoadCode from '$lib/components/gearBuilder/LoadCode.svelte';
 	import RandomButton from '$lib/components/gearBuilder/RandomButton.svelte';
+	import ShareButton from '$lib/components/gearBuilder/ShareButton.svelte';
+	import { loadCode } from '$lib/utils/statsStore';
+
+	//Load using hash.
+	function loadHash() {
+		loadCode(window.location.hash.substring(1));
+		history.replaceState({}, document.title, window.location.href.split('#')[0]);
+	}
 
 	// Fade in initiator. Reset stores.
 	let ready = false;
 	onMount(() => {
 		ready = true;
 		resetAllStores();
+		loadHash();
 	});
 
 	let deviceWidth = 0;
@@ -82,7 +91,8 @@
 			<div class="flex items-center justify-center space-x-4 pb-5">
 				<GenerateCode />
 				<LoadCode />
-				<RandomButton />
+				<ShareButton />
+        <RandomButton />
 			</div>
 			<div class="flex items-center justify-between space-x-4">
 				<Filter />
@@ -133,6 +143,12 @@
 				</div>
 				<div class="mb-4">
 					<LoadCode />
+				</div>
+				<div class="mb-4">
+					<ShareButton />
+				</div>
+        <div class="mb-4">
+					<RandomButton />
 				</div>
 				<div class="mb-4">
 					<Filter />

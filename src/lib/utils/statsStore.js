@@ -1,4 +1,4 @@
-import { get, writable } from 'svelte/store';
+import { writable, get } from 'svelte/store';
 import {
 	accessoryTemplate,
 	chestplateTemplate,
@@ -7,6 +7,14 @@ import {
 	enchantTemplate,
 	modifierTemplate
 } from './statTemplate';
+import {
+	getAccessoryById,
+	getChestplateById,
+	getPantsById,
+	getGemById,
+	getEnchantById,
+	getModifierById
+} from '$lib/utils/getItemById';
 
 // Define the writable stores for your items
 export const accessory1 = writable(accessoryTemplate);
@@ -81,6 +89,139 @@ export function resetAllStores() {
 	pants1Enchant.set(enchantTemplate);
 	pants1Modifier.set(modifierTemplate);
 }
+
+export function loadCode(inputString) {
+	/*
+
+	input: the string of build to load
+
+	return: returns true if successful, returns false if error
+	
+	*/
+
+	try {
+		// Parse the input string
+		const rows = inputString.split("'");
+		const accessory1Row = rows[0].split('.');
+		const accessory2Row = rows[1].split('.');
+		const accessory3Row = rows[2].split('.');
+		const chestplate1Row = rows[3].split('.');
+		const pants1Row = rows[4].split('.');
+
+		accessory1.set(getAccessoryById(parseInt(accessory1Row[0])));
+		accessory1Gem1.set(getGemById(parseInt(accessory1Row[1])));
+		accessory1Gem2.set(getGemById(parseInt(accessory1Row[2])));
+		accessory1Gem3.set(getGemById(parseInt(accessory1Row[3])));
+		accessory1Enchant.set(getEnchantById(parseInt(accessory1Row[4])));
+		accessory1Modifier.set(getModifierById(parseInt(accessory1Row[5])));
+
+		accessory2.set(getAccessoryById(parseInt(accessory2Row[0])));
+		accessory2Gem1.set(getGemById(parseInt(accessory2Row[1])));
+		accessory2Gem2.set(getGemById(parseInt(accessory2Row[2])));
+		accessory2Gem3.set(getGemById(parseInt(accessory2Row[3])));
+		accessory2Enchant.set(getEnchantById(parseInt(accessory2Row[4])));
+		accessory2Modifier.set(getModifierById(parseInt(accessory2Row[5])));
+
+		accessory3.set(getAccessoryById(parseInt(accessory3Row[0])));
+		accessory3Gem1.set(getGemById(parseInt(accessory3Row[1])));
+		accessory3Gem2.set(getGemById(parseInt(accessory3Row[2])));
+		accessory3Gem3.set(getGemById(parseInt(accessory3Row[3])));
+		accessory3Enchant.set(getEnchantById(parseInt(accessory3Row[4])));
+		accessory3Modifier.set(getModifierById(parseInt(accessory3Row[5])));
+
+		chestplate1.set(getChestplateById(parseInt(chestplate1Row[0])));
+		chestplate1Gem1.set(getGemById(parseInt(chestplate1Row[1])));
+		chestplate1Gem2.set(getGemById(parseInt(chestplate1Row[2])));
+		chestplate1Gem3.set(getGemById(parseInt(chestplate1Row[3])));
+		chestplate1Enchant.set(getEnchantById(parseInt(chestplate1Row[4])));
+		chestplate1Modifier.set(getModifierById(parseInt(chestplate1Row[5])));
+
+		pants1.set(getPantsById(parseInt(pants1Row[0])));
+		pants1Gem1.set(getGemById(parseInt(pants1Row[1])));
+		pants1Gem2.set(getGemById(parseInt(pants1Row[2])));
+		pants1Gem3.set(getGemById(parseInt(pants1Row[3])));
+		pants1Enchant.set(getEnchantById(parseInt(pants1Row[4])));
+		pants1Modifier.set(getModifierById(parseInt(pants1Row[5])));
+
+		// return true if success
+		return true;
+	} catch (error) {
+		// return false if error
+		return false;
+	}
+}
+
+export function generateCode() {
+	/*
+
+	return: code generated
+
+	*/
+	let code =
+		get(accessory1).id +
+		'.' +
+		get(accessory1Gem1).id +
+		'.' +
+		get(accessory1Gem2).id +
+		'.' +
+		get(accessory1Gem3).id +
+		'.' +
+		get(accessory1Enchant).id +
+		'.' +
+		get(accessory1Modifier).id +
+		"'" +
+		get(accessory2).id +
+		'.' +
+		get(accessory2Gem1).id +
+		'.' +
+		get(accessory2Gem2).id +
+		'.' +
+		get(accessory2Gem3).id +
+		'.' +
+		get(accessory2Enchant).id +
+		'.' +
+		get(accessory2Modifier).id +
+		"'" +
+		get(accessory3).id +
+		'.' +
+		get(accessory3Gem1).id +
+		'.' +
+		get(accessory3Gem2).id +
+		'.' +
+		get(accessory3Gem3).id +
+		'.' +
+		get(accessory3Enchant).id +
+		'.' +
+		get(accessory3Modifier).id +
+		"'" +
+		get(chestplate1).id +
+		'.' +
+		get(chestplate1Gem1).id +
+		'.' +
+		get(chestplate1Gem2).id +
+		'.' +
+		get(chestplate1Gem3).id +
+		'.' +
+		get(chestplate1Enchant).id +
+		'.' +
+		get(chestplate1Modifier).id +
+		"'" +
+		get(pants1).id +
+		'.' +
+		get(pants1Gem1).id +
+		'.' +
+		get(pants1Gem2).id +
+		'.' +
+		get(pants1Gem3).id +
+		'.' +
+		get(pants1Enchant).id +
+		'.' +
+		get(pants1Modifier).id;
+
+	// retirn code generated
+	return code;
+}
+
 
 // Validate that the item may be entered by checking the item is not a duplicate or same sub type as another item
 export function validateEntry(item) {
