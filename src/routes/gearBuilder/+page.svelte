@@ -92,7 +92,7 @@
 				<GenerateCode />
 				<LoadCode />
 				<ShareButton />
-        <RandomButton />
+				<RandomButton />
 			</div>
 			<div class="flex items-center justify-between space-x-4">
 				<Filter />
@@ -147,7 +147,7 @@
 				<div class="mb-4">
 					<ShareButton />
 				</div>
-        <div class="mb-4">
+				<div class="mb-4">
 					<RandomButton />
 				</div>
 				<div class="mb-4">
