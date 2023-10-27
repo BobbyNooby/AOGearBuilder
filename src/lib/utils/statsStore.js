@@ -100,6 +100,9 @@ export function loadCode(inputString) {
 	*/
 
 	try {
+		// Decode URI in case the browser auto encodes URI
+		inputString = decodeURI(inputString);
+
 		// Parse the input string
 		const rows = inputString.split("'");
 		const accessory1Row = rows[0].split('.');
