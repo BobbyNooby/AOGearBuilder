@@ -29,7 +29,10 @@
 		pants1Gem2,
 		pants1Gem3,
 		pants1Enchant,
-		pants1Modifier
+		pants1Modifier,
+
+		validateEntry
+
 	} from '$lib/utils/statsStore';
 	import { playCorrect, playWrong } from '$lib/utils/sound';
 	import { baseGem } from '$lib/utils/baseGem';
@@ -235,34 +238,12 @@
 			// Dont conditions that dont allow item to be clicked
 			// EG : item is same as itself, item is same as another item on the list, item of amulet subtype is clicked even though theres another amulet, same condition as amulet but for helmets.
 			item.name != 'None' &&
-			(item.name == $accessory1.name ||
-				item.name == $accessory2.name ||
-				item.name == $accessory3.name ||
-				item.name == $chestplate1.name ||
-				item.name == $pants1.name ||
+			(!validateEntry(item) ||
 				(category == 'accessory1Enchant' && item.name == $accessory1Enchant.name) ||
 				(category == 'accessory2Enchant' && item.name == $accessory2Enchant.name) ||
 				(category == 'accessory3Enchant' && item.name == $accessory3Enchant.name) ||
 				(category == 'chestplate1Enchant' && item.name == $chestplate1Enchant.name) ||
-				(category == 'pants1Enchant' && item.name == $pants1Enchant.name) ||
-				(category == 'accessory1' &&
-					item.subType == 'Amulet' &&
-					($accessory2.subType == 'Amulet' || $accessory3.subType == 'Amulet')) ||
-				(category == 'accessory2' &&
-					item.subType == 'Amulet' &&
-					($accessory1.subType == 'Amulet' || $accessory3.subType == 'Amulet')) ||
-				(category == 'accessory3' &&
-					item.subType == 'Amulet' &&
-					($accessory1.subType == 'Amulet' || $accessory2.subType == 'Amulet')) ||
-				(category == 'accessory1' &&
-					item.subType == 'Helmet' &&
-					($accessory2.subType == 'Helmet' || $accessory3.subType == 'Helmet')) ||
-				(category == 'accessory2' &&
-					item.subType == 'Helmet' &&
-					($accessory1.subType == 'Helmet' || $accessory3.subType == 'Helmet')) ||
-				(category == 'accessory3' &&
-					item.subType == 'Helmet' &&
-					($accessory1.subType == 'Helmet' || $accessory2.subType == 'Helmet')))
+				(category == 'pants1Enchant' && item.name == $pants1Enchant.name))
 		) {
 			playWrong();
 		} else {

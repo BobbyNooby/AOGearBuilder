@@ -8,6 +8,7 @@
 	import { resetAllStores } from '$lib/utils/statsStore';
 	import GenerateCode from '$lib/components/gearBuilder/GenerateCode.svelte';
 	import LoadCode from '$lib/components/gearBuilder/LoadCode.svelte';
+	import RandomButton from '$lib/components/gearBuilder/RandomButton.svelte';
 	import ShareButton from '$lib/components/gearBuilder/ShareButton.svelte';
 	import { loadCode } from '$lib/utils/statsStore';
 
@@ -91,6 +92,7 @@
 				<GenerateCode />
 				<LoadCode />
 				<ShareButton />
+        <RandomButton />
 			</div>
 			<div class="flex items-center justify-between space-x-4">
 				<Filter />
@@ -144,6 +146,9 @@
 				</div>
 				<div class="mb-4">
 					<ShareButton />
+				</div>
+        <div class="mb-4">
+					<RandomButton />
 				</div>
 				<div class="mb-4">
 					<Filter />
