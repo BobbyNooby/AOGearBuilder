@@ -36,7 +36,7 @@
 	import Itemstat from './Itemstat.svelte';
 	import { writable } from 'svelte/store';
 
-	export let menuToggle, item, category, setButtonImgSrc; // Props
+	export let menuToggle, item, category; // Props
 
 	//Mouse hover and position detection for tooltip
 	let isHovering = false;

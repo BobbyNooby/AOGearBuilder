@@ -11,7 +11,7 @@
 	import { sortType } from '$lib/utils/sortStore';
 	import { playCorrect, playWrong } from '$lib/utils/sound';
 
-	export let menuToggle, setButtonImgSrc, category;
+	export let menuToggle, category;
 
 	//Initializing the itemType Variable as placeholder statTemplate
 	let itemType = [statTemplate];
@@ -188,11 +188,11 @@
 	/>
 	<div class="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4">
 		<div class="">
-			<Item item={placeholderItem} {setButtonImgSrc} {menuToggle} {category} />
+			<Item item={placeholderItem} {menuToggle} {category} />
 		</div>
 		{#each sortedItems as item (item.id)}
 			<div class="">
-				<Item {item} {setButtonImgSrc} {menuToggle} {category} />
+				<Item {item} {menuToggle} {category} />
 			</div>
 		{/each}
 	</div>

@@ -2,9 +2,16 @@
 	import { generateCode } from '$lib/utils/statsStore';
 	import { playCorrect } from '$lib/utils/sound';
 
-	async function generate() {
+	async function share() {
 		// generate code
-		let code = generateCode();
+		let code =
+			location.protocol +
+			'//' +
+			location.host +
+			location.pathname +
+			(location.search ? location.search : '') +
+			'#' +
+			generateCode();
 
 		// copy text to clipboard
 		await navigator.clipboard.writeText(code);
@@ -16,8 +23,8 @@
 	<button
 		class=" bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
 		style="font-family: Merriweather;"
-		on:click={generate}
+		on:click={share}
 	>
-		Generate Build
+		Share Link
 	</button>
 </div>
