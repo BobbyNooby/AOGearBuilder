@@ -26,7 +26,7 @@ export const modifiers = [
 		name: 'Atlantean Essence',
 		legend:
 			'Gives stats per 10 levels rounded down in the following order depending on if your item has the stat or not: Power -> Defense -> Attack Size -> Attack Speed -> Agility -> Intensity -> Power',
-		defense: 9,
+		defense: 8.09,
 		power: 1,
 		agility: 1.5,
 		attackSize: 1.5,
