@@ -36,6 +36,7 @@
 	import { fade } from 'svelte/transition';
 	import ItemMenu from './ItemMenu.svelte';
 	import { playCorrect, playWrong } from '$lib/utils/sound';
+	import { isMobile } from '$lib/utils/mobileStore';
 
 	export let category, filterType, sortType; // Props import
 
@@ -215,20 +216,22 @@
 	}
 </script>
 
-<div>
-	<!-- Button to open overlay -->
-	<button on:click={handleClick} disabled={!validGems}><img src={imageSrc} alt="{category} Button" style="opacity: {validGems ? '1' : '0'}" /></button>
+{#if validGems || !$isMobile}
+	<div>
+		<!-- Button to open overlay -->
+		<button on:click={handleClick} disabled={!validGems}><img src={imageSrc} alt="{category} Button" style="opacity: {validGems ? '1' : '0'}" /></button>
 
-	<!-- Overlay with item menu -->
-	{#if menuIsActive}
-		<div
-			class="z-10 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 fixed overflow-y-auto"
-			in:fade={{ duration: 100 }}
-			out:fade={{ duration: 100 }}
-		>
-			<div>
-				<ItemMenu {category} {menuToggle} {filterType} {sortType} />
+		<!-- Overlay with item menu -->
+		{#if menuIsActive}
+			<div
+				class="z-10 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 fixed overflow-y-auto"
+				in:fade={{ duration: 100 }}
+				out:fade={{ duration: 100 }}
+			>
+				<div>
+					<ItemMenu {category} {menuToggle} {filterType} {sortType} />
+				</div>
 			</div>
-		</div>
-	{/if}
-</div>
+		{/if}
+	</div>
+{/if}
