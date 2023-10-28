@@ -11,6 +11,7 @@
 	import RandomButton from '$lib/components/gearBuilder/RandomButton.svelte';
 	import ShareButton from '$lib/components/gearBuilder/ShareButton.svelte';
 	import { loadCode } from '$lib/utils/statsStore';
+	import { isMobile } from '$lib/utils/mobileStore';
 
 	//Load using hash.
 	function loadHash() {
@@ -28,13 +29,21 @@
 
 	let deviceWidth = 0;
 
+	function checkMobile() {
+		if (window.innerWidth < 768) {
+			$isMobile = true;
+		} else {
+			$isMobile = false;
+		}
+	}
+
 	//Test device width to check for mobile conditions in the html
 	onMount(() => {
 		// Make sure this only works in browser
 		if (typeof window !== 'undefined') {
-			deviceWidth = window.innerWidth;
+			checkMobile();
 			window.addEventListener('resize', () => {
-				deviceWidth = window.innerWidth;
+				checkMobile();
 			});
 		}
 	});
@@ -79,7 +88,7 @@
 
 <section>
 	{#if ready}
-		{#if deviceWidth >= 768}<!--   desktop view -->
+		{#if !$isMobile}<!--   desktop view -->
 			<p
 				class="text-6xl font-medium text-gray-300 text-center p-5"
 				style="font-family: Merriweather;"
