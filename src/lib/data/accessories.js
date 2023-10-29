@@ -936,5 +936,26 @@ export const accessories = [
 		rarity: 'Common',
 		rarityColor: '#7D7D7F',
 		imageId: 'https://i.imgur.com/I6syVxd.gif'
+	},
+	{
+		id: 44,
+		name: 'Wolf Pelt Cloak',
+		legend: "A wolf's pelt fashioned into a thick cape, usually worn by bandits or outdoorsmen.",
+		defense: 0,
+		power: 0,
+		agility: 18,
+		attackSize: 0,
+		attackSpeed: 0,
+		intensity: 30,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 120,
+		gemNo: 1,
+		mainType: 'Accessory',
+		subType: 'Back',
+		rarity: 'Uncommon',
+		rarityColor: '#817346',
+		imageId: 'https://i.imgur.com/M6bdbeD.jpg'
 	}
 ];
