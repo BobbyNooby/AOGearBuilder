@@ -231,6 +231,7 @@
 		{#if menuIsActive}
 			<div
 				class="z-10 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 fixed overflow-y-auto"
+				id="menuouter"
 				in:fade={{ duration: 100 }}
 				out:fade={{ duration: 100 }}
 			>

@@ -46,13 +46,25 @@
 
 	// Checks if box will overflow and set new position if it will
 	function setBoxPositionOverflow() {
-		if (mousePosition.x + $hoverWidth + 20 >= document.documentElement.clientWidth) {
-			mousePosition.x = mousePosition.x - 40 - $hoverWidth;
+		if (mousePosition.x + $hoverWidth + 20 >= document.getElementById("menuouter").clientWidth) {
+			if (document.getElementById("menuouter") != null) {
+				mousePosition.x = mousePosition.x - 40 - $hoverWidth + document.getElementById("menuouter").scrollLeft;
+			}
+		} else {
+			if (document.getElementById("menuouter") != null) {
+				mousePosition.x += document.getElementById("menuouter").scrollLeft;
+			}
 		}
 
 		if (document.getElementById("hover") != null){
-			if (mousePosition.y + document.getElementById("hover").offsetHeight >= document.documentElement.clientHeight) {
-				mousePosition.y = mousePosition.y - document.getElementById("hover").offsetHeight;
+			if (mousePosition.y + document.getElementById("hover").offsetHeight >= document.getElementById("menuouter").clientHeight) {
+				if (document.getElementById("menuouter") != null) {
+					mousePosition.y = mousePosition.y - document.getElementById("hover").offsetHeight + document.getElementById("menuouter").scrollTop;
+				}
+			} else {
+				if (document.getElementById("menuouter") != null) {
+					mousePosition.y += document.getElementById("menuouter").scrollTop;
+				}
 			}
 		}
 	}
