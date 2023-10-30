@@ -86,7 +86,7 @@
 
 	{#if item.insanity > 0}
 		<div class="flex items-center justify-center">
-			<img class="h-6" src="https://i.imgur.com/43RZKlz.png" alt="Insanity" />
+			<img class="h-6" src="https://i.imgur.com/zuPji7I.png" alt="Insanity" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #8B27DB; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #DB0C45; text-align: center;"
 			>
