@@ -264,7 +264,7 @@
 			// Dont conditions that dont allow item to be clicked
 			// EG : item is same as itself, item is same as another item on the list, item of amulet subtype is clicked even though theres another amulet, same condition as amulet but for helmets.
 			item.name != 'None' &&
-			(!validateEntry(item) ||
+			(!validateEntry(item, category) ||
 				(category == 'accessory1Enchant' && item.name == $accessory1Enchant.name) ||
 				(category == 'accessory2Enchant' && item.name == $accessory2Enchant.name) ||
 				(category == 'accessory3Enchant' && item.name == $accessory3Enchant.name) ||
