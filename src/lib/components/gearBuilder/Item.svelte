@@ -44,13 +44,41 @@
 	let mousePosition = { x: 0, y: 0 };
 	let hoverWidth = writable(300);
 
+	// Checks if box will overflow and set new position if it will
+	function setBoxPositionOverflow() {
+		if (mousePosition.x + $hoverWidth + 20 >= document.getElementById("menuouter").clientWidth) {
+			if (document.getElementById("menuouter") != null) {
+				mousePosition.x = mousePosition.x - 40 - $hoverWidth + document.getElementById("menuouter").scrollLeft;
+			}
+		} else {
+			if (document.getElementById("menuouter") != null) {
+				mousePosition.x += document.getElementById("menuouter").scrollLeft;
+			}
+		}
+
+		if (document.getElementById("hover") != null){
+			if (mousePosition.y + document.getElementById("hover").offsetHeight >= document.getElementById("menuouter").clientHeight) {
+				if (document.getElementById("menuouter") != null) {
+					mousePosition.y = mousePosition.y - document.getElementById("hover").offsetHeight + document.getElementById("menuouter").scrollTop;
+				}
+			} else {
+				if (document.getElementById("menuouter") != null) {
+					mousePosition.y += document.getElementById("menuouter").scrollTop;
+				}
+			}
+		}
+	}
+
+	// Called when the hover div is created
+	function createdHover() {
+		setBoxPositionOverflow();
+	}
+
 	function handleMouseOver(event) {
 		isHovering = true;
 		mousePosition = { x: event.clientX, y: event.clientY };
 
-		if (mousePosition.x + $hoverWidth > window.innerWidth) {
-			mousePosition.x = mousePosition.x - 40 - $hoverWidth;
-		}
+		setBoxPositionOverflow();
 	}
 
 	function handleMouseOut() {
@@ -261,8 +289,9 @@
 >
 	<img src={item.imageId} alt={item.name} />
 	{#if isHovering}
-		<div
+		<div use:createdHover
 			class="z-40"
+			id="hover"
 			style="
 		  position: absolute;
 		  background-color: black;
