@@ -50,8 +50,10 @@
 			mousePosition.x = mousePosition.x - 40 - $hoverWidth;
 		}
 
-		if (mousePosition.y + document.getElementById("hover").offsetHeight >= document.documentElement.clientHeight) {
-			mousePosition.y = mousePosition.y - document.getElementById("hover").offsetHeight;
+		if (document.getElementById("hover") != null){
+			if (mousePosition.y + document.getElementById("hover").offsetHeight >= document.documentElement.clientHeight) {
+				mousePosition.y = mousePosition.y - document.getElementById("hover").offsetHeight;
+			}
 		}
 	}
 
