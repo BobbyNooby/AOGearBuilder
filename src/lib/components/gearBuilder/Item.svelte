@@ -30,11 +30,9 @@
 		pants1Gem3,
 		pants1Enchant,
 		pants1Modifier,
-
 		validateEntry
-
 	} from '$lib/utils/statsStore';
-	import { playCorrect, playWrong } from '$lib/utils/sound';
+	import { playCorrect, playWrong } from '$lib/utils/sound.js';
 	import { baseGem } from '$lib/utils/baseGem';
 	import Itemstat from './Itemstat.svelte';
 	import { writable } from 'svelte/store';

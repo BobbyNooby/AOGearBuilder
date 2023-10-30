@@ -1,5 +1,5 @@
 <script>
-	import { playCorrect, playWrong } from '$lib/utils/sound';
+	import { playCorrect, playWrong } from '$lib/utils/sound.js';
 	import { loadCode } from '$lib/utils/statsStore';
 
 	let inputString = '';

@@ -1,6 +1,6 @@
 <script>
 	import { generateCode } from '$lib/utils/statsStore';
-	import { playCorrect } from '$lib/utils/sound';
+	import { playCorrect } from '$lib/utils/sound.js';
 
 	async function generate() {
 		// generate code

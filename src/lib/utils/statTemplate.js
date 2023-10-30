@@ -17,7 +17,7 @@ export const statTemplate = {
 	subType: 'None',
 	rarity: 'None',
 	rarityColor: '#FFFFFF',
-	imageId: 'https://i.imgur.com/9IDzphj.jpg'
+	imageId: 'https://i.imgur.com/iwUANFD.jpg'
 };
 
 export const accessoryTemplate = {

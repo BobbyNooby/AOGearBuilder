@@ -35,7 +35,7 @@
 	} from '$lib/utils/statsStore'; // Store import
 	import { fade } from 'svelte/transition';
 	import ItemMenu from './ItemMenu.svelte';
-	import { playCorrect, playWrong } from '$lib/utils/sound';
+	import { playCorrect, playWrong } from '$lib/utils/sound.js';
 	import { isMobile } from '$lib/utils/mobileStore';
 
 	export let category, filterType, sortType; // Props import
@@ -139,7 +139,7 @@
 				imageSrc = $pants1Modifier.imageId;
 				break;
 			default:
-				imageSrc = '';
+				imageSrc = 'https://i.imgur.com/iwUANFD.jpg';
 				break;
 		}
 
@@ -191,13 +191,13 @@
 		return: returns false if gem is not value and item is selected, returns true if gem is valid or no item is selected
 
 		*/
-		if ( (
-			(category.startsWith("accessory1") && $accessory1.name != 'None') ||
-			(category.startsWith("accessory2") && $accessory2.name != 'None') ||
-			(category.startsWith("accessory3") && $accessory3.name != 'None') ||
-			(category.startsWith("chestplate1") && $chestplate1.name != 'None') ||
-			(category.startsWith("pants1") && $pants1.name != 'None')) && 
-			(!validateGemNo())
+		if (
+			((category.startsWith('accessory1') && $accessory1.name != 'None') ||
+				(category.startsWith('accessory2') && $accessory2.name != 'None') ||
+				(category.startsWith('accessory3') && $accessory3.name != 'None') ||
+				(category.startsWith('chestplate1') && $chestplate1.name != 'None') ||
+				(category.startsWith('pants1') && $pants1.name != 'None')) &&
+			!validateGemNo()
 		) {
 			return false;
 		} else {
@@ -219,7 +219,13 @@
 {#if validGems || !$isMobile}
 	<div>
 		<!-- Button to open overlay -->
-		<button on:click={handleClick} disabled={!validGems}><img src={imageSrc} alt="{category} Button" style="opacity: {validGems ? '1' : '0'}" /></button>
+		<button on:click={handleClick} disabled={!validGems}
+			><img
+				src={imageSrc}
+				alt="{category} Button"
+				style="opacity: {validGems ? '1' : '0'}"
+			/></button
+		>
 
 		<!-- Overlay with item menu -->
 		{#if menuIsActive}

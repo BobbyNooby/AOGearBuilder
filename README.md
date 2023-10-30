@@ -6,6 +6,8 @@ website : https://tools.arcaneodyssey.net
 
 ## Changelogs
 
+30 October 2023 - Added Mute button.
+
 27 October 2023 - Added share link, link hashing, random items, and cleaned up a bit of code. Thx woodyloody
 
 24 October 2023 - Added generating and loading build codes for easier sharing.

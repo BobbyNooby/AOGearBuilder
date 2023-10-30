@@ -40,7 +40,7 @@
 	import { chestplates } from '$lib/data/chestplates';
 	import { modifiers } from '$lib/data/modifiers';
 	import { pants } from '$lib/data/pants';
-	import { playCorrect } from '$lib/utils/sound';
+	import { playCorrect } from '$lib/utils/sound.js';
 
 	// Get random entry from list
 	function getRandom(data, includeZero = false) {

@@ -9,7 +9,7 @@
 	import Item from './Item.svelte';
 	import { filterType } from '$lib/utils/filterStore';
 	import { sortType } from '$lib/utils/sortStore';
-	import { playCorrect, playWrong } from '$lib/utils/sound';
+	import { playCorrect } from '$lib/utils/sound.js';
 
 	export let menuToggle, category;
 
@@ -108,9 +108,14 @@
 		case 'pants1Gem3':
 			itemType = gems;
 			break;
+		default:
+			itemType = statTemplate;
+			break;
 	}
 
 	//Search, Filter, and Sort Code
+
+	//Initialize searchQuery
 	let searchQuery = '';
 
 	$: filteredItems = itemType.filter((item) => {
