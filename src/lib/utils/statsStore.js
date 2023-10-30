@@ -227,10 +227,11 @@ export function generateCode() {
 
 
 // Validate that the item may be entered by checking the item is not a duplicate or same sub type as another item
-export function validateEntry(item) {
+export function validateEntry(item, category = null) {
 	/*
 
 	input: item to be validated
+	category: category of item to be validated, default null if not needed (when its known the slot its being placed in is nothing)
 
 	return: returns true if item is valid, returns false if item is not valid
 	*/
@@ -240,8 +241,8 @@ export function validateEntry(item) {
 		item.name == get(accessory3).name ||
 		item.name == get(chestplate1).name ||
 		item.name == get(pants1).name ||
-		(item.subType == 'Amulet' && (get(accessory1).subType == 'Amulet'|| get(accessory2).subType == 'Amulet' || get(accessory3).subType == 'Amulet')) ||
-		(item.subType == 'Helmet' && (get(accessory1).subType == 'Helmet'|| get(accessory2).subType == 'Helmet' || get(accessory3).subType == 'Helmet'))) 
+		(item.subType == 'Amulet' && ((get(accessory1).subType == 'Amulet' && category != "accessory1") || (get(accessory2).subType == 'Amulet' && category != "accessory2") || (get(accessory3).subType == 'Amulet' && category != "accessory3"))) ||
+		(item.subType == 'Helmet' && ((get(accessory1).subType == 'Helmet' && category != "accessory1") || (get(accessory2).subType == 'Helmet' && category != "accessory2") || (get(accessory3).subType == 'Helmet' && category != "accessory3")))) 
 	{
 		return false;
 	} else {
