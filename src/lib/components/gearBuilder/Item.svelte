@@ -30,7 +30,8 @@
 		pants1Gem3,
 		pants1Enchant,
 		pants1Modifier,
-		validateEntry
+		validateEntry,
+		storeCurrentBuild
 	} from '$lib/utils/statsStore';
 	import { playCorrect, playWrong } from '$lib/utils/sound.js';
 	import { baseGem } from '$lib/utils/baseGem';
@@ -46,24 +47,31 @@
 
 	// Checks if box will overflow and set new position if it will
 	function setBoxPositionOverflow() {
-		if (mousePosition.x + $hoverWidth + 20 >= document.getElementById("menuouter").clientWidth) {
-			if (document.getElementById("menuouter") != null) {
-				mousePosition.x = mousePosition.x - 40 - $hoverWidth + document.getElementById("menuouter").scrollLeft;
+		if (mousePosition.x + $hoverWidth + 20 >= document.getElementById('menuouter').clientWidth) {
+			if (document.getElementById('menuouter') != null) {
+				mousePosition.x =
+					mousePosition.x - 40 - $hoverWidth + document.getElementById('menuouter').scrollLeft;
 			}
 		} else {
-			if (document.getElementById("menuouter") != null) {
-				mousePosition.x += document.getElementById("menuouter").scrollLeft;
+			if (document.getElementById('menuouter') != null) {
+				mousePosition.x += document.getElementById('menuouter').scrollLeft;
 			}
 		}
 
-		if (document.getElementById("hover") != null){
-			if (mousePosition.y + document.getElementById("hover").offsetHeight >= document.getElementById("menuouter").clientHeight) {
-				if (document.getElementById("menuouter") != null) {
-					mousePosition.y = mousePosition.y - document.getElementById("hover").offsetHeight + document.getElementById("menuouter").scrollTop;
+		if (document.getElementById('hover') != null) {
+			if (
+				mousePosition.y + document.getElementById('hover').offsetHeight >=
+				document.getElementById('menuouter').clientHeight
+			) {
+				if (document.getElementById('menuouter') != null) {
+					mousePosition.y =
+						mousePosition.y -
+						document.getElementById('hover').offsetHeight +
+						document.getElementById('menuouter').scrollTop;
 				}
 			} else {
-				if (document.getElementById("menuouter") != null) {
-					mousePosition.y += document.getElementById("menuouter").scrollTop;
+				if (document.getElementById('menuouter') != null) {
+					mousePosition.y += document.getElementById('menuouter').scrollTop;
 				}
 			}
 		}
@@ -257,6 +265,7 @@
 				menuToggle();
 				break;
 		}
+		storeCurrentBuild();
 	};
 
 	function handleClick() {
@@ -289,7 +298,8 @@
 >
 	<img src={item.imageId} alt={item.name} />
 	{#if isHovering}
-		<div use:createdHover
+		<div
+			use:createdHover
 			class="z-40"
 			id="hover"
 			style="

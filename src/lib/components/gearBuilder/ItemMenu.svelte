@@ -10,6 +10,8 @@
 	import { filterType } from '$lib/utils/filterStore';
 	import { sortType } from '$lib/utils/sortStore';
 	import { playCorrect } from '$lib/utils/sound.js';
+	import Filter from '../Filter.svelte';
+	import Sort from '../Sort.svelte';
 
 	export let menuToggle, category;
 
@@ -175,22 +177,39 @@
 	console.log(placeholderItem);
 </script>
 
-<div class="flex flex-col items-center">
+<div class="flex flex-col items-center pt-5">
 	<button
 		on:click={() => {
 			menuToggle();
 			playCorrect();
 		}}
-		class="mb-4"
+		class="mb-4 w-20 h-20 bg-black border rounded border-white text-white font-bold text-lg py-2 px-4 items-center relative"
 	>
-		<img class="w-10 h-10" src="https://i.imgur.com/4UqeZGb.jpg" alt="CloseButton" />
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="100%"
+			height="100%"
+			fill="currentColor"
+			class="bi bi-x-lg"
+			viewBox="0 0 16 16"
+			style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+		>
+			<path
+				d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+			/>
+		</svg>
 	</button>
+
 	<input
 		type="text"
 		bind:value={searchQuery}
 		placeholder="Search"
 		class="border rounded p-2 m-2 w-1/2 bg-black text-white"
 	/>
+	<div class="flex items-center justify-between space-x-4">
+		<Filter />
+		<Sort />
+	</div>
 	<div class="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4">
 		<div class="">
 			<Item item={placeholderItem} {menuToggle} {category} />

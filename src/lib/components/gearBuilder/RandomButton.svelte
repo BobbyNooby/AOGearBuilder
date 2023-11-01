@@ -32,7 +32,8 @@
 		pants1Gem3,
 		pants1Enchant,
 		pants1Modifier,
-		validateEntry
+		validateEntry,
+		storeCurrentBuild
 	} from '$lib/utils/statsStore'; // Store import
 	import { accessories } from '$lib/data/accessories';
 	import { gems } from '$lib/data/gems';
@@ -96,6 +97,7 @@
 		$pants1Gem3 = getRandomGem(gems, 3, $pants1);
 		$pants1Enchant = getRandom(enchants);
 		$pants1Modifier = getRandom(modifiers, true);
+		storeCurrentBuild();
 		playCorrect();
 	}
 </script>

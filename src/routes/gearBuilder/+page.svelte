@@ -3,15 +3,14 @@
 	import { onMount } from 'svelte';
 	import GearButton from '$lib/components/gearBuilder/GearButton.svelte';
 	import StatsFinal from '$lib/components/gearBuilder/StatsFinal.svelte';
-	import Filter from '$lib/components/Filter.svelte';
-	import Sort from '$lib/components/Sort.svelte';
-	import { resetAllStores } from '$lib/utils/statsStore';
+	import { resetAllStores, storeCurrentBuild } from '$lib/utils/statsStore';
 	import GenerateCode from '$lib/components/gearBuilder/GenerateCode.svelte';
 	import LoadCode from '$lib/components/gearBuilder/LoadCode.svelte';
 	import RandomButton from '$lib/components/gearBuilder/RandomButton.svelte';
 	import ShareButton from '$lib/components/gearBuilder/ShareButton.svelte';
 	import { loadCode } from '$lib/utils/statsStore';
 	import { isMobile } from '$lib/utils/mobileStore';
+	import { playCorrect } from '$lib/utils/sound';
 
 	//Load using hash.
 	function loadHash() {
@@ -23,8 +22,8 @@
 	let ready = false;
 	onMount(() => {
 		ready = true;
-		resetAllStores();
-		loadHash();
+		loadHash(); // Load if link has hash.
+		loadCode(localStorage.getItem('currentBuild')); // Load currentBuild from local storage. Basically keeps the last build the person made on
 	});
 
 	let deviceWidth = 0;
@@ -101,11 +100,18 @@
 				<GenerateCode />
 				<LoadCode />
 				<ShareButton />
-				<RandomButton />
 			</div>
-			<div class="flex items-center justify-between space-x-4">
-				<Filter />
-				<Sort />
+			<div class="flex items-center justify-center space-x-4 pb-5">
+				<RandomButton />
+				<button
+					class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
+					style="font-family: Merriweather;"
+					on:click={() => {
+						resetAllStores();
+						storeCurrentBuild();
+						playCorrect();
+					}}>Clear</button
+				>
 			</div>
 
 			<div class="flex">
@@ -160,10 +166,15 @@
 					<RandomButton />
 				</div>
 				<div class="mb-4">
-					<Filter />
-				</div>
-				<div class="mb-4">
-					<Sort />
+					<button
+						class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
+						style="font-family: Merriweather;"
+						on:click={() => {
+							resetAllStores();
+							storeCurrentBuild();
+							playCorrect();
+						}}>Clear</button
+					>
 				</div>
 			</div>
 
