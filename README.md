@@ -6,7 +6,7 @@ website : https://tools.arcaneodyssey.net
 
 ## Changelogs
 
-1 November 2023 - Made it so that the last build you did will show up on the page instead of clearing everytime. Added clear button
+1 November 2023 - Made it so that the last build you did will show up on the page instead of clearing everytime. Added clear button. Moved filter and sort into item menu.
 
 30 October 2023 - Added Mute button.
 
