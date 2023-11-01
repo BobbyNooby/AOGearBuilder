@@ -148,7 +148,7 @@ export function loadCode(inputString) {
 			pants1Gem3.set(getGemById(parseInt(pants1Row[3])));
 			pants1Enchant.set(getEnchantById(parseInt(pants1Row[4])));
 			pants1Modifier.set(getModifierById(parseInt(pants1Row[5])));
-			currentBuildId.set(generateCode());
+			storeCurrentBuild();
 			return true;
 		} else {
 			return false;
