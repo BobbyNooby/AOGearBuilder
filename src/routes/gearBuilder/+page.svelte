@@ -16,6 +16,7 @@
 	function loadHash() {
 		loadCode(window.location.hash.substring(1));
 		history.replaceState({}, document.title, window.location.href.split('#')[0]);
+		storeCurrentBuild();
 	}
 
 	// Fade in initiator. Reset stores.
