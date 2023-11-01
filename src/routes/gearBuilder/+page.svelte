@@ -22,8 +22,8 @@
 	let ready = false;
 	onMount(() => {
 		ready = true;
-		loadHash(); // Load if link has hash.
 		loadCode(localStorage.getItem('currentBuild')); // Load currentBuild from local storage. Basically keeps the last build the person made on
+		loadHash(); // Load if link has hash.
 	});
 
 	let deviceWidth = 0;
