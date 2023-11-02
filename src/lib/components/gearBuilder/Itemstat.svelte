@@ -1,7 +1,7 @@
 <script>
 	export let item; //importing the item that was selected cos thats the only thing thats needed
 
-	//Split the code up here too cos idw the Item component to get too long
+	// This document is a tooltip for the items
 </script>
 
 <div class="text-center z-30">
