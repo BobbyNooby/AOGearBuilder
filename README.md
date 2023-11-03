@@ -1,4 +1,4 @@
-# Arcane Odyssey Gear Builder
+# Arcane Odyssey Tools
 
 Who wouldve thought my first ever coding project would be because of a roblox game 🤷🏼‍♂️
 
