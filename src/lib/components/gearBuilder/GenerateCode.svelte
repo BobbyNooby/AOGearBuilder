@@ -14,10 +14,10 @@
 
 <div>
 	<button
-		class=" bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
+		class=" bg-black border border-white text-white font-bold text-lg py-2 px-4 w-56"
 		style="font-family: Merriweather;"
 		on:click={generate}
 	>
-		Generate Build
+		Generate Build Code
 	</button>
 </div>

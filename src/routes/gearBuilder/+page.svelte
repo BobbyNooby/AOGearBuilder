@@ -11,6 +11,8 @@
 	import { loadCode } from '$lib/utils/statsStore';
 	import { isMobile } from '$lib/utils/mobileStore';
 	import { playCorrect } from '$lib/utils/sound';
+	import BuildsSaveButton from '$lib/components/gearBuilder/BuildsSaveButton.svelte';
+	import BuildsLoadButton from '$lib/components/gearBuilder/BuildsLoadButton.svelte';
 
 	//Load using hash.
 	function loadHash() {
@@ -103,6 +105,10 @@
 				<ShareButton />
 			</div>
 			<div class="flex items-center justify-center space-x-4 pb-5">
+				<BuildsSaveButton />
+				<BuildsLoadButton />
+			</div>
+			<div class="flex items-center justify-center space-x-4 pb-5">
 				<RandomButton />
 				<button
 					class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
@@ -160,12 +166,19 @@
 				<div class="mb-4">
 					<LoadCode />
 				</div>
-				<div class="mb-4">
+				<div class="mb-10">
 					<ShareButton />
+				</div>
+				<div class="mb-4">
+					<BuildsSaveButton />
+				</div>
+				<div class="mb-10">
+					<BuildsLoadButton />
 				</div>
 				<div class="mb-4">
 					<RandomButton />
 				</div>
+
 				<div class="mb-4">
 					<button
 						class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"

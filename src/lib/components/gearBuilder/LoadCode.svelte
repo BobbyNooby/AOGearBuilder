@@ -20,10 +20,10 @@
 
 <div>
 	<button
-		class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
+		class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-56"
 		style="font-family: Merriweather;"
 		on:click={load}
 	>
-		Load Build
+		Load Build Code
 	</button>
 </div>
