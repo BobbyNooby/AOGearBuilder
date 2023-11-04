@@ -957,5 +957,26 @@ export const accessories = [
 		rarity: 'Uncommon',
 		rarityColor: '#817346',
 		imageId: 'https://i.imgur.com/M6bdbeD.jpg'
+	},
+	{
+		id: 45,
+		name: 'Siren Bracelets',
+		legend: 'Two bracelets made out of gold, usually worn to show status or wealth.',
+		defense: 0,
+		power: 0,
+		agility: 13,
+		attackSize: 0,
+		attackSpeed: 22,
+		intensity: 0,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 120,
+		gemNo: 2,
+		mainType: 'Accessory',
+		subType: 'Arms',
+		rarity: 'Uncommon',
+		rarityColor: '#817346',
+		imageId: 'https://i.imgur.com/tOwn6wD.jpg'
 	}
 ];
