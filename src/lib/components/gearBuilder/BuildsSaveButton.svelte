@@ -13,13 +13,19 @@
 	let existingBuildIndex = -1;
 
 	function menuToggle() {
-		savedBuilds = JSON.parse(localStorage.getItem('savedBuilds'));
+		savedBuilds = JSON.parse(localStorage.getItem('savedBuilds')) || [];
 		menuIsActive = !menuIsActive;
 		playCorrect();
 	}
 
 	function handleClick() {
-		existingBuildIndex = savedBuilds.findIndex((build) => build.name === buildName);
+		existingBuildIndex = savedBuilds.findIndex((build) => {
+			if (build === null || build === undefined) {
+				return false; // Skip null or undefined values
+			}
+			return build.name === buildName;
+		});
+
 		if (buildName === '') {
 			playWrong(); // Play the wrong sound if buildName is empty
 		} else if (existingBuildIndex !== -1) {

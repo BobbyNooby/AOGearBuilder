@@ -32,7 +32,7 @@
 		if (deletedBuild) {
 			savedBuilds = savedBuilds.filter((item) => item.name !== deletedBuild.name);
 			localStorage.setItem('savedBuilds', JSON.stringify(savedBuilds));
-			savedBuilds = JSON.parse(localStorage.getItem('savedBuilds'));
+			savedBuilds = JSON.parse(localStorage.getItem('savedBuilds')) || [];
 			playCorrect();
 			deletedBuild = null;
 		}
@@ -52,7 +52,7 @@
 		if (renamingBuild) {
 			renamingBuild.name = renameName;
 			localStorage.setItem('savedBuilds', JSON.stringify(savedBuilds));
-			savedBuilds = JSON.parse(localStorage.getItem('savedBuilds')); // Reload the item name
+			savedBuilds = JSON.parse(localStorage.getItem('savedBuilds')) || []; // Reload the item name
 			playCorrect();
 			renamingBuild = null; // to close menu
 		}
