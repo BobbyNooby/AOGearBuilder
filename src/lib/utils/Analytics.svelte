@@ -1,4 +1,6 @@
 <script lang="ts">
+	//Google analytics.
+
 	import { page } from '$app/stores';
 
 	$: {

@@ -21,7 +21,7 @@
 	function handleClick() {
 		existingBuildIndex = savedBuilds.findIndex((build) => {
 			if (build === null || build === undefined) {
-				return false; // Skip null or undefined values
+				return false; // Skip null or undefined values. Added this as there was an error with old method.
 			}
 			return build.name === buildName;
 		});

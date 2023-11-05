@@ -1,9 +1,9 @@
 <script>
 	import { playCorrect, playWrong } from '$lib/utils/sound';
 	import { loadCode } from '$lib/utils/statsStore';
+	import { fade } from 'svelte/transition';
 
 	// @ts-nocheck
-	import { fade } from 'svelte/transition';
 
 	let savedBuilds = JSON.parse(localStorage.getItem('savedBuilds')) || [];
 
@@ -75,7 +75,7 @@
 		on:click={handleClick}>Load Build</button
 	>
 
-	<!-- Overlay with item menu -->
+	<!-- Overlay with builds -->
 	{#if menuIsActive}
 		<div
 			class="z-10 fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 overflow-y-auto"
