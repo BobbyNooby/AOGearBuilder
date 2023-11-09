@@ -1,4 +1,6 @@
-export const gems = [
+import { getData } from "./dataManager";
+
+const gemsData = [
 	{
 		id: 0,
 		name: 'None',
@@ -15,7 +17,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		rarityColor: '#FFFFFF',
 		imageId: 'https://i.imgur.com/5pGLWmQ.jpg'
@@ -36,7 +38,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/QfIMijY.jpg',
 		rarityColor: '#7D7D7F'
@@ -57,7 +59,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/uKo7HIn.jpg',
 		rarityColor: '#7D7D7F'
@@ -78,7 +80,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/U2dVzoO.jpg',
 		rarityColor: '#7D7D7F'
@@ -99,7 +101,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/f3jIixE.jpg',
 		rarityColor: '#7D7D7F'
@@ -120,7 +122,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/ReyXsmN.jpg',
 		rarityColor: '#7D7D7F'
@@ -141,7 +143,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/UVdQh1A.jpg',
 		rarityColor: '#7D7D7F'
@@ -162,7 +164,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/BQDfTI4.jpg',
 		rarityColor: '#ED120E'
@@ -183,7 +185,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/7dsbroX.jpg',
 		rarityColor: '#ED120E'
@@ -204,7 +206,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/04BqwKI.jpg',
 		rarityColor: '#ED120E'
@@ -225,7 +227,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/GOzVpsB.jpg',
 		rarityColor: '#ED120E'
@@ -246,7 +248,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/XAOoJMx.jpg',
 		rarityColor: '#ED120E'
@@ -268,7 +270,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/CXvDUmK.jpg',
 		rarityColor: '#ED120E'
@@ -289,7 +291,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/VbaStjk.jpg',
 		rarityColor: '#ED120E'
@@ -310,7 +312,7 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/P7oWvjZ.jpg',
 		rarityColor: '#ED120E'
@@ -331,9 +333,11 @@ export const gems = [
 		maxLevel: 0,
 		gemNo: 0,
 		rarity: 'None',
-		mainType: 'None',
+		mainType: 'Gem',
 		subType: 'None',
 		imageId: 'https://i.imgur.com/tHe7MUP.jpg',
 		rarityColor: '#ED120E'
 	}
 ];
+
+export const gems = getData(gemsData);

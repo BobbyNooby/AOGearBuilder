@@ -17,5 +17,5 @@ export const baseGem = {
 	subType: 'None',
 	rarity: 'None',
 	rarityColor: '#FFFFFF',
-	imageId: 'https://i.imgur.com/5pGLWmQ.jpg'
+	imageId: 'assets/images/gem/0.jpg'
 };

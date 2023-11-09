@@ -1,4 +1,6 @@
-export const accessories = [
+import { getData } from "./dataManager";
+
+const accessoriesData = [
 	{
 		id: 0,
 		name: 'None',
@@ -1043,3 +1045,5 @@ export const accessories = [
 		imageId: 'https://i.imgur.com/12NPeyM.jpg'
 	}
 ];
+
+export const accessories = getData(accessoriesData);

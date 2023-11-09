@@ -1,4 +1,6 @@
-export const modifiers = [
+import { getData } from "./dataManager";
+
+const modifiersData = [
 	{
 		id: 0,
 		name: 'None',
@@ -44,3 +46,5 @@ export const modifiers = [
 		imageId: 'https://i.imgur.com/JvqDmI1.jpg'
 	}
 ];
+
+export const modifiers = getData(modifiersData);

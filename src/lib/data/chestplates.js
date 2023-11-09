@@ -1,4 +1,6 @@
-export const chestplates = [
+import { getData } from "./dataManager";
+
+const chestplatesData = [
 	{
 		id: 0,
 		name: 'None',
@@ -35,7 +37,7 @@ export const chestplates = [
 		warding: 0,
 		maxLevel: 120,
 		gemNo: 2,
-		mainType: 'Chestpalte',
+		mainType: 'Chestplate',
 		subType: 'None',
 		rarity: 'Uncommon',
 		rarityColor: '#817346',
@@ -283,3 +285,5 @@ export const chestplates = [
 		imageId: 'https://i.imgur.com/Fnu2uiY.gif'
 	}
 ];
+
+export const chestplates = getData(chestplatesData);
