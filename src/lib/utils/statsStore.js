@@ -15,7 +15,6 @@ import {
 	getEnchantById,
 	getModifierById
 } from '$lib/utils/getItemById';
-import { json } from '@sveltejs/kit';
 
 // Define the writable stores for your items
 export const accessory1 = writable(accessoryTemplate);
@@ -273,3 +272,15 @@ export function storeCurrentBuild() {
 	currentBuildId.set(currentBuild);
 	localStorage.setItem('currentBuild', currentBuild);
 }
+
+//Switched to a store method of storing finalStats to prepare for if i need to call these values in the future.
+//Old version i calcualte the final stats on the spot in the html, but with this version i used stores and calculated it in the script section of the component.
+export const finalPower = writable(0);
+export const finalDefense = writable(0);
+export const finalAgility = writable(0);
+export const finalAttackSpeed = writable(0);
+export const finalAttackSize = writable(0);
+export const finalIntensity = writable(0);
+export const finalInsanity = writable(0);
+export const finalDrawback = writable(0);
+export const finalWarding = writable(0);
