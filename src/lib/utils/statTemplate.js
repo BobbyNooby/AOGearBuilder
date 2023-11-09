@@ -17,7 +17,7 @@ export const statTemplate = {
 	subType: 'None',
 	rarity: 'None',
 	rarityColor: '#FFFFFF',
-	imageId: 'https://i.imgur.com/iwUANFD.jpg'
+	imageId: 'assets/images/unknown.png'
 };
 
 export const accessoryTemplate = {
@@ -39,7 +39,7 @@ export const accessoryTemplate = {
 	subType: 'None',
 	rarity: 'None',
 	rarityColor: '#7D7D7F',
-	imageId: 'https://i.imgur.com/ynJYNoA.jpg'
+	imageId: 'assets/images/accessory/0.jpg'
 };
 
 export const chestplateTemplate = {
@@ -61,7 +61,7 @@ export const chestplateTemplate = {
 	subType: 'None',
 	rarity: 'None',
 	rarityColor: '#FFFFFF',
-	imageId: 'https://i.imgur.com/Uj7r6Fm.jpg'
+	imageId: 'assets/images/chestplate/0.jpg'
 };
 
 export const pantsTemplate = {
@@ -83,7 +83,7 @@ export const pantsTemplate = {
 	subType: 'None',
 	rarity: 'None',
 	rarityColor: '#FFFFFF',
-	imageId: 'https://i.imgur.com/U9Z0chG.jpg'
+	imageId: 'assets/images/pants/0.jpg'
 };
 
 export const gemTemplate = {
@@ -105,7 +105,7 @@ export const gemTemplate = {
 	subType: 'None',
 	rarity: 'None',
 	rarityColor: '#FFFFFF',
-	imageId: 'https://i.imgur.com/5pGLWmQ.jpg'
+	imageId: 'assets/images/gem/0.jpg'
 };
 
 export const enchantTemplate = {
@@ -127,7 +127,7 @@ export const enchantTemplate = {
 	subType: 'None',
 	rarity: 'None',
 	rarityColor: '#FFFFFF',
-	imageId: 'https://i.imgur.com/PzIWvMv.jpg'
+	imageId: 'assets/images/enchant/0.jpg'
 };
 export const modifierTemplate = {
 	id: 0,
@@ -148,5 +148,5 @@ export const modifierTemplate = {
 	subType: 'None',
 	rarity: 'None',
 	rarityColor: '#FFFFFF',
-	imageId: 'https://i.imgur.com/iKfI8Cp.jpg'
+	imageId: 'assets/images/modifier/0.jpg'
 };

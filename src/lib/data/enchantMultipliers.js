@@ -1,4 +1,6 @@
-export const enchants = [
+import { getData } from "./dataManager";
+
+const enchantsData = [
 	{
 		id: 0,
 		name: 'None',
@@ -364,3 +366,5 @@ export const enchants = [
 		imageId: 'https://i.imgur.com/caatZjd.jpg'
 	}
 ];
+
+export const enchants = getData(enchantsData);

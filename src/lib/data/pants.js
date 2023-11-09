@@ -1,4 +1,6 @@
-export const pants = [
+import { getData } from "./dataManager";
+
+const pantsData = [
 	{
 		id: 0,
 		name: 'None',
@@ -283,3 +285,5 @@ export const pants = [
 		imageId: 'https://i.imgur.com/XWOR3Sz.gif'
 	}
 ];
+
+export const pants = getData(pantsData);

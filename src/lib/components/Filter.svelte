@@ -20,7 +20,7 @@
 		on:click={() => {
 			menuToggle();
 			playCorrect();
-		}}><img src="https://i.imgur.com/QyJ5lB3.jpg" alt="Gear Button" /></button
+		}}><img src="assets/images/filter.jpg" alt="Gear Button" /></button
 	>
 
 	{#if menuIsActive}

@@ -18,14 +18,14 @@
 	<meta property="og:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="og:title" content="Info" />
 	<meta property="og:description" content="Links to discord, and data spreadsheets." />
-	<meta property="og:image" content="https://i.imgur.com/axkyVz8.png" />
+	<meta property="og:image" content="assets/images/icon.png" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="twitter:title" content="Info" />
 	<meta property="twitter:description" content="Links to discord, and data spreadsheets." />
-	<meta property="twitter:image" content="https://i.imgur.com/axkyVz8.png" />
+	<meta property="twitter:image" content="assets/images/icon.png" />
 
 	<!-- Meta Tags Generated with https://metatags.io -->
 

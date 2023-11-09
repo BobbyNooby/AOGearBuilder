@@ -139,7 +139,7 @@
 				imageSrc = $pants1Modifier.imageId;
 				break;
 			default:
-				imageSrc = 'https://i.imgur.com/iwUANFD.jpg';
+				imageSrc = 'assets/images/unknown.jpg';
 				break;
 		}
 

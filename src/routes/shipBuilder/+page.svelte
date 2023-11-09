@@ -18,14 +18,14 @@
 	<meta property="og:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="og:title" content="Ship Builder" />
 	<meta property="og:description" content="Ship Builder for Arcane Odyssey by BobbyNooby" />
-	<meta property="og:image" content="https://i.imgur.com/axkyVz8.png" />
+	<meta property="og:image" content="assets/images/icon.png" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="twitter:title" content="Ship Builder" />
 	<meta property="twitter:description" content="Ship Builder for Arcane Odyssey by BobbyNooby" />
-	<meta property="twitter:image" content="https://i.imgur.com/axkyVz8.png" />
+	<meta property="twitter:image" content="assets/images/icon.png" />
 
 	<!-- Meta Tags Generated with https://metatags.io -->
 
