@@ -51,7 +51,7 @@
 	});
 
 	//Define categories here for the GearButton so i can just map it out with a for loop instead of manually adding one by one.
-	let categories = ['accessory1', 'accessory2', 'accessory3', 'chestplate1', 'pants1'];
+	const categories = ['accessory1', 'accessory2', 'accessory3', 'chestplate1', 'pants1'];
 
 	let filterType = 'all';
 	let sortType = 'default';

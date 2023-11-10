@@ -1,4 +1,4 @@
-import { getData } from "./dataManager";
+import { getData } from './dataManager';
 
 const accessoriesData = [
 	{

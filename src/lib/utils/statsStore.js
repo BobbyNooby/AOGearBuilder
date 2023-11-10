@@ -113,6 +113,28 @@ export function loadCode(inputString) {
 			const chestplate1Row = rows[3].split('.');
 			const pants1Row = rows[4].split('.');
 
+			//Patch for new atlantean virtuous changes.
+			if (accessory1Row[4] == '15' && accessory1Row[5] == '1') {
+				accessory1Row[4] = '0';
+				accessory1Row[5] = '0';
+			}
+			if (accessory2Row[4] == '15' && accessory2Row[5] == '1') {
+				accessory2Row[4] = '0';
+				accessory2Row[5] = '0';
+			}
+			if (accessory3Row[4] == '15' && accessory3Row[5] == '1') {
+				accessory3Row[4] = '0';
+				accessory3Row[5] = '0';
+			}
+			if (chestplate1Row[4] == '15' && chestplate1Row[5] == '1') {
+				chestplate1Row[4] = '0';
+				chestplate1Row[5] = '0';
+			}
+			if (pants1Row[4] == '15' && pants1Row[5] == '1') {
+				pants1Row[4] = '0';
+				pants1Row[5] = '0';
+			}
+
 			accessory1.set(getAccessoryById(parseInt(accessory1Row[0])));
 			accessory1Gem1.set(getGemById(parseInt(accessory1Row[1])));
 			accessory1Gem2.set(getGemById(parseInt(accessory1Row[2])));
@@ -254,7 +276,20 @@ export function validateEntry(item, category = null) {
 		(item.subType == 'Helmet' &&
 			((get(accessory1).subType == 'Helmet' && category != 'accessory1') ||
 				(get(accessory2).subType == 'Helmet' && category != 'accessory2') ||
-				(get(accessory3).subType == 'Helmet' && category != 'accessory3')))
+				(get(accessory3).subType == 'Helmet' && category != 'accessory3'))) ||
+		//Added new virtuous and atlantean conditions
+		(item.name == 'Virtuous' &&
+			((category == 'accessory1Enchant' && get(accessory1Modifier).name == 'Atlantean Essence') ||
+				(category == 'accessory2Enchant' && get(accessory2Modifier).name == 'Atlantean Essence') ||
+				(category == 'accessory3Enchant' && get(accessory3Modifier).name == 'Atlantean Essence') ||
+				(category == 'chestplate1Enchant' && get(accessory3Modifier).name == 'Atlantean Essence') ||
+				(category == 'pants1Enchant' && get(accessory3Modifier).name == 'Atlantean Essence'))) ||
+		(item.name == 'Atlantean Essence' &&
+			((category == 'accessory1Modifier' && get(accessory1Enchant).name == 'Virtuous') ||
+				(category == 'accessory2Modifier' && get(accessory2Enchant).name == 'Virtuous') ||
+				(category == 'accessory3Modifier' && get(accessory3Enchant).name == 'Virtuous') ||
+				(category == 'chestplate1Modifier' && get(accessory3Enchant).name == 'Virtuous') ||
+				(category == 'pants1Modifier' && get(accessory3Enchant).name == 'Virtuous')))
 	) {
 		return false;
 	} else {
