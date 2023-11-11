@@ -28,12 +28,12 @@ const modifiersData = [
 		name: 'Atlantean Essence',
 		legend:
 			'Gives stats per 10 levels rounded down in the following order depending on if your item has the stat or not: Power -> Defense -> Attack Size -> Attack Speed -> Agility -> Intensity -> Power',
-		defense: 8.09, // Defense Changed?
+		defense: 8.83, // Defense Changed?
 		power: 1,
-		agility: 1.5,
-		attackSize: 1.5,
-		attackSpeed: 1.5,
-		intensity: 1.5,
+		agility: 3,
+		attackSize: 3,
+		attackSpeed: 3,
+		intensity: 3,
 		insanity: 1,
 		drawback: 0,
 		warding: 0,

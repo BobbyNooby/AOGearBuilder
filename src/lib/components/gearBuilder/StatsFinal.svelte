@@ -209,7 +209,7 @@
 
 <div>
 	<div class=" flex items-center">
-		<img class=" h-6" src="assets/images/itemstat/power.png" alt="Power" />
+		<img class=" h-6" src="https://i.imgur.com/Qnt1WCW.png" alt="Power" />
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FF8400; -webkit-text-stroke: 1.5px; text-align: center;"
 		>
@@ -220,7 +220,7 @@
 	</div>
 
 	<div class=" flex items-center">
-		<img class=" h-6" src="assets/images/itemstat/defense.png" alt="Defense" />
+		<img class=" h-6" src="https://i.imgur.com/xm6Io7L.png" alt="Defense" />
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #737373; -webkit-text-stroke: 1.5px; text-align: center;"
 		>
@@ -231,7 +231,7 @@
 	</div>
 
 	<div class=" flex items-center">
-		<img class=" h-6" src="assets/images/itemstat/agility.png" alt="Agility" />
+		<img class=" h-6" src="https://i.imgur.com/ul1c2Ta.png" alt="Agility" />
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF;  -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #00ffff; text-align: center;"
 		>
@@ -242,7 +242,7 @@
 	</div>
 
 	<div class=" flex items-center">
-		<img class=" h-6" src="assets/images/itemstat/attackspeed.png" alt="Attack Speed" />
+		<img class=" h-6" src="https://i.imgur.com/KWzGEI7.png" alt="Attack Speed" />
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF;  -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #0077ff; text-align: center;"
 		>
@@ -253,7 +253,7 @@
 	</div>
 
 	<div class=" flex items-center">
-		<img class=" h-6" src="assets/images/itemstat/attacksize.png" alt="Attack Size" />
+		<img class=" h-6" src="https://i.imgur.com/TwDybjN.png" alt="Attack Size" />
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #00FF00; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #471559; text-align: center;"
 		>
@@ -264,7 +264,7 @@
 	</div>
 
 	<div class=" flex items-center">
-		<img class=" h-6" src="assets/images/itemstat/intensity.png" alt="Intensity" />
+		<img class=" h-6" src="https://i.imgur.com/Qgqq9fz.png" alt="Intensity" />
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFF200; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #712402; text-align: center;"
 		>
@@ -275,7 +275,7 @@
 	</div>
 
 	<div class=" flex items-center">
-		<img class=" h-6" src="assets/images/itemstat/insanity.png" alt="Insanity" />
+		<img class=" h-6" src="https://i.imgur.com/zuPji7I.png" alt="Insanity" />
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #8B27DB; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: ##DB0C45; text-align: center;"
 		>
@@ -286,7 +286,7 @@
 	</div>
 
 	<div class=" flex items-center">
-		<img class=" h-6" src="assets/images/itemstat/drawback.png" alt="Drawback" />
+		<img class=" h-6" src="https://i.imgur.com/43RZKlz.png" alt="Drawback" />
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #DC4040; -webkit-text-stroke: 1.5px; text-align: center;"
 		>
@@ -297,7 +297,7 @@
 	</div>
 
 	<div class=" flex items-center">
-		<img class=" h-6" src="assets/images/itemstat/warding.png" alt="Warding" />
+		<img class=" h-6" src="https://i.imgur.com/ZMoqTvi.png" alt="Warding" />
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #CBCB55; text-align: center;"
 		>

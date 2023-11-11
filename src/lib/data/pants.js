@@ -1,4 +1,4 @@
-import { getData } from "./dataManager";
+import { getData } from './dataManager';
 
 const pantsData = [
 	{
@@ -29,9 +29,9 @@ const pantsData = [
 		defense: 0,
 		power: 0,
 		agility: 0,
-		attackSize: 29,
+		attackSize: 39,
 		attackSpeed: 0,
-		intensity: 20,
+		intensity: 26,
 		insanity: 0,
 		drawback: 0,
 		warding: 0,
@@ -74,7 +74,7 @@ const pantsData = [
 		power: 0,
 		agility: 0,
 		attackSize: 0,
-		attackSpeed: 26,
+		attackSpeed: 36,
 		intensity: 0,
 		insanity: 0,
 		drawback: 0,
@@ -182,9 +182,9 @@ const pantsData = [
 			'A white robe usually worn by Sirens, which are dangerous mythical creatures found in the Dark Sea. They appear as beautiful women, singing, only to lure in sailors and kill them with their wings and fangs.',
 		defense: 0,
 		power: 0,
-		agility: 14,
+		agility: 22,
 		attackSize: 0,
-		attackSpeed: 23,
+		attackSpeed: 37,
 		intensity: 0,
 		insanity: 0,
 		drawback: 0,
@@ -253,7 +253,7 @@ const pantsData = [
 		attackSpeed: 0,
 		intensity: 0,
 		insanity: 0,
-		drawback: 1,
+		drawback: 2,
 		warding: 0,
 		maxLevel: 120,
 		gemNo: 2,
@@ -283,6 +283,28 @@ const pantsData = [
 		rarity: 'Uncommon',
 		rarityColor: '#817346',
 		imageId: 'https://i.imgur.com/XWOR3Sz.gif'
+	},
+	{
+		id: 13,
+		name: 'Sunken Warrior Boots',
+		legend:
+			'A green and gold set of boots made out of arcanium metal that have spent hundreds of years underwater, causing their properties to change. They seem to constantly produce water.',
+		defense: 153,
+		power: 0,
+		agility: 0,
+		attackSize: 0,
+		attackSpeed: 26,
+		intensity: 0,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 120,
+		gemNo: 2,
+		mainType: 'Pants',
+		subType: 'None',
+		rarity: 'Rare',
+		rarityColor: '#6765EC',
+		imageId: 'https://i.imgur.com/eRGTHy1.jpg'
 	}
 ];
 
