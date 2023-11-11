@@ -326,7 +326,7 @@ const chestplatesData = [
 		subType: 'None',
 		rarity: 'Rare',
 		rarityColor: '#6765EC',
-		imageId: 'https://i.imgur.com/66C9rE9.jpg'
+		imageId: 'https://i.imgur.com/6ieKg6a.jpg'
 	}
 ];
 

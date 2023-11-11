@@ -844,7 +844,7 @@ const accessoriesData = [
 		attackSpeed: 0,
 		intensity: 0,
 		insanity: 0,
-		drawback: 1,
+		drawback: 2,
 		warding: 0,
 		maxLevel: 120,
 		gemNo: 2,

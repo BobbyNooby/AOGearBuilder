@@ -304,7 +304,7 @@ const pantsData = [
 		subType: 'None',
 		rarity: 'Rare',
 		rarityColor: '#6765EC',
-		imageId: 'https://i.imgur.com/eRGTHy1.jpg'
+		imageId: 'https://i.imgur.com/LmkJTxV.jpg'
 	}
 ];
 
