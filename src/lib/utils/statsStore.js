@@ -282,14 +282,15 @@ export function validateEntry(item, category = null) {
 			((category == 'accessory1Enchant' && get(accessory1Modifier).name == 'Atlantean Essence') ||
 				(category == 'accessory2Enchant' && get(accessory2Modifier).name == 'Atlantean Essence') ||
 				(category == 'accessory3Enchant' && get(accessory3Modifier).name == 'Atlantean Essence') ||
-				(category == 'chestplate1Enchant' && get(accessory3Modifier).name == 'Atlantean Essence') ||
-				(category == 'pants1Enchant' && get(accessory3Modifier).name == 'Atlantean Essence'))) ||
+				(category == 'chestplate1Enchant' &&
+					get(chestplate1Modifier).name == 'Atlantean Essence') ||
+				(category == 'pants1Enchant' && get(pants1Modifier).name == 'Atlantean Essence'))) ||
 		(item.name == 'Atlantean Essence' &&
 			((category == 'accessory1Modifier' && get(accessory1Enchant).name == 'Virtuous') ||
 				(category == 'accessory2Modifier' && get(accessory2Enchant).name == 'Virtuous') ||
 				(category == 'accessory3Modifier' && get(accessory3Enchant).name == 'Virtuous') ||
-				(category == 'chestplate1Modifier' && get(accessory3Enchant).name == 'Virtuous') ||
-				(category == 'pants1Modifier' && get(accessory3Enchant).name == 'Virtuous')))
+				(category == 'chestplate1Modifier' && get(chestplate1Enchant).name == 'Virtuous') ||
+				(category == 'pants1Modifier' && get(pants1Enchant).name == 'Virtuous')))
 	) {
 		return false;
 	} else {
