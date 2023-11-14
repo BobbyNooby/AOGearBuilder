@@ -1,5 +1,5 @@
 <script>
-	import { playCorrect, playWrong } from '$lib/utils/sound';
+	import { playCorrect } from '$lib/utils/sound';
 	import { loadCode } from '$lib/utils/statsStore';
 	import { fade } from 'svelte/transition';
 
@@ -20,7 +20,6 @@
 		menuToggle();
 	}
 
-	let deletedBuildName = '';
 	let deletedBuild = null;
 
 	function startDelete(savedBuild) {

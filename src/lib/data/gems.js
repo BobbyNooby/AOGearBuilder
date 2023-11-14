@@ -1,4 +1,4 @@
-import { getData } from "./dataManager";
+import { getData } from './dataManager';
 
 const gemsData = [
 	{
@@ -300,7 +300,7 @@ const gemsData = [
 		id: 14,
 		name: 'Prefect Painite',
 		legend: 'The world shall know pain.',
-		defense: 125,
+		defense: 107,
 		power: 0,
 		agility: 0,
 		attackSize: 0,

@@ -1,6 +1,6 @@
 <script>
 	import { playCorrect, playWrong } from '$lib/utils/sound.js';
-	import { finalPower, loadCode } from '$lib/utils/statsStore';
+	import { loadCode } from '$lib/utils/statsStore';
 
 	let inputString = '';
 
