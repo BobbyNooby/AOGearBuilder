@@ -113,88 +113,92 @@
 				'warding'
 			];
 
-			const baseValues = {};
-
+			const tempItem = {
+				power: 0,
+				defense: 0,
+				agility: 0,
+				attackSize: 0,
+				attackSpeed: 0,
+				intensity: 0,
+				insanity: 0,
+				drawback: 0,
+				warding: 0
+			};
+			//Pre modifiers calculation.
 			for (const attribute of attributes) {
-				baseValues[attribute] =
+				// Run through each stat and calculate their value
+				tempItem[attribute] =
 					gears[item].base[attribute] +
 					gears[item].gem1[attribute] +
 					gears[item].gem2[attribute] +
 					gears[item].gem3[attribute] +
-					(attribute === 'warding' || attribute === 'insanity' || attribute === 'drawback'
-						? gears[item].enchant[attribute] // Add value directly
-						: Math.floor(gears[item].enchant[attribute] * (gears[item].base.maxLevel / 10))); // Multiply by maxLevel / 10
+					(attribute === 'warding' || attribute === 'insanity' || attribute === 'drawback' // Test if the attribute is any of these 3
+						? gears[item].enchant[attribute] // Add value directly if it is
+						: Math.floor(gears[item].enchant[attribute] * (gears[item].base.maxLevel / 10))); // Else multiply by maxLevel / 10
 			}
 
-			const {
-				power,
-				defense,
-				agility,
-				attackSpeed,
-				attackSize,
-				intensity,
-				insanity,
-				drawback,
-				warding
-			} = baseValues;
+			//Modifier Calculations
+			const atlantenOrder = [
+				'power',
+				'defense',
+				'attackSize',
+				'attackSpeed',
+				'agility',
+				'intensity'
+			];
 
-			//Add the values
-			finalPowerTemp += power;
-			finalDefenseTemp += defense;
-			finalAgilityTemp += agility;
-			finalAttackSpeedTemp += attackSpeed;
-			finalAttackSizeTemp += attackSize;
-			finalIntensityTemp += intensity;
-			finalInsanityTemp += insanity;
-			finalDrawbackTemp += drawback;
-			finalWardingTemp += warding;
+			if (gears[item].modifier.name == 'Atlantean Essence') {
+				//Calculations for Atlantean
+				if (
+					//If all is more than zero add power
+					tempItem.power > 0 &&
+					tempItem.defense > 0 &&
+					tempItem.agility > 0 &&
+					tempItem.attackSize > 0 &&
+					tempItem.attackSpeed > 0 &&
+					tempItem.intensity > 0
+				) {
+					tempItem.power += Math.floor(
+						gears[item].modifier.power * (gears[item].base.maxLevel / 10)
+					);
+				} else {
+					// Else do normal atlantean calc
+					for (let index = 0; index < atlantenOrder.length; index++) {
+						let currentStat = atlantenOrder[index];
+						let prevStat = atlantenOrder[index - 1];
 
-			//Atlantean calcs
-			if (
-				power == 0 ||
-				(power > 0 &&
-					defense > 0 &&
-					agility > 0 &&
-					attackSpeed > 0 &&
-					attackSize > 0 &&
-					intensity > 0)
-			) {
-				finalPowerTemp += Math.floor(gears[item].modifier.power * (gears[item].base.maxLevel / 10));
-				finalInsanityTemp += insanity + gears[item].modifier.insanity;
-			} else if (power > 0 && defense == 0) {
-				finalDefenseTemp += Math.floor(
-					gears[item].modifier.defense * (gears[item].base.maxLevel / 10)
-				);
-				finalInsanityTemp += insanity + gears[item].modifier.insanity;
-			} else if (power > 0 && defense > 0 && attackSize == 0) {
-				finalAttackSizeTemp += Math.floor(
-					gears[item].modifier.attackSize * (gears[item].base.maxLevel / 10)
-				);
-				finalInsanityTemp += insanity + gears[item].modifier.insanity;
-			} else if (power > 0 && defense > 0 && attackSize > 0 && attackSpeed == 0) {
-				finalAttackSpeedTemp += Math.floor(
-					gears[item].modifier.attackSpeed * (gears[item].base.maxLevel / 10)
-				);
-				finalInsanityTemp += insanity + gears[item].modifier.insanity;
-			} else if (power > 0 && defense > 0 && attackSize > 0 && attackSpeed > 0 && agility == 0) {
-				finalAgilityTemp += Math.floor(
-					gears[item].modifier.agility * (gears[item].base.maxLevel / 10)
-				);
-				finalInsanityTemp += insanity + gears[item].modifier.insanity;
-			} else if (
-				power > 0 &&
-				defense > 0 &&
-				attackSize > 0 &&
-				attackSpeed > 0 &&
-				agility > 0 &&
-				intensity == 0
-			) {
-				finalIntensityTemp += Math.floor(
-					gears[item].modifier.intensity * (gears[item].base.maxLevel / 10)
-				);
-				finalInsanityTemp += insanity + gears[item].modifier.insanity;
+						console.log(tempItem, atlantenOrder[0], currentStat);
+
+						if (tempItem[currentStat] == 0 && (prevStat === undefined || tempItem[prevStat] > 0)) {
+							tempItem[currentStat] += Math.floor(
+								gears[item].modifier[currentStat] * (gears[item].base.maxLevel / 10)
+							);
+							tempItem.insanity += gears[item].modifier.insanity;
+							break;
+						}
+					}
+				}
+			} else {
+				// Treat the rest of the modifiers as enchants.
+				for (const attribute of attributes) {
+					tempItem[attribute] += Math.floor(
+						gears[item].modifier[attribute] * (gears[item].base.maxLevel / 10)
+					);
+				}
 			}
+
+			//Add the values to temp
+			finalPowerTemp += tempItem.power;
+			finalDefenseTemp += tempItem.defense;
+			finalAgilityTemp += tempItem.agility;
+			finalAttackSpeedTemp += tempItem.attackSpeed;
+			finalAttackSizeTemp += tempItem.attackSize;
+			finalIntensityTemp += tempItem.intensity;
+			finalInsanityTemp += tempItem.insanity;
+			finalDrawbackTemp += tempItem.drawback;
+			finalWardingTemp += tempItem.warding;
 		}
+		//Set the final stats.
 		finalPower.set(finalPowerTemp);
 		finalDefense.set(finalDefenseTemp);
 		finalAgility.set(finalAgilityTemp);

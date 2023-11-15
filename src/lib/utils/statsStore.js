@@ -52,42 +52,76 @@ export const pants1Gem3 = writable(gemTemplate);
 export const pants1Enchant = writable(enchantTemplate);
 export const pants1Modifier = writable(modifierTemplate);
 
+export function getCurrentGearSet() {
+	const currentGearSet = {
+		accessory1: {
+			base: accessory1,
+			gem1: accessory1Gem1,
+			gem2: accessory1Gem2,
+			gem3: accessory1Gem3,
+			enchant: accessory1Enchant,
+			modifier: accessory1Modifier
+		},
+		accessory2: {
+			base: accessory2,
+			gem1: accessory2Gem1,
+			gem2: accessory2Gem2,
+			gem3: accessory2Gem3,
+			enchant: accessory2Enchant,
+			modifier: accessory2Modifier
+		},
+		accessory3: {
+			base: accessory3,
+			gem1: accessory3Gem1,
+			gem2: accessory3Gem2,
+			gem3: accessory3Gem3,
+			enchant: accessory3Enchant,
+			modifier: accessory3Modifier
+		},
+		chestplate1: {
+			base: chestplate1,
+			gem1: chestplate1Gem1,
+			gem2: chestplate1Gem2,
+			gem3: chestplate1Gem3,
+			enchant: chestplate1Enchant,
+			modifier: chestplate1Modifier
+		},
+		pants1: {
+			base: pants1,
+			gem1: pants1Gem1,
+			gem2: pants1Gem2,
+			gem3: pants1Gem3,
+			enchant: pants1Enchant,
+			modifier: pants1Modifier
+		}
+	};
+	return currentGearSet;
+}
 // Function to reset all stores
 export function resetAllStores() {
-	accessory1.set(accessoryTemplate);
-	accessory1Gem1.set(gemTemplate);
-	accessory1Gem2.set(gemTemplate);
-	accessory1Gem3.set(gemTemplate);
-	accessory1Enchant.set(enchantTemplate);
-	accessory1Modifier.set(modifierTemplate);
+	const gears = getCurrentGearSet();
 
-	accessory2.set(accessoryTemplate);
-	accessory2Gem1.set(gemTemplate);
-	accessory2Gem2.set(gemTemplate);
-	accessory2Gem3.set(gemTemplate);
-	accessory2Enchant.set(enchantTemplate);
-	accessory2Modifier.set(modifierTemplate);
-
-	accessory3.set(accessoryTemplate);
-	accessory3Gem1.set(gemTemplate);
-	accessory3Gem2.set(gemTemplate);
-	accessory3Gem3.set(gemTemplate);
-	accessory3Enchant.set(enchantTemplate);
-	accessory3Modifier.set(modifierTemplate);
-
-	chestplate1.set(chestplateTemplate);
-	chestplate1Gem1.set(gemTemplate);
-	chestplate1Gem2.set(gemTemplate);
-	chestplate1Gem3.set(gemTemplate);
-	chestplate1Enchant.set(enchantTemplate);
-	chestplate1Modifier.set(modifierTemplate);
-
-	pants1.set(pantsTemplate);
-	pants1Gem1.set(gemTemplate);
-	pants1Gem2.set(gemTemplate);
-	pants1Gem3.set(gemTemplate);
-	pants1Enchant.set(enchantTemplate);
-	pants1Modifier.set(modifierTemplate);
+	for (const category in gears) {
+		switch (true) {
+			case category.startsWith('accessory') == true:
+				gears[category].base.set(accessoryTemplate);
+				break;
+			case category.startsWith('chestplate') == true:
+				console.log(gears[category].base);
+				gears[category].base.set(chestplateTemplate);
+				break;
+			case category.startsWith('pants') == true:
+				gears[category].base.set(pantsTemplate);
+				break;
+			default:
+				break;
+		}
+		gears[category].gem1.set(gemTemplate);
+		gears[category].gem2.set(gemTemplate);
+		gears[category].gem3.set(gemTemplate);
+		gears[category].enchant.set(enchantTemplate);
+		gears[category].modifier.set(modifierTemplate);
+	}
 }
 
 export function loadCode(inputString) {
@@ -112,6 +146,13 @@ export function loadCode(inputString) {
 			const accessory3Row = rows[2].split('.');
 			const chestplate1Row = rows[3].split('.');
 			const pants1Row = rows[4].split('.');
+			// console.log(rows);
+
+			//LEAVE THIS FOR TOMMORROW OPTIMIZE
+			// for (let index = 0; index < rows.length; index++) {
+			// 	const currentRow = rows[index].split('.');
+			// 	console.log(currentRow);
+			// }
 
 			//Patch for new atlantean virtuous changes.
 			if (accessory1Row[4] == '15' && accessory1Row[5] == '1') {
@@ -188,6 +229,7 @@ export function generateCode() {
 	return: code generated
 
 	*/
+
 	let code =
 		get(accessory1).id +
 		'.' +
