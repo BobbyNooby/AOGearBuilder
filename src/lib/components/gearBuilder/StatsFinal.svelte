@@ -161,6 +161,7 @@
 					tempItem.power += Math.floor(
 						gears[item].modifier.power * (gears[item].base.maxLevel / 10)
 					);
+					tempItem.insanity += gears[item].modifier.insanity;
 				} else {
 					// Else do normal atlantean calc
 					for (let index = 0; index < atlantenOrder.length; index++) {
