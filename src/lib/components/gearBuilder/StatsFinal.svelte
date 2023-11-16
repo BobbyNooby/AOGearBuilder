@@ -168,8 +168,6 @@
 						let currentStat = atlantenOrder[index];
 						let prevStat = atlantenOrder[index - 1];
 
-						console.log(tempItem, atlantenOrder[0], currentStat);
-
 						if (tempItem[currentStat] == 0 && (prevStat === undefined || tempItem[prevStat] > 0)) {
 							tempItem[currentStat] += Math.floor(
 								gears[item].modifier[currentStat] * (gears[item].base.maxLevel / 10)

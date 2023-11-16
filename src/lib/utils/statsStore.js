@@ -107,7 +107,6 @@ export function resetAllStores() {
 				gears[category].base.set(accessoryTemplate);
 				break;
 			case category.startsWith('chestplate') == true:
-				console.log(gears[category].base);
 				gears[category].base.set(chestplateTemplate);
 				break;
 			case category.startsWith('pants') == true:
@@ -122,6 +121,22 @@ export function resetAllStores() {
 		gears[category].enchant.set(enchantTemplate);
 		gears[category].modifier.set(modifierTemplate);
 	}
+}
+
+export function patchBuildCode(inputString) {
+	const rows = inputString.split("'");
+	const modifiedRows = [];
+
+	for (const row of rows) {
+		const currentRow = row.split('.');
+		if (currentRow[4] == '15' && currentRow[5] == '1') {
+			currentRow[4] = '0';
+			currentRow[5] = '0';
+		}
+		modifiedRows.push(currentRow.join('.'));
+	}
+
+	return modifiedRows;
 }
 
 export function loadCode(inputString) {
@@ -140,76 +155,34 @@ export function loadCode(inputString) {
 
 		if (inputString.length >= 59) {
 			// Parse the input string
-			const rows = inputString.split("'");
-			const accessory1Row = rows[0].split('.');
-			const accessory2Row = rows[1].split('.');
-			const accessory3Row = rows[2].split('.');
-			const chestplate1Row = rows[3].split('.');
-			const pants1Row = rows[4].split('.');
-			// console.log(rows);
 
-			//LEAVE THIS FOR TOMMORROW OPTIMIZE
-			// for (let index = 0; index < rows.length; index++) {
-			// 	const currentRow = rows[index].split('.');
-			// 	console.log(currentRow);
-			// }
+			const rows = patchBuildCode(inputString);
+			const gears = getCurrentGearSet();
 
-			//Patch for new atlantean virtuous changes.
-			if (accessory1Row[4] == '15' && accessory1Row[5] == '1') {
-				accessory1Row[4] = '0';
-				accessory1Row[5] = '0';
+			let index = 0;
+			for (const category in gears) {
+				const currentRow = rows[index].split('.');
+
+				switch (true) {
+					case category.startsWith('accessory') == true:
+						gears[category].base.set(getAccessoryById(parseInt(currentRow[0])));
+						break;
+					case category.startsWith('chestplate') == true:
+						gears[category].base.set(getChestplateById(parseInt(currentRow[0])));
+						break;
+					case category.startsWith('pants') == true:
+						gears[category].base.set(getPantsById(parseInt(currentRow[0])));
+						break;
+					default:
+						break;
+				}
+				gears[category].gem1.set(getGemById(parseInt(currentRow[1])));
+				gears[category].gem2.set(getGemById(parseInt(currentRow[2])));
+				gears[category].gem3.set(getGemById(parseInt(currentRow[3])));
+				gears[category].enchant.set(getEnchantById(parseInt(currentRow[4])));
+				gears[category].modifier.set(getModifierById(parseInt(currentRow[5])));
+				index += 1;
 			}
-			if (accessory2Row[4] == '15' && accessory2Row[5] == '1') {
-				accessory2Row[4] = '0';
-				accessory2Row[5] = '0';
-			}
-			if (accessory3Row[4] == '15' && accessory3Row[5] == '1') {
-				accessory3Row[4] = '0';
-				accessory3Row[5] = '0';
-			}
-			if (chestplate1Row[4] == '15' && chestplate1Row[5] == '1') {
-				chestplate1Row[4] = '0';
-				chestplate1Row[5] = '0';
-			}
-			if (pants1Row[4] == '15' && pants1Row[5] == '1') {
-				pants1Row[4] = '0';
-				pants1Row[5] = '0';
-			}
-
-			accessory1.set(getAccessoryById(parseInt(accessory1Row[0])));
-			accessory1Gem1.set(getGemById(parseInt(accessory1Row[1])));
-			accessory1Gem2.set(getGemById(parseInt(accessory1Row[2])));
-			accessory1Gem3.set(getGemById(parseInt(accessory1Row[3])));
-			accessory1Enchant.set(getEnchantById(parseInt(accessory1Row[4])));
-			accessory1Modifier.set(getModifierById(parseInt(accessory1Row[5])));
-
-			accessory2.set(getAccessoryById(parseInt(accessory2Row[0])));
-			accessory2Gem1.set(getGemById(parseInt(accessory2Row[1])));
-			accessory2Gem2.set(getGemById(parseInt(accessory2Row[2])));
-			accessory2Gem3.set(getGemById(parseInt(accessory2Row[3])));
-			accessory2Enchant.set(getEnchantById(parseInt(accessory2Row[4])));
-			accessory2Modifier.set(getModifierById(parseInt(accessory2Row[5])));
-
-			accessory3.set(getAccessoryById(parseInt(accessory3Row[0])));
-			accessory3Gem1.set(getGemById(parseInt(accessory3Row[1])));
-			accessory3Gem2.set(getGemById(parseInt(accessory3Row[2])));
-			accessory3Gem3.set(getGemById(parseInt(accessory3Row[3])));
-			accessory3Enchant.set(getEnchantById(parseInt(accessory3Row[4])));
-			accessory3Modifier.set(getModifierById(parseInt(accessory3Row[5])));
-
-			chestplate1.set(getChestplateById(parseInt(chestplate1Row[0])));
-			chestplate1Gem1.set(getGemById(parseInt(chestplate1Row[1])));
-			chestplate1Gem2.set(getGemById(parseInt(chestplate1Row[2])));
-			chestplate1Gem3.set(getGemById(parseInt(chestplate1Row[3])));
-			chestplate1Enchant.set(getEnchantById(parseInt(chestplate1Row[4])));
-			chestplate1Modifier.set(getModifierById(parseInt(chestplate1Row[5])));
-
-			pants1.set(getPantsById(parseInt(pants1Row[0])));
-			pants1Gem1.set(getGemById(parseInt(pants1Row[1])));
-			pants1Gem2.set(getGemById(parseInt(pants1Row[2])));
-			pants1Gem3.set(getGemById(parseInt(pants1Row[3])));
-			pants1Enchant.set(getEnchantById(parseInt(pants1Row[4])));
-			pants1Modifier.set(getModifierById(parseInt(pants1Row[5])));
 			storeCurrentBuild();
 			return true;
 		} else {
@@ -230,68 +203,25 @@ export function generateCode() {
 
 	*/
 
-	let code =
-		get(accessory1).id +
-		'.' +
-		get(accessory1Gem1).id +
-		'.' +
-		get(accessory1Gem2).id +
-		'.' +
-		get(accessory1Gem3).id +
-		'.' +
-		get(accessory1Enchant).id +
-		'.' +
-		get(accessory1Modifier).id +
-		"'" +
-		get(accessory2).id +
-		'.' +
-		get(accessory2Gem1).id +
-		'.' +
-		get(accessory2Gem2).id +
-		'.' +
-		get(accessory2Gem3).id +
-		'.' +
-		get(accessory2Enchant).id +
-		'.' +
-		get(accessory2Modifier).id +
-		"'" +
-		get(accessory3).id +
-		'.' +
-		get(accessory3Gem1).id +
-		'.' +
-		get(accessory3Gem2).id +
-		'.' +
-		get(accessory3Gem3).id +
-		'.' +
-		get(accessory3Enchant).id +
-		'.' +
-		get(accessory3Modifier).id +
-		"'" +
-		get(chestplate1).id +
-		'.' +
-		get(chestplate1Gem1).id +
-		'.' +
-		get(chestplate1Gem2).id +
-		'.' +
-		get(chestplate1Gem3).id +
-		'.' +
-		get(chestplate1Enchant).id +
-		'.' +
-		get(chestplate1Modifier).id +
-		"'" +
-		get(pants1).id +
-		'.' +
-		get(pants1Gem1).id +
-		'.' +
-		get(pants1Gem2).id +
-		'.' +
-		get(pants1Gem3).id +
-		'.' +
-		get(pants1Enchant).id +
-		'.' +
-		get(pants1Modifier).id;
+	const gears = getCurrentGearSet();
 
-	// retirn code generated
+	let rows = []; // Initialize temp array
+
+	for (const category in gears) {
+		const itemCategory = gears[category];
+		const sectionIds = []; // Initialize temporary array for the row
+
+		for (const section in itemCategory) {
+			sectionIds.push(get(itemCategory[section]).id); // Get id for each base / gem1 / gem2 / gem3 / enchant / modifier and add it to the sectionIds
+		}
+
+		rows.push(sectionIds.join('.')); // Join the ids together with a .
+	}
+
+	let code = rows.join("'"); //Join the rows together with a '
+	//The reason for using arrays and joining them was the old + ''' and + '.' method had extra . and ' at the end. This method removes the extra.
+
+	// return code generated
 	return code;
 }
 
