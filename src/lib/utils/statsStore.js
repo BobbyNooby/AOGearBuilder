@@ -5,7 +5,8 @@ import {
 	pantsTemplate,
 	gemTemplate,
 	enchantTemplate,
-	modifierTemplate
+	modifierTemplate,
+	statTemplate
 } from './statTemplate';
 import {
 	getAccessoryById,
@@ -124,16 +125,59 @@ export function resetAllStores() {
 }
 
 export function patchBuildCode(inputString) {
+	//Prevent url loading code modifications
+
 	const rows = inputString.split("'");
 	const modifiedRows = [];
 
+	let index = 0;
+	const noDupeSubTypes = ['Amulet', 'Helmet'];
+	let accessories = []; // Set up to test for dupe accessories
 	for (const row of rows) {
 		const currentRow = row.split('.');
+
+		let currentGear = statTemplate;
+		if (index <= 2) {
+			currentGear = getAccessoryById(parseInt(currentRow[0]));
+
+			if (
+				accessories.includes(currentGear) || //Patch duplicate accessories
+				(noDupeSubTypes.includes(currentGear.subType) &&
+					accessories.some((accessory) => accessory.subType === currentGear.subType)) // Patch duplicate subType
+			) {
+				currentGear = getAccessoryById(0);
+				currentRow[0] = '0';
+			}
+
+			accessories.push(currentGear);
+		} else if (index == 3) {
+			currentGear = getChestplateById(parseInt(currentRow[0]));
+		} else if (index > 3) {
+			currentGear = getPantsById(parseInt(currentRow[0]));
+		}
+
+		//Fix atlantean virtuous incompatibility
 		if (currentRow[4] == '15' && currentRow[5] == '1') {
 			currentRow[4] = '0';
 			currentRow[5] = '0';
 		}
+
+		//Extra gems fix
+		let gemCount = [];
+		for (let i = 1; i <= 3; i++) {
+			if (parseInt(currentRow[i]) > 0) {
+				gemCount.push(true);
+			}
+		}
+
+		if (gemCount.length > currentGear.gemNo) {
+			for (let i = 3; i >= currentGear.gemNo + 1; i--) {
+				currentRow[i] = '0';
+			}
+		}
+
 		modifiedRows.push(currentRow.join('.'));
+		index += 1;
 	}
 
 	return modifiedRows;
