@@ -130,10 +130,9 @@ export function patchBuildCode(inputString) {
 	const rows = inputString.split("'");
 	const modifiedRows = [];
 
-	let index = 0;
 	const noDupeSubTypes = ['Amulet', 'Helmet'];
 	let accessories = []; // Set up to test for dupe accessories
-	for (const row of rows) {
+	for (let [index, row] of rows.entries()) {
 		const currentRow = row.split('.');
 
 		let currentGear = statTemplate;
@@ -152,8 +151,10 @@ export function patchBuildCode(inputString) {
 			accessories.push(currentGear);
 		} else if (index == 3) {
 			currentGear = getChestplateById(parseInt(currentRow[0]));
-		} else if (index > 3) {
+		} else if (index == 4) {
 			currentGear = getPantsById(parseInt(currentRow[0]));
+		} else {
+			currentGear = statTemplate;
 		}
 
 		//Fix atlantean virtuous incompatibility
@@ -163,21 +164,13 @@ export function patchBuildCode(inputString) {
 		}
 
 		//Extra gems fix
-		let gemCount = [];
 		for (let i = 1; i <= 3; i++) {
-			if (parseInt(currentRow[i]) > 0) {
-				gemCount.push(true);
-			}
-		}
-
-		if (gemCount.length > currentGear.gemNo) {
-			for (let i = 3; i >= currentGear.gemNo + 1; i--) {
+			if (parseInt(currentRow[i]) > 0 && currentGear.gemNo < i) {
 				currentRow[i] = '0';
 			}
 		}
 
 		modifiedRows.push(currentRow.join('.'));
-		index += 1;
 	}
 
 	return modifiedRows;
