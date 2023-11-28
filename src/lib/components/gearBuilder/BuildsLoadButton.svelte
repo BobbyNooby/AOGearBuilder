@@ -64,6 +64,17 @@
 		await navigator.clipboard.writeText(inputString);
 		playCorrect();
 	}
+
+	let searchQuery = '';
+
+	$: filteredBuilds = savedBuilds.filter((item) => {
+		// Check if the search query is empty or if the item name includes the search query
+		if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+			return true;
+		}
+		return false;
+	});
+
 </script>
 
 <div>
@@ -107,10 +118,16 @@
 				>
 					Saved Builds
 				</p>
+				<input
+					type="text"
+					bind:value={searchQuery}
+					placeholder="Search"
+					class="border rounded p-2 m-2 w-1/2 bg-black text-white"
+				/>
 				<div
 					class=" w-3/4 md:w-1/2 h-3/4 bg-black border-white border rounded bg-opacity-75 overflow-auto"
 				>
-					{#each savedBuilds as savedBuild (savedBuild.name)}
+					{#each filteredBuilds as savedBuild (savedBuild.name)}
 						<div class="my-4 mx-4 flex items-center justify-center">
 							<button
 								class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-56 md:w-80 rounded"
