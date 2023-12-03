@@ -56,8 +56,12 @@
 			out:fade={{ delay: 250, duration: 300 }}
 		>
 			The ship database hasnt been created yet, but if you are interested in contributing data,
-			click <a href="https://discord.gg/wuczy67us7" class=" text-yellow-600">here</a> to join the discord
-			server.
+			click <a href="https://discord.gg/wuczy67us7" class=" text-yellow-600">here</a> to join the
+			discord server. <br /> In the meantime, you can use
+			<a
+				href="https://docs.google.com/spreadsheets/d/1CHd60lyISM__I7LUxmPh9jhK4gczvCXNj-eqb7ID2MM/edit?usp=sharing"
+				class=" text-yellow-600">this</a
+			> gear builder spreadseet.
 		</p>
 	{/if}
 </section>
