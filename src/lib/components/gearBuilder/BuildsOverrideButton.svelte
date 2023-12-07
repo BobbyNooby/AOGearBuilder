@@ -48,7 +48,7 @@
 	<button
 		class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
 		style="font-family: Merriweather;"
-		on:click={handleClick}>Override</button
+		on:click={handleClick}>Override Build</button
 	>
 
 	<!-- Overlay with builds -->
