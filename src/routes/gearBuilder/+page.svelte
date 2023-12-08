@@ -13,6 +13,7 @@
 	import { playCorrect } from '$lib/utils/sound';
 	import BuildsSaveButton from '$lib/components/gearBuilder/BuildsSaveButton.svelte';
 	import BuildsLoadButton from '$lib/components/gearBuilder/BuildsLoadButton.svelte';
+	import BuildsOverrideButton from '$lib/components/gearBuilder/BuildsOverrideButton.svelte';
 
 	//Load using hash.
 	function loadHash() {
@@ -107,6 +108,7 @@
 			<div class="flex items-center justify-center space-x-4 pb-5">
 				<BuildsSaveButton />
 				<BuildsLoadButton />
+				<BuildsOverrideButton />
 			</div>
 			<div class="flex items-center justify-center space-x-4 pb-5">
 				<RandomButton />
