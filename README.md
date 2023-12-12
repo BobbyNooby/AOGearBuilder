@@ -6,6 +6,8 @@ website : https://tools.arcaneodyssey.net
 
 ## Changelogs
 
+12 December 2023 - Added health calculator
+
 4 November 2023 Added save/load builds locally.
 
 1 November 2023 - Made it so that the last build you did will show up on the page instead of clearing everytime. Added clear button. Moved filter and sort into item menu.
