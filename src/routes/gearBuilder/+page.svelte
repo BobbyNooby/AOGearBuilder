@@ -14,6 +14,7 @@
 	import BuildsSaveButton from '$lib/components/gearBuilder/BuildsSaveButton.svelte';
 	import BuildsLoadButton from '$lib/components/gearBuilder/BuildsLoadButton.svelte';
 	import BuildsOverrideButton from '$lib/components/gearBuilder/BuildsOverrideButton.svelte';
+	import HealthCalculator from '$lib/components/gearBuilder/HealthCalculator.svelte';
 
 	//Load using hash.
 	function loadHash() {
@@ -145,6 +146,7 @@
 					<StatsFinal />
 				</div>
 			</div>
+			<HealthCalculator />
 		{:else}
 			<!--  mobile view -->
 			<p
@@ -210,6 +212,7 @@
 					<GearButton category={`${category}Modifier`} />
 				</div>
 			{/each}
+			<HealthCalculator />
 		{/if}
 	{/if}
 </section>

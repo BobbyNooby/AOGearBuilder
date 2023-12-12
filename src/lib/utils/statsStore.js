@@ -16,6 +16,7 @@ import {
 	getEnchantById,
 	getModifierById
 } from '$lib/utils/getItemById';
+import { playCorrect } from './sound';
 
 // Define the writable stores for your items
 export const accessory1 = writable(accessoryTemplate);
@@ -220,6 +221,7 @@ export function loadCode(inputString) {
 				gears[category].modifier.set(getModifierById(parseInt(currentRow[5])));
 				index += 1;
 			}
+			handleHealthCalculationUpdate();
 			storeCurrentBuild();
 			return true;
 		} else {
@@ -329,3 +331,48 @@ export const finalIntensity = writable(0);
 export const finalInsanity = writable(0);
 export const finalDrawback = writable(0);
 export const finalWarding = writable(0);
+
+// Originally wanted to use this to make sure that the level in your health calculator will not go lower than the minimum level needed to wear your gear set
+// On the rare chance that you see this woody could you try?
+//I been having problems letting it update as well when you equip new gear or the random or load build button. Basically interaction between components
+//The problem i had was that it keeps getting 1 and 0 everytime i refresh and when theres an item it defaults to that items minimum value
+
+// export function getMinimumLevelRequirement() {
+// 	const gears = getCurrentGearSet();
+
+// 	let minimumLevelRequired = 1;
+
+// 	for (const category in gears) {
+// 		const itemMaxLevel = get(gears[category].base).maxLevel;
+
+// 		if (itemMaxLevel > minimumLevelRequired) {
+// 			minimumLevelRequired = itemMaxLevel;
+// 		}
+// 	}
+
+// 	return minimumLevelRequired;
+// }
+
+// function handleHealthCalculationUpdate() {
+// 	localStorage.setItem('playerLevel', playerLevel.toString());
+// 	console.log(localStorage.getItem('playerLevel'));
+// 	// localStorage.setItem('vitalityLevel', get(vitalityLevel).toString());
+// 	console.log(localStorage.getItem('vitalityLevel'));
+
+// 	if (playerLevel > 125) {
+// 		playerLevel = 125;
+// 	} else if (playerLevel < getMinimumLevelRequirement() || playerLevel == null) {
+// 		playerLevel = getMinimumLevelRequirement();
+// 	} else if (vitalityLevel > playerLevel * 2) {
+// 		vitalityLevel = playerLevel * 2;
+// 	} else if (vitalityLevel < 0 || vitalityLevel == null) {
+// 		vitalityLevel = 0;
+// 	}
+
+// 	//Local storage handling
+
+// 	localStorage.setItem('playerLevel', playerLevel.toString());
+// 	console.log(localStorage.getItem('playerLevel'));
+// 	localStorage.setItem('vitalityLevel', vitalityLevel.toString());
+
+// }
