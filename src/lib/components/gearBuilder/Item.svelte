@@ -98,9 +98,15 @@
 		switch (category) {
 			case 'accessory1':
 				accessory1.set(item);
-				accessory1Gem1.set(baseGem);
-				accessory1Gem2.set(baseGem);
-				accessory1Gem3.set(baseGem);
+				if (item.gemNo < 3 ) {
+					accessory1Gem3.set(baseGem);
+				}
+				if (item.gemNo < 2 ) {
+					accessory1Gem2.set(baseGem);
+				}
+				if (item.gemNo < 1 ) {
+					accessory1Gem1.set(baseGem);
+				}
 				menuToggle();
 				break;
 
@@ -131,9 +137,15 @@
 
 			case 'accessory2':
 				accessory2.set(item);
-				accessory2Gem1.set(baseGem);
-				accessory2Gem2.set(baseGem);
-				accessory2Gem3.set(baseGem);
+				if (item.gemNo < 3 ) {
+					accessory2Gem3.set(baseGem);
+				}
+				if (item.gemNo < 2 ) {
+					accessory2Gem2.set(baseGem);
+				}
+				if (item.gemNo < 1 ) {
+					accessory2Gem1.set(baseGem);
+				}
 				menuToggle();
 				break;
 
@@ -164,9 +176,15 @@
 
 			case 'accessory3':
 				accessory3.set(item);
-				accessory3Gem1.set(baseGem);
-				accessory3Gem2.set(baseGem);
-				accessory3Gem3.set(baseGem);
+				if (item.gemNo < 3 ) {
+					accessory3Gem3.set(baseGem);
+				}
+				if (item.gemNo < 2 ) {
+					accessory3Gem2.set(baseGem);
+				}
+				if (item.gemNo < 1 ) {
+					accessory3Gem1.set(baseGem);
+				}
 				menuToggle();
 				break;
 
@@ -197,9 +215,15 @@
 
 			case 'chestplate1':
 				chestplate1.set(item);
-				chestplate1Gem1.set(baseGem);
-				chestplate1Gem2.set(baseGem);
-				chestplate1Gem3.set(baseGem);
+				if (item.gemNo < 3 ) {
+					chestplate1Gem3.set(baseGem);
+				}
+				if (item.gemNo < 2 ) {
+					chestplate1Gem2.set(baseGem);
+				}
+				if (item.gemNo < 1 ) {
+					chestplate1Gem1.set(baseGem);
+				}
 				menuToggle();
 				break;
 
@@ -230,9 +254,15 @@
 
 			case 'pants1':
 				pants1.set(item);
-				pants1Gem1.set(baseGem);
-				pants1Gem2.set(baseGem);
-				pants1Gem3.set(baseGem);
+				if (item.gemNo < 3 ) {
+					pants1Gem3.set(baseGem);
+				}
+				if (item.gemNo < 2 ) {
+					pants1Gem2.set(baseGem);
+				}
+				if (item.gemNo < 1 ) {
+					pants1Gem1.set(baseGem);
+				}
 				menuToggle();
 				break;
 
