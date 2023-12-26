@@ -1,19 +1,20 @@
 <script>
+	import { getCurrentGearSet } from '$lib/utils/statsStore';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import GearButton from '$lib/components/gearBuilder/GearButton.svelte';
+	import GearButton from '$lib/components/shared/GearButton.svelte';
 	import StatsFinal from '$lib/components/gearBuilder/StatsFinal.svelte';
 	import { resetAllStores, storeCurrentBuild } from '$lib/utils/statsStore';
-	import GenerateCode from '$lib/components/gearBuilder/GenerateCode.svelte';
-	import LoadCode from '$lib/components/gearBuilder/LoadCode.svelte';
-	import RandomButton from '$lib/components/gearBuilder/RandomButton.svelte';
-	import ShareButton from '$lib/components/gearBuilder/ShareButton.svelte';
+	import GenerateCode from '$lib/components/shared/GenerateCode.svelte';
+	import LoadCode from '$lib/components/shared/LoadCode.svelte';
+	import RandomButton from '$lib/components/shared/RandomButton.svelte';
+	import ShareButton from '$lib/components/shared/ShareButton.svelte';
 	import { loadCode } from '$lib/utils/statsStore';
 	import { isMobile } from '$lib/utils/mobileStore';
 	import { playCorrect } from '$lib/utils/sound';
-	import BuildsSaveButton from '$lib/components/gearBuilder/BuildsSaveButton.svelte';
-	import BuildsLoadButton from '$lib/components/gearBuilder/BuildsLoadButton.svelte';
-	import BuildsOverrideButton from '$lib/components/gearBuilder/BuildsOverrideButton.svelte';
+	import BuildsSaveButton from '$lib/components/shared/BuildsSaveButton.svelte';
+	import BuildsLoadButton from '$lib/components/shared/BuildsLoadButton.svelte';
+	import BuildsOverrideButton from '$lib/components/shared/BuildsOverrideButton.svelte';
 	import HealthCalculator from '$lib/components/gearBuilder/HealthCalculator.svelte';
 
 	//Load using hash.
@@ -55,6 +56,11 @@
 	//Define categories here for the GearButton so i can just map it out with a for loop instead of manually adding one by one.
 	const categories = ['accessory1', 'accessory2', 'accessory3', 'chestplate1', 'pants1'];
 
+	let currentGears = getCurrentGearSet();
+
+	$: {
+		currentGears = getCurrentGearSet();
+	}
 	let filterType = 'all';
 	let sortType = 'default';
 </script>
@@ -102,17 +108,17 @@
 				Gear Builder
 			</p>
 			<div class="flex items-center justify-center space-x-4 pb-5">
-				<GenerateCode />
-				<LoadCode />
-				<ShareButton />
+				<GenerateCode type={'gear'} />
+				<LoadCode type={'gear'} />
+				<ShareButton type={'gear'} />
 			</div>
 			<div class="flex items-center justify-center space-x-4 pb-5">
-				<BuildsSaveButton />
-				<BuildsLoadButton />
-				<BuildsOverrideButton />
+				<BuildsSaveButton type={'gear'} />
+				<BuildsLoadButton type={'gear'} />
+				<BuildsOverrideButton type={'gear'} />
 			</div>
 			<div class="flex items-center justify-center space-x-4 pb-5">
-				<RandomButton />
+				<RandomButton type={'gear'} />
 				<button
 					class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
 					style="font-family: Merriweather;"
@@ -123,19 +129,20 @@
 					}}>Clear</button
 				>
 			</div>
-
 			<div class="flex">
 				<div class="w-100">
-					{#each categories as category (category)}
+					{#each Object.keys(currentGears) as category}
 						<div class="flex space-x-4">
-							<GearButton {category} {filterType} {sortType} />
-
-							{#each [1, 2, 3] as gemNumber}
-								<GearButton category={`${category}Gem${gemNumber}`} {filterType} {sortType} />
+							{#each Object.keys(currentGears[category]) as currentItemType}
+								<GearButton
+									currentItem={currentGears[category][currentItemType]}
+									{currentItemType}
+									category={currentGears[category]}
+									categoryName={category}
+									{currentGears}
+									builderType={'gear'}
+								/>
 							{/each}
-
-							<GearButton category={`${category}Enchant`} {filterType} {sortType} />
-							<GearButton category={`${category}Modifier`} {filterType} {sortType} />
 						</div>
 					{/each}
 				</div>
@@ -150,7 +157,7 @@
 		{:else}
 			<!--  mobile view -->
 			<p
-				class="text-4xl font-medium text-gray-300 text-center mt-20"
+				class="text-4xl font-medium text-gray-300 text-center mt-20 pb-10"
 				style="font-family: Merriweather;"
 				in:fade={{ delay: 250, duration: 300 }}
 				out:fade={{ delay: 250, duration: 300 }}
@@ -165,22 +172,25 @@
 			</div>
 			<div class="mt-4 flex flex-col items-center">
 				<div class="mb-4">
-					<GenerateCode />
+					<GenerateCode type={'gear'} />
 				</div>
 				<div class="mb-4">
-					<LoadCode />
+					<LoadCode type={'gear'} />
 				</div>
 				<div class="mb-10">
-					<ShareButton />
+					<ShareButton type={'gear'} />
 				</div>
 				<div class="mb-4">
-					<BuildsSaveButton />
+					<BuildsSaveButton type={'gear'} />
+				</div>
+				<div class="mb-4">
+					<BuildsLoadButton type={'gear'} />
 				</div>
 				<div class="mb-10">
-					<BuildsLoadButton />
+					<BuildsOverrideButton type={'gear'} />
 				</div>
 				<div class="mb-4">
-					<RandomButton />
+					<RandomButton type={'gear'} />
 				</div>
 
 				<div class="mb-4">
@@ -196,20 +206,62 @@
 				</div>
 			</div>
 
-			{#each categories as category (category)}
+			{#each Object.keys(currentGears) as category}
 				<div class="mt-4" in:fade={{ delay: 250, duration: 300 }}>
-					<GearButton {category} />
+					<GearButton
+						currentItem={currentGears[category]['base']}
+						currentItemType={'base'}
+						category={currentGears[category]}
+						categoryName={category}
+						{currentGears}
+						builderType={'gear'}
+					/>
 				</div>
 
 				<div class="flex space-x-4">
-					{#each [1, 2, 3] as gemNumber}
-						<GearButton category={`${category}Gem${gemNumber}`} />
-					{/each}
+					<GearButton
+						currentItem={currentGears[category]['gem1']}
+						currentItemType={'gem1'}
+						category={currentGears[category]}
+						categoryName={category}
+						{currentGears}
+						builderType={'gear'}
+					/>
+					<GearButton
+						currentItem={currentGears[category]['gem2']}
+						currentItemType={'gem2'}
+						category={currentGears[category]}
+						categoryName={category}
+						{currentGears}
+						builderType={'gear'}
+					/>
+					<GearButton
+						currentItem={currentGears[category]['gem3']}
+						currentItemType={'gem3'}
+						category={currentGears[category]}
+						categoryName={category}
+						{currentGears}
+						builderType={'gear'}
+					/>
 				</div>
 
 				<div class="flex space-x-4 mb-4">
-					<GearButton category={`${category}Enchant`} />
-					<GearButton category={`${category}Modifier`} />
+					<GearButton
+						currentItem={currentGears[category]['enchant']}
+						currentItemType={'enchant'}
+						category={currentGears[category]}
+						categoryName={category}
+						{currentGears}
+						builderType={'gear'}
+					/>
+					<GearButton
+						currentItem={currentGears[category]['modifier']}
+						currentItemType={'modifier'}
+						category={currentGears[category]}
+						categoryName={category}
+						{currentGears}
+						builderType={'gear'}
+					/>
 				</div>
 			{/each}
 			<HealthCalculator />

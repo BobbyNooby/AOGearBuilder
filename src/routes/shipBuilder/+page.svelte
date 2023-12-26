@@ -1,10 +1,56 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
+	import ShipsButton from '$lib/components/shipBuilder/ShipsButton.svelte';
+	import ShipStatsFinal from '$lib/components/shipBuilder/ShipStatsFinal.svelte';
+	import { isMobile } from '$lib/utils/mobileStore';
+	import { getCurrentShipParts, loadShipCode, resetAllShipParts } from '$lib/utils/shipStatsStore';
+	import GearButton from '$lib/components/shared/GearButton.svelte';
+	import { storeCurrentBuild } from '$lib/utils/statsStore';
+	import { playCorrect } from '$lib/utils/sound';
+	import GenerateCode from '$lib/components/shared/GenerateCode.svelte';
+	import LoadCode from '$lib/components/shared/LoadCode.svelte';
+	import ShareButton from '$lib/components/shared/ShareButton.svelte';
+	import BuildsSaveButton from '$lib/components/shared/BuildsSaveButton.svelte';
+	import BuildsLoadButton from '$lib/components/shared/BuildsLoadButton.svelte';
+	import BuildsOverrideButton from '$lib/components/shared/BuildsOverrideButton.svelte';
+	import RandomButton from '$lib/components/shared/RandomButton.svelte';
+
+	//Load using hash.
+	function loadHash() {
+		loadShipCode(window.location.hash.substring(1));
+		history.replaceState({}, document.title, window.location.href.split('#')[0]);
+		storeCurrentBuild();
+	}
 
 	// Fade in initiator
 	let ready = false;
-	onMount(() => (ready = true));
+	onMount(() => {
+		ready = true;
+		loadShipCode(localStorage.getItem('currentShipBuild'));
+		loadHash();
+	});
+
+	function checkMobile() {
+		if (window.innerWidth < 768) {
+			$isMobile = true;
+		} else {
+			$isMobile = false;
+		}
+	}
+
+	//Test device width to check for mobile conditions in the html
+	onMount(() => {
+		// Make sure this only works in browser
+		if (typeof window !== 'undefined') {
+			checkMobile();
+			window.addEventListener('resize', () => {
+				checkMobile();
+			});
+		}
+	});
+
+	let currentShipParts = getCurrentShipParts();
 </script>
 
 <svelte:head>
@@ -40,29 +86,183 @@
 
 <section>
 	{#if ready}
-		<p
-			class=" text-7xl font-medium text-gray-300 text-center"
-			style="font-family: Merriweather;"
-			in:fade={{ delay: 250, duration: 300 }}
-			out:fade={{ delay: 250, duration: 300 }}
-		>
-			Ship Builder - WIP
-		</p>
+		{#if !$isMobile}
+			<p
+				class=" text-7xl font-medium text-gray-300 text-center pt-20 pb-5"
+				style="font-family: Merriweather;"
+				in:fade={{ delay: 250, duration: 300 }}
+				out:fade={{ delay: 250, duration: 300 }}
+			>
+				Ship Builder
+			</p>
 
-		<p
-			class=" text-xl font-medium text-gray-300 text-center p-10"
-			style="font-family: Merriweather;"
-			in:fade={{ delay: 250, duration: 300 }}
-			out:fade={{ delay: 250, duration: 300 }}
-		>
-			The ship database hasnt been created yet, but if you are interested in contributing data,
-			click <a href="https://discord.gg/wuczy67us7" class=" text-yellow-600">here</a> to join the
-			discord server. <br /> In the meantime, you can use
-			<a
-				href="https://docs.google.com/spreadsheets/d/1CHd60lyISM__I7LUxmPh9jhK4gczvCXNj-eqb7ID2MM/edit?usp=sharing"
-				class=" text-yellow-600">this</a
-			> gear builder spreadseet.
-		</p>
+			<div>
+				<div class="flex items-center justify-center space-x-4 pb-5">
+					<GenerateCode type={'ship'} />
+					<LoadCode type={'ship'} />
+					<ShareButton type={'ship'} />
+				</div>
+				<div class="flex items-center justify-center space-x-4 pb-5">
+					<BuildsSaveButton type={'ship'} />
+					<BuildsLoadButton type={'ship'} />
+					<BuildsOverrideButton type={'ship'} />
+				</div>
+				<div class="flex items-center justify-center space-x-4 pb-5">
+					<RandomButton type={'ship'} />
+					<button
+						class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
+						style="font-family: Merriweather;"
+						on:click={() => {
+							resetAllShipParts();
+							storeCurrentBuild();
+							playCorrect();
+						}}>Clear</button
+					>
+				</div>
+				<div class="w-1/3 mx-auto p-5">
+					<ShipsButton />
+				</div>
+				<div class="flex pb-20">
+					<div class="grid grid-cols-2 gap-x-20">
+						<div>
+							{#each Object.keys(currentShipParts) as category}
+								{#if category != 'deckhands'}
+									<div class="flex space-x-4">
+										{#each Object.keys(currentShipParts[category]) as currentItemType}
+											<GearButton
+												currentItem={currentShipParts[category][currentItemType]}
+												{currentItemType}
+												category={currentShipParts[category]}
+												categoryName={category}
+												currentGears={currentShipParts}
+												builderType={'ship'}
+											/>
+										{/each}
+									</div>
+								{/if}
+							{/each}
+						</div>
+
+						<div>
+							{#each Object.keys(currentShipParts) as category}
+								{#if category == 'deckhands'}
+									<div class="flex flex-col">
+										{#each Object.keys(currentShipParts[category]) as currentItemType}
+											<GearButton
+												currentItem={currentShipParts[category][currentItemType]}
+												{currentItemType}
+												category={currentShipParts[category]}
+												categoryName={category}
+												currentGears={currentShipParts}
+												builderType={'ship'}
+											/>
+										{/each}
+									</div>
+								{/if}
+							{/each}
+						</div>
+					</div>
+					<div
+						class="w-80 ml-4 flex justify-center items-center rounded border-2 w-100 border-slate-300 bg-opacity-40 bg-black p-5"
+					>
+						<ShipStatsFinal />
+					</div>
+				</div>
+			</div>
+		{:else}
+			<!-- MOBILE VIEW -->
+			<p
+				class="text-4xl font-medium text-gray-300 text-center mt-20 pb-10"
+				style="font-family: Merriweather;"
+				in:fade={{ delay: 250, duration: 300 }}
+				out:fade={{ delay: 250, duration: 300 }}
+			>
+				Ship Builder
+			</p>
+
+			<div
+				class="w-80 ml-4 flex justify-center items-center rounded border-2 w-100 border-slate-300 bg-opacity-40 bg-black p-5"
+			>
+				<ShipStatsFinal />
+			</div>
+
+			<div class="mt-4 flex flex-col items-center">
+				<div class="mb-4">
+					<GenerateCode type={'ship'} />
+				</div>
+				<div class="mb-4">
+					<LoadCode type={'ship'} />
+				</div>
+				<div class="mb-10">
+					<ShareButton type={'ship'} />
+				</div>
+				<div class="mb-4">
+					<BuildsSaveButton type={'ship'} />
+				</div>
+				<div class="mb-4">
+					<BuildsLoadButton type={'ship'} />
+				</div>
+				<div class="mb-10">
+					<BuildsOverrideButton type={'ship'} />
+				</div>
+				<div class="mb-4">
+					<RandomButton type={'ship'} />
+				</div>
+
+				<div class="mb-4">
+					<button
+						class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
+						style="font-family: Merriweather;"
+						on:click={() => {
+							resetAllShipParts();
+							storeCurrentBuild();
+							playCorrect();
+						}}>Clear</button
+					>
+				</div>
+			</div>
+
+			<div class="w-full mx-auto p-5">
+				<ShipsButton />
+			</div>
+
+			<div>
+				{#each Object.keys(currentShipParts) as category}
+					{#if category != 'deckhands'}
+						<div class="flex space-x-4">
+							{#each Object.keys(currentShipParts[category]) as currentItemType}
+								<GearButton
+									currentItem={currentShipParts[category][currentItemType]}
+									{currentItemType}
+									category={currentShipParts[category]}
+									categoryName={category}
+									currentGears={currentShipParts}
+									builderType={'ship'}
+								/>
+							{/each}
+						</div>
+					{/if}
+				{/each}
+			</div>
+			<div class="pt-5 pb-10">
+				{#each Object.keys(currentShipParts) as category}
+					{#if category == 'deckhands'}
+						<div class="flex space-x-2">
+							{#each Object.keys(currentShipParts[category]) as currentItemType}
+								<GearButton
+									currentItem={currentShipParts[category][currentItemType]}
+									{currentItemType}
+									category={currentShipParts[category]}
+									categoryName={category}
+									currentGears={currentShipParts}
+									builderType={'ship'}
+								/>
+							{/each}
+						</div>
+					{/if}
+				{/each}
+			</div>
+		{/if}
 	{/if}
 </section>
 

@@ -17,6 +17,14 @@ import {
 	getModifierById
 } from '$lib/utils/getItemById';
 import { playCorrect } from './sound';
+import {
+	currentShipBuildId,
+	generateShipCode,
+	getCurrentShipBuild,
+	getCurrentShipParts,
+	quartermaster1,
+	quartermaster2
+} from './shipStatsStore';
 
 // Define the writable stores for your items
 export const accessory1 = writable(accessoryTemplate);
@@ -235,29 +243,43 @@ export function loadCode(inputString) {
 	}
 }
 
-export function generateCode() {
+export function generateCode(type) {
 	/*
 
 	return: code generated
 
 	*/
 
+	let itemSet;
+	let itemJoiner = '';
+	let sectionJoiner = '';
+
+	if (type == 'gear') {
+		itemSet = getCurrentGearSet();
+		itemJoiner = '.';
+		sectionJoiner = "'";
+	} else if (type == 'ship') {
+		itemSet = getCurrentShipBuild();
+		itemJoiner = ',';
+		sectionJoiner = '*';
+	}
+
 	const gears = getCurrentGearSet();
 
 	let rows = []; // Initialize temp array
 
-	for (const category in gears) {
-		const itemCategory = gears[category];
+	for (const category in itemSet) {
+		const itemCategory = itemSet[category];
 		const sectionIds = []; // Initialize temporary array for the row
 
 		for (const section in itemCategory) {
 			sectionIds.push(get(itemCategory[section]).id); // Get id for each base / gem1 / gem2 / gem3 / enchant / modifier and add it to the sectionIds
 		}
 
-		rows.push(sectionIds.join('.')); // Join the ids together with a .
+		rows.push(sectionIds.join(itemJoiner)); // Join the ids together with a .
 	}
 
-	let code = rows.join("'"); //Join the rows together with a '
+	let code = rows.join(sectionJoiner); //Join the rows together with a '
 	//The reason for using arrays and joining them was the old + ''' and + '.' method had extra . and ' at the end. This method removes the extra.
 
 	// return code generated
@@ -280,6 +302,8 @@ export function validateEntry(item, category = null) {
 		item.name == get(accessory3).name ||
 		item.name == get(chestplate1).name ||
 		item.name == get(pants1).name ||
+		item.name == get(quartermaster1).name ||
+		item.name == get(quartermaster2).name ||
 		(item.subType == 'Amulet' &&
 			((get(accessory1).subType == 'Amulet' && category != 'accessory1') ||
 				(get(accessory2).subType == 'Amulet' && category != 'accessory2') ||
@@ -315,9 +339,12 @@ export const currentBuildId = writable(
 
 // Function to store the current build
 export function storeCurrentBuild() {
-	let currentBuild = generateCode();
+	let currentBuild = generateCode('gear');
+	let currentShipBuild = generateCode('ship');
 	currentBuildId.set(currentBuild);
+	currentShipBuildId.set(currentShipBuild);
 	localStorage.setItem('currentBuild', currentBuild);
+	localStorage.setItem('currentShipBuild', currentShipBuild);
 }
 
 //Switched to a store method of storing finalStats to prepare for if i need to call these values in the future.

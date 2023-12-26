@@ -1,7 +1,6 @@
 <script>
 	import { finalDefense } from '$lib/utils/statsStore';
 	import { onMount } from 'svelte';
-	import { writable } from 'svelte/store';
 
 	const baseHealth = 93;
 	let playerLevel = 1;
