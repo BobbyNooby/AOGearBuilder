@@ -236,7 +236,7 @@
 		</div>
 	{/if}
 
-	{#if $finalRamDefense > 0}
+	{#if $finalRamDefense != 0}
 		<div class="flex $currentShips-center">
 			<img class="h-6" src="/assets/images/shipstat/ramdefense.png" alt="Ram Defense" />
 			<p
@@ -247,17 +247,5 @@
 			</p>
 		</div>
 	{/if}
-	{#if $finalRamDefense < 0}
-		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/ramdefense.png" alt="Ram Defense" />
-			<p
-				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #6B6BD7; text-align: center;"
-			>
-				<span style="-webkit-text-fill-color: #FF0000; -webkit-text-stroke-color: #000000;"
-					>{$finalRamDefense}</span
-				>
-				RAM DEFENSE
-			</p>
-		</div>
-	{/if}
+	
 </div>
