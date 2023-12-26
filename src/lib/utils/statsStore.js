@@ -22,8 +22,11 @@ import {
 	generateShipCode,
 	getCurrentShipBuild,
 	getCurrentShipParts,
+	hullArmor1Enchant,
 	quartermaster1,
-	quartermaster2
+	quartermaster2,
+	ram1Enchant,
+	sailMaterial1Enchant
 } from './shipStatsStore';
 
 // Define the writable stores for your items
@@ -325,7 +328,11 @@ export function validateEntry(item, category = null) {
 				(category == 'accessory2Modifier' && get(accessory2Enchant).name == 'Virtuous') ||
 				(category == 'accessory3Modifier' && get(accessory3Enchant).name == 'Virtuous') ||
 				(category == 'chestplate1Modifier' && get(chestplate1Enchant).name == 'Virtuous') ||
-				(category == 'pants1Modifier' && get(pants1Enchant).name == 'Virtuous')))
+				(category == 'pants1Modifier' && get(pants1Enchant).name == 'Virtuous'))) ||
+		(item.name == 'Warship' &&
+			(get(hullArmor1Enchant).name == 'Warship' ||
+				get(sailMaterial1Enchant).name == 'Warship' ||
+				get(ram1Enchant).name == 'Warship'))
 	) {
 		return false;
 	} else {

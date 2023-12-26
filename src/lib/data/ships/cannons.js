@@ -233,7 +233,8 @@ const cannonData = [
 	{
 		id: 12,
 		name: 'Dragonfire Carronades',
-		legend: 'Nothing Lol',
+		legend:
+			'A set of cannons with a unique mechanism built in which causes flames to spew from the barrel for a short duration after they are fired, dealing additional damage to nearby ships.',
 		durability: 0,
 		magicStorage: 0,
 		ramDefense: 0,

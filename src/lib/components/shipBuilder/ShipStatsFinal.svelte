@@ -110,7 +110,7 @@
 </script>
 
 <div>
-	{#if $finalStability != 0}
+	{#if $finalStability > 0 && $finalStability <= 100}
 		<div class="flex $currentShips-center">
 			<img class="h-6" src="/assets/images/shipstat/stability.png" alt="Stability" />
 			<p
@@ -121,14 +121,40 @@
 			</p>
 		</div>
 	{/if}
+	{#if $finalStability > 100}
+		<div class="flex $currentShips-center">
+			<img class="h-6" src="/assets/images/shipstat/stability.png" alt="Stability" />
+			<p
+				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #6297C1; -webkit-text-stroke: 1px; -webkit-text-stroke-color : #124975; text-align: center;"
+			>
+				<span
+					>100%<span
+						style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FF0000; -webkit-text-stroke: 1px; -webkit-text-stroke-color : #000000; text-align: center;"
+						>(+{$finalStability - 100}%)</span
+					></span
+				>
+				STABILITY
+			</p>
+		</div>
+	{/if}
 
-	{#if $finalDurability != 0}
+	{#if $finalDurability >= 100}
 		<div class="flex $currentShips-center">
 			<img class="h-6" src="/assets/images/shipstat/durability.png" alt="Durability" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #737373; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color : #000000; text-align: center;"
 			>
 				<span>{$finalDurability}</span>
+				DURABILITY
+			</p>
+		</div>
+	{:else}
+		<div class="flex $currentShips-center">
+			<img class="h-6" src="/assets/images/shipstat/durability.png" alt="Durability" />
+			<p
+				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #737373; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color : #000000; text-align: center;"
+			>
+				<span>100</span>
 				DURABILITY
 			</p>
 		</div>
@@ -170,13 +196,29 @@
 		</div>
 	{/if}
 
-	{#if $finalResilience != 0}
+	{#if $finalResilience > 0 && $finalResilience <= 100}
 		<div class="flex $currentShips-center">
 			<img class="h-6" src="/assets/images/shipstat/resilience.png" alt="Resilience" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #AF2230; text-align: center;"
 			>
 				<span>{$finalResilience}%</span>
+				RESILIENCE
+			</p>
+		</div>
+	{/if}
+	{#if $finalResilience > 100}
+		<div class="flex $currentShips-center">
+			<img class="h-6" src="/assets/images/shipstat/resilience.png" alt="Resilience" />
+			<p
+				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #AF2230; text-align: center;"
+			>
+				<span
+					>100%<span
+						style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FF0000; -webkit-text-stroke: 1px; -webkit-text-stroke-color : #000000; text-align: center;"
+						>(+{$finalResilience - 100}%)</span
+					></span
+				>
 				RESILIENCE
 			</p>
 		</div>
@@ -194,13 +236,26 @@
 		</div>
 	{/if}
 
-	{#if $finalRamDefense != 0}
+	{#if $finalRamDefense > 0}
 		<div class="flex $currentShips-center">
 			<img class="h-6" src="/assets/images/shipstat/ramdefense.png" alt="Ram Defense" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #6B6BD7; text-align: center;"
 			>
 				<span>{$finalRamDefense}</span>
+				RAM DEFENSE
+			</p>
+		</div>
+	{/if}
+	{#if $finalRamDefense < 0}
+		<div class="flex $currentShips-center">
+			<img class="h-6" src="/assets/images/shipstat/ramdefense.png" alt="Ram Defense" />
+			<p
+				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #6B6BD7; text-align: center;"
+			>
+				<span style="-webkit-text-fill-color: #FF0000; -webkit-text-stroke-color: #000000;"
+					>{$finalRamDefense}</span
+				>
 				RAM DEFENSE
 			</p>
 		</div>

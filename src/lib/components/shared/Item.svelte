@@ -6,7 +6,14 @@
 	import { get, writable } from 'svelte/store';
 	import { getGemById } from '$lib/utils/getItemById';
 	import ShipPartTooltip from '../shipBuilder/ShipPartTooltip.svelte';
-	import { quartermaster1, quartermaster2 } from '$lib/utils/shipStatsStore';
+	import {
+		hullArmor1,
+		hullArmor1Enchant,
+		quartermaster1,
+		quartermaster2,
+		ram1Enchant,
+		sailMaterial1Enchant
+	} from '$lib/utils/shipStatsStore';
 
 	export let menuToggle, item, category, currentItem, categoryName, builderType; // Props
 
@@ -105,10 +112,7 @@
 				playCorrect();
 			}
 		} else if (builderType == 'ship') {
-			if (
-				item.name != 'None' &&
-				(item.name == get(quartermaster1).name || item.name == get(quartermaster2).name)
-			) {
+			if (item.name != 'None' && !validateEntry(item, categoryName)) {
 				playWrong();
 			} else {
 				handleStatChange();

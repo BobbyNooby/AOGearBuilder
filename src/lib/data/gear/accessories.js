@@ -316,7 +316,7 @@ const accessoriesData = [
 		agility: 24,
 		attackSize: 0,
 		attackSpeed: 0,
-		intensity: 29,
+		intensity: 39,
 		insanity: 0,
 		drawback: 0,
 		warding: 0,

@@ -6,6 +6,8 @@ website : https://tools.arcaneodyssey.net
 
 ## Changelogs
 
+26 December 2023 - Added the Ship Builder.
+
 12 December 2023 - Added health calculator
 
 4 November 2023 Added save/load builds locally.

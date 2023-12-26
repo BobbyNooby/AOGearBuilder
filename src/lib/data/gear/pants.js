@@ -305,6 +305,48 @@ const pantsData = [
 		rarity: 'Rare',
 		rarityColor: '#6765EC',
 		imageId: 'https://i.imgur.com/LmkJTxV.jpg'
+	},
+	{
+		id: 14,
+		name: 'Mercenary Boots',
+		legend: 'A ragged pair of boots usually worn by mercenaries.',
+		defense: 0,
+		power: 0,
+		agility: 22,
+		attackSize: 0,
+		attackSpeed: 0,
+		intensity: 0,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 100,
+		gemNo: 1,
+		mainType: 'Pants',
+		subType: 'None',
+		rarity: 'Common',
+		rarityColor: '7D7D7F',
+		imageId: 'https://i.imgur.com/yq73wYJ.jpg'
+	},
+	{
+		id: 15,
+		name: "Mountaineer's Boots",
+		legend: 'A set of boots normally worn by hikers or mountain bandits.',
+		defense: 0,
+		power: 0,
+		agility: 22,
+		attackSize: 0,
+		attackSpeed: 0,
+		intensity: 37,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 100,
+		gemNo: 1,
+		mainType: 'Pants',
+		subType: 'None',
+		rarity: 'Common',
+		rarityColor: '7D7D7F',
+		imageId: 'https://i.imgur.com/d1Spj9U.jpg'
 	}
 ];
 
