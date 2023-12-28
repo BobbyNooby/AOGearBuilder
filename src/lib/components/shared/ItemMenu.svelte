@@ -29,43 +29,32 @@
 	//Initializing the itemType Variable as placeholder statTemplate
 	let itemType = [statTemplate];
 
+	let itemTypeData = {
+		'Accessory':accessories,
+		'Gem':gems,
+		'Enchant':enchants,
+		'Chestplate':chestplates,
+		'Pants':pants,
+		'Modifier':modifiers,
+		'Cannon':cannons,
+		'Deckhand':dechkands,
+		'Hull Enchant':hullEnchants,
+		'Hull Armor':hulls,
+		'Quartermaster':quartermasters,
+		'Ram Enchant':ramEnchants,
+		'Ram':rams,
+		'Sail Material Enchant':sailEnchants,
+		'Sail Material':sails,
+		'Ship Crew':shipCrews,
+		'Siege Weapon':siegeWeapons,
+	}
+
 	//Detection method to decide what to show depending on currentItem (which button is pressed)
-	if ($currentItem.mainType == 'Accessory') {
-		itemType = accessories;
-	} else if ($currentItem.mainType == 'Gem') {
-		itemType = gems;
-	} else if ($currentItem.mainType == 'Enchant') {
-		itemType = enchants;
-	} else if ($currentItem.mainType == 'Chestplate') {
-		itemType = chestplates;
-	} else if ($currentItem.mainType == 'Pants') {
-		itemType = pants;
-	} else if ($currentItem.mainType == 'Modifier') {
-		itemType = modifiers;
-	} else if ($currentItem.mainType == 'Cannon') {
-		itemType = cannons;
-	} else if ($currentItem.mainType == 'Deckhand') {
-		itemType = dechkands;
-	} else if ($currentItem.mainType == 'Hull Enchant') {
-		itemType = hullEnchants;
-	} else if ($currentItem.mainType == 'Hull Armor') {
-		itemType = hulls;
-	} else if ($currentItem.mainType == 'Quartermaster') {
-		itemType = quartermasters;
-	} else if ($currentItem.mainType == 'Ram Enchant') {
-		itemType = ramEnchants;
-	} else if ($currentItem.mainType == 'Ram') {
-		itemType = rams;
-	} else if ($currentItem.mainType == 'Sail Material Enchant') {
-		itemType = sailEnchants;
-	} else if ($currentItem.mainType == 'Sail Material') {
-		itemType = sails;
-	} else if ($currentItem.mainType == 'Ship Crew') {
-		itemType = shipCrews;
-	} else if ($currentItem.mainType == 'Siege Weapon') {
-		itemType = siegeWeapons;
-	} else {
-		itemType = [statTemplate];
+	for (const [key, value] of Object.entries(itemTypeData)) {
+		if ($currentItem.mainType == key) {
+			itemType = value;
+			break;
+		}
 	}
 
 	//Search, Filter, and Sort Code

@@ -31,25 +31,6 @@
 		loadHash();
 	});
 
-	function checkMobile() {
-		if (window.innerWidth < 768) {
-			$isMobile = true;
-		} else {
-			$isMobile = false;
-		}
-	}
-
-	//Test device width to check for mobile conditions in the html
-	onMount(() => {
-		// Make sure this only works in browser
-		if (typeof window !== 'undefined') {
-			checkMobile();
-			window.addEventListener('resize', () => {
-				checkMobile();
-			});
-		}
-	});
-
 	let currentShipParts = getCurrentShipParts();
 </script>
 

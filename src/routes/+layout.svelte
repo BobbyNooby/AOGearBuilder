@@ -3,6 +3,27 @@
 	import './styles.css';
 	import '../app.css';
 	import Analytics from '$lib/utils/Analytics.svelte';
+	import { isMobile } from '$lib/utils/mobileStore';
+	import { onMount } from 'svelte';
+
+	function checkMobile() {
+		if (window.innerWidth < 768) {
+			$isMobile = true;
+		} else {
+			$isMobile = false;
+		}
+	}
+
+	//Test device width to check for mobile conditions in the html
+	onMount(() => {
+		// Make sure this only works in browser
+		if (typeof window !== 'undefined') {
+			checkMobile();
+			window.addEventListener('resize', () => {
+				checkMobile();
+			});
+		}
+	});
 </script>
 
 <div class="app bg-zinc-800">

@@ -32,26 +32,6 @@
 		loadHash(); // Load if link has hash.
 	});
 
-	let deviceWidth = 0;
-
-	function checkMobile() {
-		if (window.innerWidth < 768) {
-			$isMobile = true;
-		} else {
-			$isMobile = false;
-		}
-	}
-
-	//Test device width to check for mobile conditions in the html
-	onMount(() => {
-		// Make sure this only works in browser
-		if (typeof window !== 'undefined') {
-			checkMobile();
-			window.addEventListener('resize', () => {
-				checkMobile();
-			});
-		}
-	});
 
 	//Define categories here for the GearButton so i can just map it out with a for loop instead of manually adding one by one.
 	const categories = ['accessory1', 'accessory2', 'accessory3', 'chestplate1', 'pants1'];
