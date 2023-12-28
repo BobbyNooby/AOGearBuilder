@@ -142,36 +142,32 @@
 
 			//Modifier Calculations
 
-			if (gears[item].modifier.name == 'Atlantean Essence') {
+			modifierCalcs: if (gears[item].modifier.name == 'Atlantean Essence') {
 				//Calculations for Atlantean
-				if (
-					//If all is more than zero add power
-					tempItem.power > 0 &&
-					tempItem.defense > 0 &&
-					tempItem.agility > 0 &&
-					tempItem.attackSize > 0 &&
-					tempItem.attackSpeed > 0 &&
-					tempItem.intensity > 0
-				) {
-					tempItem.power += Math.floor(
-						gears[item].modifier.power * (gears[item].base.maxLevel / 10)
-					);
-					tempItem.insanity += gears[item].modifier.insanity;
-				} else {
-					// Else do normal atlantean calc
-					for (let index = 0; index < atlantenOrder.length; index++) {
-						let currentStat = atlantenOrder[index];
-						let prevStat = atlantenOrder[index - 1];
-
-						if (tempItem[currentStat] == 0 && (prevStat === undefined || tempItem[prevStat] > 0)) {
-							tempItem[currentStat] += Math.floor(
-								gears[item].modifier[currentStat] * (gears[item].base.maxLevel / 10)
-							);
-							tempItem.insanity += gears[item].modifier.insanity;
-							break;
-						}
+				for (const currentAttribute of atlantenOrder) {
+					if (tempItem[currentAttribute] == 0) {
+						tempItem[currentAttribute] += Math.floor(
+							gears[item].modifier[currentAttribute] * (gears[item].base.maxLevel / 10)
+						);
+						tempItem.insanity += gears[item].modifier.insanity;
+						break modifierCalcs;
 					}
 				}
+				// Only happens when all of them have a value so hence the loop around
+				tempItem['power'] += Math.floor(
+					gears[item].modifier['power'] * (gears[item].base.maxLevel / 10)
+				);
+				tempItem.insanity += gears[item].modifier.insanity;
+			} else {
+				// Treat the rest of the modifiers as enchants.
+				for (const attribute of attributes) {
+					tempItem[attribute] += Math.floor(
+						gears[item].modifier[attribute] * (gears[item].base.maxLevel / 10)
+					);
+				}
+			}
+
+		
 			} else {
 				// Treat the rest of the modifiers as enchants.
 				for (const attribute of attributes) {
