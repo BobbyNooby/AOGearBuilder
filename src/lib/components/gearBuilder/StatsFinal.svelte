@@ -167,16 +167,6 @@
 				}
 			}
 
-		
-			} else {
-				// Treat the rest of the modifiers as enchants.
-				for (const attribute of attributes) {
-					tempItem[attribute] += Math.floor(
-						gears[item].modifier[attribute] * (gears[item].base.maxLevel / 10)
-					);
-				}
-			}
-
 			//Add the values to temp
 			finalPowerTemp += tempItem.power;
 			finalDefenseTemp += tempItem.defense;
