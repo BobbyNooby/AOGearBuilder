@@ -77,7 +77,6 @@
 			'durability',
 			'magicStorage',
 			'ramDefense',
-			'ramDefense',
 			'ramStrength',
 			'resilience',
 			'speed',
@@ -247,5 +246,4 @@
 			</p>
 		</div>
 	{/if}
-	
 </div>

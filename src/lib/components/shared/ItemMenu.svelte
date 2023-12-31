@@ -30,24 +30,24 @@
 	let itemType = [statTemplate];
 
 	let itemTypeData = {
-		'Accessory':accessories,
-		'Gem':gems,
-		'Enchant':enchants,
-		'Chestplate':chestplates,
-		'Pants':pants,
-		'Modifier':modifiers,
-		'Cannon':cannons,
-		'Deckhand':dechkands,
-		'Hull Enchant':hullEnchants,
-		'Hull Armor':hulls,
-		'Quartermaster':quartermasters,
-		'Ram Enchant':ramEnchants,
-		'Ram':rams,
-		'Sail Material Enchant':sailEnchants,
-		'Sail Material':sails,
-		'Ship Crew':shipCrews,
-		'Siege Weapon':siegeWeapons,
-	}
+		Accessory: accessories,
+		Gem: gems,
+		Enchant: enchants,
+		Chestplate: chestplates,
+		Pants: pants,
+		Modifier: modifiers,
+		Cannon: cannons,
+		Deckhand: dechkands,
+		'Hull Enchant': hullEnchants,
+		'Hull Armor': hulls,
+		Quartermaster: quartermasters,
+		'Ram Enchant': ramEnchants,
+		Ram: rams,
+		'Sail Material Enchant': sailEnchants,
+		'Sail Material': sails,
+		'Ship Crew': shipCrews,
+		'Siege Weapon': siegeWeapons
+	};
 
 	//Detection method to decide what to show depending on currentItem (which button is pressed)
 	for (const [key, value] of Object.entries(itemTypeData)) {
