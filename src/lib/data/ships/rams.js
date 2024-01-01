@@ -128,7 +128,7 @@ export const ramData = [
 		durability: 225,
 		magicStorage: 360,
 		ramDefense: 103,
-		ramStrength: 1331,
+		ramStrength: 1944,
 		resilience: 0,
 		speed: 0,
 		stability: 0,
