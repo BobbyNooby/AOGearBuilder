@@ -25,7 +25,7 @@ function playCorrect() {
 }
 
 function playWrong() {
-	playSound(wrongSound);
+	new Audio(wrongSound).play();
 }
 
 export { playCorrect, playWrong };
