@@ -6,7 +6,8 @@ import {
 	gemTemplate,
 	enchantTemplate,
 	modifierTemplate,
-	statTemplate
+	statTemplate,
+	postCalcsTempalte
 } from './statTemplate';
 import {
 	getAccessoryById,
@@ -73,7 +74,8 @@ export function getCurrentGearSet() {
 			gem2: accessory1Gem2,
 			gem3: accessory1Gem3,
 			enchant: accessory1Enchant,
-			modifier: accessory1Modifier
+			modifier: accessory1Modifier,
+			postCalcs: accessory1PostCalcs
 		},
 		accessory2: {
 			base: accessory2,
@@ -81,7 +83,8 @@ export function getCurrentGearSet() {
 			gem2: accessory2Gem2,
 			gem3: accessory2Gem3,
 			enchant: accessory2Enchant,
-			modifier: accessory2Modifier
+			modifier: accessory2Modifier,
+			postCalcs: accessory2PostCalcs
 		},
 		accessory3: {
 			base: accessory3,
@@ -89,7 +92,8 @@ export function getCurrentGearSet() {
 			gem2: accessory3Gem2,
 			gem3: accessory3Gem3,
 			enchant: accessory3Enchant,
-			modifier: accessory3Modifier
+			modifier: accessory3Modifier,
+			postCalcs: accessory3PostCalcs
 		},
 		chestplate1: {
 			base: chestplate1,
@@ -97,7 +101,8 @@ export function getCurrentGearSet() {
 			gem2: chestplate1Gem2,
 			gem3: chestplate1Gem3,
 			enchant: chestplate1Enchant,
-			modifier: chestplate1Modifier
+			modifier: chestplate1Modifier,
+			postCalcs: chestplate1PostCalcs
 		},
 		pants1: {
 			base: pants1,
@@ -105,7 +110,8 @@ export function getCurrentGearSet() {
 			gem2: pants1Gem2,
 			gem3: pants1Gem3,
 			enchant: pants1Enchant,
-			modifier: pants1Modifier
+			modifier: pants1Modifier,
+			postCalcs: pants1PostCalcs
 		}
 	};
 	return currentGearSet;
@@ -267,8 +273,6 @@ export function generateCode(type) {
 		sectionJoiner = '*';
 	}
 
-	const gears = getCurrentGearSet();
-
 	let rows = []; // Initialize temp array
 
 	for (const category in itemSet) {
@@ -290,7 +294,74 @@ export function generateCode(type) {
 }
 
 // Validate that the item may be entered by checking the item is not a duplicate or same sub type as another item
-export function validateEntry(item, category = null) {
+export function validateEntry(item, category = null, currentItem = null) {
+	//Temporary fix for modifier restrictions. Will figure out a better way in the future T_T.
+
+	const noModList = [
+		'None',
+		//Accessories
+		'Aereus Hat',
+		'Arcanium Bracelet',
+		'Archon Quartz Amulet',
+		'Cape of Ravenna Loyalty',
+		"Cernyx's Faulds",
+		'Collared Cape',
+		'Dark Bronze Helmet',
+		'Lion of Ravenna Helmet',
+		"Mantello of Ravenna's Fallen King",
+		'Ravenna Apostle Bracelets',
+		'Ravenna Apostle Faulds',
+		'Ravenna Apostle Pauldrons',
+		'Shroud',
+		'Sunken Iron Helmet',
+		'The Lost Crown of Ravenna',
+		'Theurgist Cloak',
+		'Theurgist Hat',
+		'Vatrachos Cape',
+		'Vatrachos Helmet',
+		'Wolf Pelt Cloak',
+		'Siren Bracelets',
+		'Golden Armbands',
+		'Sunken Warrior Helmet',
+		//Chestapltes
+		'Aereus Robes',
+		"Cernyx's Sleeveless Robe",
+		'Dark Bronze Armor',
+		'Lion of Ravenna Armor',
+		'Ravenna Apostle Gi',
+		'Ravenna Fallen King Armor',
+		'Ravenna Noble Armor',
+		'Siren Top',
+		'Sunken Iron Armor',
+		'Theurgist Robes',
+		'Vatrachos Armor',
+		'Bronze Chainmail Shirt',
+		'Sunken Warrior Armor',
+		//Pants
+		'Aereus Pants',
+		"Cernyx's Boots",
+		'Dark Bronze Boots',
+		'Lion of Ravenna Leggings',
+		'Ravenna Apostle Leggings',
+		'Ravenna Fallen King Boots',
+		'Ravenna Noble Boots',
+		'Siren Pants',
+		'Sunken Iron Boots',
+		'Theurgist Pants',
+		'Vatrachos Boots',
+		'Sunken Warrior Boots'
+	];
+
+	const noModModifiers = [
+		'Frozen',
+		'Archaic',
+		'Sandy',
+		'Superheated',
+		'Drowned',
+		'Blasted',
+		'Crystalline'
+	];
+
 	/*
 
 	input: item to be validated
@@ -299,40 +370,34 @@ export function validateEntry(item, category = null) {
 	return: returns true if item is valid, returns false if item is not valid
 	*/
 
+	const gears = getCurrentGearSet();
+
 	if (
-		item.name == get(accessory1).name ||
-		item.name == get(accessory2).name ||
-		item.name == get(accessory3).name ||
-		item.name == get(chestplate1).name ||
-		item.name == get(pants1).name ||
-		item.name == get(quartermaster1).name ||
-		item.name == get(quartermaster2).name ||
-		(item.subType == 'Amulet' &&
-			((get(accessory1).subType == 'Amulet' && category != 'accessory1') ||
-				(get(accessory2).subType == 'Amulet' && category != 'accessory2') ||
-				(get(accessory3).subType == 'Amulet' && category != 'accessory3'))) ||
-		(item.subType == 'Helmet' &&
-			((get(accessory1).subType == 'Helmet' && category != 'accessory1') ||
-				(get(accessory2).subType == 'Helmet' && category != 'accessory2') ||
-				(get(accessory3).subType == 'Helmet' && category != 'accessory3'))) ||
-		//Added new virtuous and atlantean conditions
-		(item.name == 'Virtuous' &&
-			((category == 'accessory1Enchant' && get(accessory1Modifier).name == 'Atlantean Essence') ||
-				(category == 'accessory2Enchant' && get(accessory2Modifier).name == 'Atlantean Essence') ||
-				(category == 'accessory3Enchant' && get(accessory3Modifier).name == 'Atlantean Essence') ||
-				(category == 'chestplate1Enchant' &&
-					get(chestplate1Modifier).name == 'Atlantean Essence') ||
-				(category == 'pants1Enchant' && get(pants1Modifier).name == 'Atlantean Essence'))) ||
-		(item.name == 'Atlantean Essence' &&
-			((category == 'accessory1Modifier' && get(accessory1Enchant).name == 'Virtuous') ||
-				(category == 'accessory2Modifier' && get(accessory2Enchant).name == 'Virtuous') ||
-				(category == 'accessory3Modifier' && get(accessory3Enchant).name == 'Virtuous') ||
-				(category == 'chestplate1Modifier' && get(chestplate1Enchant).name == 'Virtuous') ||
-				(category == 'pants1Modifier' && get(pants1Enchant).name == 'Virtuous'))) ||
-		(item.name == 'Warship' &&
-			(get(hullArmor1Enchant).name == 'Warship' ||
-				get(sailMaterial1Enchant).name == 'Warship' ||
-				get(ram1Enchant).name == 'Warship'))
+		currentItem &&
+		item.name != get(currentItem).name &&
+		(item.name == get(accessory1).name ||
+			item.name == get(accessory2).name ||
+			item.name == get(accessory3).name ||
+			item.name == get(chestplate1).name ||
+			item.name == get(pants1).name ||
+			item.name == get(quartermaster1).name ||
+			item.name == get(quartermaster2).name ||
+			(noModModifiers.includes(item.name) && noModList.includes(get(gears[category].base).name)) ||
+			(item.subType == 'Amulet' &&
+				((get(accessory1).subType == 'Amulet' && category != 'accessory1') ||
+					(get(accessory2).subType == 'Amulet' && category != 'accessory2') ||
+					(get(accessory3).subType == 'Amulet' && category != 'accessory3'))) ||
+			(item.subType == 'Helmet' &&
+				((get(accessory1).subType == 'Helmet' && category != 'accessory1') ||
+					(get(accessory2).subType == 'Helmet' && category != 'accessory2') ||
+					(get(accessory3).subType == 'Helmet' && category != 'accessory3'))) ||
+			//Added new virtuous and atlantean conditions
+			(item.name == 'Virtuous' && get(gears[category].modifier).name == 'Atlantean Essence') ||
+			(item.name == 'Atlantean Essence' && get(gears[category].enchant).name == 'Virtuous') ||
+			(item.name == 'Warship' &&
+				(get(hullArmor1Enchant).name == 'Warship' ||
+					get(sailMaterial1Enchant).name == 'Warship' ||
+					get(ram1Enchant).name == 'Warship')))
 	) {
 		return false;
 	} else {
@@ -365,6 +430,12 @@ export const finalIntensity = writable(0);
 export const finalInsanity = writable(0);
 export const finalDrawback = writable(0);
 export const finalWarding = writable(0);
+
+export const accessory1PostCalcs = writable(postCalcsTempalte);
+export const accessory2PostCalcs = writable(postCalcsTempalte);
+export const accessory3PostCalcs = writable(postCalcsTempalte);
+export const chestplate1PostCalcs = writable(postCalcsTempalte);
+export const pants1PostCalcs = writable(postCalcsTempalte);
 
 // Originally wanted to use this to make sure that the level in your health calculator will not go lower than the minimum level needed to wear your gear set
 // On the rare chance that you see this woody could you try?

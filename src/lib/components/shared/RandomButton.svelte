@@ -28,7 +28,6 @@
 	import { pants } from '$lib/data/gear/pants';
 	import { playCorrect } from '$lib/utils/sound.js';
 	import { get } from 'svelte/store';
-	import { ships } from '$lib/data/ships/ships';
 	import { hulls } from '$lib/data/ships/hulls';
 	import { hullEnchants } from '$lib/data/ships/hullEnchants';
 	import { sails } from '$lib/data/ships/sails';
@@ -44,9 +43,9 @@
 	export let type;
 
 	// Get random entry from list
-	function getRandom(data, includeZero = false) {
+	function getRandom(data, includeZero = false, category = null) {
 		var item = data[Math.floor(Math.random() * data.length)];
-		while ((item.id == 0 && includeZero == false) || !validateEntry(item)) {
+		while ((item.id == 0 && includeZero == false) || !validateEntry(item, category)) {
 			item = data[Math.floor(Math.random() * data.length)];
 		}
 		return item;
@@ -70,13 +69,13 @@
 			for (const category in gears) {
 				switch (true) {
 					case category.startsWith('accessory') == true:
-						gears[category].base.set(getRandom(accessories));
+						gears[category].base.set(getRandom(accessories, category));
 						break;
 					case category.startsWith('chestplate') == true:
-						gears[category].base.set(getRandom(chestplates));
+						gears[category].base.set(getRandom(chestplates, category));
 						break;
 					case category.startsWith('pants') == true:
-						gears[category].base.set(getRandom(pants));
+						gears[category].base.set(getRandom(pants, category));
 						break;
 					default:
 						break;
@@ -85,7 +84,7 @@
 				gears[category].gem2.set(getRandomGem(gems, 2, get(gears[category].base)));
 				gears[category].gem3.set(getRandomGem(gems, 3, get(gears[category].base)));
 				gears[category].enchant.set(getRandom(enchants));
-				gears[category].modifier.set(getRandom(modifiers, true));
+				gears[category].modifier.set(getRandom(modifiers, true, category));
 			}
 		} else if (type == 'ship') {
 			resetAllShipParts();

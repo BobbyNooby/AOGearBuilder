@@ -347,6 +347,27 @@ const pantsData = [
 		rarity: 'Common',
 		rarityColor: '7D7D7F',
 		imageId: 'https://i.imgur.com/d1Spj9U.jpg'
+	},
+	{
+		id: 16,
+		name: 'Sorcerer Pants',
+		legend: 'The lower part of a finely knitted robe, usually worn by magic-users',
+		defense: 0,
+		power: 15,
+		agility: 0,
+		attackSize: 0,
+		attackSpeed: 0,
+		intensity: 0,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 120,
+		gemNo: 2,
+		mainType: 'Pants',
+		subType: 'None',
+		rarity: 'Uncommon',
+		rarityColor: '#817346',
+		imageId: 'https://i.imgur.com/TtWTrWs.jpg'
 	}
 ];
 

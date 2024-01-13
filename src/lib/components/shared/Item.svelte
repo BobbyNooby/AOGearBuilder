@@ -1,19 +1,13 @@
 <script>
+	// @ts-nocheck
+
 	import { validateEntry, storeCurrentBuild } from '$lib/utils/statsStore';
 	import { playCorrect, playWrong } from '$lib/utils/sound.js';
-
-	import Itemstat from '../gearBuilder/Itemstat.svelte';
-	import { get, writable } from 'svelte/store';
+	import { writable } from 'svelte/store';
 	import { getGemById } from '$lib/utils/getItemById';
-	import ShipPartTooltip from '../shipBuilder/ShipPartTooltip.svelte';
-	import {
-		hullArmor1,
-		hullArmor1Enchant,
-		quartermaster1,
-		quartermaster2,
-		ram1Enchant,
-		sailMaterial1Enchant
-	} from '$lib/utils/shipStatsStore';
+	import ItemTooltip from './ItemTooltip.svelte';
+	import { isMobile } from '$lib/utils/mobileStore';
+	import { fade } from 'svelte/transition';
 
 	export let menuToggle, item, category, currentItem, categoryName, builderType; // Props
 
@@ -21,6 +15,7 @@
 	let isHovering = false;
 	let mousePosition = { x: 0, y: 0 };
 	let hoverWidth = writable(300);
+	let menuIsActive = false; // Bool for mobile menu
 
 	// Checks if box will overflow and set new position if it will
 	function setBoxPositionOverflow() {
@@ -102,74 +97,133 @@
 				// Dont conditions that dont allow item to be clicked
 				// EG : item is same as itself, item is same as another item on the list, item of amulet subtype is clicked even though theres another amulet, same condition as amulet but for helmets.
 				item.name != 'None' &&
-				!validateEntry(item, categoryName)
+				!validateEntry(item, categoryName, currentItem)
 			) {
 				playWrong();
 			} else {
-				handleStatChange();
-				menuToggle();
-
-				playCorrect();
+				goThrough();
 			}
 		} else if (builderType == 'ship') {
-			if (item.name != 'None' && !validateEntry(item, categoryName)) {
+			if (item.name != 'None' && !validateEntry(item, categoryName, currentItem)) {
 				playWrong();
 			} else {
-				handleStatChange();
-				menuToggle();
-
-				playCorrect();
+				goThrough();
 			}
+		}
+	}
+
+	function goThrough() {
+		if (!$isMobile) {
+			handleStatChange();
+			menuToggle();
+			playCorrect();
+		} else if ($isMobile) {
+			playCorrect();
+			menuIsActive = true;
 		}
 	}
 </script>
 
-<button
-	on:click={handleClick}
-	on:mousemove={handleMouseOver}
-	on:mouseleave={handleMouseOut}
-	class="z-30"
->
-	<img src={item.imageId} alt={item.name} />
-	{#if isHovering}
-		<div
-			use:createdHover
-			class="z-40"
-			id="hover"
-			style="
-		  position: absolute;
-		  background-color: black;
-		  width: {$hoverWidth}px;
-		  padding: 10px;
-		  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-		  border: 3px solid white;
-		  border-color: {item.rarityColor};
-		  color: white;
-		  top: {mousePosition.y}px; 
-		  left: {mousePosition.x + 20}px;
-		  z-index : 40
-		 
-		  
-		  
-		"
-		>
-			<h2 class="text-2xl z-40" style="color: white; font-family: Merriweather;">{item.name}</h2>
-			<p class="text-xl z-40" style="color: white; font-family: Merriweather;">
-				{#if item.maxLevel > 0}
-					Level {item.maxLevel}
-				{/if}{item.mainType}
-			</p>
-			<p class="text-l z-40" style="color: white; font-family: 'Open Sans', sans-serif;">
-				{item.legend}
-			</p>
-			<div class=" items-center text-center z-40">
-				{#if builderType == 'gear'}
-					<Itemstat {item} />
-				{/if}
-				{#if builderType == 'ship'}
-					<ShipPartTooltip {item} />
-				{/if}
+{#if !$isMobile}
+	<button
+		on:click={handleClick}
+		on:mousemove={handleMouseOver}
+		on:mouseleave={handleMouseOut}
+		class="z-30"
+	>
+		<img src={item.imageId} alt={item.name} />
+		{#if isHovering}
+			<div
+				use:createdHover
+				class="z-40 rounded"
+				id="hover"
+				style="
+	  position: absolute;
+	  background-color: black;
+	  width: {$hoverWidth}px; 
+	  padding: 10px;
+	  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	  border: 3px solid white;
+	  border-color: {item.rarityColor};
+	  color: white;
+	  top: {mousePosition.y}px; 
+	  left: {mousePosition.x + 20}px;
+	  z-index : 40
+	 
+	  
+	  
+	"
+			>
+				<h2 class="text-2xl z-40" style="color: white; font-family: Merriweather;">{item.name}</h2>
+				<p class="text-xl z-40" style="color: white; font-family: Merriweather;">
+					{#if item.maxLevel > 0}
+						Level {item.maxLevel}
+					{/if}{item.mainType}
+				</p>
+				<p class="text-l z-40" style="color: white; font-family: 'Open Sans', sans-serif;">
+					{item.legend}
+				</p>
+				<div class=" items-center text-center z-40">
+					<ItemTooltip {item} showName={true} />
+				</div>
 			</div>
-		</div>
-	{/if}
-</button>
+		{/if}
+	</button>
+{/if}
+
+{#if $isMobile}
+	<button on:click={handleClick} class="z-20">
+		<img src={item.imageId} alt={item.name} />
+		{#if menuIsActive}
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<div
+				class="z-30 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex flex-col justify-center items-center"
+				in:fade={{ duration: 100 }}
+				out:fade={{ duration: 100 }}
+				on:click={() => {
+					event.stopPropagation();
+				}}
+			>
+				<div class="space-y-2 flex flex-col justify-center items-center z-40">
+					<img src={item.imageId} alt={item.name} />
+					<h2 class="text-2xl z-40" style="color: white; font-family: Merriweather;">
+						{item.name}
+					</h2>
+					<p class="text-xl z-40" style="color: white; font-family: Merriweather;">
+						{#if item.maxLevel > 0}
+							Level {item.maxLevel}
+						{/if}{item.mainType}
+					</p>
+					<p class="text-l z-40" style="color: white; font-family: 'Open Sans', sans-serif;">
+						{item.legend}
+					</p>
+					<div class=" items-center text-center z-40">
+						<ItemTooltip {item} showName={true} />
+					</div>
+					<div class="flex flex-row space-x-2">
+						<button
+							class="bg-green-500 border border-white text-white font-bold text-lg py-2 px-4 w-44"
+							style="font-family: Merriweather;"
+							on:click={() => {
+								handleStatChange();
+								menuIsActive = false;
+								menuToggle();
+								playCorrect();
+							}}>Select</button
+						>
+
+						<button
+							class="bg-red-600 border border-white text-white font-bold text-lg py-2 px-4 w-44 z-"
+							style="font-family: Merriweather;"
+							on:click={() => {
+								menuIsActive = false;
+								playCorrect();
+							}}>Cancel</button
+						>
+					</div>
+				</div>
+			</div>
+		{/if}
+	</button>
+{/if}

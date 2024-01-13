@@ -327,6 +327,27 @@ const chestplatesData = [
 		rarity: 'Rare',
 		rarityColor: '#6765EC',
 		imageId: 'https://i.imgur.com/6ieKg6a.jpg'
+	},
+	{
+		id: 15,
+		name: 'Sorcerer Robes',
+		legend: 'A robe made out of finely knitted fabric, usually worn by magic-users',
+		defense: 0,
+		power: 21,
+		agility: 0,
+		attackSize: 0,
+		attackSpeed: 0,
+		intensity: 0,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 120,
+		gemNo: 2,
+		mainType: 'Chestplate',
+		subType: 'None',
+		rarity: 'Uncommon',
+		rarityColor: '#817346',
+		imageId: 'https://i.imgur.com/awrPLdx.jpg'
 	}
 ];
 

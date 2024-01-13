@@ -38,7 +38,12 @@
 		finalAgility,
 		finalInsanity,
 		finalDrawback,
-		finalWarding
+		finalWarding,
+		accessory1PostCalcs,
+		accessory2PostCalcs,
+		accessory3PostCalcs,
+		chestplate1PostCalcs,
+		pants1PostCalcs
 	} from '$lib/utils/statsStore';
 
 	//Used this reactive method of calculating. Reason for this change was mentioned in statsStore.js
@@ -51,7 +56,8 @@
 				gem2: $accessory1Gem2,
 				gem3: $accessory1Gem3,
 				enchant: $accessory1Enchant,
-				modifier: $accessory1Modifier
+				modifier: $accessory1Modifier,
+				postCalcs: accessory1PostCalcs
 			},
 			accessory2: {
 				base: $accessory2,
@@ -59,7 +65,8 @@
 				gem2: $accessory2Gem2,
 				gem3: $accessory2Gem3,
 				enchant: $accessory2Enchant,
-				modifier: $accessory2Modifier
+				modifier: $accessory2Modifier,
+				postCalcs: accessory2PostCalcs
 			},
 			accessory3: {
 				base: $accessory3,
@@ -67,7 +74,8 @@
 				gem2: $accessory3Gem2,
 				gem3: $accessory3Gem3,
 				enchant: $accessory3Enchant,
-				modifier: $accessory3Modifier
+				modifier: $accessory3Modifier,
+				postCalcs: accessory3PostCalcs
 			},
 			chestplate1: {
 				base: $chestplate1,
@@ -75,7 +83,8 @@
 				gem2: $chestplate1Gem2,
 				gem3: $chestplate1Gem3,
 				enchant: $chestplate1Enchant,
-				modifier: $chestplate1Modifier
+				modifier: $chestplate1Modifier,
+				postCalcs: chestplate1PostCalcs
 			},
 			pants1: {
 				base: $pants1,
@@ -83,7 +92,8 @@
 				gem2: $pants1Gem2,
 				gem3: $pants1Gem3,
 				enchant: $pants1Enchant,
-				modifier: $pants1Modifier
+				modifier: $pants1Modifier,
+				postCalcs: pants1PostCalcs
 			}
 		};
 
@@ -177,6 +187,9 @@
 			finalInsanityTemp += tempItem.insanity;
 			finalDrawbackTemp += tempItem.drawback;
 			finalWardingTemp += tempItem.warding;
+
+			//Add to the postCalcs of the item.
+			gears[item].postCalcs.set(tempItem);
 		}
 		//Set the final stats.
 		finalPower.set(finalPowerTemp);
@@ -194,7 +207,7 @@
 <div>
 	{#if $finalPower > 0}
 		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/itemstat/power.png" alt="Power" />
+			<img class="h-6" src="/assets/images/stats/power.png" alt="Power" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FF8400; -webkit-text-stroke: 1.5px; text-align: center;"
 			>
@@ -205,7 +218,7 @@
 
 	{#if $finalDefense > 0}
 		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/itemstat/defense.png" alt="Defense" />
+			<img class="h-6" src="/assets/images/stats/defense.png" alt="Defense" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #737373; -webkit-text-stroke: 1.5px; text-align: center;"
 			>
@@ -216,7 +229,7 @@
 
 	{#if $finalAgility > 0}
 		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/itemstat/agility.png" alt="Agility" />
+			<img class="h-6" src="/assets/images/stats/agility.png" alt="Agility" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #00ffff; text-align: center;"
 			>
@@ -227,7 +240,7 @@
 
 	{#if $finalAttackSpeed > 0}
 		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/itemstat/attackspeed.png" alt="Attack Speed" />
+			<img class="h-6" src="/assets/images/stats/attackSpeed.png" alt="Attack Speed" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #0077ff; text-align: center;"
 			>
@@ -238,7 +251,7 @@
 
 	{#if $finalAttackSize > 0}
 		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/itemstat/attacksize.png" alt="Attack Size" />
+			<img class="h-6" src="/assets/images/stats/attackSize.png" alt="Attack Size" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #00FF00; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #471559; text-align: center;"
 			>
@@ -249,7 +262,7 @@
 
 	{#if $finalIntensity > 0}
 		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/itemstat/intensity.png" alt="Intensity" />
+			<img class="h-6" src="/assets/images/stats/intensity.png" alt="Intensity" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFF200; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #712402; text-align: center;"
 			>
@@ -260,7 +273,7 @@
 
 	{#if $finalInsanity > 0}
 		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/itemstat/insanity.png" alt="Insanity" />
+			<img class="h-6" src="/assets/images/stats/insanity.png" alt="Insanity" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #8B27DB; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: ##DB0C45; text-align: center;"
 			>
@@ -271,7 +284,7 @@
 
 	{#if $finalDrawback > 0}
 		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/itemstat/drawback.png" alt="Drawback" />
+			<img class="h-6" src="/assets/images/stats/drawback.png" alt="Drawback" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #DC4040; -webkit-text-stroke: 1.5px; text-align: center;"
 			>
@@ -282,7 +295,7 @@
 
 	{#if $finalWarding > 0}
 		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/itemstat/warding.png" alt="Warding" />
+			<img class="h-6" src="/assets/images/stats/warding.png" alt="Warding" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #CBCB55; text-align: center;"
 			>

@@ -155,7 +155,7 @@ const accessoriesData = [
 	},
 	{
 		id: 8,
-		name: 'Arcsphere',
+		name: 'Arcanium Arcsphere',
 		legend: 'An arcanium-glass dome capable of conducting magic, meant to be worn on the head.',
 		defense: 0,
 		power: 21,
@@ -1019,7 +1019,7 @@ const accessoriesData = [
 		gemNo: 2,
 		mainType: 'Accessory',
 		subType: 'Back',
-		rarity: 'Unommon',
+		rarity: 'Uncommon',
 		rarityColor: '#817346',
 		imageId: 'https://i.imgur.com/lD5ld2A.jpg'
 	},
@@ -1086,6 +1086,27 @@ const accessoriesData = [
 		rarity: 'Uncommon',
 		rarityColor: '#817346',
 		imageId: 'https://i.imgur.com/9xvR74y.jpg'
+	},
+	{
+		id: 51,
+		name: 'Sorcerer Hat',
+		legend: 'A hat made out of finely knitted fabric, usually worn by magic-users',
+		defense: 0,
+		power: 10,
+		agility: 0,
+		attackSize: 0,
+		attackSpeed: 0,
+		intensity: 0,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 120,
+		gemNo: 2,
+		mainType: 'Accessory',
+		subType: 'Hat',
+		rarity: 'Uncommon',
+		rarityColor: '#817346',
+		imageId: 'https://i.imgur.com/mOq8FmI.jpg'
 	}
 ];
 

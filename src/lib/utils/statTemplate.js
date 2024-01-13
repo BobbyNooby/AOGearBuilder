@@ -129,6 +129,7 @@ export const enchantTemplate = {
 	rarityColor: '#FFFFFF',
 	imageId: 'assets/images/enchant/0.jpg'
 };
+
 export const modifierTemplate = {
 	id: 0,
 	name: 'None',
@@ -149,4 +150,16 @@ export const modifierTemplate = {
 	rarity: 'None',
 	rarityColor: '#FFFFFF',
 	imageId: 'assets/images/modifier/0.jpg'
+};
+
+export const postCalcsTempalte = {
+	defense: 0,
+	power: 0,
+	agility: 0,
+	attackSize: 0,
+	attackSpeed: 0,
+	intensity: 0,
+	insanity: 0,
+	drawback: 0,
+	warding: 0
 };

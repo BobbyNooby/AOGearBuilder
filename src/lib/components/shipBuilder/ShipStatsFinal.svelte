@@ -111,7 +111,7 @@
 <div>
 	{#if $finalStability > 0 && $finalStability <= 100}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/stability.png" alt="Stability" />
+			<img class="h-6" src="/assets/images/stats/stability.png" alt="Stability" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #6297C1; -webkit-text-stroke: 1px; -webkit-text-stroke-color : #124975; text-align: center;"
 			>
@@ -122,7 +122,7 @@
 	{/if}
 	{#if $finalStability > 100}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/stability.png" alt="Stability" />
+			<img class="h-6" src="/assets/images/stats/stability.png" alt="Stability" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #6297C1; -webkit-text-stroke: 1px; -webkit-text-stroke-color : #124975; text-align: center;"
 			>
@@ -139,7 +139,7 @@
 
 	{#if $finalDurability >= 100}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/durability.png" alt="Durability" />
+			<img class="h-6" src="/assets/images/stats/durability.png" alt="Durability" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #737373; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color : #000000; text-align: center;"
 			>
@@ -149,7 +149,7 @@
 		</div>
 	{:else}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/durability.png" alt="Durability" />
+			<img class="h-6" src="/assets/images/stats/durability.png" alt="Durability" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #737373; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color : #000000; text-align: center;"
 			>
@@ -161,7 +161,7 @@
 
 	{#if $finalMagicStorage != 0}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/magicstorage.png" alt="Magic Storage" />
+			<img class="h-6" src="/assets/images/stats/magicStorage.png" alt="Magic Storage" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #BA70EB; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color : #000000; text-align: center;"
 			>
@@ -173,7 +173,7 @@
 
 	{#if $finalTurning != 0}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/turning.png" alt="Turning" />
+			<img class="h-6" src="/assets/images/stats/turning.png" alt="Turning" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1px; -webkit-text-stroke-color : #584A8C; text-align: center;"
 			>
@@ -185,7 +185,7 @@
 
 	{#if $finalSpeed != 0}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/speed.png" alt="Speed" />
+			<img class="h-6" src="/assets/images/stats/speed.png" alt="Speed" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #00ffff; text-align: center;"
 			>
@@ -197,7 +197,7 @@
 
 	{#if $finalResilience > 0 && $finalResilience <= 100}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/resilience.png" alt="Resilience" />
+			<img class="h-6" src="/assets/images/stats/resilience.png" alt="Resilience" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #AF2230; text-align: center;"
 			>
@@ -208,7 +208,7 @@
 	{/if}
 	{#if $finalResilience > 100}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/resilience.png" alt="Resilience" />
+			<img class="h-6" src="/assets/images/stats/resilience.png" alt="Resilience" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #AF2230; text-align: center;"
 			>
@@ -225,7 +225,7 @@
 
 	{#if $finalRamStrength != 0}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/ramstrength.png" alt="Ram Strength" />
+			<img class="h-6" src="/assets/images/stats/ramStrength.png" alt="Ram Strength" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FF8400; -webkit-text-stroke: 1.5px; text-align: center;"
 			>
@@ -237,7 +237,7 @@
 
 	{#if $finalRamDefense != 0}
 		<div class="flex $currentShips-center">
-			<img class="h-6" src="/assets/images/shipstat/ramdefense.png" alt="Ram Defense" />
+			<img class="h-6" src="/assets/images/stats/ramDefense.png" alt="Ram Defense" />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #6B6BD7; text-align: center;"
 			>

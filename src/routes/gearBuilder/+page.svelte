@@ -16,6 +16,7 @@
 	import BuildsLoadButton from '$lib/components/shared/BuildsLoadButton.svelte';
 	import BuildsOverrideButton from '$lib/components/shared/BuildsOverrideButton.svelte';
 	import HealthCalculator from '$lib/components/gearBuilder/HealthCalculator.svelte';
+	import PostCalcsButton from '$lib/components/gearBuilder/PostCalcsButton.svelte';
 
 	//Load using hash.
 	function loadHash() {
@@ -32,17 +33,11 @@
 		loadHash(); // Load if link has hash.
 	});
 
-
-	//Define categories here for the GearButton so i can just map it out with a for loop instead of manually adding one by one.
-	const categories = ['accessory1', 'accessory2', 'accessory3', 'chestplate1', 'pants1'];
-
 	let currentGears = getCurrentGearSet();
 
 	$: {
 		currentGears = getCurrentGearSet();
 	}
-	let filterType = 'all';
-	let sortType = 'default';
 </script>
 
 <svelte:head>
@@ -114,14 +109,20 @@
 					{#each Object.keys(currentGears) as category}
 						<div class="flex space-x-4">
 							{#each Object.keys(currentGears[category]) as currentItemType}
-								<GearButton
-									currentItem={currentGears[category][currentItemType]}
-									{currentItemType}
-									category={currentGears[category]}
-									categoryName={category}
-									{currentGears}
-									builderType={'gear'}
-								/>
+								{#if currentItemType != 'postCalcs'}
+									<GearButton
+										currentItem={currentGears[category][currentItemType]}
+										{currentItemType}
+										category={currentGears[category]}
+										categoryName={category}
+										{currentGears}
+										builderType={'gear'}
+									/>
+								{/if}
+								{#if currentItemType == 'postCalcs'}
+									<div class="flex items-center m-auto">
+										<PostCalcsButton item={currentGears[category][currentItemType]} />
+									</div>{/if}
 							{/each}
 						</div>
 					{/each}
@@ -225,7 +226,7 @@
 					/>
 				</div>
 
-				<div class="flex space-x-4 mb-4">
+				<div class="flex space-x-4">
 					<GearButton
 						currentItem={currentGears[category]['enchant']}
 						currentItemType={'enchant'}
@@ -242,6 +243,10 @@
 						{currentGears}
 						builderType={'gear'}
 					/>
+				</div>
+
+				<div class="flex space-x-4 mb-4">
+					<PostCalcsButton item={currentGears[category]['postCalcs']} />
 				</div>
 			{/each}
 			<HealthCalculator />
