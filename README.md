@@ -6,6 +6,8 @@ website : https://tools.arcaneodyssey.net
 
 ## Changelogs
 
+13 January 2024 - Added hover to view stats + QOL Changes + Mobile item UI
+
 26 December 2023 - Added the Ship Builder.
 
 12 December 2023 - Added health calculator

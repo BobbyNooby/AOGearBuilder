@@ -1090,7 +1090,7 @@ const accessoriesData = [
 	{
 		id: 51,
 		name: 'Sorcerer Hat',
-		legend: 'A hat made out of finely knitted fabric, usually worn by magic-users',
+		legend: 'A hat made out of finely knitted fabric, usually worn by magic-users.',
 		defense: 0,
 		power: 10,
 		agility: 0,
@@ -1107,6 +1107,27 @@ const accessoriesData = [
 		rarity: 'Uncommon',
 		rarityColor: '#817346',
 		imageId: 'https://i.imgur.com/mOq8FmI.jpg'
+	},
+	{
+		id: 52,
+		name: 'Steel Pauldrons',
+		legend: 'A set of pauldrons out of fine steel, providing a decent amount of protection.',
+		defense: 145,
+		power: 0,
+		agility: 0,
+		attackSize: 0,
+		attackSpeed: 0,
+		intensity: 0,
+		insanity: 0,
+		drawback: 0,
+		warding: 0,
+		maxLevel: 120,
+		gemNo: 1,
+		mainType: 'Accessory',
+		subType: 'Shoulders',
+		rarity: 'Uncommon',
+		rarityColor: '#817346',
+		imageId: 'https://i.imgur.com/ABgoeJH.jpg'
 	}
 ];
 
