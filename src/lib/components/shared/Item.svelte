@@ -1,10 +1,10 @@
 <script>
 	// @ts-nocheck
 
-	import { validateEntry, storeCurrentBuild } from '$lib/utils/statsStore';
+	import { validateEntry, storeCurrentBuild, noModList } from '$lib/utils/statsStore';
 	import { playCorrect, playWrong } from '$lib/utils/sound.js';
 	import { writable } from 'svelte/store';
-	import { getGemById } from '$lib/utils/getItemById';
+	import { getGemById, getModifierById } from '$lib/utils/getItemById';
 	import ItemTooltip from './ItemTooltip.svelte';
 	import { isMobile } from '$lib/utils/mobileStore';
 	import { fade } from 'svelte/transition';
@@ -82,6 +82,9 @@
 				}
 			} else {
 				currentItem.set(item);
+			}
+			if (noModList.includes(item.name)) {
+				category.modifier.set(getModifierById(0));
 			}
 			storeCurrentBuild();
 			console.log(categoryName);
