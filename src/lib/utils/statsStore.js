@@ -293,75 +293,74 @@ export function generateCode(type) {
 	return code;
 }
 
+//Temporary fix for modifier restrictions. Will figure out a better way in the future T_T.
+export const noModList = [
+	'None',
+	//Accessories
+	'Aereus Hat',
+	'Arcanium Bracelet',
+	'Archon Quartz Amulet',
+	'Cape of Ravenna Loyalty',
+	"Cernyx's Faulds",
+	'Collared Cape',
+	'Dark Bronze Helmet',
+	'Lion of Ravenna Helmet',
+	"Mantello of Ravenna's Fallen King",
+	'Ravenna Apostle Bracelets',
+	'Ravenna Apostle Faulds',
+	'Ravenna Apostle Pauldrons',
+	'Shroud',
+	'Sunken Iron Helmet',
+	'The Lost Crown of Ravenna',
+	'Theurgist Cloak',
+	'Theurgist Hat',
+	'Vatrachos Cape',
+	'Vatrachos Helmet',
+	'Wolf Pelt Cloak',
+	'Siren Bracelets',
+	'Golden Armbands',
+	'Sunken Warrior Helmet',
+	//Chestplates
+	'Aereus Robes',
+	"Cernyx's Sleeveless Robe",
+	'Dark Bronze Armor',
+	'Lion of Ravenna Armor',
+	'Ravenna Apostle Gi',
+	'Ravenna Fallen King Armor',
+	'Ravenna Noble Armor',
+	'Siren Top',
+	'Sunken Iron Armor',
+	'Theurgist Robes',
+	'Vatrachos Armor',
+	'Bronze Chainmail Shirt',
+	'Sunken Warrior Armor',
+	//Pants
+	'Aereus Pants',
+	"Cernyx's Boots",
+	'Dark Bronze Boots',
+	'Lion of Ravenna Leggings',
+	'Ravenna Apostle Leggings',
+	'Ravenna Fallen King Boots',
+	'Ravenna Noble Boots',
+	'Siren Pants',
+	'Sunken Iron Boots',
+	'Theurgist Pants',
+	'Vatrachos Boots',
+	'Sunken Warrior Boots'
+];
+
+export const noModModifiers = [
+	'Frozen',
+	'Archaic',
+	'Sandy',
+	'Superheated',
+	'Drowned',
+	'Blasted',
+	'Crystalline'
+];
+
 // Validate that the item may be entered by checking the item is not a duplicate or same sub type as another item
 export function validateEntry(item, category = null, currentItem = null) {
-	//Temporary fix for modifier restrictions. Will figure out a better way in the future T_T.
-
-	const noModList = [
-		'None',
-		//Accessories
-		'Aereus Hat',
-		'Arcanium Bracelet',
-		'Archon Quartz Amulet',
-		'Cape of Ravenna Loyalty',
-		"Cernyx's Faulds",
-		'Collared Cape',
-		'Dark Bronze Helmet',
-		'Lion of Ravenna Helmet',
-		"Mantello of Ravenna's Fallen King",
-		'Ravenna Apostle Bracelets',
-		'Ravenna Apostle Faulds',
-		'Ravenna Apostle Pauldrons',
-		'Shroud',
-		'Sunken Iron Helmet',
-		'The Lost Crown of Ravenna',
-		'Theurgist Cloak',
-		'Theurgist Hat',
-		'Vatrachos Cape',
-		'Vatrachos Helmet',
-		'Wolf Pelt Cloak',
-		'Siren Bracelets',
-		'Golden Armbands',
-		'Sunken Warrior Helmet',
-		//Chestapltes
-		'Aereus Robes',
-		"Cernyx's Sleeveless Robe",
-		'Dark Bronze Armor',
-		'Lion of Ravenna Armor',
-		'Ravenna Apostle Gi',
-		'Ravenna Fallen King Armor',
-		'Ravenna Noble Armor',
-		'Siren Top',
-		'Sunken Iron Armor',
-		'Theurgist Robes',
-		'Vatrachos Armor',
-		'Bronze Chainmail Shirt',
-		'Sunken Warrior Armor',
-		//Pants
-		'Aereus Pants',
-		"Cernyx's Boots",
-		'Dark Bronze Boots',
-		'Lion of Ravenna Leggings',
-		'Ravenna Apostle Leggings',
-		'Ravenna Fallen King Boots',
-		'Ravenna Noble Boots',
-		'Siren Pants',
-		'Sunken Iron Boots',
-		'Theurgist Pants',
-		'Vatrachos Boots',
-		'Sunken Warrior Boots'
-	];
-
-	const noModModifiers = [
-		'Frozen',
-		'Archaic',
-		'Sandy',
-		'Superheated',
-		'Drowned',
-		'Blasted',
-		'Crystalline'
-	];
-
 	/*
 
 	input: item to be validated
