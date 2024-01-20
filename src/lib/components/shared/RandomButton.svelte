@@ -43,9 +43,9 @@
 	export let type;
 
 	// Get random entry from list
-	function getRandom(data, includeZero = false, category = null) {
+	function getRandom(data, category = null, includeZero = false) {
 		var item = data[Math.floor(Math.random() * data.length)];
-		while ((item.id == 0 && includeZero == false) || !validateEntry(item, category)) {
+		while ((item.id == 0 && includeZero == false) || (!validateEntry(item, category) != (item.id == 0 && includeZero == true))) {
 			item = data[Math.floor(Math.random() * data.length)];
 		}
 		return item;
@@ -56,7 +56,7 @@
 		if (slot > item.gemNo) {
 			return data[0];
 		}
-		return getRandom(data, includeZero);
+		return getRandom(data, null, includeZero);
 	}
 
 	// Handle click and set random entries
@@ -84,11 +84,11 @@
 				gears[category].gem2.set(getRandomGem(gems, 2, get(gears[category].base)));
 				gears[category].gem3.set(getRandomGem(gems, 3, get(gears[category].base)));
 				gears[category].enchant.set(getRandom(enchants));
-				gears[category].modifier.set(getRandom(modifiers, true, category));
+				gears[category].modifier.set(getRandom(modifiers, category, true));
 			}
 		} else if (type == 'ship') {
 			resetAllShipParts();
-			// currentShip.set(getRandom(ships, true)); -- originally wanted to randomize ships but seemed impractical
+			// currentShip.set(getRandom(ships, null, true)); -- originally wanted to randomize ships but seemed impractical
 
 			if ($currentShip.hullArmorSlot > 0) {
 				hullArmor1.set(getRandom(hulls));
