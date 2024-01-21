@@ -51,14 +51,14 @@
 	<meta property="og:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="og:title" content="Gear Builder" />
 	<meta property="og:description" content="Gear Builder for Arcane Odyssey by BobbyNooby" />
-	<meta property="og:image" content="assets/images/icon.png" />
+	<meta property="og:image" content="https://i.imgur.com/c6n3LP1.png" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="https://tools.arcaneodyssey.net/" />
 	<meta property="twitter:title" content="Gear Builder" />
 	<meta property="twitter:description" content="Gear Builder for Arcane Odyssey by BobbyNooby" />
-	<meta property="twitter:image" content="assets/images/icon.png" />
+	<meta property="twitter:image" content="https://i.imgur.com/c6n3LP1.png" />
 
 	<!-- Meta Tags Generated with https://metatags.io -->
 
