@@ -372,8 +372,7 @@ export function validateEntry(item, category = null, currentItem = null) {
 	const gears = getCurrentGearSet();
 
 	if (
-		currentItem &&
-		item.name != get(currentItem).name &&
+		(currentItem == null || item.name != get(currentItem).name) &&
 		(item.name == get(accessory1).name ||
 			item.name == get(accessory2).name ||
 			item.name == get(accessory3).name ||
@@ -391,8 +390,8 @@ export function validateEntry(item, category = null, currentItem = null) {
 					(get(accessory2).subType == 'Helmet' && category != 'accessory2') ||
 					(get(accessory3).subType == 'Helmet' && category != 'accessory3'))) ||
 			//Added new virtuous and atlantean conditions
-			(item.name == 'Virtuous' && get(gears[category].modifier).name == 'Atlantean Essence') ||
-			(item.name == 'Atlantean Essence' && get(gears[category].enchant).name == 'Virtuous') ||
+			(category && item.name == 'Virtuous' && get(gears[category].modifier).name == 'Atlantean Essence') ||
+			(category && item.name == 'Atlantean Essence' && get(gears[category].enchant).name == 'Virtuous') ||
 			(item.name == 'Warship' &&
 				(get(hullArmor1Enchant).name == 'Warship' ||
 					get(sailMaterial1Enchant).name == 'Warship' ||
