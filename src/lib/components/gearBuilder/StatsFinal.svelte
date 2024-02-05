@@ -45,6 +45,7 @@
 		chestplate1PostCalcs,
 		pants1PostCalcs
 	} from '$lib/utils/statsStore';
+	import FinalStat from './FinalStat.svelte';
 
 	//Used this reactive method of calculating. Reason for this change was mentioned in statsStore.js
 	$: {
@@ -228,47 +229,19 @@
 	{/if}
 
 	{#if $finalAgility > 0}
-		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/stats/agility.png" alt="Agility" />
-			<p
-				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #00ffff; text-align: center;"
-			>
-				+<span>{$finalAgility} </span>AGILITY
-			</p>
-		</div>
+		<FinalStat category={'agility'} scalingType={'General'} />
 	{/if}
 
 	{#if $finalAttackSpeed > 0}
-		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/stats/attackSpeed.png" alt="Attack Speed" />
-			<p
-				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFFFFF; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #0077ff; text-align: center;"
-			>
-				+<span>{$finalAttackSpeed} </span>ATTACK SPEED
-			</p>
-		</div>
+		<FinalStat category={'attackSpeed'} scalingType={'SpeedSize'} />
 	{/if}
 
 	{#if $finalAttackSize > 0}
-		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/stats/attackSize.png" alt="Attack Size" />
-			<p
-				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #00FF00; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #471559; text-align: center;"
-			>
-				+<span>{$finalAttackSize} </span>ATTACK SIZE
-			</p>
-		</div>
+		<FinalStat category={'attackSize'} scalingType={'SpeedSize'} />
 	{/if}
 
 	{#if $finalIntensity > 0}
-		<div class="flex items-center">
-			<img class="h-6" src="/assets/images/stats/intensity.png" alt="Intensity" />
-			<p
-				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: #FFF200; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: #712402; text-align: center;"
-			>
-				+<span>{$finalIntensity} </span>INTENSITY
-			</p>
-		</div>
+		<FinalStat category={'intensity'} scalingType={'General'} />
 	{/if}
 
 	{#if $finalInsanity > 0}
