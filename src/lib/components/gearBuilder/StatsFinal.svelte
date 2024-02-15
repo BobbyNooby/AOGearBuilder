@@ -152,14 +152,16 @@
 			}
 
 			//Modifier Calculations
-
+			let chosenAtlanteanAttribute = undefined;
 			modifierCalcs: if (gears[item].modifier.name == 'Atlantean Essence') {
 				//Calculations for Atlantean
 				for (const currentAttribute of atlantenOrder) {
+					console.log(currentAttribute);
 					if (tempItem[currentAttribute] == 0) {
 						tempItem[currentAttribute] += Math.floor(
 							gears[item].modifier[currentAttribute] * (gears[item].base.maxLevel / 10)
 						);
+						chosenAtlanteanAttribute = currentAttribute;
 						tempItem.insanity += gears[item].modifier.insanity;
 						break modifierCalcs;
 					}
@@ -190,7 +192,7 @@
 			finalWardingTemp += tempItem.warding;
 
 			//Add to the postCalcs of the item.
-			gears[item].postCalcs.set(tempItem);
+			gears[item].postCalcs.set([tempItem, chosenAtlanteanAttribute]);
 		}
 		//Set the final stats.
 		finalPower.set(finalPowerTemp);

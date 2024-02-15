@@ -390,8 +390,12 @@ export function validateEntry(item, category = null, currentItem = null) {
 					(get(accessory2).subType == 'Helmet' && category != 'accessory2') ||
 					(get(accessory3).subType == 'Helmet' && category != 'accessory3'))) ||
 			//Added new virtuous and atlantean conditions
-			(category && item.name == 'Virtuous' && get(gears[category].modifier).name == 'Atlantean Essence') ||
-			(category && item.name == 'Atlantean Essence' && get(gears[category].enchant).name == 'Virtuous') ||
+			(category &&
+				item.name == 'Virtuous' &&
+				get(gears[category].modifier).name == 'Atlantean Essence') ||
+			(category &&
+				item.name == 'Atlantean Essence' &&
+				get(gears[category].enchant).name == 'Virtuous') ||
 			(item.name == 'Warship' &&
 				(get(hullArmor1Enchant).name == 'Warship' ||
 					get(sailMaterial1Enchant).name == 'Warship' ||
@@ -429,11 +433,11 @@ export const finalInsanity = writable(0);
 export const finalDrawback = writable(0);
 export const finalWarding = writable(0);
 
-export const accessory1PostCalcs = writable(postCalcsTempalte);
-export const accessory2PostCalcs = writable(postCalcsTempalte);
-export const accessory3PostCalcs = writable(postCalcsTempalte);
-export const chestplate1PostCalcs = writable(postCalcsTempalte);
-export const pants1PostCalcs = writable(postCalcsTempalte);
+export const accessory1PostCalcs = writable([postCalcsTempalte, undefined]);
+export const accessory2PostCalcs = writable([postCalcsTempalte, undefined]);
+export const accessory3PostCalcs = writable([postCalcsTempalte, undefined]);
+export const chestplate1PostCalcs = writable([postCalcsTempalte, undefined]);
+export const pants1PostCalcs = writable([postCalcsTempalte, undefined]);
 
 // Originally wanted to use this to make sure that the level in your health calculator will not go lower than the minimum level needed to wear your gear set
 // On the rare chance that you see this woody could you try?
