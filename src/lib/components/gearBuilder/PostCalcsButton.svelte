@@ -14,32 +14,33 @@
 	let menuIsActive = false;
 
 	// Checks if box will overflow and set new position if it will
+	// uses documentElement which is the root element as this is the element that contains the scrolable content
 	function setBoxPositionOverflow() {
-		if (mousePosition.x + $hoverWidth + 20 >= document.getElementById('menuouter')?.clientWidth) {
-			if (document.getElementById('menuouter') != null) {
+		if (mousePosition.x + $hoverWidth + 20 >= document.documentElement?.clientWidth) {
+			if (document.documentElement != null) {
 				mousePosition.x =
-					mousePosition.x - 40 - $hoverWidth + document.getElementById('menuouter').scrollLeft;
+					mousePosition.x - 40 - $hoverWidth + document.documentElement.scrollLeft;
 			}
 		} else {
-			if (document.getElementById('menuouter') != null) {
-				mousePosition.x += document.getElementById('menuouter').scrollLeft;
+			if (document.documentElement != null) {
+				mousePosition.x += document.documentElement.scrollLeft;
 			}
 		}
 
 		if (document.getElementById('hover') != null) {
 			if (
 				mousePosition.y + document.getElementById('hover').offsetHeight >=
-				document.getElementById('menuouter')?.clientHeight
+				document.documentElement?.clientHeight
 			) {
-				if (document.getElementById('menuouter') != null) {
+				if (document.documentElement != null) {
 					mousePosition.y =
 						mousePosition.y -
 						document.getElementById('hover').offsetHeight +
-						document.getElementById('menuouter').scrollTop;
+						document.documentElement.scrollTop;
 				}
 			} else {
-				if (document.getElementById('menuouter') != null) {
-					mousePosition.y += document.getElementById('menuouter').scrollTop;
+				if (document.documentElement != null) {
+					mousePosition.y += document.documentElement.scrollTop;
 				}
 			}
 		}

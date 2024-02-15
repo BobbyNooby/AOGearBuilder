@@ -23,6 +23,7 @@
 	let menuIsActive = false; // Bool for mobile menu
 
 	// Checks if box will overflow and set new position if it will
+	// uses element with id menuouter as this is the element that contains the scrolable content
 	function setBoxPositionOverflow() {
 		if (mousePosition.x + $hoverWidth + 20 >= document.getElementById('menuouter').clientWidth) {
 			if (document.getElementById('menuouter') != null) {
