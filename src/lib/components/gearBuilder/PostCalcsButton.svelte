@@ -100,7 +100,12 @@
 		"
 			>
 				<div class=" items-center text-center z-40">
-					<ItemTooltip item={$item} showName={false} />
+					<ItemTooltip
+						item={$item[0]}
+						atlanteanAttribute={$item[1]}
+						showName={false}
+						showOnlyAtlanteanStat={false}
+					/>
 				</div>
 			</div>
 		{/if}
@@ -144,7 +149,12 @@
 						Current Item's Stats
 					</p>
 					<div class="pb-4">
-						<ItemTooltip item={$item} showName={true} />
+						<ItemTooltip
+							item={$item[0]}
+							atlanteanAttribute={$item[1]}
+							showName={true}
+							showOnlyAtlanteanStat={false}
+						/>
 					</div>
 					<div class="flex flex-row space-x-2">
 						<button

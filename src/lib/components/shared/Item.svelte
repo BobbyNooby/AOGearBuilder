@@ -1,7 +1,12 @@
 <script>
 	// @ts-nocheck
 
-	import { validateEntry, storeCurrentBuild, noModList, noModModifiers } from '$lib/utils/statsStore';
+	import {
+		validateEntry,
+		storeCurrentBuild,
+		noModList,
+		noModModifiers
+	} from '$lib/utils/statsStore';
 	import { playCorrect, playWrong } from '$lib/utils/sound.js';
 	import { get, writable } from 'svelte/store';
 	import { getGemById, getModifierById } from '$lib/utils/getItemById';
@@ -9,7 +14,7 @@
 	import { isMobile } from '$lib/utils/mobileStore';
 	import { fade } from 'svelte/transition';
 
-	export let menuToggle, item, category, currentItem, categoryName, builderType; // Props
+	export let menuToggle, item, category, currentItem, categoryName, builderType, currentGears; // Props
 
 	//Mouse hover and position detection for tooltip
 	let isHovering = false;
@@ -125,6 +130,67 @@
 			menuIsActive = true;
 		}
 	}
+
+	let chosenAtlanteanAttribute = '';
+	let showOnlyAtlanteanStat = false;
+
+	modifierCalcs: if (item.name == 'Atlantean Essence') {
+		const attributes = [
+			'power',
+			'defense',
+			'agility',
+			'attackSpeed',
+			'attackSize',
+			'intensity',
+			'insanity',
+			'drawback',
+			'warding'
+		];
+
+		const atlantenOrder = ['power', 'defense', 'attackSize', 'attackSpeed', 'agility', 'intensity'];
+
+		const tempItem = {
+			power: 0,
+			defense: 0,
+			agility: 0,
+			attackSize: 0,
+			attackSpeed: 0,
+			intensity: 0,
+			insanity: 0,
+			drawback: 0,
+			warding: 0
+		};
+		console.log(get(category['base']).defense);
+		for (const attribute of attributes) {
+			// Run through each stat and calculate their value
+			tempItem[attribute] =
+				get(category['base'])[attribute] +
+				get(category['gem1'])[attribute] +
+				get(category['gem2'])[attribute] +
+				get(category['gem3'])[attribute] +
+				(attribute === 'warding' || attribute === 'insanity' || attribute === 'drawback' // Test if the attribute is any of these 3
+					? get(category['enchant'])[attribute] // Add value directly if it is
+					: Math.floor(
+							get(category['enchant'])[attribute] * (get(category['base'])['maxLevel'] / 10)
+					  )); // Else multiply by maxLevel / 10
+		}
+
+		//Calculations for Atlantean
+		for (const currentAttribute of atlantenOrder) {
+			console.log(currentAttribute);
+			if (tempItem[currentAttribute] == 0) {
+				chosenAtlanteanAttribute = currentAttribute;
+				showOnlyAtlanteanStat = true;
+				break modifierCalcs;
+			}
+		}
+		// Only happens when all of them have a value so hence the loop around
+		chosenAtlanteanAttribute = 'power';
+		showOnlyAtlanteanStat = true;
+	} else {
+		chosenAtlanteanAttribute = undefined;
+		showOnlyAtlanteanStat = false;
+	}
 </script>
 
 {#if !$isMobile}
@@ -167,7 +233,12 @@
 					{item.legend}
 				</p>
 				<div class=" items-center text-center z-40">
-					<ItemTooltip {item} showName={true} />
+					<ItemTooltip
+						{item}
+						showName={true}
+						atlanteanAttribute={chosenAtlanteanAttribute}
+						{showOnlyAtlanteanStat}
+					/>
 				</div>
 			</div>
 		{/if}
@@ -202,7 +273,12 @@
 						{item.legend}
 					</p>
 					<div class=" items-center text-center z-40">
-						<ItemTooltip {item} showName={true} />
+						<ItemTooltip
+							{item}
+							showName={true}
+							atlanteanAttribute={chosenAtlanteanAttribute}
+							{showOnlyAtlanteanStat}
+						/>
 					</div>
 					<div class="flex flex-row space-x-2">
 						<button

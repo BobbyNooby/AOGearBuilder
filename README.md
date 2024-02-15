@@ -6,6 +6,8 @@ website : https://tools.arcaneodyssey.net
 
 ## Changelogs
 
+5 February 2024 - Added hover over secondary stats to show percent increase in effectiveness.
+
 13 January 2024 - Added hover to view stats + QOL Changes + Mobile item UI
 
 26 December 2023 - Added the Ship Builder.
