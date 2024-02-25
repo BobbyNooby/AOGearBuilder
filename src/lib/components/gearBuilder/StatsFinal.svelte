@@ -45,6 +45,7 @@
 		chestplate1PostCalcs,
 		pants1PostCalcs
 	} from '$lib/utils/statsStore';
+	import EfficiencyStat from './EfficiencyStat.svelte';
 	import FinalStat from './FinalStat.svelte';
 
 	//Used this reactive method of calculating. Reason for this change was mentioned in statsStore.js
@@ -278,4 +279,10 @@
 			</p>
 		</div>
 	{/if}
+
+	<div class="pb-5">
+
+	</div>
+
+	<EfficiencyStat />
 </div>
