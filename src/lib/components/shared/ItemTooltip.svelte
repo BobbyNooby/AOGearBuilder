@@ -59,7 +59,7 @@
 			<div class="pb-2"></div>
 			<div class="flex items-center justify-center py-2" style="border-top: 2px solid white;">
 				<p
-					style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; text-align: center;"
+					style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; text-align: center; -webkit-text-fill-color: white"
 				>
 					EP: {Math.round((efficiencyPoints + Number.EPSILON) * 100) / 100}
 				</p>
