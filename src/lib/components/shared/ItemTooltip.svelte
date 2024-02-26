@@ -29,6 +29,12 @@
 		itemStats[atlanteanAttribute]["strokeColor"] = '#DB0C45'
 	
 	}
+
+	let efficiencyPoints = 0;
+
+    $: {
+        efficiencyPoints = (item["power"]*3)+item["attackSpeed"]+item["attackSize"]+item["intensity"]+item["agility"]+(item["defense"]/3)+(item["warding"]*18)-(item["insanity"]*36)-(item["drawback"]*18)
+    }
 </script>
 
 <div class="text-center z-30">
@@ -49,6 +55,16 @@
 			</div>
 		{/if}
 	{/each}
+		{#if efficiencyPoints > 0}
+			<div class="pb-2"></div>
+			<div class="flex items-center justify-center py-2" style="border-top: 2px solid white;">
+				<p
+					style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; text-align: center; -webkit-text-fill-color: white"
+				>
+					EP: {Math.round((efficiencyPoints + Number.EPSILON) * 100) / 100}
+				</p>
+			</div>
+		{/if}
 	{:else}
 	<div class="flex items-center justify-center">
 		<img class="h-6" src="assets/images/stats/{atlanteanAttribute}.png" alt={atlanteanAttribute} />
