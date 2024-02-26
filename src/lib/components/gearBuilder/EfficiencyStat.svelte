@@ -74,7 +74,7 @@
     let efficiencyPoints = 0;
 
     $: {
-        efficiencyPoints = ($finalPower*3)+$finalAttackSpeed+$finalAttackSize+$finalIntensity+$finalAgility+(Math.floor($finalDefense/3))+($finalWarding*18)-($finalInsanity*36)-($finalDrawback*18)
+        efficiencyPoints = ($finalPower*3)+$finalAttackSpeed+$finalAttackSize+$finalIntensity+$finalAgility+($finalDefense/3)+($finalWarding*18)-($finalInsanity*36)-($finalDrawback*18)
     }
 </script>
 
@@ -84,7 +84,7 @@
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: white; text-align: center;"
 		>
-			Efficiency Points: {efficiencyPoints}
+			Efficiency Points: {Math.round((efficiencyPoints + Number.EPSILON) * 100) / 100}
 		</p>
 	</div>
 
@@ -151,7 +151,7 @@
 		<p
 			style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: white; text-align: center;"
 		>
-            Efficiency Points: {efficiencyPoints}
+            Efficiency Points: {Math.round((efficiencyPoints + Number.EPSILON) * 100) / 100}
 		</p>
 	</div>
 
