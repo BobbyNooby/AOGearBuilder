@@ -238,7 +238,7 @@ export function loadCode(inputString) {
 				gears[category].modifier.set(getModifierById(parseInt(currentRow[5])));
 				index += 1;
 			}
-			handleHealthCalculationUpdate();
+			//handleHealthCalculationUpdate(); // commented out as not being used currently 
 			storeCurrentBuild();
 			return true;
 		} else {
