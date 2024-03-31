@@ -1,24 +1,65 @@
 import type {
 	ArmorItemData,
-	ArmorItemStats,
-	ItemIdentifiers,
 	Rarities,
-	ArmorMainTypes,
 	GemItemData,
 	GemStats,
-	GemMainTypes,
 	EnchantItemData,
-	EnchantMainTypes,
 	EnchantStats,
 	ModifierItemData,
-	ModifierMainTypes,
 	ModifierStats,
-	ShipItemData,
-	ShipMainTypes,
 	ShipStats,
-	ArmorStats
+	ArmorStats,
+	GearBaseStats,
+	GearIncrementalStats,
+	GearStaticStats,
+	ItemStats
 } from './itemTypes';
 
+function filterData(input: any) {
+	let returnObject: any = {};
+
+	const validKeys = [
+		'power',
+		'defense',
+		'agility',
+		'attackSpeed',
+		'attackSize',
+		'intensity',
+		'regeneration',
+		'piercing',
+		'resistance',
+
+		'powerIncrement',
+		'defenseIncrement',
+		'agilityIncrement',
+		'attackSpeedIncrement',
+		'attackSizeIncrement',
+		'intensityIncrement',
+		'regenerationIncrement',
+		'piercingIncrement',
+		'resistanceIncrement',
+
+		'insanity',
+		'warding',
+		'drawback',
+
+		'durability',
+		'magicStorage',
+		'ramDefense',
+		'ramStrength',
+		'resilience',
+		'speed',
+		'stability',
+		'turning'
+	];
+
+	for (const key in input) {
+		if (validKeys.includes(key)) {
+			returnObject[key] = input[key];
+		}
+	}
+	return returnObject;
+}
 //Move to frontend to handle
 const rarityColors: { [key in Rarities]: string } = {
 	None: '#FFFFFF',
@@ -33,24 +74,12 @@ const rarityColors: { [key in Rarities]: string } = {
 const noneGem: GemItemData = {
 	id: 0,
 	name: 'None',
-	legend: 'Nothing Lol',
-	defense: 0,
-	power: 0,
-	agility: 0,
-	attackSize: 0,
-	attackSpeed: 0,
-	intensity: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0,
-	minLevel: 0,
-	maxLevel: 0,
+	legend: '',
 	rarity: 'None',
 	mainType: 'Gem',
 	subType: 'None',
 	imageId: 'https://i.imgur.com/5pGLWmQ.jpg'
 };
-
 class ArmorSlot {
 	armor: ArmorItemData;
 	armorLevel: number;
@@ -58,14 +87,9 @@ class ArmorSlot {
 	modifier: ModifierItemData;
 	gems: GemItemData[];
 	chosenAtlanteanAttribute: string;
-	constructor(
-		armor: ArmorItemData,
-		armorLevel: number,
-		enchant: EnchantItemData,
-		modifier: ModifierItemData
-	) {
+	constructor(armor: ArmorItemData, enchant: EnchantItemData, modifier: ModifierItemData) {
 		this.armor = armor;
-		this.armorLevel = armorLevel;
+		this.armorLevel = armor.statsPerLevel[armor.statsPerLevel.length - 1].level;
 		this.enchant = enchant;
 		this.modifier = modifier;
 		this.gems = [];
@@ -76,6 +100,9 @@ class ArmorSlot {
 		}
 	}
 
+	getArmorDataAtLevel(level: number) {
+		return this.armor.statsPerLevel.find((ArmorAtLevel) => ArmorAtLevel.level === level);
+	}
 	setArmor(armor: ArmorItemData) {
 		this.armor = armor;
 	}
@@ -85,11 +112,11 @@ class ArmorSlot {
 	}
 
 	getSlotStats(): ArmorStats {
-		const armorStats: any = this.armor as ArmorItemStats;
-		const enchantStats: any = this.enchant as EnchantStats;
-		const modifierStats: any = this.modifier as ModifierStats;
+		const armorStats: any = filterData(this.getArmorDataAtLevel(this.armorLevel));
+		const enchantStats: any = filterData(this.enchant);
+		const modifierStats: any = this.modifier;
 		const levelMultiplier: any = this.armorLevel / 10;
-		const gemsStats: any[] = this.gems.map((gem) => gem as GemStats);
+		const gemsStats: any[] = this.gems.map((gem) => filterData(gem));
 
 		let finalSlotStats: any = {
 			power: 0,
@@ -103,36 +130,34 @@ class ArmorSlot {
 			drawback: 0
 		};
 
-		const statNames: any = {
-			power: 'powerIncrement',
-			defense: 'defenseIncrement',
-			agility: 'agilityIncrement',
-			attackSpeed: 'attackSpeedIncrement',
-			attackSize: 'attackSizeIncrement',
-			intensity: 'intensityIncrement',
+		const nonIncrementalStats = ['insanity', 'warding', 'drawback'];
+
+		for (const stat in armorStats) {
+			finalSlotStats[stat] += armorStats[stat];
+		}
+
+		for (const gem of gemsStats) {
+			for (const stat in gem) {
+				finalSlotStats[stat] += gem[stat];
+			}
+		}
+		// Armor, Enchant, Gem calcs
+
+		const statRelations: any = {
+			powerIncrement: 'power',
+			defenseIncrement: 'defense',
+			agilityIncrement: 'agility',
+			attackSpeedIncrement: 'attackSpeed',
+			attackSizeIncrement: 'attackSize',
+			intensityIncrement: 'intensity',
 			insanity: 'insanity',
 			warding: 'warding',
 			drawback: 'drawback'
 		};
 
-		const nonIncrementalStats = ['insanity', 'warding', 'drawback'];
-
-		// Armor, Enchant, Gem calcs
-		for (const stat in statNames) {
-			console.log(stat, statNames[stat]);
-			//Seperated armor and enchant stats as in rare cases could cause issues if i simplified their formula.
-
-			finalSlotStats[stat] +=
-				Math.floor(
-					armorStats[statNames[stat]] * (nonIncrementalStats.includes(stat) ? 1 : levelMultiplier)
-				) +
-				Math.floor(
-					enchantStats[statNames[stat]] * (nonIncrementalStats.includes(stat) ? 1 : levelMultiplier)
-				);
-
-			for (const gem of gemsStats) {
-				finalSlotStats[stat] += gem[stat];
-			}
+		for (const stat in enchantStats) {
+			finalSlotStats[statRelations[stat]] +=
+				enchantStats[stat] * (nonIncrementalStats.includes(stat) ? 1 : levelMultiplier);
 		}
 
 		// Modifier Calcs
@@ -140,17 +165,17 @@ class ArmorSlot {
 			//Atlantean calcs
 
 			const atlantenOrder = [
-				'power',
-				'defense',
-				'attackSize',
-				'attackSpeed',
-				'agility',
-				'intensity'
+				'powerIncrement',
+				'defenseIncrement',
+				'attackSizeIncrement',
+				'attackSpeedIncrement',
+				'agilityIncrement',
+				'intensityIncrement'
 			];
 
 			for (const stat of atlantenOrder) {
-				if (finalSlotStats[stat] == 0) {
-					finalSlotStats[stat] += Math.floor(modifierStats[statNames[stat]] * levelMultiplier);
+				if (finalSlotStats[statRelations[stat]] == 0) {
+					finalSlotStats[statRelations[stat]] += Math.floor(modifierStats[stat] * levelMultiplier);
 					this.chosenAtlanteanAttribute = stat;
 					finalSlotStats.insanity += modifierStats.insanity;
 					break modifierCalcs;
@@ -158,12 +183,12 @@ class ArmorSlot {
 			}
 
 			// Only happens if all have value
-			finalSlotStats['power'] += Math.floor(modifierStats[statNames['power']] * levelMultiplier);
+			finalSlotStats['power'] += Math.floor(modifierStats['powerIncrement'] * levelMultiplier);
 		} else {
 			// Regular modifier calculations
 
-			for (const stat in statNames) {
-				finalSlotStats[stat] += Math.floor(modifierStats[statNames[stat]] * levelMultiplier);
+			for (const stat in filterData(modifierStats)) {
+				finalSlotStats[statRelations[stat]] += Math.floor(modifierStats[stat] * levelMultiplier);
 			}
 		}
 
@@ -242,20 +267,8 @@ const sunkenIronHelmet: ArmorItemData = {
 	subType: 'Helmet',
 	rarity: 'Rare',
 	imageId: 'https://i.imgur.com/fg5aYLT.jpg',
-
-	minLevel: 90,
-	maxLevel: 120,
-
 	gemNo: 2,
-	powerIncrement: 0,
-	defenseIncrement: 153,
-	agilityIncrement: 0,
-	attackSizeIncrement: 26,
-	attackSpeedIncrement: 0,
-	intensityIncrement: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0
+	statsPerLevel: [{ level: 120, defense: 153, attackSize: 26 }]
 };
 
 const sunkenIronArmor: ArmorItemData = {
@@ -267,19 +280,8 @@ const sunkenIronArmor: ArmorItemData = {
 	rarity: 'Rare',
 	imageId: 'https://i.imgur.com/MSM7WOL.jpg',
 
-	minLevel: 90,
-	maxLevel: 120,
-
 	gemNo: 2,
-	powerIncrement: 0,
-	defenseIncrement: 204,
-	agilityIncrement: 0,
-	attackSizeIncrement: 36,
-	attackSpeedIncrement: 0,
-	intensityIncrement: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0
+	statsPerLevel: [{ level: 120, defense: 204, attackSize: 36 }]
 };
 
 const sunkenIronBoots: ArmorItemData = {
@@ -291,19 +293,8 @@ const sunkenIronBoots: ArmorItemData = {
 	rarity: 'Rare',
 	imageId: 'https://i.imgur.com/v3D3oZQ.jpg',
 
-	minLevel: 90,
-	maxLevel: 120,
-
 	gemNo: 2,
-	powerIncrement: 0,
-	defenseIncrement: 153,
-	agilityIncrement: 0,
-	attackSizeIncrement: 26,
-	attackSpeedIncrement: 0,
-	intensityIncrement: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0
+	statsPerLevel: [{ level: 120, defense: 153, attackSize: 26 }]
 };
 
 const malachiteGem: GemItemData = {
@@ -311,18 +302,8 @@ const malachiteGem: GemItemData = {
 	name: 'Perfect Malachite',
 	legend:
 		'Malachi was a mostly-anonymous prophet whose ministry occurred in Jerusalem during the era of Nehemiah and Ezra. Although he spoke primarily to a specific time and place in history, Malachi also prophesied of the messianic “forerunner” who would announce the appearance of Christ more than 400 years after his lifetime.',
-	defense: 0,
 	power: 3,
-	agility: 0,
 	attackSize: 9,
-	attackSpeed: 0,
-	intensity: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0,
-
-	minLevel: 0,
-	maxLevel: 0,
 	rarity: 'None',
 	mainType: 'Gem',
 	subType: 'None',
@@ -333,18 +314,8 @@ const arcsphere: ArmorItemData = {
 	id: 8,
 	name: 'Arcanium Arcsphere',
 	legend: 'An arcanium-glass dome capable of conducting magic, meant to be worn on the head.',
-	defenseIncrement: 0,
-	powerIncrement: 21,
-	agilityIncrement: 0,
-	attackSizeIncrement: 0,
-	attackSpeedIncrement: 0,
-	intensityIncrement: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0,
-	minLevel: 90,
-	maxLevel: 120,
 	gemNo: 2,
+	statsPerLevel: [{ level: 120, power: 21 }],
 	mainType: 'Accessory',
 	subType: 'Hat',
 	rarity: 'Uncommon',
@@ -355,18 +326,8 @@ const elitenoble: ArmorItemData = {
 	id: 47,
 	name: 'Elite Noble Pauldrons',
 	legend: 'Im batman',
-	defenseIncrement: 0,
-	powerIncrement: 0,
-	agilityIncrement: 20,
-	attackSizeIncrement: 33,
-	attackSpeedIncrement: 0,
-	intensityIncrement: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0,
-	minLevel: 90,
-	maxLevel: 120,
 	gemNo: 2,
+	statsPerLevel: [{ level: 120, agility: 20, attackSize: 33 }],
 	mainType: 'Accessory',
 	subType: 'Back',
 	rarity: 'Uncommon',
@@ -377,29 +338,11 @@ const powerfulEnchant: EnchantItemData = {
 	id: 13,
 	name: 'Powerful',
 	legend: 'An enchant that gives +1 points of Power for every 10 levels of an item, rounded down.',
-	defenseIncrement: 0,
 	powerIncrement: 1,
-	agilityIncrement: 0,
-	attackSizeIncrement: 0,
-	attackSpeedIncrement: 0,
-	intensityIncrement: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0,
-	minLevel: 0,
-	maxLevel: 0,
 	mainType: 'Enchant',
 	subType: 'None',
 	rarity: 'Exotic',
-	imageId: 'https://i.imgur.com/tYJZ0qq.jpg',
-	durability: 0,
-	magicStorage: 0,
-	ramDefense: 0,
-	ramStrength: 0,
-	resilience: 0,
-	speed: 0,
-	stability: 0,
-	turning: 0
+	imageId: 'https://i.imgur.com/tYJZ0qq.jpg'
 };
 
 const armoredEnchant: EnchantItemData = {
@@ -407,28 +350,10 @@ const armoredEnchant: EnchantItemData = {
 	name: 'Armored',
 	legend: 'An enchant that gives +1 points of Power for every 10 levels of an item, rounded down.',
 	defenseIncrement: 9,
-	powerIncrement: 0,
-	agilityIncrement: 0,
-	attackSizeIncrement: 0,
-	attackSpeedIncrement: 0,
-	intensityIncrement: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0,
-	minLevel: 0,
-	maxLevel: 0,
 	mainType: 'Enchant',
 	subType: 'None',
 	rarity: 'Exotic',
-	imageId: 'https://i.imgur.com/tYJZ0qq.jpg',
-	durability: 0,
-	magicStorage: 0,
-	ramDefense: 0,
-	ramStrength: 0,
-	resilience: 0,
-	speed: 0,
-	stability: 0,
-	turning: 0
+	imageId: 'https://i.imgur.com/tYJZ0qq.jpg'
 };
 
 const atlanteanModifier: ModifierItemData = {
@@ -443,10 +368,6 @@ const atlanteanModifier: ModifierItemData = {
 	attackSpeedIncrement: 3,
 	intensityIncrement: 3,
 	insanity: 1,
-	drawback: 0,
-	warding: 0,
-	minLevel: 0,
-	maxLevel: 0,
 	mainType: 'Modifier',
 	subType: 'None',
 	rarity: 'Exotic',
@@ -458,17 +379,7 @@ const blastedModifier: ModifierItemData = {
 	name: 'Blasted',
 	legend:
 		'Gives stats per 10 levels rounded down in the following order depending on if your item has the stat or not: Power -> Defense -> Attack Size -> Attack Speed -> Agility -> Intensity -> Power. Shown below is the stat you will get given the stats of your current item.',
-	defenseIncrement: 0, // Defense Changed?
 	powerIncrement: 0.5,
-	agilityIncrement: 0,
-	attackSizeIncrement: 0,
-	attackSpeedIncrement: 0,
-	intensityIncrement: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0,
-	minLevel: 0,
-	maxLevel: 0,
 	mainType: 'Modifier',
 	subType: 'None',
 	rarity: 'Exotic',
@@ -480,40 +391,30 @@ const noneModifier: ModifierItemData = {
 	name: 'Blastesd',
 	legend:
 		'Gives stats per 10 levels rounded down in the following order depending on if your item has the stat or not: Power -> Defense -> Attack Size -> Attack Speed -> Agility -> Intensity -> Power. Shown below is the stat you will get given the stats of your current item.',
-	defenseIncrement: 0, // Defense Changed?
-	powerIncrement: 0,
-	agilityIncrement: 0,
-	attackSizeIncrement: 0,
-	attackSpeedIncrement: 0,
-	intensityIncrement: 0,
-	insanity: 0,
-	drawback: 0,
-	warding: 0,
-	minLevel: 0,
-	maxLevel: 0,
+
 	mainType: 'Modifier',
 	subType: 'None',
 	rarity: 'Exotic',
 	imageId: 'https://i.imgur.com/JvqDmI1.jpg'
 };
 
-let accessory1Slot = new ArmorSlot(elitenoble, 10, powerfulEnchant, blastedModifier);
+let accessory1Slot = new ArmorSlot(elitenoble, powerfulEnchant, blastedModifier);
 accessory1Slot.setGem(1, malachiteGem);
 accessory1Slot.setGem(2, malachiteGem);
 
-let accessory2Slot = new ArmorSlot(arcsphere, 100, powerfulEnchant, blastedModifier);
+let accessory2Slot = new ArmorSlot(arcsphere, powerfulEnchant, blastedModifier);
 accessory2Slot.setGem(1, malachiteGem);
 accessory2Slot.setGem(2, malachiteGem);
 
-let accessory3Slot = new ArmorSlot(sunkenIronHelmet, 10, armoredEnchant, noneModifier);
+let accessory3Slot = new ArmorSlot(sunkenIronHelmet, armoredEnchant, noneModifier);
 accessory3Slot.setGem(1, malachiteGem);
 accessory3Slot.setGem(2, malachiteGem);
 
-let chestplateSlot = new ArmorSlot(sunkenIronArmor, 10, armoredEnchant, noneModifier);
+let chestplateSlot = new ArmorSlot(sunkenIronArmor, armoredEnchant, noneModifier);
 chestplateSlot.setGem(1, malachiteGem);
 chestplateSlot.setGem(2, malachiteGem);
 
-let pantsSlot = new ArmorSlot(sunkenIronBoots, 10, armoredEnchant, atlanteanModifier);
+let pantsSlot = new ArmorSlot(sunkenIronBoots, armoredEnchant, atlanteanModifier);
 pantsSlot.setGem(1, malachiteGem);
 pantsSlot.setGem(2, malachiteGem);
 
