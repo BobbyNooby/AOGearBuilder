@@ -82,6 +82,16 @@
 			>
 				Gear Builder
 			</p>
+			<p
+				class="text-xl font-medium text-red-300 text-center p-5"
+				style="font-family: Merriweather;"
+				in:fade={{ delay: 250, duration: 300 }}
+				out:fade={{ delay: 250, duration: 300 }}
+			>
+				ITEMS IN THE BUILDER RIGHT NOW ARE NOT UPDATED FOR BALANCE CHANGES THAT HAPPENED POST NIMBUS
+				SEA. PLEASE USE THE SITE IN THIS CURRENT STATE WITH THAT IN MIND. UPDATED BUILDER FOR NIMBUS
+				SEA WILL COME SOON THANK YOU FOR YOUR PATIENCE.
+			</p>
 			<div class="flex items-center justify-center space-x-4 pb-5">
 				<GenerateCode type={'gear'} />
 				<LoadCode type={'gear'} />
