@@ -16,15 +16,16 @@ export type ModifierMainTypes = 'Modifier';
 export type EnchantMainTypes = 'Enchant';
 
 export type ShipMainTypes =
-	| 'Cannons'
+	| 'Cannon'
 	| 'Hull Armor'
-	| 'Deckhands'
+	| 'Deckhand'
 	| 'Ram'
 	| 'Sail Material'
 	| 'Siege Weapon'
 	| 'Boat'
 	| 'Ship Crew'
-	| 'Quartermaster';
+	| 'Quartermaster'
+	| ' Ship';
 
 export type ItemIdentifiers = {
 	id: number;
@@ -93,8 +94,11 @@ export type ArmorItemData = ItemIdentifiers & {
 	gemNo: number;
 	mainType: ArmorMainTypes;
 	statsPerLevel: ArmorLevelStats[];
+	validModifiers: string[];
 };
 export type GemItemData = ItemIdentifiers & { mainType: GemMainTypes } & GemStats;
 export type ShipItemData = ItemIdentifiers & ShipStats & { mainType: ShipMainTypes };
 export type EnchantItemData = ItemIdentifiers & EnchantStats & { mainType: EnchantMainTypes };
 export type ModifierItemData = ItemIdentifiers & ModifierStats & { mainType: ModifierMainTypes };
+
+export type anyItem = ArmorItemData | GemItemData | EnchantItemData | ModifierItemData;
