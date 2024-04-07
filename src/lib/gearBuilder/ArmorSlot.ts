@@ -33,8 +33,6 @@ export class ArmorSlot {
 		for (let i = 0; i < armor.gemNo; i++) {
 			this.gems.push(noneGem);
 		}
-
-		const test = writable(this.armor);
 	}
 
 	getArmorDataAtLevel(level: number) {
@@ -69,6 +67,8 @@ export class ArmorSlot {
 
 	setModifier(modifier: ModifierItemData) {
 		this.modifier = modifier;
+		// Call this to update this.atlanteanAttribute
+		this.getSlotStats();
 	}
 
 	getSlotStats(): ArmorStats {
@@ -149,7 +149,7 @@ export class ArmorSlot {
 			finalSlotStats['power'] += Math.floor(modifierStats['powerIncrement'] * levelMultiplier);
 		} else {
 			// Regular modifier calculations
-
+			this.chosenAtlanteanAttribute = '';
 			for (const stat in filterData(modifierStats)) {
 				finalSlotStats[statRelations[stat]] += Math.floor(modifierStats[stat] * levelMultiplier);
 			}

@@ -1,4 +1,5 @@
 import type { Rarities } from './itemTypes';
+import type { magic } from './playerTypes';
 
 export const rarityColors: { [key in Rarities]: string } = {
 	None: '#FFFFFF',
@@ -10,7 +11,7 @@ export const rarityColors: { [key in Rarities]: string } = {
 	Legendary: '#00FF00'
 };
 
-export const validKeys = [
+export const validStatKeys = [
 	'power',
 	'defense',
 	'agility',
@@ -43,4 +44,27 @@ export const validKeys = [
 	'speed',
 	'stability',
 	'turning'
+];
+
+export const listOfMagics: magic[] = [
+	'Acid',
+	'Ash',
+	'Crystal',
+	'Earth',
+	'Explosion',
+	'Fire',
+	'Glass',
+	'Ice',
+	'Light',
+	'Lightning',
+	'Magma',
+	'Metal',
+	'Plasma',
+	'Poison',
+	'Sand',
+	'Shadow',
+	'Snow',
+	'Water',
+	'Wind',
+	'Wood'
 ];

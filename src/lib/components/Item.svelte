@@ -10,10 +10,10 @@
 	import ItemTooltip from './ItemTooltip.svelte';
 	import type { Player } from '$lib/playerClasses';
 
-	export let Item: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
-		SlotKey: string,
+	export let item: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
+		slotKey: string,
 		gemIndex: boolean | number,
-		Player: Player,
+		player: Player,
 		toggleMenu: () => void,
 		updatePage: () => void;
 
@@ -22,9 +22,6 @@
 	const hoverWidth = writable(300);
 
 	let levelRange = '';
-
-	let chosenAtlanteanAttribute: string = '';
-	let showOnlyAtlanteanStat = false;
 
 	function setBoxPositionOverflow() {
 		if (mousePosition.x + $hoverWidth + 20 >= document.getElementById('menuouter').clientWidth) {
@@ -65,15 +62,15 @@
 		isHovering = true;
 		mousePosition = { x: event.clientX, y: event.clientY };
 
-		if (!Item.hasOwnProperty('statsPerLevel')) {
+		if (!item.hasOwnProperty('statsPerLevel')) {
 			levelRange = '';
-		} else if (Item.statsPerLevel.length == 1) {
-			levelRange = Item.statsPerLevel[0].level;
-		} else if (Item.statsPerLevel.length > 1) {
+		} else if (item.statsPerLevel.length == 1) {
+			levelRange = item.statsPerLevel[0].level;
+		} else if (item.statsPerLevel.length > 1) {
 			levelRange =
-				Item.statsPerLevel[0].level.toString() +
+				item.statsPerLevel[0].level.toString() +
 				' - ' +
-				Item.statsPerLevel[Item.statsPerLevel.length - 1].level.toString();
+				item.statsPerLevel[item.statsPerLevel.length - 1].level.toString();
 		}
 
 		setBoxPositionOverflow();
@@ -84,9 +81,34 @@
 	}
 
 	function handleClick() {
-		Player.build.setGear(Item, SlotKey, gemIndex);
+		player.build.setGear(item, slotKey, gemIndex);
 		updatePage();
 		toggleMenu();
+	}
+
+	let chosenAtlanteanAttribute: string = '';
+	let showOnlyAtlanteanStat = false;
+
+	modifierCalcs: if (item.name == 'Atlantean Essence') {
+		const atlantenOrder = ['power', 'defense', 'attackSize', 'attackSpeed', 'agility', 'intensity'];
+
+		let preAtlanteanArmor = player.build.slots[slotKey].getSlotStats();
+
+		//Calculations for Atlantean
+		for (const currentAttribute of atlantenOrder) {
+			console.log(currentAttribute);
+			if (preAtlanteanArmor[currentAttribute] == 0) {
+				chosenAtlanteanAttribute = currentAttribute;
+				showOnlyAtlanteanStat = true;
+				break modifierCalcs;
+			}
+		}
+		// Only happens when all of them have a value so hence the loop around
+		chosenAtlanteanAttribute = 'power';
+		showOnlyAtlanteanStat = true;
+	} else {
+		chosenAtlanteanAttribute = '';
+		showOnlyAtlanteanStat = false;
 	}
 </script>
 
@@ -94,11 +116,11 @@
 	on:mousemove={handleMouseOver}
 	on:mouseleave={handleMouseOut}
 	on:click={handleClick}
-	class="m-2 w-28 h-28"
-	style="border-color: {rarityColors[Item.rarity]}; border-width: 1px; background-color: #020202;"
+	class="m-2 w-24 h-24"
+	style="border-color: {rarityColors[item.rarity]}; border-width: 1px; background-color: #020202;"
 >
-	<img alt={Item.name} src={Item.imageId} class="w-full h-full object-contain" />
-	<p>{Item.name}</p>
+	<img alt={item.name} src={item.imageId} class="w-full h-full object-contain" />
+	<p>{item.name}</p>
 	{#if isHovering}
 		<div
 			use:createdHover
@@ -111,7 +133,7 @@
 	  padding: 10px;
 	  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 	  border: 3px solid white;
-	  border-color: {rarityColors[Item.rarity]};
+	  border-color: {rarityColors[item.rarity]};
 	  color: white;
 	  top: {mousePosition.y}px; 
 	  left: {mousePosition.x + 20}px;
@@ -121,20 +143,20 @@
 	  
 	"
 		>
-			<h2 class="text-2xl z-40" style="color: white; font-family: Merriweather;">{Item.name}</h2>
+			<h2 class="text-2xl z-40" style="color: white; font-family: Merriweather;">{item.name}</h2>
 			<p class="text-xl z-40" style="color: white; font-family: Merriweather;">
-				{#if Item.subType && Item.subType !== 'None'}{Item.subType}{/if}
-				{Item.mainType}
+				{#if item.subType && item.subType !== 'None'}{item.subType}{/if}
+				{item.mainType}
 			</p>
 			<p class="text-l z-40" style="color: white; font-family: Merriweather;">
 				{#if levelRange != ''}Level {levelRange}{/if}
 			</p>
 			<p class="text-l z-40" style="color: white; font-family: 'Open Sans', sans-serif;">
-				{Item.legend}
+				{item.legend}
 			</p>
 			<div class=" items-center text-center z-40">
 				<ItemTooltip
-					{Item}
+					{item}
 					showName={true}
 					atlanteanAttribute={chosenAtlanteanAttribute}
 					{showOnlyAtlanteanStat}

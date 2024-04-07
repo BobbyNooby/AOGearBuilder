@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (): Promise<any> => {
 	const data = await db
-		.collection('test')
+		.collection('items')
 		.find({}, { projection: { _id: 0 } })
 		.toArray();
 	console.log(data);

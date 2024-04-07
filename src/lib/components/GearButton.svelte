@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { CurrentBuild } from '$lib/gearBuilder/CurrentBuild';
-	import { ArmorSlot } from '$lib/gearBuilder/ArmorSlot';
 	import { fade } from 'svelte/transition';
 	import type {
 		ArmorItemData,
@@ -11,43 +9,63 @@
 	import type { Player } from '$lib/playerClasses';
 	import Item from './Item.svelte';
 	import { rarityColors } from '$lib/dataConstants';
-	import { writable } from 'svelte/store';
-	import PlayerStatMenu from './PlayerStatMenu.svelte';
 
-	export let CurrentItem: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
-		Database: any,
-		SlotKey: string,
-		Player: Player,
+	export let currentItem: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
+		database: any,
+		slotKey: string,
+		player: Player,
 		gemIndex: boolean | number,
 		updatePage: () => void;
 
 	let menuBool = false;
-	let isActive = true;
 
 	function toggleMenu(): void {
 		menuBool = !menuBool;
 	}
 
-	// Have to do this to make the item able to be updated
-
 	function handleClick() {
 		toggleMenu();
 	}
 
-	let ItemMenuData = Database[CurrentItem.mainType];
+	let searchQuery = '';
+
+	let ItemMenuData = database[currentItem.mainType];
+	let placeholderItem = database[currentItem.mainType].find((item) => item.name === 'None');
+
+	let filteredData = ItemMenuData;
+
+	$: filteredData = ItemMenuData.filter((item) => {
+		if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+			return true;
+		}
+	});
+
+	let validImage = true;
+	// let img = new Image();
+	// img.src = currentItem.imageId;
+	// img.onerror = function () {
+	// 	validImage = false;
+	// };
+	// img.onload = function () {
+	// 	validImage = true;
+	// };
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 
 <!-- Button -->
-<div
-	class="border-1 w-28 h-28 m-2"
-	style="border-color: {rarityColors[CurrentItem.rarity]};  ;"
+<button
+	class=" w-24 h-24 m-2"
+	style="border-color: {rarityColors[
+		currentItem.rarity
+	]}; border-width: 1px; background-color: #020202;"
 	on:click={handleClick}
 >
-	<img class="w-full h-full object-contain" alt={CurrentItem.name} src={CurrentItem.imageId} />
-</div>
+	{#if validImage}
+		<img class="w-full h-full object-contain" alt={currentItem.name} src={currentItem.imageId} />
+	{:else}{/if}
+</button>
 <!-- <p>{reactiveTest}</p> -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -63,7 +81,7 @@
 			on:click={() => {
 				toggleMenu();
 			}}
-			class=" my-4 w-20 h-20 bg-black border rounded border-white text-white font-bold text-lg py-2 px-4 items-center relative"
+			class=" my-4 w-24 h-24 bg-black border rounded border-white text-white font-bold text-lg py-2 px-4 items-center relative"
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -80,9 +98,17 @@
 			</svg>
 		</button>
 
+		<input
+			type="text"
+			bind:value={searchQuery}
+			placeholder="Search"
+			class="border rounded p-2 m-2 w-1/2 bg-black text-white"
+		/>
+
 		<div class="flex-wrap flex mx-72">
-			{#each ItemMenuData as item}
-				<Item Item={item} {SlotKey} {gemIndex} {Player} {toggleMenu} {updatePage} />
+			<Item item={placeholderItem} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />
+			{#each filteredData as item}
+				<Item {item} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />
 			{/each}
 		</div>
 	</div>

@@ -1,10 +1,10 @@
-import { validKeys } from '$lib/dataConstants';
+import { validStatKeys } from '$lib/dataConstants';
 
 export function filterData(input: any) {
 	let returnObject: any = {};
 
 	for (const key in input) {
-		if (validKeys.includes(key)) {
+		if (validStatKeys.includes(key)) {
 			returnObject[key] = input[key];
 		}
 	}

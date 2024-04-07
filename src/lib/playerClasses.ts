@@ -7,6 +7,9 @@ export class Player {
 	magic: magic;
 	build: CurrentBuild;
 
+	minLevel: number;
+	maxLevel: number;
+
 	vitalityPoints: number;
 	magicPoints: number;
 	strengthPoints: number;
@@ -24,6 +27,9 @@ export class Player {
 	) {
 		this.level = level;
 		this.health = health + this.level * 7;
+
+		this.minLevel = 1;
+		this.maxLevel = 136;
 
 		this.build = build;
 

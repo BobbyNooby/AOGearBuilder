@@ -9,10 +9,7 @@ export const noneAccessory: ArmorItemData = {
 	rarity: 'None',
 	imageId: 'https://i.imgur.com/ynJYNoA.jpg',
 	gemNo: 2,
-	statsPerLevel: [
-		{ level: 110, defense: 10 },
-		{ level: 120, defense: 20 }
-	],
+	statsPerLevel: [{ level: 0 }],
 	validModifiers: []
 };
 
@@ -25,10 +22,7 @@ export const noneChestplate: ArmorItemData = {
 	rarity: 'None',
 	imageId: 'https://i.imgur.com/Uj7r6Fm.jpg',
 	gemNo: 0,
-	statsPerLevel: [
-		{ level: 110, power: 10 },
-		{ level: 120, power: 20 }
-	],
+	statsPerLevel: [{ level: 0 }],
 	validModifiers: []
 };
 
@@ -41,10 +35,7 @@ export const nonePants: ArmorItemData = {
 	rarity: 'None',
 	imageId: 'https://i.imgur.com/U9Z0chG.jpg',
 	gemNo: 0,
-	statsPerLevel: [
-		{ level: 110, agility: 10 },
-		{ level: 120, agility: 20 }
-	],
+	statsPerLevel: [{ level: 0 }],
 	validModifiers: []
 };
 
