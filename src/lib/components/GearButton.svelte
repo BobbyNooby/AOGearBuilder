@@ -32,10 +32,14 @@
 	let ItemMenuData = database[currentItem.mainType];
 	let placeholderItem = database[currentItem.mainType].find((item) => item.name === 'None');
 
-	let filteredData = ItemMenuData;
+	let filteredData = ItemMenuData.filter((item) => item.name !== 'None');
 
 	$: filteredData = ItemMenuData.filter((item) => {
-		if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+		if (
+			searchQuery === '' ||
+			item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+			item.name !== 'None'
+		) {
 			return true;
 		}
 	});
@@ -56,7 +60,7 @@
 
 <!-- Button -->
 <button
-	class=" w-24 h-24 m-2"
+	class=" w-24 h-24 m-2 flex items-center justify-center"
 	style="border-color: {rarityColors[
 		currentItem.rarity
 	]}; border-width: 1px; background-color: #020202;"
@@ -64,8 +68,18 @@
 >
 	{#if validImage}
 		<img class="w-full h-full object-contain" alt={currentItem.name} src={currentItem.imageId} />
-	{:else}{/if}
+	{:else}
+		<p
+			class="items-center object-contain m-1 text-sm"
+			style="font-family: Merriweather; text-align: center; color: {rarityColors[
+				currentItem.rarity
+			]};"
+		>
+			{currentItem.name}
+		</p>
+	{/if}
 </button>
+
 <!-- <p>{reactiveTest}</p> -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->

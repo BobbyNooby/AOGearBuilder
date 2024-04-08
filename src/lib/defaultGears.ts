@@ -1,116 +1,88 @@
 import type { ArmorItemData, GemItemData, EnchantItemData, ModifierItemData } from './itemTypes';
 
 export const noneAccessory: ArmorItemData = {
-	id: 0,
+	id: 'A',
 	name: 'None',
-	legend: 'None Accessory',
+	legend: 'Ermmm this is a nothing accessory',
 	mainType: 'Accessory',
-	subType: 'None',
 	rarity: 'None',
 	imageId: 'https://i.imgur.com/ynJYNoA.jpg',
-	gemNo: 2,
-	statsPerLevel: [{ level: 0 }],
+	deleted: false,
+	subType: 'None',
+	gemNo: 0,
+	statsPerLevel: [
+		{
+			level: 0
+		}
+	],
 	validModifiers: []
 };
 
 export const noneChestplate: ArmorItemData = {
-	id: 0,
+	id: 'B',
 	name: 'None',
-	legend: 'None Chestplate',
+	legend: 'Nope. Big nothingburger chestplate here.',
 	mainType: 'Chestplate',
-	subType: 'None',
 	rarity: 'None',
 	imageId: 'https://i.imgur.com/Uj7r6Fm.jpg',
+	deleted: false,
+	subType: 'None',
 	gemNo: 0,
-	statsPerLevel: [{ level: 0 }],
+	statsPerLevel: [
+		{
+			level: 0
+		}
+	],
 	validModifiers: []
 };
 
 export const nonePants: ArmorItemData = {
-	id: 0,
+	id: 'C',
 	name: 'None',
-	legend: 'None Pants',
+	legend: 'Yep, big nothing pants over here nothing to see.',
 	mainType: 'Pants',
-	subType: 'None',
 	rarity: 'None',
 	imageId: 'https://i.imgur.com/U9Z0chG.jpg',
+	deleted: false,
+	subType: 'None',
 	gemNo: 0,
-	statsPerLevel: [{ level: 0 }],
+	statsPerLevel: [
+		{
+			level: 0
+		}
+	],
 	validModifiers: []
 };
 
 export const noneGem: GemItemData = {
-	id: 12,
+	id: 'F',
 	name: 'None',
-	legend: 'None Gem',
-	power: 3,
-	attackSize: 9,
-	rarity: 'None',
+	legend: 'Shine bright like a NOTHING',
 	mainType: 'Gem',
-	subType: 'None',
-	imageId: 'https://i.imgur.com/CXvDUmK.jpg'
+	rarity: 'None',
+	imageId:
+		'https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/gem/0.jpg',
+	deleted: false
 };
 
-const powerfulEnchant: EnchantItemData = {
-	id: 13,
-	name: 'Powerful',
-	legend: 'An enchant that gives +1 points of Power for every 10 levels of an item, rounded down.',
-	powerIncrement: 1,
+export const noneEnchant: EnchantItemData = {
+	id: 'D',
+	name: 'None',
+	legend: 'Nope nothing enchanting about this at all',
 	mainType: 'Enchant',
-	subType: 'None',
-	rarity: 'Exotic',
-	imageId: 'https://i.imgur.com/tYJZ0qq.jpg'
-};
-
-const armoredEnchant: EnchantItemData = {
-	id: 13,
-	name: 'Armored',
-	legend: 'An enchant that gives +1 points of Power for every 10 levels of an item, rounded down.',
-	defenseIncrement: 9,
-	mainType: 'Enchant',
-	subType: 'None',
-	rarity: 'Exotic',
-	imageId: 'https://i.imgur.com/tYJZ0qq.jpg'
-};
-
-const atlanteanModifier: ModifierItemData = {
-	id: 1,
-	name: 'Atlantean Essence',
-	legend:
-		'Gives stats per 10 levels rounded down in the following order depending on if your item has the stat or not: Power -> Defense -> Attack Size -> Attack Speed -> Agility -> Intensity -> Power. Shown below is the stat you will get given the stats of your current item.',
-	defenseIncrement: 8.83, // Defense Changed?
-	powerIncrement: 1,
-	agilityIncrement: 3,
-	attackSizeIncrement: 3,
-	attackSpeedIncrement: 3,
-	intensityIncrement: 3,
-	insanity: 1,
-	mainType: 'Modifier',
-	subType: 'None',
-	rarity: 'Exotic',
-	imageId: 'https://i.imgur.com/JvqDmI1.jpg'
-};
-
-const blastedModifier: ModifierItemData = {
-	id: 1,
-	name: 'Blasted',
-	legend:
-		'Gives stats per 10 levels rounded down in the following order depending on if your item has the stat or not: Power -> Defense -> Attack Size -> Attack Speed -> Agility -> Intensity -> Power. Shown below is the stat you will get given the stats of your current item.',
-	powerIncrement: 0.5,
-	mainType: 'Modifier',
-	subType: 'None',
-	rarity: 'Exotic',
-	imageId: 'https://i.imgur.com/JvqDmI1.jpg'
+	rarity: 'None',
+	imageId:
+		'https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/enchant/0.jpg',
+	deleted: false
 };
 
 export const noneModifier: ModifierItemData = {
-	id: 0,
+	id: 'E',
 	name: 'None',
-	legend:
-		'Gives stats per 10 levels rounded down in the following order depending on if your item has the stat or not: Power -> Defense -> Attack Size -> Attack Speed -> Agility -> Intensity -> Power. Shown below is the stat you will get given the stats of your current item.',
-
+	legend: 'This modifies NOTHING it serves ZERO PURPOSE it should disappear NOW!!',
 	mainType: 'Modifier',
-	subType: 'None',
-	rarity: 'Exotic',
-	imageId: 'https://i.imgur.com/JvqDmI1.jpg'
+	rarity: 'None',
+	imageId:
+		'https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/modifier/0.jpg',
+	deleted: false
 };

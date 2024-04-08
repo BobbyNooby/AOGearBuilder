@@ -110,6 +110,8 @@
 		chosenAtlanteanAttribute = '';
 		showOnlyAtlanteanStat = false;
 	}
+
+	let validImage = true;
 </script>
 
 <button
@@ -119,8 +121,17 @@
 	class="m-2 w-24 h-24"
 	style="border-color: {rarityColors[item.rarity]}; border-width: 1px; background-color: #020202;"
 >
-	<img alt={item.name} src={item.imageId} class="w-full h-full object-contain" />
-	<p>{item.name}</p>
+	{#if validImage}
+		<img alt={item.name} src={item.imageId} class="w-full h-full object-contain" />
+	{:else}
+		<p
+			class="items-center object-contain m-1 text-sm"
+			style="font-family: Merriweather; text-align: center; color: {rarityColors[item.rarity]};"
+		>
+			{item.name}
+		</p>
+	{/if}
+
 	{#if isHovering}
 		<div
 			use:createdHover

@@ -6,7 +6,8 @@
 	import { writable } from 'svelte/store';
 	import ItemTooltip from '$lib/components/ItemTooltip.svelte';
 	import { fade } from 'svelte/transition';
-	import PlayerStatMenu from '$lib/components/PlayerStatMenu.svelte';
+	import PlayerStatMenu from '$lib/components/PlayerStats/PlayerStatMenu.svelte';
+	import { testNumber } from '$lib/playerUtils';
 
 	export let data: PageData;
 
@@ -40,19 +41,13 @@
 	<meta property="twitter:image" content="https://i.imgur.com/c6n3LP1.png" />
 
 	<!-- Meta Tags Generated with https://metatags.io -->
-
-	<!-- Google Fonts Link -->
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Open+Sans:wght@700&display=swap"
-		rel="stylesheet"
-	/>
 </svelte:head>
 
 {#key $updatePageStore}
 	<section class="flex flex-col items-center" style="display: flex;">
-		<p class="mt-8 text-7xl text-white" style="font-family: Merriweather;">Gear Builder</p>
+		<p class="mt-8 text-7xl text-white merriweather-light" style="font-family: Merriweather;">
+			Gear Builder{testNumber}
+		</p>
 
 		<div class="flex justify-center items-center">
 			<div class="flex flex-row">
@@ -93,8 +88,10 @@
 												class="block w-full mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
 												bind:value={SessionPlayer.build.slots[slotKey].armorLevel}
 											>
-												{#each Object.values(SessionPlayer.build.slots[slotKey].armor.statsPerLevel) as { level }}
-													<option transition:fade={{ duration: 69 }} value={level}>{level}</option>
+												{#each Object.values(SessionPlayer.build.slots[slotKey].armor.statsPerLevel) as statsAtLevel}
+													<option transition:fade={{ duration: 69 }} value={statsAtLevel.level}
+														>{statsAtLevel.level}</option
+													>
 												{/each}
 											</select>
 										</div>
@@ -151,8 +148,10 @@
 												class="block w-full mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
 												bind:value={SessionPlayer.build.slots[slotKey].armorLevel}
 											>
-												{#each Object.values(SessionPlayer.build.slots[slotKey].armor.statsPerLevel) as { level }}
-													<option value={level}>{level}</option>
+												{#each Object.values(SessionPlayer.build.slots[slotKey].armor.statsPerLevel) as statsAtLevel}
+													<option transition:fade={{ duration: 69 }} value={statsAtLevel.level}
+														>{statsAtLevel.level}</option
+													>
 												{/each}
 											</select>
 										</div>
@@ -175,7 +174,7 @@
 					</div>
 				</div>
 
-				<div class=" m-20 w-fit p-2 border-2 border-white rounded bg-black bg-opacity-40 h-72">
+				<div class=" m-20 w-80 p-2 border-2 border-white rounded bg-black bg-opacity-40 h-72">
 					<ItemTooltip
 						item={SessionPlayer.build.getBuildStats()}
 						showName={true}
@@ -185,6 +184,6 @@
 			</div>
 		</div>
 
-		<PlayerStatMenu player={SessionPlayer} />
+		<PlayerStatMenu player={SessionPlayer} updatePage={() => updatePage()} />
 	</section>
 {/key}

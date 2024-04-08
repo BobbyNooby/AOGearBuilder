@@ -28,14 +28,13 @@ export type ShipMainTypes =
 	| ' Ship';
 
 export type ItemIdentifiers = {
-	id: number;
+	id: string;
 	name: string;
 	legend: string;
 	mainType: string;
-	subType: string;
 	rarity: Rarities;
 	imageId: string;
-};
+} & Partial<{ deleted: boolean; subType: string }>;
 
 export type GearBaseStats = Partial<{
 	power: number;
