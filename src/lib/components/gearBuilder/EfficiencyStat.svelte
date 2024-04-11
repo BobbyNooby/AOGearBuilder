@@ -72,9 +72,12 @@
 	}
 
     let efficiencyPoints = 0;
-
+    let a = 0;
+    let w = 0;
     $: {
-        efficiencyPoints = ($finalPower*3)+$finalAttackSpeed+$finalAttackSize+$finalIntensity+$finalAgility+($finalDefense/3)+($finalWarding*18)-($finalInsanity*36)-($finalDrawback*18)
+	a = $finalAttackSpeed + $finalAttackSize + $finalAgility;
+	w = ($finalWarding*18) - ($finalInsanity*36) - ($finalDrawback*18)
+        efficiencyPoints = a + w + $finalIntensity + ($finalPower*3) + ($finalDefense/3)
     }
 </script>
 
