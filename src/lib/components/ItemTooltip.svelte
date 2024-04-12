@@ -1,6 +1,21 @@
 <script lang="ts">
-	export let item, showName, atlanteanAttribute, showOnlyAtlanteanStat; //importing the Item that was selected cos thats the only thing thats needed
-	import { get } from 'svelte/store';
+	import { calculateEfficiencyPoints } from '$lib/utils/calculateEfficiencyPoints';
+	import type {
+		ArmorItemData,
+		GemItemData,
+		EnchantItemData,
+		ModifierItemData
+	} from '$lib/itemTypes';
+	import { filterData } from '$lib/utils/filterData';
+	import type { Player } from '$lib/playerClasses';
+
+	export let item: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
+		showName: boolean,
+		player: Player,
+		slotKey: string,
+		isItemMenu: boolean,
+		atlanteanAttribute: string,
+		showOnlyAtlanteanStat: boolean; //importing the Item that was selected cos thats the only thing thats needed
 
 	// This document is a tooltip for the items
 
@@ -84,14 +99,96 @@
 		itemStats[atlanteanAttribute]['strokeColor'] = '#DB0C45';
 	}
 
-	let efficiencyPoints = 0;
+	let minStats = {};
+	let maxStats = {};
+	let chosenStat = {};
+	let efficiencyPointsString: string = '';
+
+	if (isItemMenu) {
+		if (
+			['Accessory', 'Chestplate', 'Pants'].includes(item.mainType) &&
+			item.hasOwnProperty('statsPerLevel')
+		) {
+			if (item.statsPerLevel.length > 1) {
+				minStats = filterData(item.statsPerLevel[0]);
+				maxStats = filterData(item.statsPerLevel[item.statsPerLevel.length - 1]);
+				efficiencyPointsString =
+					calculateEfficiencyPoints(minStats) + ' - ' + calculateEfficiencyPoints(maxStats);
+
+				for (const stat in itemStats) {
+					if (minStats.hasOwnProperty(stat) && maxStats.hasOwnProperty(stat)) {
+						if (stat == 'warding' || stat == 'insanity') {
+							chosenStat[stat] = minStats[stat].toString();
+						} else {
+							chosenStat[stat] = minStats[stat] + ' ~ ' + maxStats[stat];
+						}
+					}
+				}
+			} else if (item.statsPerLevel.length == 1) {
+				chosenStat = filterData(item.statsPerLevel[0]);
+				efficiencyPointsString = calculateEfficiencyPoints(chosenStat).toString();
+			}
+		} else if (['Enchant', 'Modifier'].includes(item.mainType)) {
+			// Calculatiions to allow to check how much power you get for that armor at that level
+			let returnStat = {};
+			let increments = filterData(item);
+
+			const statRelations = {
+				powerIncrement: 'power',
+				defenseIncrement: 'defense',
+				agilityIncrement: 'agility',
+				attackSpeedIncrement: 'attackSpeed',
+				attackSizeIncrement: 'attackSize',
+				intensityIncrement: 'intensity',
+				regenerationIncrement: 'regeneration',
+				piercingIncrement: 'piercing',
+				resistanceIncrement: 'resistance'
+			};
+
+			//Regular Modifiers / Enchants
+			if (item.name !== 'Atlantean Essence') {
+				for (const stat in increments) {
+					if (['warding', 'insanity', 'drawback'].includes(stat)) {
+						//Static stats
+						returnStat[stat] = increments[stat];
+					} else {
+						//Incremental Stats
+						returnStat[statRelations[stat]] = Math.floor(
+							(increments[stat] * player.build.slots[slotKey].armorLevel) / 10
+						);
+					}
+				}
+			} else {
+				// Atlantean Calcs
+				const statKey = Object.keys(statRelations).find(
+					(key) => statRelations[key] === atlanteanAttribute
+				);
+
+				returnStat[atlanteanAttribute] = Math.floor(
+					(increments[statKey] * player.build.slots[slotKey].armorLevel) / 10
+				);
+				returnStat['insanity'] = 1;
+
+				chosenStat = returnStat;
+			}
+
+			chosenStat = returnStat;
+			efficiencyPointsString = calculateEfficiencyPoints(chosenStat).toString();
+		} else {
+			chosenStat = filterData(item);
+			efficiencyPointsString = calculateEfficiencyPoints(chosenStat).toString();
+		}
+	} else {
+		chosenStat = filterData(item);
+		efficiencyPointsString = calculateEfficiencyPoints(chosenStat).toString();
+	}
 </script>
 
 <div class="text-center z-30">
 	<!-- Only show the stat if its value is more than zero -->
 	{#if !showOnlyAtlanteanStat}
 		{#each Object.keys(itemStats) as stat}
-			{#if item[stat] && item[stat] != 0}
+			{#if chosenStat[stat]}
 				<div class="flex items-center justify-center">
 					<img class="h-6" src="assets/images/stats/{stat}.png" alt={stat} />
 					<p
@@ -100,21 +197,22 @@
 						].fillColor}; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: {itemStats[stat]
 							.strokeColor}; text-align: center;"
 					>
-						{#if showName && item[stat] > 0}
+						{#if showName && chosenStat[stat] > 0}
 							+
-						{/if}{item[stat]}
+						{/if}
+						{chosenStat[stat]}
 						{#if showName}{itemStats[stat].name}{/if}
 					</p>
 				</div>
 			{/if}
 		{/each}
-		{#if efficiencyPoints > 0}
+		{#if efficiencyPointsString !== '0'}
 			<div class="pb-2"></div>
 			<div class="flex items-center justify-center py-2" style="border-top: 2px solid white;">
 				<p
 					style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; text-align: center; -webkit-text-fill-color: white"
 				>
-					EP: {Math.round((efficiencyPoints + Number.EPSILON) * 100) / 100}
+					EP: {efficiencyPointsString}
 				</p>
 			</div>
 		{/if}
@@ -132,9 +230,9 @@
 					atlanteanAttribute
 				].strokeColor}; text-align: center;"
 			>
-				{#if showName && item[atlanteanAttribute] > 0}
+				{#if showName && chosenStat[atlanteanAttribute] > 0}
 					+
-				{/if}{item[atlanteanAttribute]}
+				{/if}{chosenStat[atlanteanAttribute]}
 				{#if showName}
 					{itemStats[atlanteanAttribute].name}
 				{/if}
@@ -148,9 +246,9 @@
 				].fillColor}; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: {itemStats['insanity']
 					.strokeColor}; text-align: center;"
 			>
-				{#if showName && item['insanity'] > 0}
+				{#if showName && chosenStat['insanity'] > 0}
 					+
-				{/if}{item['insanity']}
+				{/if}{chosenStat['insanity']}
 				{#if showName}{itemStats['insanity'].name}{/if}
 			</p>
 		</div>

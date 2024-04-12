@@ -9,6 +9,9 @@
 	import type { Player } from '$lib/playerClasses';
 	import Item from './Item.svelte';
 	import { rarityColors } from '$lib/dataConstants';
+	import { filterType, sortType } from '$lib/utils/filterSortStore';
+	import FilterButton from './FilterButton.svelte';
+	import SortButton from './SortButton.svelte';
 
 	export let currentItem: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
 		database: any,
@@ -32,27 +35,58 @@
 	let ItemMenuData = database[currentItem.mainType];
 	let placeholderItem = database[currentItem.mainType].find((item) => item.name === 'None');
 
-	let filteredData = ItemMenuData.filter((item) => item.name !== 'None');
-
 	$: filteredData = ItemMenuData.filter((item) => {
-		if (
-			searchQuery === '' ||
-			item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-			item.name !== 'None'
-		) {
-			return true;
+		// console.log($filterType, currentItem.rarity, ItemMenuData);
+		if ($filterType.length === 0 || $filterType.includes(item.rarity) || item.name === 'None') {
+			if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+				return true;
+			}
+		}
+	});
+
+	$: sortedItems = filteredData.sort((a, b) => {
+		const rarityValues = {
+			Legendary: 1,
+			Seasonal: 2,
+			Exotic: 3,
+			Rare: 4,
+			Uncommon: 5,
+			Common: 6
+		};
+		const rarityA = rarityValues[a.rarity] || 7;
+		const rarityB = rarityValues[b.rarity] || 7;
+		if ($sortType === 'rarityHighest') {
+			//Sort from rarity Highest to Lowest + A-Z
+			if (rarityA !== rarityB) {
+				return rarityA - rarityB;
+			}
+			return a.name.localeCompare(b.name);
+		} else if ($sortType === 'rarityLowest') {
+			//Sort from rarity Lowest to Highest + A-Z
+			if (rarityA !== rarityB) {
+				return rarityB - rarityA;
+			}
+			return a.name.localeCompare(b.name);
+		} else if ($sortType === 'maxLevelHighest') {
+			//Sort item.maxLevel from Highest to Lowest
+			return b.maxlevel - a.maxlevel;
+		} else if ($sortType === 'maxLevelLowest') {
+			//Sort item.maxLevel from Lowest to Highest
+			return a.maxlevel - b.maxlevel;
+		} else {
+			if ($sortType === 'atoz') {
+				// Sort by name A - Z
+				return a.name.localeCompare(b.name);
+			} else if ($sortType === 'ztoa') {
+				// Sort by name Z - A
+				return b.name.localeCompare(a.name);
+			} else {
+				return 0;
+			}
 		}
 	});
 
 	let validImage = true;
-	// let img = new Image();
-	// img.src = currentItem.imageId;
-	// img.onerror = function () {
-	// 	validImage = false;
-	// };
-	// img.onload = function () {
-	// 	validImage = true;
-	// };
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -66,18 +100,17 @@
 	]}; border-width: 1px; background-color: #020202;"
 	on:click={handleClick}
 >
-	{#if validImage}
-		<img class="w-full h-full object-contain" alt={currentItem.name} src={currentItem.imageId} />
-	{:else}
-		<p
-			class="items-center object-contain m-1 text-sm"
-			style="font-family: Merriweather; text-align: center; color: {rarityColors[
-				currentItem.rarity
-			]};"
-		>
-			{currentItem.name}
-		</p>
-	{/if}
+	<img
+		class="w-full h-full object-contain"
+		style="display: {validImage && currentItem.imageId != '' ? 'block' : 'none'};"
+		src={currentItem.imageId}
+		alt={currentItem.name}
+		on:error={() => (validImage = false)}
+		on:load={() => (validImage = true)}
+	/>
+	<h1 style="display:{!validImage || currentItem.imageId == '' ? 'block' : 'none'}; color:white;">
+		{currentItem.name || 'None'}
+	</h1>
 </button>
 
 <!-- <p>{reactiveTest}</p> -->
@@ -118,11 +151,16 @@
 			placeholder="Search"
 			class="border rounded p-2 m-2 w-1/2 bg-black text-white"
 		/>
-
+		<FilterButton></FilterButton>
+		<SortButton></SortButton>
 		<div class="flex-wrap flex mx-72">
-			<Item item={placeholderItem} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />
-			{#each filteredData as item}
-				<Item {item} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />
+			<div class="pr-1.5">
+				<Item item={placeholderItem} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />
+			</div>
+			{#each sortedItems as item}
+				{#if item.name !== 'None'}
+					<Item {item} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />\
+				{/if}
 			{/each}
 		</div>
 	</div>

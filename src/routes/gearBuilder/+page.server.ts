@@ -8,6 +8,7 @@ export const load: PageServerLoad = async (): Promise<any> => {
 		.toArray();
 	console.log(data);
 	return {
+		Database: data,
 		Accessory: filterCollection(data, 'Accessory'),
 		Chestplate: filterCollection(data, 'Chestplate'),
 		Pants: filterCollection(data, 'Pants'),

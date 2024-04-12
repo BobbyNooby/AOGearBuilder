@@ -75,6 +75,8 @@
 				}
 				player[statToModify] -= 1;
 			}
+
+			// updatePage();
 		}
 
 		availablePlayerStatPoints =
@@ -101,6 +103,7 @@
 
 		baseHealth = 93 + player.level * 7;
 		player.health = baseHealth + player.build.getBuildStats().defense;
+		player.build.fixSlotLevels();
 	}
 
 	function handleLevelChange(amount: number) {
@@ -120,6 +123,8 @@
 	const keyStore = writable(false);
 
 	function updateComponent() {
+		updatePage();
+		player.build.fixSlotLevels();
 		keyStore.update((value) => !value);
 	}
 </script>

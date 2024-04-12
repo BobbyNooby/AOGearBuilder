@@ -92,6 +92,8 @@ export type ArmorLevelStats = {
 export type ArmorItemData = ItemIdentifiers & {
 	gemNo: number;
 	mainType: ArmorMainTypes;
+	minLevel: number;
+	maxLevel: number;
 	statsPerLevel: ArmorLevelStats[];
 	validModifiers: string[];
 };

@@ -1,3 +1,4 @@
+import { filterData } from '$lib/utils/filterData';
 import {
 	noneAccessory,
 	noneChestplate,
@@ -33,12 +34,18 @@ export class CurrentBuild {
 		this.parentPlayer = parentPlayer;
 
 		this.slots = {
-			accessory1: new ArmorSlot(noneAccessory, noneEnchant, noneModifier),
-			accessory2: new ArmorSlot(noneAccessory, noneEnchant, noneModifier),
-			accessory3: new ArmorSlot(noneAccessory, noneEnchant, noneModifier),
-			chestplate: new ArmorSlot(noneChestplate, noneEnchant, noneModifier),
-			pants: new ArmorSlot(nonePants, noneEnchant, noneModifier)
+			accessory1: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
+			accessory2: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
+			accessory3: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
+			chestplate: new ArmorSlot(this, noneChestplate, noneEnchant, noneModifier),
+			pants: new ArmorSlot(this, nonePants, noneEnchant, noneModifier)
 		};
+	}
+
+	fixSlotLevels() {
+		for (const slot of Object.values(this.slots)) {
+			slot.fixArmorLevel();
+		}
 	}
 
 	getBuildStats(): ArmorStats {
@@ -75,10 +82,12 @@ export class CurrentBuild {
 	}
 
 	validateItem(item: anyItem, inputSlotKey: string): boolean {
+		let badConditions: Array<(item: anyItem, slot: ArmorSlot) => boolean> = [];
+
+		// Full build item checking
+
 		for (const slotKey of Object.keys(this.slots)) {
 			const slot: ArmorSlot = this.slots[slotKey as keyof typeof this.slots];
-
-			let badConditions: Array<(item: anyItem, slot: ArmorSlot) => boolean> = [];
 
 			if (['Accessory', 'Chestplate', 'Pants'].includes(item.mainType)) {
 				//Gears validation handling
@@ -86,25 +95,33 @@ export class CurrentBuild {
 				const strictlySingleSubtypes: string[] = ['Amulet', 'Helmet'];
 
 				badConditions = [
-					(item, slot) => item.id === slot.armor.id,
+					(item, slot) => item.id === slot.armor.id && inputSlotKey !== slotKey,
 					(item, slot) =>
 						strictlySingleSubtypes.includes(item.subType) &&
-						strictlySingleSubtypes.includes(slot.armor.subType) &&
-						inputSlotKey !== slotKey,
-					(item, slot) => item.name == 'Virtuous' && slot.modifier.name == 'Atlantean Essence',
-					(item, slot) => item.name == 'Atlantean Essence' && slot.enchant.name == 'Virtuous'
-				];
-			} else if (['Enchant', 'Modifier'].includes(item.mainType)) {
-				//Enchant / modifier validation handling
-
-				badConditions = [
-					(item, slot) => item.name == 'Virtuous' && slot.modifier.name == 'Atlantean Essence',
-					(item, slot) => item.name == 'Atlantean Essence' && slot.enchant.name == 'Virtuous',
-					(item, slot) =>
-						item.mainType == 'Modifier' && !slot.armor.validModifiers.includes(item.name)
+						item.subType == slot.armor.subType &&
+						inputSlotKey !== slotKey
 				];
 			}
 
+			if (badConditions.some((condition) => condition(item, slot))) {
+				return false;
+			}
+		}
+
+		// Single slot build checking
+		const slot: ArmorSlot = this.slots[inputSlotKey as keyof typeof this.slots];
+
+		if (['Enchant', 'Modifier'].includes(item.mainType)) {
+			//Enchant / modifier validation handling
+
+			badConditions = [
+				(item, slot) => item.name == 'Virtuous' && slot.modifier.name == 'Atlantean Essence',
+				(item, slot) => item.name == 'Atlantean Essence' && slot.enchant.name == 'Virtuous',
+				(item, slot) =>
+					item.mainType === 'Modifier' && !slot.armor.validModifiers.includes(item.name)
+			];
+
+			// console.log(item.mainType == 'Modifier' && !slot.armor.validModifiers.includes(item.name));
 			if (badConditions.some((condition) => condition(item, slot))) {
 				return false;
 			}
@@ -114,7 +131,7 @@ export class CurrentBuild {
 	}
 
 	setGear(item: anyItem, slotKey: keyof typeof this.slots, gemIndex: number | boolean = false) {
-		if (true) {
+		if (this.validateItem(item, slotKey) || item.name == 'None') {
 			if (['Accessory', 'Chestplate', 'Pants'].includes(item.mainType)) {
 				this.slots[slotKey].setArmor(item as ArmorItemData);
 			} else if (item.mainType == 'Enchant') {
@@ -124,6 +141,17 @@ export class CurrentBuild {
 			} else if (item.mainType == 'Gem' && gemIndex !== false) {
 				this.slots[slotKey].setGem(gemIndex as number, item as GemItemData);
 			}
+			return true;
+		} else {
+			return false;
 		}
+	}
+
+	getBuildCode() {
+		let codeArray = [];
+		for (const slot of Object.values(this.slots)) {
+			codeArray.push(slot.getSlotCode());
+		}
+		return codeArray.join('|');
 	}
 }

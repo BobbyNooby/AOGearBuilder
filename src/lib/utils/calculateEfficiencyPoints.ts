@@ -1,7 +1,7 @@
 import type { ArmorItemData, ItemStats } from '$lib/itemTypes';
 import type { Player } from '$lib/playerClasses';
 
-export function calculateEfficiencyPoints(stats: ItemStats, player: Player): number {
+export function calculateEfficiencyPoints(stats: ItemStats): number {
 	let efficiencyPoints = 0;
 
 	for (const stat in stats) {

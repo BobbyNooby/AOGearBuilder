@@ -1,30 +1,39 @@
 import { noneGem, noneModifier } from '$lib/defaultGears';
 import type {
 	ArmorItemData,
-	Rarities,
 	GemItemData,
-	GemStats,
 	EnchantItemData,
-	EnchantStats,
 	ModifierItemData,
-	ModifierStats,
-	ShipStats,
 	ArmorStats
 } from '$lib/itemTypes';
-import { Player } from '$lib/playerClasses';
+
 import { filterData } from '$lib/utils/filterData';
-import { writable } from 'svelte/store';
+
+import type { CurrentBuild } from './CurrentBuild';
 
 export class ArmorSlot {
+	parentBuild: CurrentBuild;
 	armor: ArmorItemData;
 	armorLevel: number;
 	enchant: EnchantItemData;
 	modifier: ModifierItemData;
 	gems: GemItemData[];
 	chosenAtlanteanAttribute: string;
-	constructor(armor: ArmorItemData, enchant: EnchantItemData, modifier: ModifierItemData) {
+	constructor(
+		parentBuild: CurrentBuild,
+		armor: ArmorItemData,
+		enchant: EnchantItemData,
+		modifier: ModifierItemData
+	) {
+		this.parentBuild = parentBuild;
 		this.armor = armor;
-		this.armorLevel = armor.statsPerLevel[armor.statsPerLevel.length - 1].level;
+
+		if (armor.statsPerLevel.length == 0) {
+			this.armorLevel = 0;
+		} else {
+			this.armorLevel = armor.statsPerLevel[armor.statsPerLevel.length - 1].level;
+		}
+
 		this.enchant = enchant;
 		this.modifier = modifier;
 		this.gems = [];
@@ -35,13 +44,34 @@ export class ArmorSlot {
 		}
 	}
 
+	fixArmorLevel() {
+		if (this.armorLevel > this.parentBuild.parentPlayer.level) {
+			let validArmors = [];
+			for (const statAtLevel of this.armor.statsPerLevel) {
+				if (statAtLevel.level <= this.parentBuild.parentPlayer.level) {
+					validArmors.push(statAtLevel);
+				}
+			}
+
+			if (validArmors.length > 0) {
+				this.armorLevel = validArmors[validArmors.length - 1].level;
+			} else {
+				this.armorLevel = 0;
+			}
+		}
+	}
+
 	getArmorDataAtLevel(level: number) {
 		return this.armor.statsPerLevel.find((ArmorAtLevel) => ArmorAtLevel.level === level);
 	}
 	setArmor(armor: ArmorItemData) {
 		this.armor = armor;
-		this.armorLevel = armor.statsPerLevel[armor.statsPerLevel.length - 1].level;
 
+		if (armor.name != 'None') {
+			this.armorLevel = armor.statsPerLevel[armor.statsPerLevel.length - 1].level;
+		} else {
+			this.armorLevel = 0;
+		}
 		if (this.gems.length < armor.gemNo) {
 			const diff = armor.gemNo - this.gems.length;
 			for (let i = 0; i < diff; i++) {
@@ -71,7 +101,7 @@ export class ArmorSlot {
 		this.getSlotStats();
 	}
 
-	getSlotStats(): ArmorStats {
+	getSlotStats(preAtlantean: boolean = false): ArmorStats {
 		const armorStats: any = filterData(this.getArmorDataAtLevel(this.armorLevel));
 		const enchantStats: any = filterData(this.enchant);
 		const modifierStats: any = this.modifier;
@@ -124,37 +154,45 @@ export class ArmorSlot {
 		}
 
 		// Modifier Calcs
-		modifierCalcs: if (modifierStats.name == 'Atlantean Essence') {
-			//Atlantean calcs
+		if (!preAtlantean) {
+			modifierCalcs: if (modifierStats.name == 'Atlantean Essence') {
+				//Atlantean calcs
 
-			const atlantenOrder = [
-				'powerIncrement',
-				'defenseIncrement',
-				'attackSizeIncrement',
-				'attackSpeedIncrement',
-				'agilityIncrement',
-				'intensityIncrement'
-			];
+				const atlantenOrder = [
+					'powerIncrement',
+					'defenseIncrement',
+					'attackSizeIncrement',
+					'attackSpeedIncrement',
+					'agilityIncrement',
+					'intensityIncrement'
+				];
 
-			for (const stat of atlantenOrder) {
-				if (finalSlotStats[statRelations[stat]] == 0) {
-					finalSlotStats[statRelations[stat]] += Math.floor(modifierStats[stat] * levelMultiplier);
-					this.chosenAtlanteanAttribute = stat;
-					finalSlotStats.insanity += modifierStats.insanity;
-					break modifierCalcs;
+				for (const stat of atlantenOrder) {
+					if (finalSlotStats[statRelations[stat]] == 0) {
+						finalSlotStats[statRelations[stat]] += Math.floor(
+							modifierStats[stat] * levelMultiplier
+						);
+						this.chosenAtlanteanAttribute = stat;
+						finalSlotStats.insanity += modifierStats.insanity;
+						break modifierCalcs;
+					}
 				}
-			}
 
-			// Only happens if all have value
-			finalSlotStats['power'] += Math.floor(modifierStats['powerIncrement'] * levelMultiplier);
-		} else {
-			// Regular modifier calculations
-			this.chosenAtlanteanAttribute = '';
-			for (const stat in filterData(modifierStats)) {
-				finalSlotStats[statRelations[stat]] += Math.floor(modifierStats[stat] * levelMultiplier);
+				// Only happens if all have value
+				finalSlotStats['power'] += Math.floor(modifierStats['powerIncrement'] * levelMultiplier);
+			} else {
+				// Regular modifier calculations
+				this.chosenAtlanteanAttribute = '';
+				for (const stat in filterData(modifierStats)) {
+					finalSlotStats[statRelations[stat]] += Math.floor(modifierStats[stat] * levelMultiplier);
+				}
 			}
 		}
 
 		return finalSlotStats;
+	}
+
+	getSlotCode() {
+		return [this.armor, this.enchant, this.modifier, ...this.gems].map((item) => item.id).join('.');
 	}
 }

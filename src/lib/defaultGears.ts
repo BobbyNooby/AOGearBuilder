@@ -1,7 +1,7 @@
 import type { ArmorItemData, GemItemData, EnchantItemData, ModifierItemData } from './itemTypes';
 
 export const noneAccessory: ArmorItemData = {
-	id: 'A',
+	id: 'AAA',
 	name: 'None',
 	legend: 'Ermmm this is a nothing accessory',
 	mainType: 'Accessory',
@@ -10,16 +10,14 @@ export const noneAccessory: ArmorItemData = {
 	deleted: false,
 	subType: 'None',
 	gemNo: 0,
-	statsPerLevel: [
-		{
-			level: 0
-		}
-	],
+	minLevel: 0,
+	maxLevel: 0,
+	statsPerLevel: [],
 	validModifiers: []
 };
 
 export const noneChestplate: ArmorItemData = {
-	id: 'B',
+	id: 'AAB',
 	name: 'None',
 	legend: 'Nope. Big nothingburger chestplate here.',
 	mainType: 'Chestplate',
@@ -28,16 +26,14 @@ export const noneChestplate: ArmorItemData = {
 	deleted: false,
 	subType: 'None',
 	gemNo: 0,
-	statsPerLevel: [
-		{
-			level: 0
-		}
-	],
+	minLevel: 0,
+	maxLevel: 0,
+	statsPerLevel: [],
 	validModifiers: []
 };
 
 export const nonePants: ArmorItemData = {
-	id: 'C',
+	id: 'AAC',
 	name: 'None',
 	legend: 'Yep, big nothing pants over here nothing to see.',
 	mainType: 'Pants',
@@ -46,16 +42,14 @@ export const nonePants: ArmorItemData = {
 	deleted: false,
 	subType: 'None',
 	gemNo: 0,
-	statsPerLevel: [
-		{
-			level: 0
-		}
-	],
+	minLevel: 0,
+	maxLevel: 0,
+	statsPerLevel: [],
 	validModifiers: []
 };
 
 export const noneGem: GemItemData = {
-	id: 'F',
+	id: 'AAF',
 	name: 'None',
 	legend: 'Shine bright like a NOTHING',
 	mainType: 'Gem',
@@ -66,7 +60,7 @@ export const noneGem: GemItemData = {
 };
 
 export const noneEnchant: EnchantItemData = {
-	id: 'D',
+	id: 'AAD',
 	name: 'None',
 	legend: 'Nope nothing enchanting about this at all',
 	mainType: 'Enchant',
@@ -77,7 +71,7 @@ export const noneEnchant: EnchantItemData = {
 };
 
 export const noneModifier: ModifierItemData = {
-	id: 'E',
+	id: 'AAE',
 	name: 'None',
 	legend: 'This modifies NOTHING it serves ZERO PURPOSE it should disappear NOW!!',
 	mainType: 'Modifier',

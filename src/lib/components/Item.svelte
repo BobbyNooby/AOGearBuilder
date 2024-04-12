@@ -11,7 +11,7 @@
 	import type { Player } from '$lib/playerClasses';
 
 	export let item: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
-		slotKey: string,
+		slotKey: 'accessory1' | 'accessory2' | 'accessory3' | 'chestplate' | 'pants',
 		gemIndex: boolean | number,
 		player: Player,
 		toggleMenu: () => void,
@@ -62,15 +62,10 @@
 		isHovering = true;
 		mousePosition = { x: event.clientX, y: event.clientY };
 
-		if (!item.hasOwnProperty('statsPerLevel')) {
+		if (!item.hasOwnProperty('minLevel') && !item.hasOwnProperty('maxLevel')) {
 			levelRange = '';
-		} else if (item.statsPerLevel.length == 1) {
-			levelRange = item.statsPerLevel[0].level;
-		} else if (item.statsPerLevel.length > 1) {
-			levelRange =
-				item.statsPerLevel[0].level.toString() +
-				' - ' +
-				item.statsPerLevel[item.statsPerLevel.length - 1].level.toString();
+		} else {
+			levelRange = item.minLevel + ' - ' + item.maxLevel;
 		}
 
 		setBoxPositionOverflow();
@@ -81,22 +76,26 @@
 	}
 
 	function handleClick() {
-		player.build.setGear(item, slotKey, gemIndex);
-		updatePage();
-		toggleMenu();
+		const itemSetted: boolean = player.build.setGear(item, slotKey, gemIndex);
+
+		console.log(itemSetted);
+		if (itemSetted === true) {
+			updatePage();
+			toggleMenu();
+		}
 	}
 
 	let chosenAtlanteanAttribute: string = '';
 	let showOnlyAtlanteanStat = false;
 
+	//Modifier calculations
 	modifierCalcs: if (item.name == 'Atlantean Essence') {
 		const atlantenOrder = ['power', 'defense', 'attackSize', 'attackSpeed', 'agility', 'intensity'];
 
-		let preAtlanteanArmor = player.build.slots[slotKey].getSlotStats();
+		let preAtlanteanArmor = player.build.slots[slotKey].getSlotStats(true);
 
 		//Calculations for Atlantean
 		for (const currentAttribute of atlantenOrder) {
-			console.log(currentAttribute);
 			if (preAtlanteanArmor[currentAttribute] == 0) {
 				chosenAtlanteanAttribute = currentAttribute;
 				showOnlyAtlanteanStat = true;
@@ -112,25 +111,28 @@
 	}
 
 	let validImage = true;
+
+	let image = new Image();
 </script>
 
 <button
 	on:mousemove={handleMouseOver}
 	on:mouseleave={handleMouseOut}
 	on:click={handleClick}
-	class="m-2 w-24 h-24"
+	class="m-1 w-24 h-24"
 	style="border-color: {rarityColors[item.rarity]}; border-width: 1px; background-color: #020202;"
 >
-	{#if validImage}
-		<img alt={item.name} src={item.imageId} class="w-full h-full object-contain" />
-	{:else}
-		<p
-			class="items-center object-contain m-1 text-sm"
-			style="font-family: Merriweather; text-align: center; color: {rarityColors[item.rarity]};"
-		>
-			{item.name}
-		</p>
-	{/if}
+	<img
+		class="w-full h-full object-contain"
+		style="display: {validImage && item.imageId != '' ? 'block' : 'none'};"
+		src={item.imageId}
+		alt={item.name}
+		on:error={() => (validImage = false)}
+		on:load={() => (validImage = true)}
+	/>
+	<h1 style="display:{!validImage || item.imageId == '' ? 'block' : 'none'}; color:white;">
+		{item.name || 'None'}
+	</h1>
 
 	{#if isHovering}
 		<div
@@ -168,7 +170,10 @@
 			<div class=" items-center text-center z-40">
 				<ItemTooltip
 					{item}
+					{player}
+					{slotKey}
 					showName={true}
+					isItemMenu={true}
 					atlanteanAttribute={chosenAtlanteanAttribute}
 					{showOnlyAtlanteanStat}
 				/>
