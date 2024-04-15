@@ -11,6 +11,10 @@ import { filterData } from '$lib/utils/filterData';
 
 import type { CurrentBuild } from './CurrentBuild';
 
+function clamp(value: number, min: number, max: number) {
+	return Math.max(min, Math.min(max, value));
+}
+
 export class ArmorSlot {
 	parentBuild: CurrentBuild;
 	armor: ArmorItemData;
@@ -107,6 +111,7 @@ export class ArmorSlot {
 		const modifierStats: any = this.modifier;
 		const levelMultiplier: any = this.armorLevel / 10;
 		const gemsStats: any[] = this.gems.map((gem) => filterData(gem));
+		console.log(gemsStats);
 
 		let finalSlotStats: any = {
 			power: 0,
@@ -125,8 +130,23 @@ export class ArmorSlot {
 
 		const nonIncrementalStats = ['insanity', 'warding', 'drawback'];
 
+		let vitalityMultiplier = 1;
+
+		if (this.armor.name.includes('Oracle') || this.armor.name.includes('Alitheia')) {
+			vitalityMultiplier = Math.min(
+				// Vetex given formula Math.clamp((vitality/maxstatpoints)*3, 0.3, 1)
+				Math.max(
+					(this.parentBuild.parentPlayer.vitalityPoints /
+						(this.parentBuild.parentPlayer.level * 2)) *
+						3,
+					0.3
+				),
+				1
+			);
+		}
+
 		for (const stat in armorStats) {
-			finalSlotStats[stat] += armorStats[stat];
+			finalSlotStats[stat] += Math.floor(armorStats[stat] * vitalityMultiplier);
 		}
 
 		for (const gem of gemsStats) {
@@ -149,8 +169,9 @@ export class ArmorSlot {
 		};
 
 		for (const stat in enchantStats) {
-			finalSlotStats[statRelations[stat]] +=
-				enchantStats[stat] * (nonIncrementalStats.includes(stat) ? 1 : levelMultiplier);
+			finalSlotStats[statRelations[stat]] += Math.floor(
+				enchantStats[stat] * (nonIncrementalStats.includes(stat) ? 1 : levelMultiplier)
+			);
 		}
 
 		// Modifier Calcs
@@ -172,7 +193,7 @@ export class ArmorSlot {
 						finalSlotStats[statRelations[stat]] += Math.floor(
 							modifierStats[stat] * levelMultiplier
 						);
-						this.chosenAtlanteanAttribute = stat;
+						this.chosenAtlanteanAttribute = statRelations[stat];
 						finalSlotStats.insanity += modifierStats.insanity;
 						break modifierCalcs;
 					}

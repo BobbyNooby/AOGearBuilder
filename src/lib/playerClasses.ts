@@ -44,6 +44,10 @@ export class Player {
 		this.magic = magic;
 	}
 
+	setMagic(magic: magic) {
+		this.magic = magic;
+	}
+
 	getStatBuild(): { type: string; color: string } {
 		const totalStats: number =
 			this.vitalityPoints + this.magicPoints + this.strengthPoints + this.weaponPoints;
@@ -131,32 +135,52 @@ export class Player {
 
 	getBuildCode() {
 		let finalString = `${this.level.toString()}|${listOfMagics.indexOf(this.magic)}|${this.vitalityPoints}|${this.magicPoints}|${this.strengthPoints}|${this.weaponPoints}|${this.build.getBuildCode()}`;
+		console.log(finalString);
 		return finalString;
 	}
 
 	loadBuildCode(database: [], codeString: string) {
-		console.log(codeString);
-		const slotCodeArray = codeString.split('|').map((slotString) => slotString.split('.'));
-		const slotkeyArray = ['accessory1', 'accessory2', 'accessory3', 'chestplate', 'pants'];
+		try {
+			const slotCodeArray = codeString.split('|').map((slotString) => slotString.split('.'));
 
-		this.level = parseInt(slotCodeArray[0][0]);
-		this.magic = listOfMagics[parseInt(slotCodeArray[1][0])];
-		this.vitalityPoints = parseInt(slotCodeArray[2][0]);
-		this.magicPoints = parseInt(slotCodeArray[3][0]);
-		this.strengthPoints = parseInt(slotCodeArray[4][0]);
-		this.weaponPoints = parseInt(slotCodeArray[5][0]);
+			if (slotCodeArray.length != 11) {
+				console.log('Invalid build code');
+				throw new Error('Invalid build code');
+			}
 
-		for (let i = 0; i < slotkeyArray.length; i++) {
-			const slotkey = slotkeyArray[i] as keyof typeof this.build.slots;
-			const slot = slotCodeArray[i + 6];
+			const slotkeyArray = ['accessory1', 'accessory2', 'accessory3', 'chestplate', 'pants'];
 
-			for (let j = 0; j < slot.length; j++) {
-				if (j <= 2) {
-					this.build.setGear(getItemById(database, slot[j]), slotkey);
-				} else {
-					this.build.setGear(getItemById(database, slot[j]), slotkey, j - 3);
+			this.level = parseInt(slotCodeArray[0][0]);
+			this.magic = listOfMagics[parseInt(slotCodeArray[1][0])];
+			this.vitalityPoints = parseInt(slotCodeArray[2][0]);
+			this.magicPoints = parseInt(slotCodeArray[3][0]);
+			this.strengthPoints = parseInt(slotCodeArray[4][0]);
+			this.weaponPoints = parseInt(slotCodeArray[5][0]);
+
+			console.log(
+				slotCodeArray,
+				this.vitalityPoints,
+				this.magicPoints,
+				this.strengthPoints,
+				this.weaponPoints
+			);
+
+			for (let i = 0; i < slotkeyArray.length; i++) {
+				const slotkey = slotkeyArray[i] as keyof typeof this.build.slots;
+				const slot = slotCodeArray[i + 6];
+
+				for (let j = 0; j < slot.length; j++) {
+					if (j <= 2) {
+						this.build.setGear(getItemById(database, slot[j]), slotkey);
+					} else {
+						this.build.setGear(getItemById(database, slot[j]), slotkey, j - 3);
+					}
 				}
 			}
+		} catch (error) {
+			console.log(error);
+			this.build.resetBuild();
+			return false;
 		}
 	}
 }

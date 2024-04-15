@@ -6,7 +6,7 @@ export const load: PageServerLoad = async (): Promise<any> => {
 		.collection('items')
 		.find({}, { projection: { _id: 0 } })
 		.toArray();
-	console.log(data);
+
 	return {
 		Database: data,
 		Accessory: filterCollection(data, 'Accessory'),

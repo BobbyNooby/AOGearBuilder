@@ -100,20 +100,25 @@
 					on:click={() => {
 						menuToggle();
 					}}
-					class="bg-black border rounded border-white text-white font-bold text-lg w-20 h-20 p-4 relative mt-10"
+					class="mt-10"
 				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="100%"
-						height="100%"
-						fill="currentColor"
-						class="bi bi-x-lg"
-						viewBox="0 0 16 16"
+					<div
+						class=" my-4 w-24 h-24 bg-black border rounded border-white text-white font-bold text-lg items-center object-contain relative"
 					>
-						<path
-							d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
-						/>
-					</svg>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="100%"
+							height="100%"
+							fill="currentColor"
+							class="bi bi-x-lg"
+							viewBox="0 0 16 16"
+							style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+						>
+							<path
+								d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+							/>
+						</svg>
+					</div>
 				</button>
 				<p
 					class="text-center text-3xl md:text-5xl text-white my-5"

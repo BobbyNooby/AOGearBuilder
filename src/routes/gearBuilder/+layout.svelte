@@ -1,31 +1,5 @@
 <script>
-	import '../app.css';
-	import { onMount } from 'svelte';
-	import { isMobile } from '$lib/utils/mobileStore';
-	import Analytics from '$lib/utils/Analytics.svelte';
 	import Footer from '$lib/components/Misc/Footer.svelte';
-
-	function checkMobile() {
-		console.log(window.innerWidth);
-		if (window.innerWidth < 1072) {
-			$isMobile = true;
-			console.log($isMobile);
-		} else {
-			$isMobile = false;
-			console.log($isMobile);
-		}
-	}
-
-	//Test device width to check for mobile conditions in the html
-	onMount(() => {
-		// Make sure this only works in browser
-		if (typeof window !== 'undefined') {
-			checkMobile();
-			window.addEventListener('resize', () => {
-				checkMobile();
-			});
-		}
-	});
 </script>
 
 <svelte:head>
@@ -39,8 +13,8 @@
 </svelte:head>
 
 <section class="bg-zinc-800 overflow-auto app">
-	<Analytics />
 	<main><slot /></main>
+	<Footer />
 </section>
 
 <style>

@@ -36,7 +36,19 @@
 	let placeholderItem = database[currentItem.mainType].find((item) => item.name === 'None');
 
 	$: filteredData = ItemMenuData.filter((item) => {
-		// console.log($filterType, currentItem.rarity, ItemMenuData);
+		// For filtering out other magic items
+		// if (item.subType == 'Magic' && !item.name.includes(player.magic)) {
+		// 	return false;
+		// } else if (
+		// 	$filterType.length === 0 ||
+		// 	$filterType.includes(item.rarity) ||
+		// 	item.name === 'None'
+		// ) {
+		// 	if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+		// 		return true;
+		// 	}
+		// }
+
 		if ($filterType.length === 0 || $filterType.includes(item.rarity) || item.name === 'None') {
 			if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
 				return true;
@@ -121,28 +133,31 @@
 {#if menuBool}
 	<div
 		id="menuouter"
-		class="fixed inset-0 bg-black bg-opacity-70 z-10 flex flex-col items-center"
+		class="fixed inset-0 bg-black bg-opacity-70 z-10 flex flex-col items-center overflow-y-auto"
 		transition:fade={{ duration: 69 }}
 	>
 		<button
 			on:click={() => {
 				toggleMenu();
 			}}
-			class=" my-4 w-24 h-24 bg-black border rounded border-white text-white font-bold text-lg py-2 px-4 items-center relative"
 		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="100%"
-				height="100%"
-				fill="currentColor"
-				class="bi bi-x-lg"
-				viewBox="0 0 16 16"
-				style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+			<div
+				class=" my-4 w-24 h-24 bg-black border rounded border-white text-white font-bold text-lg items-center object-contain relative"
 			>
-				<path
-					d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
-				/>
-			</svg>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="100%"
+					height="100%"
+					fill="currentColor"
+					class="bi bi-x-lg"
+					viewBox="0 0 16 16"
+					style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+				>
+					<path
+						d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+					/>
+				</svg>
+			</div>
 		</button>
 
 		<input
@@ -151,15 +166,16 @@
 			placeholder="Search"
 			class="border rounded p-2 m-2 w-1/2 bg-black text-white"
 		/>
-		<FilterButton></FilterButton>
-		<SortButton></SortButton>
-		<div class="flex-wrap flex mx-72">
-			<div class="pr-1.5">
-				<Item item={placeholderItem} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />
-			</div>
+		<div class="flex flex-row space-x-5 my-4">
+			<FilterButton></FilterButton>
+			<SortButton></SortButton>
+		</div>
+		<div class="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4">
+			<Item item={placeholderItem} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />
+
 			{#each sortedItems as item}
 				{#if item.name !== 'None'}
-					<Item {item} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />\
+					<Item {item} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />
 				{/if}
 			{/each}
 		</div>

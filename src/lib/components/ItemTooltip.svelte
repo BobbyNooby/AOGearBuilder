@@ -16,7 +16,7 @@
 		isItemMenu: boolean,
 		atlanteanAttribute: string,
 		showOnlyAtlanteanStat: boolean; //importing the Item that was selected cos thats the only thing thats needed
-
+	console.log(player.level);
 	// This document is a tooltip for the items
 
 	let itemStats = {
@@ -98,6 +98,7 @@
 		itemStats[atlanteanAttribute]['fillColor'] = '#8B27DB';
 		itemStats[atlanteanAttribute]['strokeColor'] = '#DB0C45';
 	}
+	console.log(atlanteanAttribute);
 
 	let minStats = {};
 	let maxStats = {};
@@ -113,7 +114,7 @@
 				minStats = filterData(item.statsPerLevel[0]);
 				maxStats = filterData(item.statsPerLevel[item.statsPerLevel.length - 1]);
 				efficiencyPointsString =
-					calculateEfficiencyPoints(minStats) + ' - ' + calculateEfficiencyPoints(maxStats);
+					calculateEfficiencyPoints(minStats, 1) + ' - ' + calculateEfficiencyPoints(maxStats, 1);
 
 				for (const stat in itemStats) {
 					if (minStats.hasOwnProperty(stat) && maxStats.hasOwnProperty(stat)) {
@@ -125,8 +126,11 @@
 					}
 				}
 			} else if (item.statsPerLevel.length == 1) {
+				console.log(item.statsPerLevel);
 				chosenStat = filterData(item.statsPerLevel[0]);
-				efficiencyPointsString = calculateEfficiencyPoints(chosenStat).toString();
+				console.log(chosenStat);
+				efficiencyPointsString = calculateEfficiencyPoints(chosenStat, player.level).toString();
+				console.log(efficiencyPointsString);
 			}
 		} else if (['Enchant', 'Modifier'].includes(item.mainType)) {
 			// Calculatiions to allow to check how much power you get for that armor at that level
@@ -173,14 +177,14 @@
 			}
 
 			chosenStat = returnStat;
-			efficiencyPointsString = calculateEfficiencyPoints(chosenStat).toString();
+			efficiencyPointsString = calculateEfficiencyPoints(chosenStat, player.level).toString();
 		} else {
 			chosenStat = filterData(item);
-			efficiencyPointsString = calculateEfficiencyPoints(chosenStat).toString();
+			efficiencyPointsString = calculateEfficiencyPoints(chosenStat, player.level).toString();
 		}
 	} else {
 		chosenStat = filterData(item);
-		efficiencyPointsString = calculateEfficiencyPoints(chosenStat).toString();
+		efficiencyPointsString = calculateEfficiencyPoints(chosenStat, player.level).toString();
 	}
 </script>
 
@@ -252,5 +256,16 @@
 				{#if showName}{itemStats['insanity'].name}{/if}
 			</p>
 		</div>
+
+		{#if efficiencyPointsString !== '0'}
+			<div class="pb-2"></div>
+			<div class="flex items-center justify-center py-2" style="border-top: 2px solid white;">
+				<p
+					style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; text-align: center; -webkit-text-fill-color: white"
+				>
+					EP: {efficiencyPointsString}
+				</p>
+			</div>
+		{/if}
 	{/if}
 </div>

@@ -119,7 +119,7 @@
 	on:mousemove={handleMouseOver}
 	on:mouseleave={handleMouseOut}
 	on:click={handleClick}
-	class="m-1 w-24 h-24"
+	class="m-1 w-20 h-20 md:w-24 md:h-24"
 	style="border-color: {rarityColors[item.rarity]}; border-width: 1px; background-color: #020202;"
 >
 	<img

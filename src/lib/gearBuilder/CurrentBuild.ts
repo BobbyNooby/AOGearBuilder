@@ -42,11 +42,23 @@ export class CurrentBuild {
 		};
 	}
 
+	resetBuild() {
+		this.slots = {
+			accessory1: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
+			accessory2: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
+			accessory3: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
+			chestplate: new ArmorSlot(this, noneChestplate, noneEnchant, noneModifier),
+			pants: new ArmorSlot(this, nonePants, noneEnchant, noneModifier)
+		};
+	}
+
 	fixSlotLevels() {
 		for (const slot of Object.values(this.slots)) {
 			slot.fixArmorLevel();
 		}
 	}
+
+	fixMagicFightingItems() {}
 
 	getBuildStats(): ArmorStats {
 		let finalBuildStats: any = {
@@ -85,7 +97,6 @@ export class CurrentBuild {
 		let badConditions: Array<(item: anyItem, slot: ArmorSlot) => boolean> = [];
 
 		// Full build item checking
-
 		for (const slotKey of Object.keys(this.slots)) {
 			const slot: ArmorSlot = this.slots[slotKey as keyof typeof this.slots];
 
@@ -99,7 +110,12 @@ export class CurrentBuild {
 					(item, slot) =>
 						strictlySingleSubtypes.includes(item.subType) &&
 						item.subType == slot.armor.subType &&
+						inputSlotKey !== slotKey,
+					(item, slot) =>
+						item.name.includes('Arcsphere') &&
+						slot.armor.name.includes('Arcsphere') &&
 						inputSlotKey !== slotKey
+					// (item, slot) => item.subType == 'Magic' && !item.name.includes(this.parentPlayer.magic)
 				];
 			}
 

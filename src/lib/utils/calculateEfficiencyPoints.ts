@@ -1,7 +1,7 @@
-import type { ArmorItemData, ItemStats } from '$lib/itemTypes';
+import type { ItemStats } from '$lib/itemTypes';
 import type { Player } from '$lib/playerClasses';
 
-export function calculateEfficiencyPoints(stats: ItemStats): number {
+export function calculateEfficiencyPoints(stats: ItemStats, playerLevel: number): number {
 	let efficiencyPoints = 0;
 
 	for (const stat in stats) {
@@ -10,11 +10,11 @@ export function calculateEfficiencyPoints(stats: ItemStats): number {
 		} else if (stat == 'defense') {
 			efficiencyPoints += stats[stat] / 3;
 		} else if (stat == 'insanity') {
-			efficiencyPoints += stats[stat] * -36;
+			efficiencyPoints += stats[stat] * (-0.03 * playerLevel);
 		} else if (stat == 'warding') {
-			efficiencyPoints += stats[stat] * 18;
+			efficiencyPoints += stats[stat] * (0.15 * playerLevel);
 		} else if (stat == 'drawback') {
-			efficiencyPoints += stats[stat] * -18;
+			efficiencyPoints += stats[stat] * (-0.15 * playerLevel);
 		} else {
 			efficiencyPoints += stats[stat];
 		}
