@@ -8,6 +8,7 @@
 	} from '$lib/itemTypes';
 	import { filterData } from '$lib/utils/filterData';
 	import type { Player } from '$lib/playerClasses';
+	import StatWithPercentEffectiveness from './StatWithPercentEffectiveness.svelte';
 
 	export let item: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
 		showName: boolean,
@@ -98,7 +99,6 @@
 		itemStats[atlanteanAttribute]['fillColor'] = '#8B27DB';
 		itemStats[atlanteanAttribute]['strokeColor'] = '#DB0C45';
 	}
-	console.log(atlanteanAttribute);
 
 	let minStats = {};
 	let maxStats = {};
@@ -189,25 +189,39 @@
 </script>
 
 <div class="text-center z-30">
-	<!-- Only show the stat if its value is more than zero -->
+	<!--
+		
+		
+		
+		
+		NORMAL STAT PREVIEW
+	
+	
+	
+	
+	-->
 	{#if !showOnlyAtlanteanStat}
 		{#each Object.keys(itemStats) as stat}
 			{#if chosenStat[stat]}
-				<div class="flex items-center justify-center">
-					<img class="h-6" src="assets/images/stats/{stat}.png" alt={stat} />
-					<p
-						style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: {itemStats[
-							stat
-						].fillColor}; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: {itemStats[stat]
-							.strokeColor}; text-align: center;"
-					>
-						{#if showName && chosenStat[stat] > 0}
-							+
-						{/if}
-						{chosenStat[stat]}
-						{#if showName}{itemStats[stat].name}{/if}
-					</p>
-				</div>
+				{#if ['agility', 'attackSpeed', 'attackSize', 'intensity', 'regeneration', 'piercing', 'resistance'].includes(stat)}
+					<StatWithPercentEffectiveness {stat} {chosenStat} {itemStats} {showName} {player} />
+				{:else}
+					<div class="flex items-center justify-center">
+						<img class="h-6" src="assets/images/stats/{stat}.png" alt={stat} />
+						<p
+							style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: {itemStats[
+								stat
+							].fillColor}; -webkit-text-stroke: 1.5px; -webkit-text-stroke-color: {itemStats[stat]
+								.strokeColor}; text-align: center;"
+						>
+							{#if showName && chosenStat[stat] > 0}
+								+
+							{/if}
+							{chosenStat[stat]}
+							{#if showName}{itemStats[stat].name}{/if}
+						</p>
+					</div>
+				{/if}
 			{/if}
 		{/each}
 		{#if efficiencyPointsString !== '0'}
@@ -221,6 +235,18 @@
 			</div>
 		{/if}
 	{:else}
+		<!-- 
+	
+	
+	
+	
+	SHOW ONLY ATLANTEAN ATTRIBUTE / FOR ATLANTEAN ESSENCE ITEMTOOLTIP
+
+
+
+
+-->
+
 		<div class="flex items-center justify-center">
 			<img
 				class="h-6"

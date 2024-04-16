@@ -1,21 +1,21 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import GearButton from '$lib/components/GearButton.svelte';
+	import GearButton from '$lib/components/Builders/GearButton.svelte';
 	import { Player } from '$lib/playerClasses';
 	import type { PageData } from '../$types';
 	import { get, writable } from 'svelte/store';
-	import ItemTooltip from '$lib/components/ItemTooltip.svelte';
+	import ItemTooltip from '$lib/components/Builders/ItemTooltip.svelte';
 	import { fade } from 'svelte/transition';
-	import PlayerStatMenu from '$lib/components/PlayerStats/PlayerStatMenu.svelte';
+	import PlayerStatMenu from '$lib/components/Builders/PlayerStats/PlayerStatMenu.svelte';
 	import { testNumber } from '$lib/playerUtils';
-	import FilterButton from '$lib/components/FilterButton.svelte';
-	import SortButton from '$lib/components/SortButton.svelte';
+	import FilterButton from '$lib/components/Builders/FilterButton.svelte';
+	import SortButton from '$lib/components/Builders/SortButton.svelte';
 	import { currentBuildCode } from '$lib/utils/buildSavingUtils';
 	import BlackButton from '$lib/components/Misc/BlackButton.svelte';
 	import { getBuildFromLocalStorage, storeBuildToLocalStorage } from '$lib/utils/buildSavingUtils';
 	import BuildSaveButton from '$lib/components/Builders/BuildSaveButton.svelte';
 	import BuildLoadButton from '$lib/components/Builders/BuildLoadButton.svelte';
-	import PostCalcsButton from '$lib/components/PostCalcsButton.svelte';
+	import PostCalcsButton from '$lib/components/Builders/PostCalcsButton.svelte';
 	import { isMobile } from '$lib/utils/mobileStore';
 
 	export let data: PageData;
