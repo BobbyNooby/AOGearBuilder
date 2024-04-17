@@ -313,7 +313,10 @@
  -->
 
 			<section class="flex flex-col items-center" style="display: flex;">
-				<p class="mt-8 text-7xl text-white merriweather-light" style="font-family: Merriweather;">
+				<p
+					class="mt-8 text-7xl text-white merriweather-light text-center"
+					style="font-family: Merriweather;"
+				>
 					Gear Builder
 				</p>
 
