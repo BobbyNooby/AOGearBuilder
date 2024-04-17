@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import { isMobile } from '$lib/utils/mobileStore';
 	import Analytics from '$lib/utils/Analytics.svelte';
-	import Footer from '$lib/components/Misc/Footer.svelte';
 
 	function checkMobile() {
 		console.log(window.innerWidth);
