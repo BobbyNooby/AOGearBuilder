@@ -5,8 +5,8 @@
 		EnchantItemData,
 		GemItemData,
 		ModifierItemData
-	} from '$lib/itemTypes';
-	import type { Player } from '$lib/playerClasses';
+	} from '$lib/gearBuilder/itemTypes';
+	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import Item from './Item.svelte';
 	import { rarityColors } from '$lib/dataConstants';
 	import { filterType, sortType } from '$lib/utils/filterSortStore';

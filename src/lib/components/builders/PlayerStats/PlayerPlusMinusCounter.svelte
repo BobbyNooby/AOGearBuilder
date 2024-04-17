@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Player } from '$lib/playerClasses';
+	import { Player } from '$lib/gearBuilder/playerClasses';
 
 	export let player: Player,
 		playerKey: keyof Player,

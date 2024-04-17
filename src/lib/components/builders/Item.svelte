@@ -6,10 +6,10 @@
 		GemItemData,
 		EnchantItemData,
 		ModifierItemData
-	} from '$lib/itemTypes';
+	} from '$lib/gearBuilder/itemTypes';
 	import { writable } from 'svelte/store';
 	import ItemTooltip from './ItemTooltip.svelte';
-	import type { Player } from '$lib/playerClasses';
+	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import { isMobile } from '$lib/utils/mobileStore';
 
 	export let item: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,

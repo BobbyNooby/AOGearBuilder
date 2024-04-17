@@ -4,7 +4,7 @@
 	import { isMobile } from '$lib/utils/mobileStore';
 	import { fade } from 'svelte/transition';
 	import type { ArmorSlot } from '$lib/gearBuilder/ArmorSlot';
-	import type { Player } from '$lib/playerClasses';
+	import type { Player } from '$lib/gearBuilder/playerClasses';
 	export let slot: ArmorSlot, slotKey: string, player: Player;
 
 	let slotStats = slot.getSlotStats();

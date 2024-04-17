@@ -1,5 +1,5 @@
-import type { ItemStats } from '$lib/itemTypes';
-import type { Player } from '$lib/playerClasses';
+import type { ItemStats } from '$lib/gearBuilder/itemTypes';
+import type { Player } from '$lib/gearBuilder/playerClasses';
 
 export function calculateEfficiencyPoints(stats: ItemStats, playerLevel: number): number {
 	let efficiencyPoints = 0;

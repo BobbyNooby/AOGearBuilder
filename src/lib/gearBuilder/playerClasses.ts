@@ -1,8 +1,8 @@
 import { get } from 'svelte/store';
-import { CurrentBuild } from './gearBuilder/CurrentBuild';
+import { CurrentBuild } from './CurrentBuild';
 import type { magic } from './playerTypes';
-import { getItemById } from './utils/getItemById';
-import { listOfMagics } from './dataConstants';
+import { getItemById } from '../utils/getItemById';
+import { listOfMagics } from '../dataConstants';
 
 export class Player {
 	level: number;

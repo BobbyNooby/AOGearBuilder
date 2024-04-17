@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Player } from '$lib/playerClasses';
+	import { Player } from '$lib/gearBuilder/playerClasses';
 	import PlayerStatIncrementor from './PlayerStatIncrementor.svelte';
 	import { hexToRGB } from '$lib/utils/hexToRGB';
 	import { isMobile } from '$lib/utils/mobileStore';

@@ -2,7 +2,7 @@
 	import { isMobile } from '$lib/utils/mobileStore';
 	import { writable } from 'svelte/store';
 	import { calculateSubstatEfficiency } from '$lib/utils/calculateSubstatEfficiency';
-	import type { Player } from '$lib/playerClasses';
+	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import { fade } from 'svelte/transition';
 
 	export let showName: boolean;
@@ -107,23 +107,35 @@
 					].fillColor}; -webkit-text-stroke: 1px; -webkit-text-stroke-color: {itemStats[stat]
 						.strokeColor}; text-align: center;"
 				>
-					Baseline : %{calculateSubstatEfficiency(chosenStat[stat], stat, player)}<br />
+					Baseline : +{calculateSubstatEfficiency(chosenStat[stat], stat, player)}%<br />
 					{#if stat == 'agility'}
-						Reflex : %{calculateSubstatEfficiency(chosenStat[stat], 'agiReflex', player)}<br />
-						Leap : %{calculateSubstatEfficiency(chosenStat[stat], 'agiLeap', player)}
+						Reflex : +{calculateSubstatEfficiency(chosenStat[stat], 'agiReflex', player)}%<br />
+						Leap : +{calculateSubstatEfficiency(chosenStat[stat], 'agiLeap', player)}%
 					{:else if stat == 'attackSpeed'}
-						Startup / Projectile Speed : %{calculateSubstatEfficiency(
+						Startup / Projectile Speed : +{calculateSubstatEfficiency(
 							chosenStat[stat],
 							'atkSpdStartupProjectile',
 							player
-						)}<br />
-						Endlag : %{calculateSubstatEfficiency(chosenStat[stat], 'atkSpdEndlag', player)}<br />
+						)}%<br />
+						Endlag : +{calculateSubstatEfficiency(chosenStat[stat], 'atkSpdEndlag', player)}%<br />
 					{:else if stat == 'regeneration'}
-						In Combat : %{calculateSubstatEfficiency(
+						In Combat : +{calculateSubstatEfficiency(
 							chosenStat[stat],
 							'regenerationInCombat',
 							player
-						)}<br />
+						)}%<br />
+						<br />
+						<span class=" mt-8">Health gained per tick</span><br />
+						Out of Combat : +{(
+							player.health *
+							0.01 *
+							(calculateSubstatEfficiency(chosenStat[stat], stat, player) / 100)
+						).toFixed(2)}<br />
+						In Combat :+{(
+							(93 + player.level * 7 + player.vitalityPoints * 4) *
+							0.01 *
+							(calculateSubstatEfficiency(chosenStat[stat], 'regenerationInCombat', player) / 100)
+						).toFixed(2)}
 					{/if}
 				</p>
 			</div>
@@ -175,23 +187,23 @@
 					].fillColor}; -webkit-text-stroke: 1px; -webkit-text-stroke-color: {itemStats[stat]
 						.strokeColor}; text-align: center;"
 				>
-					Baseline : %{calculateSubstatEfficiency(chosenStat[stat], stat, player)}<br />
+					Baseline : +{calculateSubstatEfficiency(chosenStat[stat], stat, player)}%<br />
 					{#if stat == 'agility'}
-						Reflex : %{calculateSubstatEfficiency(chosenStat[stat], 'agiReflex', player)}<br />
-						Leap : %{calculateSubstatEfficiency(chosenStat[stat], 'agiLeap', player)}
+						Reflex : +{calculateSubstatEfficiency(chosenStat[stat], 'agiReflex', player)}%<br />
+						Leap : +{calculateSubstatEfficiency(chosenStat[stat], 'agiLeap', player)}%
 					{:else if stat == 'attackSpeed'}
-						Startup / Projectile Speed : %{calculateSubstatEfficiency(
+						Startup / Projectile Speed : +{calculateSubstatEfficiency(
 							chosenStat[stat],
 							'atkSpdStartupProjectile',
 							player
-						)}<br />
-						Endlag : %{calculateSubstatEfficiency(chosenStat[stat], 'atkSpdEndlag', player)}<br />
+						)}%<br />
+						Endlag : +{calculateSubstatEfficiency(chosenStat[stat], 'atkSpdEndlag', player)}%<br />
 					{:else if stat == 'regeneration'}
-						In Combat : %{calculateSubstatEfficiency(
+						In Combat : +{calculateSubstatEfficiency(
 							chosenStat[stat],
 							'regenerationInCombat',
 							player
-						)}<br />
+						)}%<br />
 					{/if}
 				</p>
 			</div>

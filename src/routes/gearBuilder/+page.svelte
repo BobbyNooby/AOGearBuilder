@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import GearButton from '$lib/components/Builders/GearButton.svelte';
-	import { Player } from '$lib/playerClasses';
+	import { Player } from '$lib/gearBuilder/playerClasses';
 	import type { PageData } from '../$types';
 	import { get, writable } from 'svelte/store';
 	import ItemTooltip from '$lib/components/Builders/ItemTooltip.svelte';
 	import { fade } from 'svelte/transition';
 	import PlayerStatMenu from '$lib/components/Builders/PlayerStats/PlayerStatMenu.svelte';
-	import { testNumber } from '$lib/playerUtils';
 	import FilterButton from '$lib/components/Builders/FilterButton.svelte';
 	import SortButton from '$lib/components/Builders/SortButton.svelte';
 	import { currentBuildCode } from '$lib/utils/buildSavingUtils';
@@ -75,7 +74,7 @@
 		{#if !$isMobile}
 			<section class="flex flex-col items-center" style="display: flex;">
 				<p class="mt-8 text-7xl text-white merriweather-light" style="font-family: Merriweather;">
-					Gear Builder{testNumber}
+					Gear Builder
 				</p>
 
 				<div class="flex flex-row space-x-2 my-1">
@@ -315,7 +314,7 @@
 
 			<section class="flex flex-col items-center" style="display: flex;">
 				<p class="mt-8 text-7xl text-white merriweather-light" style="font-family: Merriweather;">
-					Gear Builder{testNumber}
+					Gear Builder
 				</p>
 
 				<div class="flex flex-col space-y-2 my-1">

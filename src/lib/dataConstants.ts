@@ -1,5 +1,5 @@
-import type { Rarities } from './itemTypes';
-import type { magic } from './playerTypes';
+import type { Rarities } from './gearBuilder/itemTypes';
+import type { magic } from './gearBuilder/playerTypes';
 
 export const rarityColors: { [key in Rarities]: string } = {
 	None: '#FFFFFF',

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Player } from '$lib/playerClasses';
+	import { Player } from '$lib/gearBuilder/playerClasses';
 	import PlayerStatBar from './PlayerStatBar.svelte';
 	import { hexToRGB } from '$lib/utils/hexToRGB';
 	import { writable } from 'svelte/store';
@@ -99,7 +99,7 @@
 		}
 
 		baseHealth = 93 + player.level * 7;
-		player.health = baseHealth + player.build.getBuildStats().defense;
+		player.health = baseHealth + player.build.getBuildStats().defense + player.vitalityPoints * 4;
 		player.build.fixSlotLevels();
 	}
 

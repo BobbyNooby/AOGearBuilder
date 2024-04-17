@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { magicDetails } from '$lib/dataConstants';
-	import type { Player } from '$lib/playerClasses';
+	import { Player } from '$lib/gearBuilder/playerClasses';
 	import { fade } from 'svelte/transition';
 
 	export let updatePage: any, player: Player;

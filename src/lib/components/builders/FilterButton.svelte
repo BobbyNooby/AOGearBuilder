@@ -3,6 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { filterList } from '$lib/data/filterList';
 	import { get } from 'svelte/store';
+	import { rarityColors } from '$lib/dataConstants';
 
 	let menuIsActive = false;
 
@@ -32,7 +33,7 @@
 			in:fade={{ duration: 100 }}
 			out:fade={{ duration: 100 }}
 		>
-			<div class="fixed inset-0 flex items-center justify-center">
+			<div class="fixed inset-0 flex flex-col items-center justify-center overflow-y-auto">
 				<button
 					on:click={() => {
 						menuToggle();
@@ -53,17 +54,20 @@
 						/>
 					</svg>
 				</button>
-				<div class="w-1/2">
+				<div>
 					{#each filterList as filter (filter.id)}
-						<div class="mb-4">
+						<div
+							class="p-5 mb-4 border border-white bg-black text-xl"
+							style="font-family: Merriweather;"
+						>
 							<label class="flex items-center">
 								<input
 									type="checkbox"
-									class="mr-2"
+									class="mr-2 w-10 h-10"
 									checked={$filterType.includes(filter.filter)}
 									on:change={() => toggleFilter(filter.filter)}
 								/>
-								<p class:selected={$filterType.includes(filter.filter)}>
+								<p style="color : {rarityColors[filter.filter]}">
 									{filter.name}
 								</p>
 							</label>
@@ -74,10 +78,3 @@
 		</div>
 	{/if}
 </div>
-
-<style>
-	.selected {
-		background-color: #0099ff;
-		-webkit-text-fill-color: black;
-	}
-</style>

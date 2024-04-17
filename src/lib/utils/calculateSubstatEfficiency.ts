@@ -1,4 +1,4 @@
-import type { Player } from '$lib/playerClasses';
+import type { Player } from '$lib/gearBuilder/playerClasses';
 
 export function calculateSubstatEfficiency(statAmount: number, statKey: string, player: Player) {
 	const playerLevel = player.level;

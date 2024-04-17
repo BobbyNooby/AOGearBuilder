@@ -1,11 +1,11 @@
-import { noneGem, noneModifier } from '$lib/defaultGears';
+import { noneGem, noneModifier } from '$lib/gearBuilder/defaultGears';
 import type {
 	ArmorItemData,
 	GemItemData,
 	EnchantItemData,
 	ModifierItemData,
 	ArmorStats
-} from '$lib/itemTypes';
+} from '$lib/gearBuilder/itemTypes';
 
 import { filterData } from '$lib/utils/filterData';
 

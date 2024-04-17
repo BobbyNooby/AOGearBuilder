@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Player } from '$lib/playerClasses';
+	import { Player } from '$lib/gearBuilder/playerClasses';
 	import { fade } from 'svelte/transition';
 
 	export let database: [], type: string, parentPlayer: Player, updatePage: () => void;

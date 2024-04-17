@@ -5,7 +5,7 @@ import {
 	noneEnchant,
 	nonePants,
 	noneModifier
-} from '../defaultGears';
+} from './defaultGears';
 import type {
 	ArmorItemData,
 	GemItemData,
@@ -13,8 +13,8 @@ import type {
 	ModifierItemData,
 	ArmorStats,
 	anyItem
-} from '../itemTypes';
-import type { Player } from '../playerClasses';
+} from './itemTypes';
+import type { Player } from './playerClasses';
 
 import { ArmorSlot } from './ArmorSlot';
 //Move to frontend to handle
