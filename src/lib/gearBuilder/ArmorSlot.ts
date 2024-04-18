@@ -214,6 +214,9 @@ export class ArmorSlot {
 	}
 
 	getSlotCode() {
-		return [this.armor, this.enchant, this.modifier, ...this.gems].map((item) => item.id).join('.');
+		let slotCode: any[] = [];
+		slotCode = [this.armor, this.enchant, this.modifier, ...this.gems].map((item) => item.id);
+		slotCode.push(this.armorLevel);
+		return slotCode.join('.');
 	}
 }

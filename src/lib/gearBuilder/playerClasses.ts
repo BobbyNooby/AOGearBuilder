@@ -172,8 +172,10 @@ export class Player {
 				for (let j = 0; j < slot.length; j++) {
 					if (j <= 2) {
 						this.build.setGear(getItemById(database, slot[j]), slotkey);
-					} else {
+					} else if (j > 2 && j < slot.length - 1) {
 						this.build.setGear(getItemById(database, slot[j]), slotkey, j - 3);
+					} else if (j == slot.length - 1) {
+						this.build.slots[slotkey].armorLevel = parseInt(slot[j]);
 					}
 				}
 			}
