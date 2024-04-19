@@ -143,7 +143,7 @@ export class Player {
 
 	loadBuildCode(database: [], codeString: string) {
 		try {
-			if (codeString.includes("'")) {
+			if (isLegacyArmorBuild(codeString)) {
 				codeString = loadOldCode(codeString);
 			}
 			const slotCodeArray = codeString.split('|').map((slotString) => slotString.split('.'));
