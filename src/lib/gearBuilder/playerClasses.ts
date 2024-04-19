@@ -3,6 +3,8 @@ import { CurrentBuild } from './CurrentBuild';
 import type { magic } from './playerTypes';
 import { getItemById } from '../utils/getItemById';
 import { listOfMagics } from '../dataConstants';
+import { isLegacyArmorBuild } from '$lib/utils/isLegacyBuild';
+import { loadOldCode } from './oldCode';
 
 export class Player {
 	level: number;
@@ -141,6 +143,9 @@ export class Player {
 
 	loadBuildCode(database: [], codeString: string) {
 		try {
+			if (isLegacyArmorBuild(codeString)) {
+				codeString = loadOldCode(codeString);
+			}
 			const slotCodeArray = codeString.split('|').map((slotString) => slotString.split('.'));
 
 			if (slotCodeArray.length != 11) {
