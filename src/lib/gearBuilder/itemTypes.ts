@@ -1,3 +1,5 @@
+import { expoIn } from "svelte/easing";
+
 export type Rarities =
 	| 'None'
 	| 'Common'
@@ -15,6 +17,8 @@ export type ModifierMainTypes = 'Modifier';
 
 export type EnchantMainTypes = 'Enchant';
 
+export type StatTypes =  "None" | "Magic" | "Strength" | "Vitality";
+
 export type ShipMainTypes =
 	| 'Cannon'
 	| 'Hull Armor'
@@ -25,16 +29,17 @@ export type ShipMainTypes =
 	| 'Boat'
 	| 'Ship Crew'
 	| 'Quartermaster'
-	| ' Ship';
+	| 'Ship';
 
 export type ItemIdentifiers = {
+	[index: string]: any;
 	id: string;
 	name: string;
 	legend: string;
 	mainType: string;
 	rarity: Rarities;
 	imageId: string;
-} & Partial<{ deleted: boolean; subType: string }>;
+} & Partial<{ deleted: boolean; subType: string; statType: StatTypes }>;
 
 export type GearBaseStats = Partial<{
 	power: number;
