@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { isMobile } from '$lib/utils/mobileStore';
 	import Analytics from '$lib/utils/Analytics.svelte';
+	import { Toaster } from 'svelte-french-toast';
 
 	function checkMobile() {
 		console.log(window.innerWidth);
@@ -36,6 +37,8 @@
 		rel="stylesheet"
 	/>
 </svelte:head>
+
+<Toaster />
 
 <section class="bg-zinc-800 overflow-auto app">
 	<Analytics />
