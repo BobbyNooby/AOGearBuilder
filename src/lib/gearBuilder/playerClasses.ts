@@ -3,6 +3,7 @@ import { CurrentBuild } from './CurrentBuild';
 import type { magic } from './playerTypes';
 import { getItemById } from '../utils/getItemById';
 import { listOfMagics } from '../dataConstants';
+import { isLegacyArmorBuild } from '$lib/utils/isLegacyBuild';
 
 export class Player {
 	level: number;
@@ -141,43 +142,48 @@ export class Player {
 
 	loadBuildCode(database: [], codeString: string) {
 		try {
-			const slotCodeArray = codeString.split('|').map((slotString) => slotString.split('.'));
+			if (!isLegacyArmorBuild(codeString)) {
+				const slotCodeArray = codeString.split('|').map((slotString) => slotString.split('.'));
 
-			if (slotCodeArray.length != 11) {
-				console.log('Invalid build code');
-				throw new Error('Invalid build code');
-			}
+				if (slotCodeArray.length != 11) {
+					console.log('Invalid build code');
+					throw new Error('Invalid build code');
+				}
 
-			const slotkeyArray = ['accessory1', 'accessory2', 'accessory3', 'chestplate', 'pants'];
+				const slotkeyArray = ['accessory1', 'accessory2', 'accessory3', 'chestplate', 'pants'];
 
-			this.level = parseInt(slotCodeArray[0][0]);
-			this.magic = listOfMagics[parseInt(slotCodeArray[1][0])];
-			this.vitalityPoints = parseInt(slotCodeArray[2][0]);
-			this.magicPoints = parseInt(slotCodeArray[3][0]);
-			this.strengthPoints = parseInt(slotCodeArray[4][0]);
-			this.weaponPoints = parseInt(slotCodeArray[5][0]);
+				this.level = parseInt(slotCodeArray[0][0]);
+				this.magic = listOfMagics[parseInt(slotCodeArray[1][0])];
+				this.vitalityPoints = parseInt(slotCodeArray[2][0]);
+				this.magicPoints = parseInt(slotCodeArray[3][0]);
+				this.strengthPoints = parseInt(slotCodeArray[4][0]);
+				this.weaponPoints = parseInt(slotCodeArray[5][0]);
 
-			console.log(
-				slotCodeArray,
-				this.vitalityPoints,
-				this.magicPoints,
-				this.strengthPoints,
-				this.weaponPoints
-			);
+				console.log(
+					slotCodeArray,
+					this.vitalityPoints,
+					this.magicPoints,
+					this.strengthPoints,
+					this.weaponPoints
+				);
 
-			for (let i = 0; i < slotkeyArray.length; i++) {
-				const slotkey = slotkeyArray[i] as keyof typeof this.build.slots;
-				const slot = slotCodeArray[i + 6];
+				for (let i = 0; i < slotkeyArray.length; i++) {
+					const slotkey = slotkeyArray[i] as keyof typeof this.build.slots;
+					const slot = slotCodeArray[i + 6];
 
-				for (let j = 0; j < slot.length; j++) {
-					if (j <= 2) {
-						this.build.setGear(getItemById(database, slot[j]), slotkey);
-					} else if (j > 2 && j < slot.length - 1) {
-						this.build.setGear(getItemById(database, slot[j]), slotkey, j - 3);
-					} else if (j == slot.length - 1) {
-						this.build.slots[slotkey].armorLevel = parseInt(slot[j]);
+					for (let j = 0; j < slot.length; j++) {
+						if (j <= 2) {
+							this.build.setGear(getItemById(database, slot[j]), slotkey);
+						} else if (j > 2 && j < slot.length - 1) {
+							this.build.setGear(getItemById(database, slot[j]), slotkey, j - 3);
+						} else if (j == slot.length - 1) {
+							this.build.slots[slotkey].armorLevel = parseInt(slot[j]);
+						}
 					}
 				}
+			} else {
+				console.log('Invalid build code');
+				throw new Error('Invalid build code');
 			}
 		} catch (error) {
 			console.log(error);

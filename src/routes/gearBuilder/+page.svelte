@@ -16,6 +16,7 @@
 	import BuildLoadButton from '$lib/components/Builders/BuildLoadButton.svelte';
 	import PostCalcsButton from '$lib/components/Builders/PostCalcsButton.svelte';
 	import { isMobile } from '$lib/utils/mobileStore';
+	import BuildsOverrideButton from '$lib/components/Builders/BuildsOverrideButton.svelte';
 
 	export let data: PageData;
 	let ready = false;
@@ -120,6 +121,7 @@
 						parentPlayer={SessionPlayer}
 						updatePage={() => updatePage()}
 					></BuildLoadButton>
+					<BuildsOverrideButton type={'gear'}></BuildsOverrideButton>
 				</div>
 
 				<div class="flex flex-row space-x-2 my-1">
