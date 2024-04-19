@@ -155,7 +155,13 @@ export class CurrentBuild {
 			} else if (item.mainType == 'Modifier') {
 				this.slots[slotKey].setModifier(item as ModifierItemData);
 			} else if (item.mainType == 'Gem' && gemIndex !== false) {
-				this.slots[slotKey].setGem(gemIndex as number, item as GemItemData);
+				if (typeof gemIndex == "number") {
+					if (gemIndex as number < this.slots[slotKey].armor.gemNo) {
+						this.slots[slotKey].setGem(gemIndex as number, item as GemItemData);
+					}
+				} else {
+					this.slots[slotKey].setGem(0, item as GemItemData);
+				}
 			}
 			return true;
 		} else {

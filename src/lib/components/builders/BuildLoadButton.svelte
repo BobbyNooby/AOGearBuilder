@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Player } from '$lib/gearBuilder/playerClasses';
-	import { isLegacyArmorBuild } from '$lib/utils/isLegacyBuild';
 	import { fade } from 'svelte/transition';
 
 	export let database: [], type: string, parentPlayer: Player, updatePage: () => void;
@@ -69,8 +68,6 @@
 		// copy text to clipboard
 		await navigator.clipboard.writeText(inputString);
 	}
-
-	let isLegacyMenuActive = false;
 
 	let searchQuery = '';
 
@@ -143,15 +140,11 @@
 							<button
 								class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-56 md:w-80 rounded"
 								on:click={() => {
+									menuToggle();
 									if (type == 'gear') {
-										if (isLegacyArmorBuild(savedBuild.code)) {
-											isLegacyMenuActive = true;
-										} else {
-											parentPlayer.loadBuildCode(database, savedBuild.code);
-											updatePage();
-											console.log(savedBuild);
-											menuToggle();
-										}
+										parentPlayer.loadBuildCode(database, savedBuild.code);
+										updatePage();
+										console.log(savedBuild);
 									} else if (type == 'ship') {
 										// loadShipCode(savedBuild.code);
 									}
@@ -283,23 +276,6 @@
 						on:click={() => (deletedBuild = null)}>No</button
 					>
 				</div>
-			</div>
-		{/if}
-		{#if isLegacyMenuActive}
-			<div
-				class="z-20 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex flex-col justify-center items-center"
-				id="menuouter"
-				in:fade={{ duration: 100 }}
-				out:fade={{ duration: 100 }}
-			>
-				<p class="text-center text-3xl my-4 text-white" style="font-family: Merriweather;">
-					This is a legacy build. Please go to oldtools.arcaneodyssey.net to use the build.
-				</p>
-				<button
-					class="bg-black border border-white text-white font-bold text-lg py-2 px-4 w-44"
-					style="font-family: Merriweather;"
-					on:click={() => (isLegacyMenuActive = false)}>Close</button
-				>
 			</div>
 		{/if}
 	{/if}
