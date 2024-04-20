@@ -113,6 +113,24 @@
 			if (item.statsPerLevel.length > 1) {
 				minStats = filterData(item.statsPerLevel[0]);
 				maxStats = filterData(item.statsPerLevel[item.statsPerLevel.length - 1]);
+
+				if (item.statType == 'Vitality') {
+					for (let itemstat of [minStats, maxStats]) {
+						for (const stat in itemstat) {
+							if (stat != 'warding' && stat != 'insanity') {
+								item[stat] = Math.floor(
+									item[stat] *
+										Math.min(
+											// Vetex given formula Math.clamp((vitality/maxstatpoints)*3, 0.3, 1)
+											Math.max((player.vitalityPoints / (player.level * 2)) * 3, 0.3),
+											1
+										)
+								);
+							}
+						}
+					}
+				}
+
 				efficiencyPointsString =
 					calculateEfficiencyPoints(minStats, 1) + ' - ' + calculateEfficiencyPoints(maxStats, 1);
 
@@ -128,6 +146,22 @@
 			} else if (item.statsPerLevel.length == 1) {
 				console.log(item.statsPerLevel);
 				chosenStat = filterData(item.statsPerLevel[0]);
+
+				if (item.statType == 'Vitality') {
+					for (const stat in chosenStat) {
+						if (stat != 'warding' && stat != 'insanity') {
+							chosenStat[stat] = Math.floor(
+								chosenStat[stat] *
+									Math.min(
+										// Vetex given formula Math.clamp((vitality/maxstatpoints)*3, 0.3, 1)
+										Math.max((player.vitalityPoints / (player.level * 2)) * 3, 0.3),
+										1
+									)
+							);
+						}
+					}
+				}
+
 				console.log(chosenStat);
 				efficiencyPointsString = calculateEfficiencyPoints(chosenStat, player.level).toString();
 				console.log(efficiencyPointsString);

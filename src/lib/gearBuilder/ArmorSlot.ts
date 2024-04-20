@@ -132,7 +132,11 @@ export class ArmorSlot {
 
 		let vitalityMultiplier = 1;
 
-		if (this.armor.name.includes('Oracle') || this.armor.name.includes('Alitheia')) {
+		if (
+			this.armor.name.includes('Oracle') ||
+			this.armor.name.includes('Alitheia') ||
+			this.armor.statType == 'Vitality'
+		) {
 			vitalityMultiplier = Math.min(
 				// Vetex given formula Math.clamp((vitality/maxstatpoints)*3, 0.3, 1)
 				Math.max(
