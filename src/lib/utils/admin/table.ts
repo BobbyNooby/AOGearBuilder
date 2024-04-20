@@ -57,38 +57,38 @@ export class Column {
 	parentTable: Table;
 
 	level: number;
-	power: number|null = null;
-	defense: number|null = null;
-	agility: number|null = null;
-	attackSpeed: number|null = null;
-	attackSize: number|null = null;
-	intensity: number|null = null;
-	regeneration: number|null = null;
-	piercing: number|null = null;
-	resistance: number|null = null;
+	power: number | null = null;
+	defense: number | null = null;
+	agility: number | null = null;
+	attackSpeed: number | null = null;
+	attackSize: number | null = null;
+	intensity: number | null = null;
+	regeneration: number | null = null;
+	piercing: number | null = null;
+	resistance: number | null = null;
 
-	powerIncrement: number|null = null;
-	defenseIncrement: number|null = null;
-	agilityIncrement: number|null = null;
-	attackSpeedIncrement: number|null = null;
-	attackSizeIncrement: number|null = null;
-	intensityIncrement: number|null = null;
-	regenerationIncrement: number|null = null;
-	piercingIncrement: number|null = null;
-	resistanceIncrement: number|null = null;
+	powerIncrement: number | null = null;
+	defenseIncrement: number | null = null;
+	agilityIncrement: number | null = null;
+	attackSpeedIncrement: number | null = null;
+	attackSizeIncrement: number | null = null;
+	intensityIncrement: number | null = null;
+	regenerationIncrement: number | null = null;
+	piercingIncrement: number | null = null;
+	resistanceIncrement: number | null = null;
 
-	insanity: number|null = null;
-	warding: number|null = null;
-	drawback: number|null = null;
+	insanity: number | null = null;
+	warding: number | null = null;
+	drawback: number | null = null;
 
-	durability: number|null = null;
-	magicStorage: number|null = null;
-	ramDefense: number|null = null;
-	ramStrength: number|null = null;
-	resilience: number|null = null;
-	speed: number|null = null;
-	stability: number|null = null;
-	turning: number|null = null;
+	durability: number | null = null;
+	magicStorage: number | null = null;
+	ramDefense: number | null = null;
+	ramStrength: number | null = null;
+	resilience: number | null = null;
+	speed: number | null = null;
+	stability: number | null = null;
+	turning: number | null = null;
 	constructor(level: number, parentTable: Table) {
 		this.parentTable = parentTable;
 
@@ -159,17 +159,17 @@ export class Table {
 			regeneration: {
 				bool: false,
 				text: 'Regeneration',
-				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/power.png`
+				imageId: `https://github.com/BobbyNooby/AOGearBuilder/blob/typescript/static/assets/images/stats/regeneration.png?raw=true`
 			},
 			piercing: {
 				bool: false,
 				text: 'Piercing',
-				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/power.png`
+				imageId: `https://github.com/BobbyNooby/AOGearBuilder/blob/typescript/static/assets/images/stats/piercing.png?raw=true`
 			},
 			resistance: {
 				bool: false,
 				text: 'Resistance',
-				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/power.png`
+				imageId: `https://github.com/BobbyNooby/AOGearBuilder/blob/typescript/static/assets/images/stats/resistance.png?raw=true`
 			},
 
 			powerIncrement: {
@@ -205,17 +205,17 @@ export class Table {
 			regenerationIncrement: {
 				bool: false,
 				text: 'Regeneration Increment',
-				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/power.png`
+				imageId: `https://github.com/BobbyNooby/AOGearBuilder/blob/typescript/static/assets/images/stats/regeneration.png?raw=true`
 			},
 			piercingIncrement: {
 				bool: false,
 				text: 'Piercing Increment',
-				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/power.png`
+				imageId: `https://github.com/BobbyNooby/AOGearBuilder/blob/typescript/static/assets/images/stats/piercing.png?raw=true`
 			},
 			resistanceIncrement: {
 				bool: false,
 				text: 'Resistance Increment',
-				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/power.png`
+				imageId: `https://github.com/BobbyNooby/AOGearBuilder/blob/typescript/static/assets/images/stats/resistance.png?raw=true`
 			},
 
 			insanity: {
@@ -293,15 +293,15 @@ export class Table {
 		this.updateColumns();
 	}
 
-	setMin(level:number) {
-        this.minLevel = level;
-        this.updateColumns();
-    }
+	setMin(level: number) {
+		this.minLevel = level;
+		this.updateColumns();
+	}
 
-    setMax(level:number) {
-        this.maxLevel = level;
-        this.updateColumns();
-    }
+	setMax(level: number) {
+		this.maxLevel = level;
+		this.updateColumns();
+	}
 
 	getColumns() {
 		return this.columns;
@@ -340,8 +340,8 @@ export class Table {
 	getData() {
 		let data = this.columns.map((column) => column.getData());
 
-		data = data.filter(function(column){
-			return !(Object.keys(column).length <= 1 && "level" in column);
+		data = data.filter(function (column) {
+			return !(Object.keys(column).length <= 1 && 'level' in column);
 		});
 
 		if (this.levelVisibility) {
