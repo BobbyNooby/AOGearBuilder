@@ -208,6 +208,7 @@ export class ArmorSlot {
 
 				// Only happens if all have value
 				finalSlotStats['power'] += Math.floor(modifierStats['powerIncrement'] * levelMultiplier);
+				finalSlotStats.insanity += modifierStats.insanity;
 			} else {
 				// Regular modifier calculations
 				this.chosenAtlanteanAttribute = '';
