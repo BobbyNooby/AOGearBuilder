@@ -6,6 +6,8 @@ website : https://tools.arcaneodyssey.net
 
 ## Changelogs
 
+20 April 2024 - Nimbus Sea Part 1 Site Overhaul.
+
 25 February 2024 - Added efficiency points.
 
 16 February 2024 - Added color highlighting for stats affected by Atlantean Essence.

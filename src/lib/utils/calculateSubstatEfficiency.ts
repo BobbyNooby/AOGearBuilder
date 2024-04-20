@@ -18,7 +18,8 @@ export function calculateSubstatEfficiency(statAmount: number, statKey: string, 
 	const percentCalc =
 		multiplier *
 		1.35 *
-		((16 * Math.pow(Math.log(0.1 * statAmount + 4), 3) * 0.09 + 0.15 * statAmount) /
+		((16 * Math.pow(Math.log(0.1 * Math.abs(statAmount) + 4), 3) * 0.09 +
+			0.15 * Math.abs(statAmount)) /
 			(0.1 + 0.15 * Math.pow(playerLevel, 0.5)) -
 			0.79);
 

@@ -61,6 +61,12 @@
 	}
 
 	let isMenuActive = false;
+
+	let isPositive = '+';
+
+	if (chosenStat[stat] < 0) {
+		isPositive = '-';
+	}
 </script>
 
 {#if !$isMobile}
@@ -107,31 +113,39 @@
 					].fillColor}; -webkit-text-stroke: 1px; -webkit-text-stroke-color: {itemStats[stat]
 						.strokeColor}; text-align: center;"
 				>
-					Baseline : +{calculateSubstatEfficiency(chosenStat[stat], stat, player)}%<br />
+					Baseline : {isPositive}{calculateSubstatEfficiency(chosenStat[stat], stat, player)}%<br />
 					{#if stat == 'agility'}
-						Reflex : +{calculateSubstatEfficiency(chosenStat[stat], 'agiReflex', player)}%<br />
-						Leap : +{calculateSubstatEfficiency(chosenStat[stat], 'agiLeap', player)}%
+						Reflex : {isPositive}{calculateSubstatEfficiency(
+							chosenStat[stat],
+							'agiReflex',
+							player
+						)}%<br />
+						Leap : {isPositive}{calculateSubstatEfficiency(chosenStat[stat], 'agiLeap', player)}%
 					{:else if stat == 'attackSpeed'}
-						Startup / Projectile Speed : +{calculateSubstatEfficiency(
+						Startup / Projectile Speed : {isPositive}{calculateSubstatEfficiency(
 							chosenStat[stat],
 							'atkSpdStartupProjectile',
 							player
 						)}%<br />
-						Endlag : +{calculateSubstatEfficiency(chosenStat[stat], 'atkSpdEndlag', player)}%<br />
+						Endlag : {isPositive}{calculateSubstatEfficiency(
+							chosenStat[stat],
+							'atkSpdEndlag',
+							player
+						)}%<br />
 					{:else if stat == 'regeneration'}
-						In Combat : +{calculateSubstatEfficiency(
+						In Combat : {isPositive}{calculateSubstatEfficiency(
 							chosenStat[stat],
 							'regenerationInCombat',
 							player
 						)}%<br />
 						<br />
 						<span class=" mt-8">Health gained per tick</span><br />
-						Out of Combat : +{(
+						Out of Combat : {isPositive}{(
 							player.health *
 							0.01 *
 							(calculateSubstatEfficiency(chosenStat[stat], stat, player) / 100)
 						).toFixed(2)}<br />
-						In Combat :+{(
+						In Combat :{isPositive}{(
 							(93 + player.level * 7 + player.vitalityPoints * 4) *
 							0.01 *
 							(calculateSubstatEfficiency(chosenStat[stat], 'regenerationInCombat', player) / 100)
