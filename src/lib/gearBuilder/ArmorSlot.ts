@@ -167,6 +167,9 @@ export class ArmorSlot {
 			attackSpeedIncrement: 'attackSpeed',
 			attackSizeIncrement: 'attackSize',
 			intensityIncrement: 'intensity',
+			regenerationIncrement: 'regeneration',
+			piercingIncrement: 'piercing',
+			resistanceIncrement: 'resistance',
 			insanity: 'insanity',
 			warding: 'warding',
 			drawback: 'drawback'
