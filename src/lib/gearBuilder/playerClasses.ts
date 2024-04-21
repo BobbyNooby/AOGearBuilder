@@ -143,6 +143,7 @@ export class Player {
 
 	loadBuildCode(database: [], codeString: string) {
 		try {
+			codeString = decodeURI(codeString);
 			if (isLegacyArmorBuild(codeString)) {
 				codeString = loadOldCode(codeString);
 			}
