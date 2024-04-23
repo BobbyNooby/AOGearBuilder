@@ -4,6 +4,7 @@
 	import { hexToRGB } from '$lib/utils/hexToRGB';
 	import { writable } from 'svelte/store';
 	import { isMobile } from '$lib/utils/mobileStore';
+	import { clamp } from '$lib/utils/clamp';
 
 	export let player: Player, updatePage: any;
 
@@ -23,6 +24,10 @@
 	) {
 		// Initializing
 		maximumPlayerStatPoints = player.level * 2;
+
+		// Deciding
+		player.changeStatPoint(statPoint, amount);
+
 		availablePlayerStatPoints =
 			maximumPlayerStatPoints -
 			player.vitalityPoints -
@@ -30,91 +35,24 @@
 			player.strengthPoints -
 			player.weaponPoints;
 
-		// Deciding
-		if (availablePlayerStatPoints > 0 && amount >= availablePlayerStatPoints) {
-			player[statPoint] += availablePlayerStatPoints;
-		} else if ((amount < 0 || availablePlayerStatPoints > 0) && player[statPoint] + amount >= 0) {
-			player[statPoint] += amount;
-		}
 		updatePage();
 	}
 
 	$: {
-		// Level restraints
-		if (player.level > player.maxLevel) {
-			player.level = player.maxLevel;
-		} else if (player.level < player.minLevel) {
-			player.level = player.minLevel;
-		}
-
-		// Stat restraints
-		maximumPlayerStatPoints = player.level * 2;
-
-		// Restricting stat values
-		let currentPlayerStatPoints =
-			player.vitalityPoints + player.magicPoints + player.strengthPoints + player.weaponPoints;
-
-		if (currentPlayerStatPoints > maximumPlayerStatPoints) {
-			for (let i = 0; i < currentPlayerStatPoints - maximumPlayerStatPoints; i++) {
-				let highestStat = Math.max(
-					player.vitalityPoints,
-					player.magicPoints,
-					player.strengthPoints,
-					player.weaponPoints
-				);
-				let statToModify = '';
-				if (player.vitalityPoints === highestStat) {
-					statToModify = 'vitalityPoints';
-				} else if (player.magicPoints === highestStat) {
-					statToModify = 'magicPoints';
-				} else if (player.strengthPoints === highestStat) {
-					statToModify = 'strengthPoints';
-				} else {
-					statToModify = 'weaponPoints';
-				}
-				player[statToModify] -= 1;
-			}
-		}
-
-		availablePlayerStatPoints =
-			maximumPlayerStatPoints -
-			player.vitalityPoints -
-			player.magicPoints -
-			player.strengthPoints -
-			player.weaponPoints;
-
-		const playerStats: ('vitalityPoints' | 'magicPoints' | 'strengthPoints' | 'weaponPoints')[] = [
-			'vitalityPoints',
-			'magicPoints',
-			'strengthPoints',
-			'weaponPoints'
-		];
-
-		for (const stat of playerStats) {
-			if (player[stat] > maximumPlayerStatPoints) {
-				player[stat] = maximumPlayerStatPoints;
-			} else if (player[stat] < 0) {
-				player[stat] = 0;
-			}
-		}
+		player.level = clamp(player.level, player.minLevel, player.maxLevel);
 
 		baseHealth = 93 + player.level * 7;
-		player.health = baseHealth + player.build.getBuildStats().defense + player.vitalityPoints * 4;
+		player.updateHealth();
 		player.build.fixSlotLevels();
 	}
 
 	function handleLevelChange(amount: number) {
-		const newLevel = player.level + amount;
-		if (player.minLevel <= newLevel && newLevel <= player.maxLevel) {
-			player.level = newLevel;
-		}
+		player.changePlayerLevel(amount);
 	}
 
 	function resetAllPlayerStats() {
-		player.vitalityPoints = 0;
-		player.magicPoints = 0;
-		player.strengthPoints = 0;
-		player.weaponPoints = 0;
+		player.resetStatPoints();
+		updatePage();
 	}
 
 	const keyStore = writable(false);

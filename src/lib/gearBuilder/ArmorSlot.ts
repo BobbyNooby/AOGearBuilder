@@ -111,7 +111,6 @@ export class ArmorSlot {
 		const modifierStats: any = this.modifier;
 		const levelMultiplier: any = this.armorLevel / 10;
 		const gemsStats: any[] = this.gems.map((gem) => filterData(gem));
-		console.log(gemsStats);
 
 		let finalSlotStats: any = {
 			power: 0,

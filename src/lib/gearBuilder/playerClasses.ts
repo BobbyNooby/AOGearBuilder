@@ -1,15 +1,19 @@
 import { get } from 'svelte/store';
 import { CurrentBuild } from './CurrentBuild';
-import type { magic } from './playerTypes';
+import type { fightingStyles, magic } from './playerTypes';
 import { getItemById } from '../utils/getItemById';
 import { listOfMagics } from '../dataConstants';
 import { isLegacyArmorBuild } from '$lib/utils/isLegacyBuild';
 import { loadOldCode } from './oldCode';
+import { clamp } from '$lib/utils/clamp';
 
 export class Player {
 	level: number;
 	health: number;
-	magic: magic;
+
+	magics: magic[];
+	fightingStyles: fightingStyles[];
+
 	build: CurrentBuild;
 
 	minLevel: number;
@@ -28,7 +32,8 @@ export class Player {
 		magicPoints = 0,
 		strengthPoints = 0,
 		weaponPoints = 0,
-		magic: magic = 'Ash'
+		magics: magic[] = ['Ash'],
+		fightingStyles: fightingStyles[] = ['Basic Combat']
 	) {
 		this.level = level;
 		this.health = health + this.level * 7;
@@ -43,11 +48,87 @@ export class Player {
 		this.strengthPoints = strengthPoints;
 		this.weaponPoints = weaponPoints;
 
-		this.magic = magic;
+		this.magics = magics;
+		this.fightingStyles = fightingStyles;
 	}
 
 	setMagic(magic: magic) {
-		this.magic = magic;
+		if (typeof magic === 'string') {
+			this.magics.push(magic);
+		}
+	}
+
+	updateHealth() {
+		const baseHealth = 93 + this.level * 7;
+		this.health = baseHealth + this.build.getBuildStats().defense + this.vitalityPoints * 4;
+	}
+
+	changeStatPoint(
+		stat: 'vitalityPoints' | 'magicPoints' | 'strengthPoints' | 'weaponPoints',
+		amount: number
+	) {
+		const maxStatPoints = this.level * 2;
+		const currentTotalStats =
+			this.magicPoints + this.vitalityPoints + this.strengthPoints + this.weaponPoints;
+
+		let amountToChange = 0;
+		if (currentTotalStats + amount > maxStatPoints) {
+			amountToChange = maxStatPoints - currentTotalStats;
+		} else {
+			amountToChange = amount;
+		}
+		console.log(amountToChange);
+
+		if (stat === 'vitalityPoints') {
+			this.vitalityPoints = clamp(this.vitalityPoints + amountToChange, 0, maxStatPoints);
+		} else if (stat === 'magicPoints') {
+			this.magicPoints = clamp(this.magicPoints + amountToChange, 0, maxStatPoints);
+		} else if (stat === 'strengthPoints') {
+			this.strengthPoints = clamp(this.strengthPoints + amountToChange, 0, maxStatPoints);
+		} else if (stat === 'weaponPoints') {
+			this.weaponPoints = clamp(this.weaponPoints + amountToChange, 0, maxStatPoints);
+		}
+		console.log('hello');
+	}
+
+	changePlayerLevel(amount: number) {
+		this.level = clamp(this.level + amount, this.minLevel, this.maxLevel);
+
+		// Statpoint Balancing
+		const maxStatPoints = this.level * 2;
+
+		while (
+			this.vitalityPoints + this.magicPoints + this.strengthPoints + this.weaponPoints >
+			maxStatPoints
+		) {
+			let currentPlayerStatPoints = {
+				vitalityPoints: this.vitalityPoints,
+				magicPoints: this.magicPoints,
+				strengthPoints: this.strengthPoints,
+				weaponPoints: this.weaponPoints
+			};
+			let highestStat = Math.max(
+				this.vitalityPoints,
+				this.magicPoints,
+				this.strengthPoints,
+				this.weaponPoints
+			);
+			for (let stat in currentPlayerStatPoints) {
+				if (currentPlayerStatPoints[stat as keyof typeof currentPlayerStatPoints] === highestStat) {
+					currentPlayerStatPoints[stat as keyof typeof currentPlayerStatPoints] -= 1;
+				}
+			}
+			this.vitalityPoints = currentPlayerStatPoints.vitalityPoints;
+			this.magicPoints = currentPlayerStatPoints.magicPoints;
+			this.strengthPoints = currentPlayerStatPoints.strengthPoints;
+			this.weaponPoints = currentPlayerStatPoints.weaponPoints;
+		}
+	}
+	resetStatPoints() {
+		this.vitalityPoints = 0;
+		this.magicPoints = 0;
+		this.strengthPoints = 0;
+		this.weaponPoints = 0;
 	}
 
 	getStatBuild(): { type: string; color: string } {

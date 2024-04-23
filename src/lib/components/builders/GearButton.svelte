@@ -8,7 +8,7 @@
 	} from '$lib/gearBuilder/itemTypes';
 	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import Item from './Item.svelte';
-	import { rarityColors } from '$lib/dataConstants';
+	import { rarityColors, staticImagesRootFolder } from '$lib/dataConstants';
 	import { filterType, sortType } from '$lib/utils/filterSortStore';
 	import FilterButton from './FilterButton.svelte';
 	import SortButton from './SortButton.svelte';
@@ -106,12 +106,25 @@
 
 <!-- Button -->
 <button
-	class=" w-24 h-24 m-2 flex items-center justify-center"
+	class=" w-24 h-24 m-2 flex items-center justify-center relative"
 	style="border-color: {rarityColors[
 		currentItem.rarity
 	]}; border-width: 1px; background-color: #020202;"
 	on:click={handleClick}
 >
+	{#if currentItem.statType && currentItem.statType != 'None'}
+		<img
+			style="opacity: {currentItem.statType ? '1' : '0'};"
+			src="{staticImagesRootFolder}/Misc/{currentItem.statType}Items.png"
+			alt="Magic"
+			class="w-full h-full absolute right-0 bottom-0 z-10"
+		/>
+	{/if}
+	<div class="absolute right-0 bottom-0 flex flex-row z-20">
+		{#each { length: currentItem.gemNo } as _, i}
+			<img src="{staticImagesRootFolder}/Misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
+		{/each}
+	</div>
 	<img
 		class="w-full h-full object-contain"
 		style="display: {validImage && currentItem.imageId != '' ? 'block' : 'none'};"
@@ -133,7 +146,7 @@
 {#if menuBool}
 	<div
 		id="menuouter"
-		class="fixed inset-0 bg-black bg-opacity-70 z-10 flex flex-col items-center overflow-y-auto"
+		class="fixed inset-0 bg-black bg-opacity-70 z-30 flex flex-col items-center overflow-y-auto"
 		transition:fade={{ duration: 69 }}
 	>
 		<button

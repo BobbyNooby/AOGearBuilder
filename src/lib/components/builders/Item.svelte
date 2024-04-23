@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import { rarityColors } from '$lib/dataConstants';
+	import { rarityColors, staticImagesRootFolder } from '$lib/dataConstants';
 	import type {
 		ArmorItemData,
 		GemItemData,
@@ -11,6 +11,7 @@
 	import ItemTooltip from './ItemTooltip.svelte';
 	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import { isMobile } from '$lib/utils/mobileStore';
+	import { gems } from '$lib/data/OLD/gear/gems';
 
 	export let item: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
 		slotKey: 'accessory1' | 'accessory2' | 'accessory3' | 'chestplate' | 'pants',
@@ -124,9 +125,23 @@
 		on:mousemove={handleMouseOver}
 		on:mouseleave={handleMouseOut}
 		on:click={handleClick}
-		class="m-1 w-20 h-20 md:w-24 md:h-24"
+		class="relative m-1 w-20 h-20 md:w-24 md:h-24"
 		style="border-color: {rarityColors[item.rarity]}; border-width: 1px; background-color: #020202;"
 	>
+		{#if item.statType && item.statType != 'None'}
+			<img
+				style="opacity: {item.statType ? '1' : '0'};"
+				src="{staticImagesRootFolder}/Misc/{item.statType}Items.png"
+				alt="Magic"
+				class="w-full h-full absolute right-0 bottom-0 z-20"
+			/>
+		{/if}
+		<div class="absolute right-0 bottom-0 flex flex-row z-30">
+			{#each { length: item.gemNo } as _, i}
+				<img src="{staticImagesRootFolder}/Misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
+			{/each}
+		</div>
+
 		<img
 			class="w-full h-full object-contain"
 			style="display: {validImage && item.imageId != '' ? 'block' : 'none'};"
@@ -138,13 +153,13 @@
 		<h1 style="display:{!validImage || item.imageId == '' ? 'block' : 'none'}; color:white;">
 			{item.name || 'None'}
 		</h1>
-
-		{#if isHovering}
-			<div
-				use:createdHover
-				class="z-40 rounded"
-				id="hover"
-				style="
+	</button>
+	{#if isHovering}
+		<div
+			use:createdHover
+			class="z-40 rounded items-center text-center"
+			id="hover"
+			style="
 	  position: absolute;
 	  background-color: black;  
 	  width: {$hoverWidth}px; 
@@ -160,32 +175,31 @@
 	  
 	  
 	"
-			>
-				<h2 class="text-2xl z-40" style="color: white; font-family: Merriweather;">{item.name}</h2>
-				<p class="text-xl z-40" style="color: white; font-family: Merriweather;">
-					{#if item.subType && item.subType !== 'None'}{item.subType}{/if}
-					{item.mainType}
-				</p>
-				<p class="text-l z-40" style="color: white; font-family: Merriweather;">
-					{#if levelRange != ''}Level {levelRange}{/if}
-				</p>
-				<p class="text-l z-40" style="color: white; font-family: 'Open Sans', sans-serif;">
-					{item.legend}
-				</p>
-				<div class=" items-center text-center z-40">
-					<ItemTooltip
-						{item}
-						{player}
-						{slotKey}
-						showName={true}
-						isItemMenu={true}
-						atlanteanAttribute={chosenAtlanteanAttribute}
-						{showOnlyAtlanteanStat}
-					/>
-				</div>
+		>
+			<h2 class="text-2xl z-40" style="color: white; font-family: Merriweather;">{item.name}</h2>
+			<p class="text-xl z-40" style="color: white; font-family: Merriweather;">
+				{#if item.subType && item.subType !== 'None'}{item.subType}{/if}
+				{item.mainType}
+			</p>
+			<p class="text-l z-40" style="color: white; font-family: Merriweather;">
+				{#if levelRange != ''}Level {levelRange}{/if}
+			</p>
+			<p class="text-l z-40" style="color: white; font-family: 'Open Sans', sans-serif;">
+				{item.legend}
+			</p>
+			<div class=" items-center text-center z-40">
+				<ItemTooltip
+					{item}
+					{player}
+					{slotKey}
+					showName={true}
+					isItemMenu={true}
+					atlanteanAttribute={chosenAtlanteanAttribute}
+					{showOnlyAtlanteanStat}
+				/>
 			</div>
-		{/if}
-	</button>
+		</div>
+	{/if}
 {:else}
 	<button
 		on:click={() => {
@@ -194,6 +208,19 @@
 		class="m-1 w-20 h-20 md:w-24 md:h-24"
 		style="border-color: {rarityColors[item.rarity]}; border-width: 1px; background-color: #020202;"
 	>
+		{#if item.statType && item.statType != 'None'}
+			<img
+				style="opacity: {item.statType ? '1' : '0'};"
+				src="{staticImagesRootFolder}/Misc/{item.statType}Items.png"
+				alt="Magic"
+				class="w-full h-full absolute right-0 bottom-0 z-20"
+			/>
+		{/if}
+		<div class="absolute right-0 bottom-0 flex flex-row z-30">
+			{#each { length: item.gemNo } as _, i}
+				<img src="{staticImagesRootFolder}/Misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
+			{/each}
+		</div>
 		<img
 			class="w-full h-full object-contain"
 			style="display: {validImage && item.imageId != '' ? 'block' : 'none'};"

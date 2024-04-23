@@ -2,6 +2,7 @@
 	import { sortType } from '$lib/utils/filterSortStore';
 	import { fade } from 'svelte/transition';
 	import { sortList } from '$lib/data/sortList';
+	import { staticImagesRootFolder } from '$lib/dataConstants';
 
 	function setSortType(value) {
 		sortType.set(value);
@@ -18,7 +19,7 @@
 	<button
 		on:click={() => {
 			menuToggle();
-		}}><img src="assets/images/sort.jpg" alt="Gear Button" /></button
+		}}><img src="{staticImagesRootFolder}/sort.jpg" alt="Gear Button" /></button
 	>
 
 	{#if menuIsActive}

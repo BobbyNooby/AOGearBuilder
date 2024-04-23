@@ -1,6 +1,9 @@
 import type { Rarities } from './gearBuilder/itemTypes';
 import type { magic } from './gearBuilder/playerTypes';
 
+export const staticImagesRootFolder: string =
+	'https://raw.githubusercontent.com/BobbyNooby/AOGearBuilderImages/main';
+
 export const rarityColors: { [key in Rarities]: string } = {
 	None: '#FFFFFF',
 	Common: '#7D7D7F',

@@ -4,6 +4,7 @@
 	import { calculateSubstatEfficiency } from '$lib/utils/calculateSubstatEfficiency';
 	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import { fade } from 'svelte/transition';
+	import { staticImagesRootFolder } from '$lib/dataConstants';
 
 	export let showName: boolean;
 	export let stat: string;
@@ -72,7 +73,7 @@
 {#if !$isMobile}
 	<button on:mousemove={handleMouseOver} on:mouseleave={handleMouseOut}>
 		<div class="flex items-center justify-center">
-			<img class="h-6" src="assets/images/stats/{stat}.png" alt={stat} />
+			<img class="h-6" src="{staticImagesRootFolder}/stats/{stat}.png" alt={stat} />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: {itemStats[
 					stat
@@ -167,7 +168,7 @@
 {#if $isMobile}
 	<button on:click={() => (isMenuActive = !isMenuActive)}>
 		<div class="flex items-center justify-center">
-			<img class="h-6" src="assets/images/stats/{stat}.png" alt={stat} />
+			<img class="h-6" src="{staticImagesRootFolder}/stats/{stat}.png" alt={stat} />
 			<p
 				style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; -webkit-text-fill-color: {itemStats[
 					stat

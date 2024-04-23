@@ -20,3 +20,12 @@ export type magic =
 	| 'Water'
 	| 'Wind'
 	| 'Wood';
+
+export type fightingStyles =
+	| 'None'
+	| 'Basic Combat'
+	| 'Boxing'
+	| 'Iron Leg'
+	| 'Cannon Fist'
+	| 'Sailor Fist'
+	| 'Thermo Fist';
