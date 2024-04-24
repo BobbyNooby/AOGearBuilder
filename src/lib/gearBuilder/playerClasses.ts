@@ -1,13 +1,18 @@
 import { get } from 'svelte/store';
 import { CurrentBuild } from './CurrentBuild';
-import type { fightingStyles, magic } from './playerTypes';
+import type { fightingStyles, magic, statBuildStats } from './playerTypes';
 import { getItemById } from '../utils/getItemById';
 import { listOfMagics } from '../dataConstants';
 import { isLegacyArmorBuild } from '$lib/utils/isLegacyBuild';
 import { loadOldCode } from './oldCode';
 import { clamp } from '$lib/utils/clamp';
+import { statBuilds } from '$lib/data/statBuilds';
+import { magicDetailsList } from '$lib/data/magicDetails';
+import type { anyItem } from './itemTypes';
 
 export class Player {
+	database: anyItem[] = [];
+
 	level: number;
 	health: number;
 
@@ -19,48 +24,88 @@ export class Player {
 	minLevel: number;
 	maxLevel: number;
 
+	statBuild: statBuildStats;
+
 	vitalityPoints: number;
 	magicPoints: number;
 	strengthPoints: number;
 	weaponPoints: number;
 
 	constructor(
+		database: anyItem[],
 		level = 136,
 		health = 93,
-		build = new CurrentBuild(this),
+
 		vitalityPoints = 0,
 		magicPoints = 0,
 		strengthPoints = 0,
 		weaponPoints = 0,
-		magics: magic[] = ['Ash'],
-		fightingStyles: fightingStyles[] = ['Basic Combat']
+
+		statBuild: statBuildStats = statBuilds['None'],
+
+		magics: magic[] = ['Acid'],
+		fightingStyles: fightingStyles[] = []
 	) {
+		this.database = database;
 		this.level = level;
 		this.health = health + this.level * 7;
 
 		this.minLevel = 1;
 		this.maxLevel = 136;
 
-		this.build = build;
+		this.build = new CurrentBuild(this);
 
 		this.vitalityPoints = vitalityPoints;
 		this.magicPoints = magicPoints;
 		this.strengthPoints = strengthPoints;
 		this.weaponPoints = weaponPoints;
 
+		this.statBuild = statBuild;
+
 		this.magics = magics;
 		this.fightingStyles = fightingStyles;
 	}
 
-	setMagic(magic: magic) {
-		if (typeof magic === 'string') {
-			this.magics.push(magic);
+	setMagic(magic: magic, index: number) {
+		try {
+			this.magics[index] = magic;
+			this.build.fixBuildItems();
+		} catch (e) {
+			console.log(e, 'ERMM MAGIC IS NOT SETTING SIR');
 		}
 	}
 
 	updateHealth() {
 		const baseHealth = 93 + this.level * 7;
 		this.health = baseHealth + this.build.getBuildStats().defense + this.vitalityPoints * 4;
+	}
+
+	updateStatBuild() {
+		this.statBuild = statBuilds[this.getStatBuild().type];
+
+		if (this.magics.length < this.statBuild.magicNo) {
+			const diff = this.statBuild.magicNo - this.magics.length;
+			for (let i = 0; i < diff; i++) {
+				const otherMagics = Object.keys(magicDetailsList).filter(
+					(magic) => !this.magics.includes(magic as magic)
+				) as magic[];
+				this.magics.push(otherMagics[0]);
+			}
+		}
+
+		if (this.fightingStyles.length < this.statBuild.fightingStylesNo) {
+			const diff = this.statBuild.fightingStylesNo - this.fightingStyles.length;
+			for (let i = 0; i < diff; i++) {
+				// const otherFightingStyles = Object.keys(magicDetailsList).filter(
+				// 	(magic) => !this.fightingStyles.includes(magic as fightingStyles)
+				// )
+				this.fightingStyles.push('Basic Combat');
+			}
+		}
+
+		this.magics.splice(this.statBuild.magicNo);
+		this.fightingStyles.splice(this.statBuild.fightingStyleNo);
+		this.build.fixBuildItems();
 	}
 
 	changeStatPoint(
@@ -88,7 +133,8 @@ export class Player {
 		} else if (stat === 'weaponPoints') {
 			this.weaponPoints = clamp(this.weaponPoints + amountToChange, 0, maxStatPoints);
 		}
-		console.log('hello');
+
+		this.updateStatBuild();
 	}
 
 	changePlayerLevel(amount: number) {
@@ -129,6 +175,8 @@ export class Player {
 		this.magicPoints = 0;
 		this.strengthPoints = 0;
 		this.weaponPoints = 0;
+
+		this.updateStatBuild();
 	}
 
 	getStatBuild(): { type: string; color: string } {
@@ -244,13 +292,7 @@ export class Player {
 			this.strengthPoints = parseInt(slotCodeArray[4][0]);
 			this.weaponPoints = parseInt(slotCodeArray[5][0]);
 
-			console.log(
-				slotCodeArray,
-				this.vitalityPoints,
-				this.magicPoints,
-				this.strengthPoints,
-				this.weaponPoints
-			);
+			this.updateStatBuild();
 
 			for (let i = 0; i < slotkeyArray.length; i++) {
 				const slotkey = slotkeyArray[i] as keyof typeof this.build.slots;

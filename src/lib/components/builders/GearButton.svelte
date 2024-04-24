@@ -48,10 +48,13 @@
 		// 		return true;
 		// 	}
 		// }
-
 		if ($filterType.length === 0 || $filterType.includes(item.rarity) || item.name === 'None') {
 			if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-				return true;
+				if (item.statType == 'Magic' && !player.magics.some((magic) => item.name.includes(magic))) {
+					return false;
+				} else {
+					return true;
+				}
 			}
 		}
 	});

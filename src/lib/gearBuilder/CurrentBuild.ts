@@ -20,6 +20,8 @@ import { ArmorSlot } from './ArmorSlot';
 //Move to frontend to handle
 
 export class CurrentBuild {
+	database: anyItem[] = [];
+
 	parentPlayer: Player;
 	slots: {
 		accessory1: ArmorSlot;
@@ -32,6 +34,7 @@ export class CurrentBuild {
 	constructor(parentPlayer: Player) {
 		//Establish two way interation between player and build
 		this.parentPlayer = parentPlayer;
+		this.database = parentPlayer.database;
 
 		this.slots = {
 			accessory1: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
@@ -52,13 +55,17 @@ export class CurrentBuild {
 		};
 	}
 
-	fixSlotLevels() {
+	fixBuildLevels() {
 		for (const slot of Object.values(this.slots)) {
-			slot.fixArmorLevel();
+			slot.fixSlotLevel();
 		}
 	}
 
-	fixMagicFightingItems() {}
+	fixBuildItems() {
+		for (const slot of Object.values(this.slots)) {
+			slot.fixSlotItems();
+		}
+	}
 
 	getBuildStats(): ArmorStats {
 		let finalBuildStats: any = {
@@ -155,8 +162,8 @@ export class CurrentBuild {
 			} else if (item.mainType == 'Modifier') {
 				this.slots[slotKey].setModifier(item as ModifierItemData);
 			} else if (item.mainType == 'Gem' && gemIndex !== false) {
-				if (typeof gemIndex == "number") {
-					if (gemIndex as number < this.slots[slotKey].armor.gemNo) {
+				if (typeof gemIndex == 'number') {
+					if ((gemIndex as number) < this.slots[slotKey].armor.gemNo) {
 						this.slots[slotKey].setGem(gemIndex as number, item as GemItemData);
 					}
 				} else {

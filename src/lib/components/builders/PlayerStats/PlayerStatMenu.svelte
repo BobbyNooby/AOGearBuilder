@@ -5,6 +5,7 @@
 	import { writable } from 'svelte/store';
 	import { isMobile } from '$lib/utils/mobileStore';
 	import { clamp } from '$lib/utils/clamp';
+	import MagicSelectButton from './MagicSelectButton.svelte';
 
 	export let player: Player, updatePage: any;
 
@@ -35,7 +36,7 @@
 			player.strengthPoints -
 			player.weaponPoints;
 
-		updatePage();
+		updateComponent();
 	}
 
 	$: {
@@ -43,7 +44,7 @@
 
 		baseHealth = 93 + player.level * 7;
 		player.updateHealth();
-		player.build.fixSlotLevels();
+		player.build.fixBuildLevels();
 	}
 
 	function handleLevelChange(amount: number) {
@@ -52,15 +53,15 @@
 
 	function resetAllPlayerStats() {
 		player.resetStatPoints();
-		updatePage();
+		updateComponent();
 	}
 
 	const keyStore = writable(false);
 
 	function updateComponent() {
-		updatePage();
 		player.build.fixSlotLevels();
 		keyStore.update((value) => !value);
+		updatePage();
 	}
 </script>
 
@@ -73,7 +74,15 @@
 				<div class="flex flex-col w-1/3 h-full items-center">
 					<div class="m-3">
 						<div class="flex items-center justify-center my-5">
-							<!-- Leave for the future <MagicSelectButton {player} {updatePage}></MagicSelectButton> -->
+							{#each Array(player.statBuild.magicNo) as _, i}
+								<MagicSelectButton magicName={player.magics[i]} magicIndex={i} {player} {updatePage}
+								></MagicSelectButton>
+								<!-- Leave for the future <MagicSelectButton {player} {updatePage}></MagicSelectButton> -->
+							{/each}
+							<!-- {#each Array(player.statBuild.fightingStyleNo) as _, i}
+								<p class="text-white text-5xl">{i}</p>
+								<MagicSelectButton {player} {updatePage}></MagicSelectButton>
+							{/each} -->
 						</div>
 						<div class="flex flex-row items-center">
 							<p style="font-family: Merriweather;" class=" text-white text-3xl m-3">Level</p>
@@ -132,7 +141,9 @@
 								background-color: 
 								rgba({hexToRGB('#AFA9EE').r}, {hexToRGB('#AFA9EE').g}, {hexToRGB('#AFA9EE').b}, 0.2); "
 								class="border-2 h-fit px-4 rounded items-center justify-center"
-								on:click={resetAllPlayerStats}><p class="text-l">Reset Stats</p></button
+								on:click={() => {
+									resetAllPlayerStats();
+								}}><p class="text-l">Reset Stats</p></button
 							>
 						</div>
 					</div>

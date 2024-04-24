@@ -1,4 +1,4 @@
-import { expoIn } from "svelte/easing";
+import { expoIn } from 'svelte/easing';
 
 export type Rarities =
 	| 'None'
@@ -17,7 +17,7 @@ export type ModifierMainTypes = 'Modifier';
 
 export type EnchantMainTypes = 'Enchant';
 
-export type StatTypes =  "None" | "Magic" | "Strength" | "Vitality";
+export type StatTypes = 'None' | 'Magic' | 'Strength' | 'Vitality';
 
 export type ShipMainTypes =
 	| 'Cannon'
@@ -107,4 +107,4 @@ export type ShipItemData = ItemIdentifiers & ShipStats & { mainType: ShipMainTyp
 export type EnchantItemData = ItemIdentifiers & EnchantStats & { mainType: EnchantMainTypes };
 export type ModifierItemData = ItemIdentifiers & ModifierStats & { mainType: ModifierMainTypes };
 
-export type anyItem = ArmorItemData | GemItemData | EnchantItemData | ModifierItemData;
+export type anyItem = Partial<ArmorItemData | GemItemData | EnchantItemData | ModifierItemData>;

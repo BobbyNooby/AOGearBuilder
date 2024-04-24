@@ -77,7 +77,8 @@
 		</div>
 		<p class="m-1 text-gray-300" style="font-family: 'Open Sans', sans-serif;">{statLegend}</p>
 	</div>
-{:else}<div class="flex flex-col my-5">
+{:else}
+	<div class="flex flex-col my-5">
 		<div class="flex flex-col w-full">
 			<div class="flex flex-row pr-10 items-center text-left my-5">
 				<p
