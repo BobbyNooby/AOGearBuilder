@@ -1,14 +1,15 @@
 import { get } from 'svelte/store';
 import { CurrentBuild } from './CurrentBuild';
-import type { fightingStyles, magic, statBuildStats } from './playerTypes';
+import type { fightingStyle, magic, statBuildStats } from './playerTypes';
 import { getItemById } from '../utils/getItemById';
 import { listOfMagics } from '../dataConstants';
 import { isLegacyArmorBuild } from '$lib/utils/isLegacyBuild';
 import { loadOldCode } from './oldCode';
 import { clamp } from '$lib/utils/clamp';
 import { statBuilds } from '$lib/data/statBuilds';
-import { magicDetailsList } from '$lib/data/magicDetails';
+import { magicRecords } from '$lib/data/playerMagics';
 import type { anyItem } from './itemTypes';
+import { fightingStyleRecords } from '$lib/data/playerFightingStyles';
 
 export class Player {
 	database: anyItem[] = [];
@@ -17,7 +18,7 @@ export class Player {
 	health: number;
 
 	magics: magic[];
-	fightingStyles: fightingStyles[];
+	fightingStyles: fightingStyle[];
 
 	build: CurrentBuild;
 
@@ -44,7 +45,7 @@ export class Player {
 		statBuild: statBuildStats = statBuilds['None'],
 
 		magics: magic[] = ['Acid'],
-		fightingStyles: fightingStyles[] = []
+		fightingStyles: fightingStyle[] = []
 	) {
 		this.database = database;
 		this.level = level;
@@ -75,6 +76,15 @@ export class Player {
 		}
 	}
 
+	setFightingStyle(fightingStyle: fightingStyle, index: number) {
+		try {
+			this.fightingStyles[index] = fightingStyle;
+			this.build.fixBuildItems();
+		} catch (e) {
+			console.log(e, 'ERMM FIGHTING STYLE IS NOT SETTING SIR');
+		}
+	}
+
 	updateHealth() {
 		const baseHealth = 93 + this.level * 7;
 		this.health = baseHealth + this.build.getBuildStats().defense + this.vitalityPoints * 4;
@@ -86,20 +96,20 @@ export class Player {
 		if (this.magics.length < this.statBuild.magicNo) {
 			const diff = this.statBuild.magicNo - this.magics.length;
 			for (let i = 0; i < diff; i++) {
-				const otherMagics = Object.keys(magicDetailsList).filter(
+				const otherMagics = Object.keys(magicRecords).filter(
 					(magic) => !this.magics.includes(magic as magic)
 				) as magic[];
 				this.magics.push(otherMagics[0]);
 			}
 		}
 
-		if (this.fightingStyles.length < this.statBuild.fightingStylesNo) {
-			const diff = this.statBuild.fightingStylesNo - this.fightingStyles.length;
+		if (this.fightingStyles.length < this.statBuild.fightingStyleNo) {
+			const diff = this.statBuild.fightingStyleNo - this.fightingStyles.length;
 			for (let i = 0; i < diff; i++) {
-				// const otherFightingStyles = Object.keys(magicDetailsList).filter(
-				// 	(magic) => !this.fightingStyles.includes(magic as fightingStyles)
-				// )
-				this.fightingStyles.push('Basic Combat');
+				const otherFightingStyles = Object.keys(fightingStyleRecords).filter(
+					(fightingStyle) => !this.fightingStyles.includes(fightingStyle as fightingStyle)
+				);
+				this.fightingStyles.push(otherFightingStyles[0]);
 			}
 		}
 

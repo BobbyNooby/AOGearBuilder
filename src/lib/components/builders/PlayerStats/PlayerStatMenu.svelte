@@ -5,7 +5,9 @@
 	import { writable } from 'svelte/store';
 	import { isMobile } from '$lib/utils/mobileStore';
 	import { clamp } from '$lib/utils/clamp';
-	import MagicSelectButton from './MagicSelectButton.svelte';
+	import { magicRecords } from '$lib/data/playerMagics';
+	import { fightingStyleRecords } from '$lib/data/playerFightingStyles';
+	import MagicFsSelectButton from './MagicFSSelectButton.svelte';
 
 	export let player: Player, updatePage: any;
 
@@ -59,7 +61,7 @@
 	const keyStore = writable(false);
 
 	function updateComponent() {
-		player.build.fixSlotLevels();
+		player.build.fixBuildLevels();
 		keyStore.update((value) => !value);
 		updatePage();
 	}
@@ -73,16 +75,32 @@
 			<div class="h-full w-full flex flex-row">
 				<div class="flex flex-col w-1/3 h-full items-center">
 					<div class="m-3">
-						<div class="flex items-center justify-center my-5">
-							{#each Array(player.statBuild.magicNo) as _, i}
-								<MagicSelectButton magicName={player.magics[i]} magicIndex={i} {player} {updatePage}
-								></MagicSelectButton>
-								<!-- Leave for the future <MagicSelectButton {player} {updatePage}></MagicSelectButton> -->
-							{/each}
-							<!-- {#each Array(player.statBuild.fightingStyleNo) as _, i}
-								<p class="text-white text-5xl">{i}</p>
-								<MagicSelectButton {player} {updatePage}></MagicSelectButton>
-							{/each} -->
+						<div class="flex flex-col items-center justify-center my-5">
+							<div class="flex flex-row">
+								{#each Array(player.statBuild.magicNo) as _, i}
+									<MagicFsSelectButton
+										abilityType={'Magic'}
+										abilityName={player.magics[i]}
+										abilityImageId={magicRecords[player.magics[i]].imageId}
+										abilityIndex={i}
+										{player}
+										{updatePage}
+									/>
+									<!-- Leave for the future <MagicSelectButton {player} {updatePage}></MagicSelectButton> -->
+								{/each}
+							</div>
+							<div class="flex flex-row">
+								{#each Array(player.statBuild.fightingStyleNo) as _, i}
+									<MagicFsSelectButton
+										abilityType={'Fighting Style'}
+										abilityName={player.fightingStyles[i]}
+										abilityImageId={fightingStyleRecords[player.fightingStyles[i]].imageId}
+										abilityIndex={i}
+										{player}
+										{updatePage}
+									/>
+								{/each}
+							</div>
 						</div>
 						<div class="flex flex-row items-center">
 							<p style="font-family: Merriweather;" class=" text-white text-3xl m-3">Level</p>

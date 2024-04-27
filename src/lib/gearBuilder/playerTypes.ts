@@ -1,5 +1,4 @@
 export type magic =
-	| 'None'
 	| 'Acid'
 	| 'Ash'
 	| 'Crystal'
@@ -21,8 +20,7 @@ export type magic =
 	| 'Wind'
 	| 'Wood';
 
-export type fightingStyles =
-	| 'None'
+export type fightingStyle =
 	| 'Basic Combat'
 	| 'Boxing'
 	| 'Iron Leg'

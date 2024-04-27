@@ -150,6 +150,21 @@ export class CurrentBuild {
 			}
 		}
 
+		//Magic validation handling
+		if (item.statType && ['Magic', 'Strength'].includes(item.statType)) {
+			badConditions = [
+				(item, slot) =>
+					item.statType == 'Magic' &&
+					!this.parentPlayer.magics.some((magic) => item.name.includes(magic)),
+				(item, slot) =>
+					item.statType == 'Strength' &&
+					!this.parentPlayer.fightingStyles.some((strength) => item.name.includes(strength))
+			];
+			if (badConditions.some((condition) => condition(item, slot))) {
+				return false;
+			}
+		}
+
 		return true;
 	}
 

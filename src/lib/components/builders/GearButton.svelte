@@ -50,7 +50,11 @@
 		// }
 		if ($filterType.length === 0 || $filterType.includes(item.rarity) || item.name === 'None') {
 			if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-				if (item.statType == 'Magic' && !player.magics.some((magic) => item.name.includes(magic))) {
+				if (
+					(item.statType == 'Magic' && !player.magics.some((magic) => item.name.includes(magic))) ||
+					(item.statType == 'Strength' &&
+						!player.fightingStyles.some((style) => item.name.includes(style)))
+				) {
 					return false;
 				} else {
 					return true;

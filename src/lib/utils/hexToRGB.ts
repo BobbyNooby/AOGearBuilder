@@ -10,7 +10,7 @@ export function hexToRGB(hex) {
 
 	if (hex.length !== 6) {
 		// If the length of the hex code is not 6, it is invalid.
-		return null;
+		return { r: 0, g: 0, b: 0 };
 	}
 
 	// Convert each pair of characters to decimal.

@@ -36,6 +36,7 @@
 	"dependencies": {
 		"@auth/sveltekit": "^1.0.0",
 		"@sveltejs/adapter-vercel": "^5.2.0",
+		"d3": "^7.9.0",
 		"mongodb": "^6.5.0",
 		"svelte-french-toast": "^1.2.0"
 	}

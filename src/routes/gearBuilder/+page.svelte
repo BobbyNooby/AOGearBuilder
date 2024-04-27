@@ -17,6 +17,7 @@
 	import PostCalcsButton from '$lib/components/Builders/PostCalcsButton.svelte';
 	import { isMobile } from '$lib/utils/mobileStore';
 	import BuildsOverrideButton from '$lib/components/Builders/BuildsOverrideButton.svelte';
+	import RandomButton from '$lib/components/Builders/RandomButton.svelte';
 
 	export let data: PageData;
 	let ready = false;
@@ -131,6 +132,7 @@
 				</div>
 
 				<div class="flex flex-row space-x-2 my-1">
+					<RandomButton player={SessionPlayer} database={data.Database} {updatePage}></RandomButton>
 					<BlackButton
 						parentFunction={() => {
 							SessionPlayer.build.resetBuild();
