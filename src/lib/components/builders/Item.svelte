@@ -205,7 +205,7 @@
 		on:click={() => {
 			isMenuActive = !isMenuActive;
 		}}
-		class="m-1 w-20 h-20 md:w-24 md:h-24"
+		class="relative m-1 w-20 h-20 md:w-24 md:h-24"
 		style="border-color: {rarityColors[item.rarity]}; border-width: 1px; background-color: #020202;"
 	>
 		{#if item.statType && item.statType != 'None'}
