@@ -75,7 +75,7 @@
 	<!-- Overlay with item menu -->
 	{#if menuIsActive}
 		<div
-			class="z-10 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-80 fixed flex justify-center items-center"
+			class="z-30 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-80 fixed flex justify-center items-center"
 			id="menuouter"
 			in:fade={{ duration: 100 }}
 			out:fade={{ duration: 100 }}
@@ -108,7 +108,7 @@
 		</div>
 		{#if replaceMenuIsActive}
 			<div
-				class="z-20 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex flex-col justify-center items-center"
+				class="z-40 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex flex-col justify-center items-center"
 				id="menuouter"
 				in:fade={{ duration: 100 }}
 				out:fade={{ duration: 100 }}

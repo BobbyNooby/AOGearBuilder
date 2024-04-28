@@ -91,7 +91,7 @@
 	<!-- Overlay with builds -->
 	{#if menuIsActive}
 		<div
-			class="z-10 fixed inset-0 flex items-center justify-center bg-black bg-opacity-90"
+			class="z-30 fixed inset-0 flex items-center justify-center bg-black bg-opacity-90"
 			in:fade={{ duration: 100 }}
 			out:fade={{ duration: 100 }}
 		>
@@ -227,7 +227,7 @@
 
 		{#if renamingBuild}
 			<div
-				class="z-20 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex justify-center items-center"
+				class="z-40 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex justify-center items-center"
 				id="menuouter"
 				in:fade={{ duration: 100 }}
 				out:fade={{ duration: 100 }}
@@ -256,7 +256,7 @@
 		{/if}
 		{#if deletedBuild}
 			<div
-				class="z-20 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex flex-col justify-center items-center"
+				class="z-40 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex flex-col justify-center items-center"
 				id="menuouter"
 				in:fade={{ duration: 100 }}
 				out:fade={{ duration: 100 }}
