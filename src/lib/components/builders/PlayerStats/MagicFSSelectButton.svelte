@@ -12,6 +12,7 @@
 	import { magicRecords } from '$lib/data/playerMagics';
 	import { fightingStyleRecords } from '$lib/data/playerFightingStyles';
 	import { interpolateLab } from 'd3-interpolate';
+	import { isMobile } from '$lib/utils/mobileStore';
 
 	export let updatePage: any,
 		player: Player,
@@ -228,107 +229,225 @@
 
 <!-- Magic Selection Menu -->
 {#if isMenuOpen}
-	<div
-		style="background-color: rgba(21, 55, 97, 0.9);"
-		class="z-20 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex flex-col justify-center items-center"
-		id="menuouter"
-		in:fade={{ duration: 100 }}
-		out:fade={{ duration: 100 }}
-	>
-		<p class="text-center text-3xl my-4 text-white" style="font-family: Merriweather;">
-			Select {abilityType}
-		</p>
-		<div class="flex flex-row border-white rounded border w-3/4 overflow-x-scroll items-center">
-			{#each Object.values(abilityList) as abilityOption}
-				<div class="m-2">
-					<button
-						on:click={() => {
-							handleAbilityChange(abilityOption);
-							// updatePage();
-						}}
-						class="bg-black border border-white text-white font-bold text-sm py-2 px-4 w-36 h-36 items-center text-center"
-						style="font-family: Merriweather;"
-					>
-						<img src={abilityOption.imageId} alt={abilityOption.name} />
-						<p class="text-center" style="font-family: Merriweather;">{abilityOption.name}</p>
-					</button>
-				</div>
-			{/each}
-		</div>
-
-		<div class="flex flex-row w-full px-24 py-10">
-			<div class="flex flex-col w-1/2 items-center">
-				<p
-					style="color: {$genericFillTween};  -webkit-text-stroke-color: {$genericStrokeTween}; -webkit-text-stroke: 1px; font-family: Merriweather;"
-					class="text-center text-3xl my-4"
-				>
-					{selectedAbility.name}
-					{#if selectedAbility.type == 'Magic'}Magic{/if}
-				</p>
-				{#each Object.values(selectedAbility.stats) as statBarDetails, i}
-					<MagicFsStatBar
-						minBarValue={statBarDetails.minValue}
-						maxBarValue={statBarDetails.maxValue}
-						barText={statBarDetails.text}
-						rgbString={$colorTween}
-						statValue={tweenList[i]}
-					/>
-				{/each}
-				{#if selectedAbility.type == 'Magic' && selectedAbility.statusEffect.name != 'NONE'}
-					<div
-						class="flex flex-col text-4xl text-center"
-						style="color: {$genericFillTween};  -webkit-text-stroke-color: {$genericStrokeTween}; -webkit-text-stroke: 1px; font-family: Merriweather;"
-					>
-						<p>
-							Status Effect - <span
-								style="color : {$effectFillTween}; -webkit-text-stroke-color: {$effectStrokeTween};"
-								>{selectedAbility.statusEffect.name}</span
-							>
-						</p>
-						<p class="text-2xl">{selectedAbility.statusEffect.description}</p>
-						<p
-							class="text-xl"
-							style="color : {selectedAbility.statusEffect
-								.applyMethodFillColor}; -webkit-text-stroke-color: {selectedAbility.statusEffect
-								.applyMethodStrokeColor}; -webkit-text-stroke: 1px;"
-						>
-							{selectedAbility.statusEffect.applyMethod}
-						</p>
-					</div>
-				{/if}
-			</div>
-
-			<div class="flex flex-col w-1/2 items-center">
-				<p class="text-center text-2xl my-4 text-white mx-5" style="font-family: Merriweather;">
-					{selectedAbility.legend}
-				</p>
-
-				<p class="text-center text-3xl my-4 text-white mx-5" style="font-family: Merriweather;">
-					Extra Stats
-				</p>
-				<div class="w-full px-5 text-white" style="font-family: Merriweather;">
-					{#each Object.keys(selectedAbility.extraStats) as extraStatKey}
-						{#if selectedAbility.extraStats[extraStatKey].length != 0}
-							<div class="flex flex-row py-2">
-								<div class="w-1/3">
-									<p>{statTextRelations[extraStatKey]}</p>
-								</div>
-								<div class="flex flex-col w-2/3">
-									{#each selectedAbility.extraStats[extraStatKey] as extraStatString}
-										<p>{extraStatString}</p>
-									{/each}
-								</div>
-							</div>
-						{/if}
-					{/each}
-				</div>
-			</div>
-		</div>
-
-		<button
-			class="w-56 h-20 border-2 border-white bg-blue-500"
-			on:click={handleAbilitySelect}
-			style="font-family: Merriweather;">Select {abilityType}</button
+	{#if !$isMobile}
+		<div
+			style="background-color: rgba(21, 55, 97, 0.9);"
+			class="z-20 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex flex-col items-center overflow-auto"
+			id="menuouter"
+			in:fade={{ duration: 100 }}
+			out:fade={{ duration: 100 }}
 		>
-	</div>
+			<p class="text-center text-3xl mt-20 mb-4 text-white" style="font-family: Merriweather;">
+				Select {abilityType}
+			</p>
+			<div class="flex flex-row border-white rounded border w-3/4 overflow-x-scroll items-center">
+				{#each Object.values(abilityList) as abilityOption}
+					<div class="m-2">
+						<button
+							on:click={() => {
+								handleAbilityChange(abilityOption);
+								// updatePage();
+							}}
+							class="bg-black border border-white text-white font-bold text-sm py-2 px-4 w-36 h-36 items-center text-center"
+							style="font-family: Merriweather;"
+						>
+							<img src={abilityOption.imageId} alt={abilityOption.name} />
+							<p class="text-center" style="font-family: Merriweather;">{abilityOption.name}</p>
+						</button>
+					</div>
+				{/each}
+			</div>
+
+			<div class="flex flex-row w-full px-24 py-10">
+				<div class="flex flex-col w-1/2 items-center">
+					<p
+						style="color: {$genericFillTween};  -webkit-text-stroke-color: {$genericStrokeTween}; -webkit-text-stroke: 1px; font-family: Merriweather;"
+						class="text-center text-3xl my-4"
+					>
+						{selectedAbility.name}
+						{#if selectedAbility.type == 'Magic'}Magic{/if}
+					</p>
+					{#each Object.values(selectedAbility.stats) as statBarDetails, i}
+						<MagicFsStatBar
+							minBarValue={statBarDetails.minValue}
+							maxBarValue={statBarDetails.maxValue}
+							barText={statBarDetails.text}
+							rgbString={$colorTween}
+							statValue={tweenList[i]}
+						/>
+					{/each}
+					{#if selectedAbility.type == 'Magic' && selectedAbility.statusEffect.name != 'NONE'}
+						<div
+							class="flex flex-col text-4xl text-center"
+							style="color: {$genericFillTween};  -webkit-text-stroke-color: {$genericStrokeTween}; -webkit-text-stroke: 1px; font-family: Merriweather;"
+						>
+							<p class="mt-5">
+								Status Effect - <span
+									style="color : {$effectFillTween}; -webkit-text-stroke-color: {$effectStrokeTween};"
+									>{selectedAbility.statusEffect.name}</span
+								>
+							</p>
+							<p class="text-2xl">{selectedAbility.statusEffect.description}</p>
+							<p
+								class="text-xl"
+								style="color : {selectedAbility.statusEffect
+									.applyMethodFillColor}; -webkit-text-stroke-color: {selectedAbility.statusEffect
+									.applyMethodStrokeColor}; -webkit-text-stroke: 1px;"
+							>
+								{selectedAbility.statusEffect.applyMethod}
+							</p>
+						</div>
+					{/if}
+				</div>
+
+				<div class="flex flex-col w-1/2 items-center">
+					<p class="text-center text-2xl my-4 text-white mx-5" style="font-family: Merriweather;">
+						{selectedAbility.legend}
+					</p>
+
+					<p class="text-center text-3xl my-4 text-white mx-5" style="font-family: Merriweather;">
+						Extra Stats
+					</p>
+					<div class="w-full px-5 text-white" style="font-family: Merriweather;">
+						{#each Object.keys(selectedAbility.extraStats) as extraStatKey}
+							{#if selectedAbility.extraStats[extraStatKey].length != 0}
+								<div class="flex flex-row py-2">
+									<div class="w-1/3">
+										<p>{statTextRelations[extraStatKey]}</p>
+									</div>
+									<div class="flex flex-col w-2/3">
+										{#each selectedAbility.extraStats[extraStatKey] as extraStatString}
+											<p>{extraStatString}</p>
+										{/each}
+									</div>
+								</div>
+							{/if}
+						{/each}
+					</div>
+				</div>
+			</div>
+
+			<button
+				class="p-4 w-56 h-20 border-2 border-white bg-blue-500 text-white text-xl"
+				on:click={handleAbilitySelect}
+				style="font-family: Merriweather;">Select {abilityType}</button
+			>
+		</div>
+	{:else}
+		<!-- 
+		
+		
+		Mobile View 
+	
+	
+	
+	-->
+
+		<div
+			style="background-color: rgba(21, 55, 97, 0.9);"
+			class="z-20 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-95 fixed flex flex-col items-center overflow-auto"
+			id="menuouter"
+			in:fade={{ duration: 100 }}
+			out:fade={{ duration: 100 }}
+		>
+			<p class="text-center text-3xl mt-20 mb-4 text-white" style="font-family: Merriweather;">
+				Select {abilityType}
+			</p>
+			<div
+				class="flex flex-row border-white rounded border min-h-40 w-full px-2 overflow-x-scroll items-center"
+			>
+				{#each Object.values(abilityList) as abilityOption}
+					<div class="m-2">
+						<button
+							on:click={() => {
+								handleAbilityChange(abilityOption);
+								// updatePage();
+							}}
+							class="bg-black border border-white text-white font-bold text-sm py-2 px-4 w-36 h-36 items-center text-center"
+							style="font-family: Merriweather;"
+						>
+							<img src={abilityOption.imageId} alt={abilityOption.name} />
+							<p class="text-center" style="font-family: Merriweather;">{abilityOption.name}</p>
+						</button>
+					</div>
+				{/each}
+			</div>
+
+			<div class="flex flex-row w-full px-2 py-10">
+				<div class="flex flex-col w-1/2 items-center">
+					<p
+						style="color: {$genericFillTween};  -webkit-text-stroke-color: {$genericStrokeTween}; -webkit-text-stroke: 1px; font-family: Merriweather;"
+						class="text-center text-2xl my-4"
+					>
+						{selectedAbility.name}
+						{#if selectedAbility.type == 'Magic'}Magic{/if}
+					</p>
+					{#each Object.values(selectedAbility.stats) as statBarDetails, i}
+						<MagicFsStatBar
+							minBarValue={statBarDetails.minValue}
+							maxBarValue={statBarDetails.maxValue}
+							barText={statBarDetails.text}
+							rgbString={$colorTween}
+							statValue={tweenList[i]}
+						/>
+					{/each}
+					{#if selectedAbility.type == 'Magic' && selectedAbility.statusEffect.name != 'NONE'}
+						<div
+							class="flex flex-col text-2xl text-center mt-5"
+							style="color: {$genericFillTween};  -webkit-text-stroke-color: {$genericStrokeTween}; -webkit-text-stroke: 1px; font-family: Merriweather;"
+						>
+							<p class="mt-3">
+								Status Effect<br />
+								<span
+									style="color : {$effectFillTween}; -webkit-text-stroke-color: {$effectStrokeTween};"
+									>{selectedAbility.statusEffect.name}</span
+								>
+							</p>
+							<p class="text-lg mt-3">{selectedAbility.statusEffect.description}</p>
+							<p
+								class="text-xl mt-3"
+								style="color : {selectedAbility.statusEffect
+									.applyMethodFillColor}; -webkit-text-stroke-color: {selectedAbility.statusEffect
+									.applyMethodStrokeColor}; -webkit-text-stroke: 1px;"
+							>
+								{selectedAbility.statusEffect.applyMethod}
+							</p>
+						</div>
+					{/if}
+				</div>
+
+				<div class="flex flex-col w-1/2 items-center">
+					<p class="text-center text-lg my-4 text-white mx-5" style="font-family: Merriweather;">
+						{selectedAbility.legend}
+					</p>
+
+					<p class="text-center text-xl my-4 text-white mx-5" style="font-family: Merriweather;">
+						Extra Stats
+					</p>
+					<div class="w-full text-sm px-1 text-white" style="font-family: Merriweather;">
+						{#each Object.keys(selectedAbility.extraStats) as extraStatKey}
+							{#if selectedAbility.extraStats[extraStatKey].length != 0}
+								<div class="flex flex-row py-2">
+									<div class="w-1/3">
+										<p>{statTextRelations[extraStatKey]}</p>
+									</div>
+									<div class="flex flex-col w-2/3">
+										{#each selectedAbility.extraStats[extraStatKey] as extraStatString}
+											<p>{extraStatString}</p>
+										{/each}
+									</div>
+								</div>
+							{/if}
+						{/each}
+					</div>
+				</div>
+			</div>
+
+			<button
+				class="mb-5 p-4 w-56 h-20 border-2 border-white bg-blue-500 text-white text-xl"
+				on:click={handleAbilitySelect}
+				style="font-family: Merriweather;">Select {abilityType}</button
+			>
+		</div>
+	{/if}
 {/if}

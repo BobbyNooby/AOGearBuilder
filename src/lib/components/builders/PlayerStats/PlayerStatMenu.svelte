@@ -238,10 +238,34 @@
 			<div class="h-full w-full flex flex-col">
 				<div>
 					<div class="flex items-center justify-center my-5">
-						<!-- Leave for the future <MagicSelectButton {player} {updatePage}></MagicSelectButton> -->
+						<div class="flex flex-col">
+							<div class="flex flex-row">
+								{#each Array(player.statBuild.magicNo) as _, i}
+									<MagicFsSelectButton
+										abilityType={'Magic'}
+										abilityName={player.magics[i]}
+										abilityImageId={magicRecords[player.magics[i]].imageId}
+										abilityIndex={i}
+										{player}
+										{updatePage}
+									/>
+									<!-- Leave for the future <MagicSelectButton {player} {updatePage}></MagicSelectButton> -->
+								{/each}
+							</div>
+							{#each Array(player.statBuild.fightingStyleNo) as _, i}
+								<MagicFsSelectButton
+									abilityType={'Fighting Style'}
+									abilityName={player.fightingStyles[i]}
+									abilityImageId={fightingStyleRecords[player.fightingStyles[i]].imageId}
+									abilityIndex={i}
+									{player}
+									{updatePage}
+								/>
+							{/each}
+						</div>
 					</div>
-					<div class="flex flex-row items-center">
-						<p style="font-family: Merriweather;" class=" text-white text-3xl">Level</p>
+					<div class="flex flex-row items-center justify-center">
+						<p style="font-family: Merriweather;" class=" text-white text-3xl mr-2">Level</p>
 						<div class="flex items-center">
 							<button
 								on:click={() => {
@@ -267,28 +291,32 @@
 							>
 						</div>
 					</div>
-					<div class="flex flex-row text-white my-2">
-						<p style="font-family: Merriweather;" class="text-xl">Health :</p>
-						<p style="font-family: Merriweather;" class=" text-green-500 text-xl">
-							{player.health}
+					<div class="flex flex-row text-white my-2 items-center justify-center">
+						<p style="font-family: Merriweather;" class="text-xl">
+							Health :
+							<span style="font-family: Merriweather;" class=" text-green-500 text-xl">
+								{player.health}</span
+							>
 						</p>
 					</div>
-					<div class="flex flex-row text-white my-2">
-						<p style="font-family: Merriweather;" class="text-xl">Base Health :</p>
-						<p style="font-family: Merriweather;" class=" text-green-200 text-xl">
-							{baseHealth}
+					<div class="flex flex-row text-white my-2 items-center justify-center">
+						<p style="font-family: Merriweather;" class="text-xl">
+							Base Health :
+							<span style="font-family: Merriweather;" class=" text-green-200 text-xl">
+								{baseHealth}</span
+							>
 						</p>
 					</div>
 				</div>
 
 				<div class="w-full justify-between flex flex-col my-4">
-					<div class="flex items-center text-left">
+					<div class="flex items-center text-left justify-center">
 						<p class="text-xl my-2" style="color : #9c95ea; font-family : Merriweather;">
 							Maximum Points : <span style="color : #c3bef3">{maximumPlayerStatPoints}</span><br />
 							Available Points : <span style="color : #c3bef3">{availablePlayerStatPoints}</span>
 						</p>
 					</div>
-					<div class="flex items-center text-right">
+					<div class="flex items-center text-right justify-center">
 						<button
 							style="
 						color: #AFA9EE; 
@@ -301,10 +329,9 @@
 					</div>
 				</div>
 
-				<p class="text-4xl my-4" style="color : #FFFFFF; font-family : Merriweather;">
-					Stat Build : <span style="color : {player.getStatBuild().color}"
-						>{player.getStatBuild().type}</span
-					>
+				<p class="text-4xl my-4 text-center" style="color : #FFFFFF; font-family : Merriweather;">
+					Stat Build<br />
+					<span style="color : {player.getStatBuild().color}">{player.getStatBuild().type}</span>
 				</p>
 				<div>
 					<PlayerStatBar

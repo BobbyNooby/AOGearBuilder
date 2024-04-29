@@ -29,17 +29,17 @@
 		for (const slotKey of Object.keys(playerBuildSlots)) {
 			let gearList = [];
 
+			console.log(slotKey);
 			//Setting armor
 			if (['accessory1', 'accessory2', 'accessory3'].includes(slotKey)) {
 				gearList = accessoriesList;
-			} else if (['chestplate', 'pants'].includes(slotKey)) {
+			} else if (['chestplate'].includes(slotKey)) {
 				gearList = chestplatesList;
 			} else if (['pants'].includes(slotKey)) {
 				gearList = pantsList;
 			}
 
 			let randomArmor = randomItemFromList(gearList, false);
-			console.log(randomArmor);
 
 			while (!player.build.setGear(randomArmor, slotKey as keyof typeof playerBuildSlots)) {
 				randomArmor = randomItemFromList(gearList, false);

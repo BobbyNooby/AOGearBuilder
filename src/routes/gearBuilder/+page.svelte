@@ -299,7 +299,9 @@
 						</div>
 
 						<div class="w-full h-full">
-							<div class=" m-20 w-80 h-96 p-2 border-2 border-white rounded bg-black bg-opacity-40">
+							<div
+								class=" m-20 w-80 h-auto p-2 border-2 border-white rounded bg-black bg-opacity-40"
+							>
 								<ItemTooltip
 									player={SessionPlayer}
 									isItemMenu={false}
@@ -376,6 +378,7 @@
 				</div>
 
 				<div class="flex flex-col space-y-2 my-4">
+					<RandomButton player={SessionPlayer} database={data.Database} {updatePage}></RandomButton>
 					<BlackButton
 						parentFunction={() => {
 							SessionPlayer.build.resetBuild();

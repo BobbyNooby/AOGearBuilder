@@ -36,24 +36,14 @@
 	let placeholderItem = database[currentItem.mainType].find((item) => item.name === 'None');
 
 	$: filteredData = ItemMenuData.filter((item) => {
-		// For filtering out other magic items
-		// if (item.subType == 'Magic' && !item.name.includes(player.magic)) {
-		// 	return false;
-		// } else if (
-		// 	$filterType.length === 0 ||
-		// 	$filterType.includes(item.rarity) ||
-		// 	item.name === 'None'
-		// ) {
-		// 	if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-		// 		return true;
-		// 	}
-		// }
 		if ($filterType.length === 0 || $filterType.includes(item.rarity) || item.name === 'None') {
 			if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
 				if (
-					(item.statType == 'Magic' && !player.magics.some((magic) => item.name.includes(magic))) ||
-					(item.statType == 'Strength' &&
-						!player.fightingStyles.some((style) => item.name.includes(style)))
+					// Wont need this anymore i guess but gonna leave this here in case
+					// (item.statType == 'Magic' && !player.magics.some((magic) => item.name.includes(magic))) ||
+					// (item.statType == 'Strength' &&
+					// 	!player.fightingStyles.some((style) => item.name.includes(style)))
+					!player.build.validateItem(item, slotKey)
 				) {
 					return false;
 				} else {

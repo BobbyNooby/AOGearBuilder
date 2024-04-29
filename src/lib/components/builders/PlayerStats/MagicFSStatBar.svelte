@@ -10,7 +10,7 @@
 </script>
 
 <div class="w-full">
-	<p class="text-white text-2xl" style="font-family: Merriweather;">
+	<p class="text-white text-sm md:text-2xl" style="font-family: Merriweather;">
 		{barText} : {roundDecimal(statValue, 4)}x
 	</p>
 	<div class="flex flex-row items-center">
