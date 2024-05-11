@@ -25,6 +25,7 @@
 	let baseHealth = 93 + player.level * 7;
 	player.health = baseHealth + player.build.getBuildStats().defense;
 
+	// This doesnt work atm im just lazy to remove :P
 	const tweenMethod = cubicOut;
 	const tweenDuration = 300;
 
