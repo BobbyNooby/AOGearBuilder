@@ -82,5 +82,5 @@
 	}
 </script>
 
-<BlackButton parentFunction={() => randomizeBuild(database, player)} parentText={'Random'}
+<BlackButton parentFunction={() => randomizeBuild(database, player)} parentText={'Random Build'}
 ></BlackButton>

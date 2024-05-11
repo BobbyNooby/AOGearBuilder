@@ -3,13 +3,16 @@ import { CurrentBuild } from './CurrentBuild';
 import type { fightingStyle, magic, statBuildStats } from './playerTypes';
 import { getItemById } from '../utils/getItemById';
 import { listOfMagics } from '../dataConstants';
-import { isLegacyArmorBuild } from '$lib/utils/isLegacyBuild';
-import { loadOldCode } from './oldCode';
+import { loadOldCode } from './buildCodeHandling/legacyCode';
+import { isLegacyArmorBuild } from './buildCodeHandling/legacyCode';
 import { clamp } from '$lib/utils/clamp';
 import { statBuilds } from '$lib/data/statBuilds';
 import { magicRecords } from '$lib/data/playerMagics';
 import type { anyItem } from './itemTypes';
-import { fightingStyleRecords } from '$lib/data/playerFightingStyles';
+import { fightingStyleRecords, listOfFightingStyles } from '$lib/data/playerFightingStyles';
+import { isPreMagicFSBuildCode, loadPreMagicFSBuildCode } from './buildCodeHandling/preMagicFS';
+import { savantChoiceStore } from './savantChoiceStore';
+import { isMagicFSv1, loadMagicFSv1 } from './buildCodeHandling/magicFSv1';
 
 export class Player {
 	database: anyItem[] = [];
@@ -67,6 +70,15 @@ export class Player {
 		this.fightingStyles = fightingStyles;
 	}
 
+	fixPlayerStatPoints() {
+		const totalStatPoints =
+			this.vitalityPoints + this.magicPoints + this.strengthPoints + this.weaponPoints;
+		if (totalStatPoints > this.level * 2) {
+			const amountToChange = totalStatPoints - this.level * 2;
+			this.changePlayerLevel(-amountToChange);
+		}
+	}
+
 	setMagic(magic: magic, index: number) {
 		try {
 			this.magics[index] = magic;
@@ -109,12 +121,28 @@ export class Player {
 				const otherFightingStyles = Object.keys(fightingStyleRecords).filter(
 					(fightingStyle) => !this.fightingStyles.includes(fightingStyle as fightingStyle)
 				);
-				this.fightingStyles.push(otherFightingStyles[0]);
+				this.fightingStyles.push(otherFightingStyles[0] as fightingStyle);
 			}
 		}
 
 		this.magics.splice(this.statBuild.magicNo);
 		this.fightingStyles.splice(this.statBuild.fightingStyleNo);
+
+		if (this.getStatBuild().type === 'Savant') {
+			if (get(savantChoiceStore).includes('Magic')) {
+				const otherMagics = Object.keys(magicRecords).filter(
+					(magic) => !this.magics.includes(magic as magic)
+				) as magic[];
+				this.magics.push(otherMagics[0] as magic);
+			}
+			if (get(savantChoiceStore).includes('Fighting Style')) {
+				const otherFightingStyles = Object.keys(fightingStyleRecords).filter(
+					(fightingStyle) => !this.fightingStyles.includes(fightingStyle as fightingStyle)
+				);
+				this.fightingStyles.push(otherFightingStyles[0] as fightingStyle);
+			}
+		}
+
 		this.build.fixBuildItems();
 	}
 
@@ -260,7 +288,9 @@ export class Player {
 				type: 'Savant',
 				color: '#F9DBF8',
 				conditions: [
-					({ vitality, magic, strength }) => vitality >= 0.15 && magic >= 0.15 && strength >= 0.15
+					({ vitality, magic, strength, weapons }) =>
+						(vitality >= 0.15 || magic >= 0.15 || strength >= 0.15 || weapons >= 0.15) &&
+						[vitality, magic, strength, weapons].filter((value) => value >= 0.15).length >= 3
 				]
 			}
 		];
@@ -275,8 +305,30 @@ export class Player {
 	}
 
 	getBuildCode() {
-		let finalString = `${this.level.toString()}|${listOfMagics.indexOf(this.magic)}|${this.vitalityPoints}|${this.magicPoints}|${this.strengthPoints}|${this.weaponPoints}|${this.build.getBuildCode()}`;
-		console.log(finalString);
+		const playerStatsString = [
+			this.level.toString(),
+			this.vitalityPoints.toString(),
+			this.magicPoints.toString(),
+			this.strengthPoints.toString(),
+			this.weaponPoints.toString()
+		].join(',');
+
+		const magicsString = this.magics
+			.map((magic) => listOfMagics.indexOf(magic).toString())
+			.join(',');
+
+		const fightingStylesString = this.fightingStyles
+			.map((style) => listOfFightingStyles.indexOf(style))
+			.join(',');
+
+		const finalString = [
+			playerStatsString,
+			magicsString,
+			fightingStylesString,
+			this.build.getBuildCode()
+		].join('|');
+
+		console.log(finalString.split('|').map((slotstring) => slotstring.split(',')));
 		return finalString;
 	}
 
@@ -285,38 +337,12 @@ export class Player {
 			codeString = decodeURI(codeString);
 			if (isLegacyArmorBuild(codeString)) {
 				codeString = loadOldCode(codeString);
-			}
-			const slotCodeArray = codeString.split('|').map((slotString) => slotString.split('.'));
-
-			if (slotCodeArray.length != 11) {
-				console.log('Invalid build code');
-				throw new Error('Invalid build code');
-			}
-
-			const slotkeyArray = ['accessory1', 'accessory2', 'accessory3', 'chestplate', 'pants'];
-
-			this.level = parseInt(slotCodeArray[0][0]);
-			this.magic = listOfMagics[parseInt(slotCodeArray[1][0])];
-			this.vitalityPoints = parseInt(slotCodeArray[2][0]);
-			this.magicPoints = parseInt(slotCodeArray[3][0]);
-			this.strengthPoints = parseInt(slotCodeArray[4][0]);
-			this.weaponPoints = parseInt(slotCodeArray[5][0]);
-
-			this.updateStatBuild();
-
-			for (let i = 0; i < slotkeyArray.length; i++) {
-				const slotkey = slotkeyArray[i] as keyof typeof this.build.slots;
-				const slot = slotCodeArray[i + 6];
-
-				for (let j = 0; j < slot.length; j++) {
-					if (j <= 2) {
-						this.build.setGear(getItemById(database, slot[j]), slotkey);
-					} else if (j > 2 && j < slot.length - 1) {
-						this.build.setGear(getItemById(database, slot[j]), slotkey, j - 3);
-					} else if (j == slot.length - 1) {
-						this.build.slots[slotkey].armorLevel = parseInt(slot[j]);
-					}
-				}
+				loadPreMagicFSBuildCode(this, database, codeString);
+			} else if (isPreMagicFSBuildCode(codeString)) {
+				loadPreMagicFSBuildCode(this, database, codeString);
+				console.log('test');
+			} else if (isMagicFSv1(codeString)) {
+				loadMagicFSv1(this, database, codeString);
 			}
 		} catch (error) {
 			console.log(error);

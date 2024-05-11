@@ -1,11 +1,4 @@
 import { filterData } from '$lib/utils/filterData';
-import {
-	noneAccessory,
-	noneChestplate,
-	noneEnchant,
-	nonePants,
-	noneModifier
-} from './defaultGears';
 import type {
 	ArmorItemData,
 	GemItemData,
@@ -17,6 +10,7 @@ import type {
 import type { Player } from './playerClasses';
 
 import { ArmorSlot } from './ArmorSlot';
+import { noneModifier } from './defaultGears';
 //Move to frontend to handle
 
 export class CurrentBuild {
@@ -36,23 +30,62 @@ export class CurrentBuild {
 		this.parentPlayer = parentPlayer;
 		this.database = parentPlayer.database;
 
+		const noneAccessory = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Accessory'
+		);
+		const noneChestplate = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Chestplate'
+		);
+		const nonePants = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Pants'
+		);
+
+		const noneEnchant = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Enchant'
+		);
+
+		const noneModifier = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Modifier'
+		);
+
 		this.slots = {
-			accessory1: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			accessory2: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			accessory3: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			chestplate: new ArmorSlot(this, noneChestplate, noneEnchant, noneModifier),
-			pants: new ArmorSlot(this, nonePants, noneEnchant, noneModifier)
+			accessory1: new ArmorSlot(
+				this,
+				noneAccessory as ArmorItemData,
+				noneEnchant as EnchantItemData,
+				noneModifier as ModifierItemData
+			),
+			accessory2: new ArmorSlot(
+				this,
+				noneAccessory as ArmorItemData,
+				noneEnchant as EnchantItemData,
+				noneModifier as ModifierItemData
+			),
+			accessory3: new ArmorSlot(
+				this,
+				noneAccessory as ArmorItemData,
+				noneEnchant as EnchantItemData,
+				noneModifier as ModifierItemData
+			),
+			chestplate: new ArmorSlot(
+				this,
+				noneChestplate as ArmorItemData,
+				noneEnchant as EnchantItemData,
+				noneModifier as ModifierItemData
+			),
+			pants: new ArmorSlot(
+				this,
+				nonePants as ArmorItemData,
+				noneEnchant as EnchantItemData,
+				noneModifier as ModifierItemData
+			)
 		};
 	}
 
 	resetBuild() {
-		this.slots = {
-			accessory1: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			accessory2: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			accessory3: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			chestplate: new ArmorSlot(this, noneChestplate, noneEnchant, noneModifier),
-			pants: new ArmorSlot(this, nonePants, noneEnchant, noneModifier)
-		};
+		for (const slot in this.slots) {
+			this.slots[slot as keyof typeof this.slots].resetSlot();
+		}
 	}
 
 	fixBuildLevels() {

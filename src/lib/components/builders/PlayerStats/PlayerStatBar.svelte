@@ -9,6 +9,7 @@
 		statLegend: string,
 		statKey: 'vitalityPoints' | 'magicPoints' | 'strengthPoints' | 'weaponPoints',
 		barColor: string,
+		barValue: number,
 		buttonColor: string,
 		incrementorFunction: any,
 		player: Player,
@@ -71,7 +72,7 @@
 					class="h-2"
 					style="background-color: rgba({hexToRGB(barColor).r}, {hexToRGB(barColor).g}, {hexToRGB(
 						barColor
-					).b}, 1); width: {(player[statKey] / maximumPlayerStatPoints) * 100}%;"
+					).b}, 1); width: {(barValue / maximumPlayerStatPoints) * 100}%;"
 				></div>
 			</div>
 		</div>
@@ -133,7 +134,7 @@
 					class="h-2"
 					style="background-color: rgba({hexToRGB(barColor).r}, {hexToRGB(barColor).g}, {hexToRGB(
 						barColor
-					).b}, 1); width: {(player[statKey] / maximumPlayerStatPoints) * 100}%;"
+					).b}, 1); width: {(barValue / maximumPlayerStatPoints) * 100}%;"
 				></div>
 			</div>
 		</div>

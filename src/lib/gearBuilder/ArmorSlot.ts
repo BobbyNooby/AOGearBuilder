@@ -53,6 +53,29 @@ export class ArmorSlot {
 		}
 	}
 
+	resetSlot() {
+		const noneArmor = this.database.find(
+			(item) => item.name === 'None' && item.mainType === this.armor.mainType
+		);
+		const noneEnchant = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Enchant'
+		);
+		const noneGem = this.database.find((item) => item.name === 'None' && item.mainType === 'Gem');
+		const noneModifier = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Modifier'
+		);
+
+		this.armor = noneArmor as ArmorItemData;
+		this.armorLevel = 0;
+		this.enchant = noneEnchant as EnchantItemData;
+		this.modifier = noneModifier as ModifierItemData;
+		this.gems = [];
+
+		for (let i = 0; i < this.armor.gemNo; i++) {
+			this.gems.push(noneGem as GemItemData);
+		}
+	}
+
 	fixSlotLevel() {
 		if (this.armorLevel > this.parentBuild.parentPlayer.level) {
 			let validArmors = [];
@@ -272,6 +295,6 @@ export class ArmorSlot {
 		let slotCode: any[] = [];
 		slotCode = [this.armor, this.enchant, this.modifier, ...this.gems].map((item) => item.id);
 		slotCode.push(this.armorLevel);
-		return slotCode.join('.');
+		return slotCode.join(',');
 	}
 }

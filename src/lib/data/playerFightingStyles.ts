@@ -14,6 +14,15 @@ const fightingStyleSizeText = 'SIZE';
 const minFightingStyleSizeValue = 0;
 const maxFightingStyleSizeValue = 1.3;
 
+export const listOfFightingStyles: fightingStyle[] = [
+	'Basic Combat',
+	'Boxing',
+	'Iron Leg',
+	'Cannon Fist',
+	'Sailor Fist',
+	'Thermo Fist'
+];
+
 export const fightingStyleRecords: Record<fightingStyle, fightingStyleDetails> = {
 	'Basic Combat': {
 		type: 'Fighting Style',

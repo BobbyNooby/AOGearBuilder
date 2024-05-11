@@ -58,7 +58,7 @@ export const statBuilds: Record<string, statBuildStats> = {
 	},
 	Savant: {
 		name: 'Savant',
-		magicNo: 2,
-		fightingStyleNo: 2
+		magicNo: 1,
+		fightingStyleNo: 1
 	}
 };

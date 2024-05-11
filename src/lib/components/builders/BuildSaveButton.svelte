@@ -1,4 +1,9 @@
 <script lang="ts">
+	import type { buildObject } from '$lib/gearBuilder/buildCodeHandling/misc/buildCodeTypes';
+	import {
+		builderVersion,
+		shipBuilderVersion
+	} from '$lib/gearBuilder/buildCodeHandling/misc/versionConstants';
 	import { currentBuildCode } from '$lib/utils/buildSavingUtils';
 	import { fade } from 'svelte/transition';
 	export let type: string;
@@ -42,11 +47,21 @@
 	}
 
 	function saveBuild() {
-		let newBuild;
+		let newBuild: buildObject;
 		if (type == 'gear') {
-			newBuild = { name: buildName, code: $currentBuildCode };
+			newBuild = {
+				name: buildName,
+				code: $currentBuildCode,
+				builderVersion: builderVersion,
+				buildType: 'gear'
+			};
 		} else if (type == 'ship') {
-			newBuild = { name: buildName, code: 'null' };
+			newBuild = {
+				name: buildName,
+				code: 'null',
+				builderVersion: shipBuilderVersion,
+				buildType: 'ship'
+			};
 		}
 
 		savedBuilds.unshift(newBuild);

@@ -2,12 +2,16 @@
 	import { Player } from '$lib/gearBuilder/playerClasses';
 	import PlayerStatBar from './PlayerStatBar.svelte';
 	import { hexToRGB } from '$lib/utils/hexToRGB';
-	import { writable } from 'svelte/store';
+	import { get, writable } from 'svelte/store';
 	import { isMobile } from '$lib/utils/mobileStore';
 	import { clamp } from '$lib/utils/clamp';
 	import { magicRecords } from '$lib/data/playerMagics';
 	import { fightingStyleRecords } from '$lib/data/playerFightingStyles';
 	import MagicFsSelectButton from './MagicFSSelectButton.svelte';
+	import BlackButton from '$lib/components/Misc/BlackButton.svelte';
+	import { savantChoiceStore, savantChoices } from '$lib/gearBuilder/savantChoiceStore';
+	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
 
 	export let player: Player, updatePage: any;
 
@@ -20,6 +24,29 @@
 		player.weaponPoints;
 	let baseHealth = 93 + player.level * 7;
 	player.health = baseHealth + player.build.getBuildStats().defense;
+
+	const tweenMethod = cubicOut;
+	const tweenDuration = 300;
+
+	const vitalityTween = tweened(player.vitalityPoints, {
+		duration: tweenDuration,
+		easing: tweenMethod
+	});
+
+	const magicTween = tweened(player.magicPoints, {
+		duration: tweenDuration,
+		easing: tweenMethod
+	});
+
+	const strengthTween = tweened(player.strengthPoints, {
+		duration: tweenDuration,
+		easing: tweenMethod
+	});
+
+	const weaponTween = tweened(player.weaponPoints, {
+		duration: tweenDuration,
+		easing: tweenMethod
+	});
 
 	function incrementStat(
 		statPoint: 'vitalityPoints' | 'magicPoints' | 'strengthPoints' | 'weaponPoints',
@@ -60,11 +87,21 @@
 
 	const keyStore = writable(false);
 
-	function updateComponent() {
+	async function updateComponent() {
 		player.build.fixBuildLevels();
+		player.updateStatBuild();
+
+		// Updating Tweens
+		vitalityTween.set(player.vitalityPoints);
+		magicTween.set(player.magicPoints);
+		strengthTween.set(player.strengthPoints);
+		weaponTween.set(player.weaponPoints);
+
 		keyStore.update((value) => !value);
 		updatePage();
 	}
+
+	let savantChoice = get(savantChoiceStore)[0];
 </script>
 
 {#key $keyStore}
@@ -77,7 +114,7 @@
 					<div class="m-3">
 						<div class="flex flex-col items-center justify-center my-5">
 							<div class="flex flex-row">
-								{#each Array(player.statBuild.magicNo) as _, i}
+								{#each player.magics as _, i}
 									<MagicFsSelectButton
 										abilityType={'Magic'}
 										abilityName={player.magics[i]}
@@ -90,7 +127,7 @@
 								{/each}
 							</div>
 							<div class="flex flex-row">
-								{#each Array(player.statBuild.fightingStyleNo) as _, i}
+								{#each player.fightingStyles as _, i}
 									<MagicFsSelectButton
 										abilityType={'Fighting Style'}
 										abilityName={player.fightingStyles[i]}
@@ -101,6 +138,20 @@
 									/>
 								{/each}
 							</div>
+							{#if player.statBuild.name == 'Savant'}
+								<select
+									bind:value={savantChoice}
+									on:change={() => {
+										savantChoiceStore.set([savantChoice]);
+										updateComponent();
+									}}
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+								>
+									{#each savantChoices as savantChoice}
+										<option value={savantChoice}>{savantChoice}</option>
+									{/each}
+								</select>
+							{/if}
 						</div>
 						<div class="flex flex-row items-center">
 							<p style="font-family: Merriweather;" class=" text-white text-3xl m-3">Level</p>
@@ -182,6 +233,7 @@
 							barColor={'#22c55e'}
 							buttonColor={'#AFA9EE'}
 							incrementorFunction={incrementStat}
+							barValue={$vitalityTween}
 						/>
 
 						<PlayerStatBar
@@ -194,6 +246,7 @@
 							barColor={'#3b82f6'}
 							buttonColor={'#AFA9EE'}
 							incrementorFunction={incrementStat}
+							barValue={$magicTween}
 						/>
 
 						<PlayerStatBar
@@ -206,6 +259,7 @@
 							barColor={'#f87171'}
 							buttonColor={'#AFA9EE'}
 							incrementorFunction={incrementStat}
+							barValue={$strengthTween}
 						/>
 
 						<PlayerStatBar
@@ -218,6 +272,7 @@
 							barColor={'#FACC15'}
 							buttonColor={'#AFA9EE'}
 							incrementorFunction={incrementStat}
+							barValue={$weaponTween}
 						/>
 					</div>
 				</div>
@@ -344,6 +399,7 @@
 						barColor={'#22c55e'}
 						buttonColor={'#AFA9EE'}
 						incrementorFunction={incrementStat}
+						barValue={$vitalityTween}
 					/>
 
 					<PlayerStatBar
@@ -356,6 +412,7 @@
 						barColor={'#3b82f6'}
 						buttonColor={'#AFA9EE'}
 						incrementorFunction={incrementStat}
+						barValue={$magicTween}
 					/>
 
 					<PlayerStatBar
@@ -368,6 +425,7 @@
 						barColor={'#f87171'}
 						buttonColor={'#AFA9EE'}
 						incrementorFunction={incrementStat}
+						barValue={$strengthTween}
 					/>
 
 					<PlayerStatBar
@@ -380,6 +438,7 @@
 						barColor={'#FACC15'}
 						buttonColor={'#AFA9EE'}
 						incrementorFunction={incrementStat}
+						barValue={$weaponTween}
 					/>
 				</div>
 			</div>
