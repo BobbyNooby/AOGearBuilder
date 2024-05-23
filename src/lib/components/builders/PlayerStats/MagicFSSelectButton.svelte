@@ -240,7 +240,9 @@
 			<p class="text-center text-3xl mt-20 mb-4 text-white" style="font-family: Merriweather;">
 				Select {abilityType}
 			</p>
-			<div class="flex flex-row border-white rounded border w-3/4 overflow-x-scroll items-center">
+			<div
+				class="flex flex-row border-white rounded border w-3/4 overflow-x-scroll items-center min-h-36"
+			>
 				{#each Object.values(abilityList) as abilityOption}
 					<div class="m-2">
 						<button
