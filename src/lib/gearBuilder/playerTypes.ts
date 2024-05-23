@@ -1,5 +1,4 @@
 export type magic =
-	| 'None'
 	| 'Acid'
 	| 'Ash'
 	| 'Crystal'
@@ -20,3 +19,13 @@ export type magic =
 	| 'Water'
 	| 'Wind'
 	| 'Wood';
+
+export type fightingStyle =
+	| 'Basic Combat'
+	| 'Boxing'
+	| 'Iron Leg'
+	| 'Cannon Fist'
+	| 'Sailor Fist'
+	| 'Thermo Fist';
+
+export type statBuildStats = { name: string; magicNo: number; fightingStyleNo: number };

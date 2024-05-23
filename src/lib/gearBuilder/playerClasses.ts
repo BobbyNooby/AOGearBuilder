@@ -1,19 +1,34 @@
 import { get } from 'svelte/store';
 import { CurrentBuild } from './CurrentBuild';
-import type { magic } from './playerTypes';
+import type { fightingStyle, magic, statBuildStats } from './playerTypes';
 import { getItemById } from '../utils/getItemById';
 import { listOfMagics } from '../dataConstants';
-import { isLegacyArmorBuild } from '$lib/utils/isLegacyBuild';
-import { loadOldCode } from './oldCode';
+import { loadOldCode } from './buildCodeHandling/legacyCode';
+import { isLegacyArmorBuild } from './buildCodeHandling/legacyCode';
+import { clamp } from '$lib/utils/clamp';
+import { statBuilds } from '$lib/data/statBuilds';
+import { magicRecords } from '$lib/data/playerMagics';
+import type { anyItem } from './itemTypes';
+import { fightingStyleRecords, listOfFightingStyles } from '$lib/data/playerFightingStyles';
+import { isPreMagicFSBuildCode, loadPreMagicFSBuildCode } from './buildCodeHandling/preMagicFS';
+import { savantChoiceStore } from './savantChoiceStore';
+import { isMagicFSv1, loadMagicFSv1 } from './buildCodeHandling/magicFSv1';
 
 export class Player {
+	database: anyItem[] = [];
+
 	level: number;
 	health: number;
-	magic: magic;
+
+	magics: magic[];
+	fightingStyles: fightingStyle[];
+
 	build: CurrentBuild;
 
 	minLevel: number;
 	maxLevel: number;
+
+	statBuild: statBuildStats;
 
 	vitalityPoints: number;
 	magicPoints: number;
@@ -21,33 +36,185 @@ export class Player {
 	weaponPoints: number;
 
 	constructor(
+		database: anyItem[],
 		level = 136,
 		health = 93,
-		build = new CurrentBuild(this),
+
 		vitalityPoints = 0,
 		magicPoints = 0,
 		strengthPoints = 0,
 		weaponPoints = 0,
-		magic: magic = 'Ash'
+
+		statBuild: statBuildStats = statBuilds['None'],
+
+		magics: magic[] = ['Acid'],
+		fightingStyles: fightingStyle[] = []
 	) {
+		this.database = database;
 		this.level = level;
 		this.health = health + this.level * 7;
 
 		this.minLevel = 1;
 		this.maxLevel = 136;
 
-		this.build = build;
+		this.build = new CurrentBuild(this);
 
 		this.vitalityPoints = vitalityPoints;
 		this.magicPoints = magicPoints;
 		this.strengthPoints = strengthPoints;
 		this.weaponPoints = weaponPoints;
 
-		this.magic = magic;
+		this.statBuild = statBuild;
+
+		this.magics = magics;
+		this.fightingStyles = fightingStyles;
 	}
 
-	setMagic(magic: magic) {
-		this.magic = magic;
+	fixPlayerStatPoints() {
+		const totalStatPoints =
+			this.vitalityPoints + this.magicPoints + this.strengthPoints + this.weaponPoints;
+		if (totalStatPoints > this.level * 2) {
+			const amountToChange = totalStatPoints - this.level * 2;
+			this.changePlayerLevel(-amountToChange);
+		}
+	}
+
+	setMagic(magic: magic, index: number) {
+		try {
+			this.magics[index] = magic;
+			this.build.fixBuildItems();
+		} catch (e) {
+			console.log(e, 'ERMM MAGIC IS NOT SETTING SIR');
+		}
+	}
+
+	setFightingStyle(fightingStyle: fightingStyle, index: number) {
+		try {
+			this.fightingStyles[index] = fightingStyle;
+			this.build.fixBuildItems();
+		} catch (e) {
+			console.log(e, 'ERMM FIGHTING STYLE IS NOT SETTING SIR');
+		}
+	}
+
+	updateHealth() {
+		const baseHealth = 93 + this.level * 7;
+		this.health = baseHealth + this.build.getBuildStats().defense + this.vitalityPoints * 4;
+	}
+
+	updateStatBuild() {
+		this.statBuild = statBuilds[this.getStatBuild().type];
+
+		if (this.magics.length < this.statBuild.magicNo) {
+			const diff = this.statBuild.magicNo - this.magics.length;
+			for (let i = 0; i < diff; i++) {
+				const otherMagics = Object.keys(magicRecords).filter(
+					(magic) => !this.magics.includes(magic as magic)
+				) as magic[];
+				this.magics.push(otherMagics[0]);
+			}
+		}
+
+		if (this.fightingStyles.length < this.statBuild.fightingStyleNo) {
+			const diff = this.statBuild.fightingStyleNo - this.fightingStyles.length;
+			for (let i = 0; i < diff; i++) {
+				const otherFightingStyles = Object.keys(fightingStyleRecords).filter(
+					(fightingStyle) => !this.fightingStyles.includes(fightingStyle as fightingStyle)
+				);
+				this.fightingStyles.push(otherFightingStyles[0] as fightingStyle);
+			}
+		}
+
+		this.magics.splice(this.statBuild.magicNo);
+		this.fightingStyles.splice(this.statBuild.fightingStyleNo);
+
+		if (this.getStatBuild().type === 'Savant') {
+			if (get(savantChoiceStore).includes('Magic')) {
+				const otherMagics = Object.keys(magicRecords).filter(
+					(magic) => !this.magics.includes(magic as magic)
+				) as magic[];
+				this.magics.push(otherMagics[0] as magic);
+			}
+			if (get(savantChoiceStore).includes('Fighting Style')) {
+				const otherFightingStyles = Object.keys(fightingStyleRecords).filter(
+					(fightingStyle) => !this.fightingStyles.includes(fightingStyle as fightingStyle)
+				);
+				this.fightingStyles.push(otherFightingStyles[0] as fightingStyle);
+			}
+		}
+
+		this.build.fixBuildItems();
+	}
+
+	changeStatPoint(
+		stat: 'vitalityPoints' | 'magicPoints' | 'strengthPoints' | 'weaponPoints',
+		amount: number
+	) {
+		const maxStatPoints = this.level * 2;
+		const currentTotalStats =
+			this.magicPoints + this.vitalityPoints + this.strengthPoints + this.weaponPoints;
+
+		let amountToChange = 0;
+		if (currentTotalStats + amount > maxStatPoints) {
+			amountToChange = maxStatPoints - currentTotalStats;
+		} else {
+			amountToChange = amount;
+		}
+		console.log(amountToChange);
+
+		if (stat === 'vitalityPoints') {
+			this.vitalityPoints = clamp(this.vitalityPoints + amountToChange, 0, maxStatPoints);
+		} else if (stat === 'magicPoints') {
+			this.magicPoints = clamp(this.magicPoints + amountToChange, 0, maxStatPoints);
+		} else if (stat === 'strengthPoints') {
+			this.strengthPoints = clamp(this.strengthPoints + amountToChange, 0, maxStatPoints);
+		} else if (stat === 'weaponPoints') {
+			this.weaponPoints = clamp(this.weaponPoints + amountToChange, 0, maxStatPoints);
+		}
+
+		this.updateStatBuild();
+	}
+
+	changePlayerLevel(amount: number) {
+		this.level = clamp(this.level + amount, this.minLevel, this.maxLevel);
+
+		// Statpoint Balancing
+		const maxStatPoints = this.level * 2;
+
+		while (
+			this.vitalityPoints + this.magicPoints + this.strengthPoints + this.weaponPoints >
+			maxStatPoints
+		) {
+			let currentPlayerStatPoints = {
+				vitalityPoints: this.vitalityPoints,
+				magicPoints: this.magicPoints,
+				strengthPoints: this.strengthPoints,
+				weaponPoints: this.weaponPoints
+			};
+			let highestStat = Math.max(
+				this.vitalityPoints,
+				this.magicPoints,
+				this.strengthPoints,
+				this.weaponPoints
+			);
+			for (let stat in currentPlayerStatPoints) {
+				if (currentPlayerStatPoints[stat as keyof typeof currentPlayerStatPoints] === highestStat) {
+					currentPlayerStatPoints[stat as keyof typeof currentPlayerStatPoints] -= 1;
+				}
+			}
+			this.vitalityPoints = currentPlayerStatPoints.vitalityPoints;
+			this.magicPoints = currentPlayerStatPoints.magicPoints;
+			this.strengthPoints = currentPlayerStatPoints.strengthPoints;
+			this.weaponPoints = currentPlayerStatPoints.weaponPoints;
+		}
+	}
+	resetStatPoints() {
+		this.vitalityPoints = 0;
+		this.magicPoints = 0;
+		this.strengthPoints = 0;
+		this.weaponPoints = 0;
+
+		this.updateStatBuild();
 	}
 
 	getStatBuild(): { type: string; color: string } {
@@ -121,7 +288,9 @@ export class Player {
 				type: 'Savant',
 				color: '#F9DBF8',
 				conditions: [
-					({ vitality, magic, strength }) => vitality >= 0.15 && magic >= 0.15 && strength >= 0.15
+					({ vitality, magic, strength, weapons }) =>
+						(vitality >= 0.15 || magic >= 0.15 || strength >= 0.15 || weapons >= 0.15) &&
+						[vitality, magic, strength, weapons].filter((value) => value >= 0.15).length >= 3
 				]
 			}
 		];
@@ -136,53 +305,44 @@ export class Player {
 	}
 
 	getBuildCode() {
-		let finalString = `${this.level.toString()}|${listOfMagics.indexOf(this.magic)}|${this.vitalityPoints}|${this.magicPoints}|${this.strengthPoints}|${this.weaponPoints}|${this.build.getBuildCode()}`;
-		console.log(finalString);
+		const playerStatsString = [
+			this.level.toString(),
+			this.vitalityPoints.toString(),
+			this.magicPoints.toString(),
+			this.strengthPoints.toString(),
+			this.weaponPoints.toString()
+		].join(',');
+
+		const magicsString = this.magics
+			.map((magic) => listOfMagics.indexOf(magic).toString())
+			.join(',');
+
+		const fightingStylesString = this.fightingStyles
+			.map((style) => listOfFightingStyles.indexOf(style))
+			.join(',');
+
+		const finalString = [
+			playerStatsString,
+			magicsString,
+			fightingStylesString,
+			this.build.getBuildCode()
+		].join('|');
+
+		console.log(finalString.split('|').map((slotstring) => slotstring.split(',')));
 		return finalString;
 	}
 
 	loadBuildCode(database: [], codeString: string) {
 		try {
+			codeString = decodeURI(codeString);
 			if (isLegacyArmorBuild(codeString)) {
 				codeString = loadOldCode(codeString);
-			}
-			const slotCodeArray = codeString.split('|').map((slotString) => slotString.split('.'));
-
-			if (slotCodeArray.length != 11) {
-				console.log('Invalid build code');
-				throw new Error('Invalid build code');
-			}
-
-			const slotkeyArray = ['accessory1', 'accessory2', 'accessory3', 'chestplate', 'pants'];
-
-			this.level = parseInt(slotCodeArray[0][0]);
-			this.magic = listOfMagics[parseInt(slotCodeArray[1][0])];
-			this.vitalityPoints = parseInt(slotCodeArray[2][0]);
-			this.magicPoints = parseInt(slotCodeArray[3][0]);
-			this.strengthPoints = parseInt(slotCodeArray[4][0]);
-			this.weaponPoints = parseInt(slotCodeArray[5][0]);
-
-			console.log(
-				slotCodeArray,
-				this.vitalityPoints,
-				this.magicPoints,
-				this.strengthPoints,
-				this.weaponPoints
-			);
-
-			for (let i = 0; i < slotkeyArray.length; i++) {
-				const slotkey = slotkeyArray[i] as keyof typeof this.build.slots;
-				const slot = slotCodeArray[i + 6];
-
-				for (let j = 0; j < slot.length; j++) {
-					if (j <= 2) {
-						this.build.setGear(getItemById(database, slot[j]), slotkey);
-					} else if (j > 2 && j < slot.length - 1) {
-						this.build.setGear(getItemById(database, slot[j]), slotkey, j - 3);
-					} else if (j == slot.length - 1) {
-						this.build.slots[slotkey].armorLevel = parseInt(slot[j]);
-					}
-				}
+				loadPreMagicFSBuildCode(this, database, codeString);
+			} else if (isPreMagicFSBuildCode(codeString)) {
+				loadPreMagicFSBuildCode(this, database, codeString);
+				console.log('test');
+			} else if (isMagicFSv1(codeString)) {
+				loadMagicFSv1(this, database, codeString);
 			}
 		} catch (error) {
 			console.log(error);

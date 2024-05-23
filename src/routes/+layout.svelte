@@ -4,6 +4,9 @@
 	import { isMobile } from '$lib/utils/mobileStore';
 	import Analytics from '$lib/utils/Analytics.svelte';
 	import { Toaster } from 'svelte-french-toast';
+	import { injectSpeedInsights } from '@vercel/speed-insights';
+	import { inject } from '@vercel/analytics';
+	import { dev } from '$app/environment';
 
 	function checkMobile() {
 		console.log(window.innerWidth);
@@ -26,6 +29,10 @@
 			});
 		}
 	});
+
+	injectSpeedInsights();
+
+	inject({ mode: dev ? 'development' : 'production' });
 </script>
 
 <svelte:head>

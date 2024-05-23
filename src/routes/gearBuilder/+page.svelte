@@ -1,27 +1,28 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import GearButton from '$lib/components/Builders/GearButton.svelte';
+	import GearButton from '$lib/components/builders/GearButton.svelte';
 	import { Player } from '$lib/gearBuilder/playerClasses';
 	import type { PageData } from '../$types';
 	import { get, writable } from 'svelte/store';
-	import ItemTooltip from '$lib/components/Builders/ItemTooltip.svelte';
+	import ItemTooltip from '$lib/components/builders/ItemTooltip.svelte';
 	import { fade } from 'svelte/transition';
-	import PlayerStatMenu from '$lib/components/Builders/PlayerStats/PlayerStatMenu.svelte';
-	import FilterButton from '$lib/components/Builders/FilterButton.svelte';
-	import SortButton from '$lib/components/Builders/SortButton.svelte';
+	import PlayerStatMenu from '$lib/components/builders/PlayerStats/PlayerStatMenu.svelte';
+	import FilterButton from '$lib/components/builders/FilterButton.svelte';
+	import SortButton from '$lib/components/builders/SortButton.svelte';
 	import { currentBuildCode } from '$lib/utils/buildSavingUtils';
-	import BlackButton from '$lib/components/Misc/BlackButton.svelte';
+	import BlackButton from '$lib/components/misc/BlackButton.svelte';
 	import { getBuildFromLocalStorage, storeBuildToLocalStorage } from '$lib/utils/buildSavingUtils';
-	import BuildSaveButton from '$lib/components/Builders/BuildSaveButton.svelte';
-	import BuildLoadButton from '$lib/components/Builders/BuildLoadButton.svelte';
-	import PostCalcsButton from '$lib/components/Builders/PostCalcsButton.svelte';
+	import BuildSaveButton from '$lib/components/builders/BuildSaveButton.svelte';
+	import BuildLoadButton from '$lib/components/builders/BuildLoadButton.svelte';
+	import PostCalcsButton from '$lib/components/builders/PostCalcsButton.svelte';
 	import { isMobile } from '$lib/utils/mobileStore';
-	import BuildsOverrideButton from '$lib/components/Builders/BuildsOverrideButton.svelte';
+	import BuildsOverrideButton from '$lib/components/builders/BuildsOverrideButton.svelte';
+	import RandomButton from '$lib/components/builders/RandomButton.svelte';
 
 	export let data: PageData;
 	let ready = false;
 
-	let SessionPlayer = new Player();
+	let SessionPlayer = new Player(data.Database);
 	const updatePageStore = writable(false);
 
 	function loadHash() {
@@ -68,6 +69,12 @@
 	<meta property="twitter:image" content="https://i.imgur.com/c6n3LP1.png" />
 
 	<!-- Meta Tags Generated with https://metatags.io -->
+
+	<script
+		async
+		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1741484020713413"
+		crossorigin="anonymous"
+	></script>
 </svelte:head>
 
 {#if ready}
@@ -125,6 +132,7 @@
 				</div>
 
 				<div class="flex flex-row space-x-2 my-1">
+					<RandomButton player={SessionPlayer} database={data.Database} {updatePage}></RandomButton>
 					<BlackButton
 						parentFunction={() => {
 							SessionPlayer.build.resetBuild();
@@ -291,7 +299,9 @@
 						</div>
 
 						<div class="w-full h-full">
-							<div class=" m-20 w-80 h-96 p-2 border-2 border-white rounded bg-black bg-opacity-40">
+							<div
+								class=" m-20 w-80 h-auto p-2 border-2 border-white rounded bg-black bg-opacity-40"
+							>
 								<ItemTooltip
 									player={SessionPlayer}
 									isItemMenu={false}
@@ -368,6 +378,7 @@
 				</div>
 
 				<div class="flex flex-col space-y-2 my-4">
+					<RandomButton player={SessionPlayer} database={data.Database} {updatePage}></RandomButton>
 					<BlackButton
 						parentFunction={() => {
 							SessionPlayer.build.resetBuild();

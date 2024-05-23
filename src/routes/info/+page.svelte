@@ -39,6 +39,12 @@
 		href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Open+Sans:wght@700&display=swap"
 		rel="stylesheet"
 	/>
+
+	<script
+		async
+		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1741484020713413"
+		crossorigin="anonymous"
+	></script>
 </svelte:head>
 
 <section>

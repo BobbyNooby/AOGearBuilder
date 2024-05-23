@@ -1,7 +1,11 @@
-import { startMongo } from '$lib/dbHandler';
+import { startMongoAdmin, startMongoReadOnly } from '$lib/dbHandler';
 
-export { handle } from "./auth"
+export { handle } from './auth';
 
-startMongo().then((): void => {
-	console.log('Connected to MongoDB');
+startMongoAdmin().then((): void => {
+	console.log('Connected to MongoDB (admin)');
 });
+
+// startMongoReadOnly().then((): void => {
+// 	console.log('Connected to MongoDB (read-only)');
+// });

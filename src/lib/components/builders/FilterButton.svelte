@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { filterList } from '$lib/data/filterList';
 	import { get } from 'svelte/store';
-	import { rarityColors } from '$lib/dataConstants';
+	import { rarityColors, staticImagesRootFolder } from '$lib/dataConstants';
 
 	let menuIsActive = false;
 
@@ -24,12 +24,12 @@
 
 <div>
 	<button on:click={menuToggle}>
-		<img src="assets/images/filter.jpg" alt="Gear Button" />
+		<img src="{staticImagesRootFolder}/filter.jpg" alt="Gear Button" />
 	</button>
 
 	{#if menuIsActive}
 		<div
-			class="z-10 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 fixed overflow-y-auto"
+			class="z-50 top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 fixed overflow-y-auto"
 			in:fade={{ duration: 100 }}
 			out:fade={{ duration: 100 }}
 		>

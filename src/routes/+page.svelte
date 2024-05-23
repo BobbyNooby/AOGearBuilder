@@ -2,7 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import NavGrid from '$lib/components/Misc/NavGrid.svelte';
+	import NavGrid from '$lib/components/misc/NavGrid.svelte';
 
 	// Fade in initiator
 	let ready = false;
@@ -38,6 +38,12 @@
 		href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Open+Sans:wght@700&display=swap"
 		rel="stylesheet"
 	/>
+
+	<script
+		async
+		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1741484020713413"
+		crossorigin="anonymous"
+	></script>
 </svelte:head>
 
 <section class=" items-center snap-center justify-center w-full h-full">
@@ -61,7 +67,7 @@
 
 			<!-- No navbar component as i want this to be a little different -->
 
-			<NavGrid showHome={false} />
+			<NavGrid showHome={false} showText={true} />
 		</div>
 	{/if}
 </section>

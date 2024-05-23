@@ -4,7 +4,8 @@ import type {
 	GemItemData,
 	EnchantItemData,
 	ModifierItemData,
-	ArmorStats
+	ArmorStats,
+	anyItem
 } from '$lib/gearBuilder/itemTypes';
 
 import { filterData } from '$lib/utils/filterData';
@@ -16,6 +17,8 @@ function clamp(value: number, min: number, max: number) {
 }
 
 export class ArmorSlot {
+	database: anyItem[] = [];
+
 	parentBuild: CurrentBuild;
 	armor: ArmorItemData;
 	armorLevel: number;
@@ -30,6 +33,8 @@ export class ArmorSlot {
 		modifier: ModifierItemData
 	) {
 		this.parentBuild = parentBuild;
+		this.database = this.parentBuild.parentPlayer.database;
+
 		this.armor = armor;
 
 		if (armor.statsPerLevel.length == 0) {
@@ -48,7 +53,89 @@ export class ArmorSlot {
 		}
 	}
 
-	fixArmorLevel() {
+	resetSlot() {
+		const noneArmor = this.database.find(
+			(item) => item.name === 'None' && item.mainType === this.armor.mainType
+		);
+		const noneEnchant = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Enchant'
+		);
+		const noneGem = this.database.find((item) => item.name === 'None' && item.mainType === 'Gem');
+		const noneModifier = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Modifier'
+		);
+
+		this.armor = noneArmor as ArmorItemData;
+		this.armorLevel = 0;
+		this.enchant = noneEnchant as EnchantItemData;
+		this.modifier = noneModifier as ModifierItemData;
+		this.gems = [];
+
+		for (let i = 0; i < this.armor.gemNo; i++) {
+			this.gems.push(noneGem as GemItemData);
+		}
+	}
+
+	fixSlotLevel() {
+		if (this.armorLevel > this.parentBuild.parentPlayer.level) {
+			let validArmors = [];
+			for (const statAtLevel of this.armor.statsPerLevel) {
+				if (statAtLevel.level <= this.parentBuild.parentPlayer.level) {
+					validArmors.push(statAtLevel);
+				}
+			}
+
+			if (validArmors.length > 0) {
+				this.armorLevel = validArmors[validArmors.length - 1].level;
+			} else {
+				this.armorLevel = 0;
+			}
+		}
+	}
+
+	fixSlotItems() {
+		const noneItem = this.database.find(
+			(item) => item.name === 'None' && item.mainType === this.armor.mainType
+		);
+		const noneEnchant = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Enchant'
+		);
+		const noneGem = this.database.find((item) => item.name === 'None' && item.mainType === 'Gem');
+		const noneModifier = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Modifier'
+		);
+
+		//Armor Fix
+		if (this.armor.name != 'None') {
+			this.armorLevel = this.armor.statsPerLevel[this.armor.statsPerLevel.length - 1].level;
+		} else {
+			this.armorLevel = 0;
+		}
+
+		//Arcanium Armor Fixing
+		if (
+			this.armor.statType == 'Magic' &&
+			!this.parentBuild.parentPlayer.magics.some((magic) => this.armor.name.includes(magic))
+		) {
+			this.armor = noneItem as ArmorItemData;
+		}
+
+		//Gems Fix
+		if (this.gems.length < this.armor.gemNo) {
+			const diff = this.armor.gemNo - this.gems.length;
+			for (let i = 0; i < diff; i++) {
+				this.gems.push(noneGem as GemItemData);
+			}
+		}
+
+		this.gems.splice(this.armor.gemNo);
+
+		//Modifiers Fix
+		if (!this.armor.validModifiers.includes(this.modifier.name)) {
+			this.modifier = noneModifier as ModifierItemData;
+		}
+
+		//Fix Levels
 		if (this.armorLevel > this.parentBuild.parentPlayer.level) {
 			let validArmors = [];
 			for (const statAtLevel of this.armor.statsPerLevel) {
@@ -71,24 +158,7 @@ export class ArmorSlot {
 	setArmor(armor: ArmorItemData) {
 		this.armor = armor;
 
-		if (armor.name != 'None') {
-			this.armorLevel = armor.statsPerLevel[armor.statsPerLevel.length - 1].level;
-		} else {
-			this.armorLevel = 0;
-		}
-		if (this.gems.length < armor.gemNo) {
-			const diff = armor.gemNo - this.gems.length;
-			for (let i = 0; i < diff; i++) {
-				this.gems.push(noneGem);
-			}
-		}
-
-		this.gems.splice(armor.gemNo); // remove excess gems
-
-		// Modifier checks
-		if (!armor.validModifiers.includes(this.modifier.name)) {
-			this.modifier = noneModifier;
-		}
+		this.fixSlotItems();
 	}
 
 	setGem(gemIndex: number, gem: GemItemData) {
@@ -111,7 +181,6 @@ export class ArmorSlot {
 		const modifierStats: any = this.modifier;
 		const levelMultiplier: any = this.armorLevel / 10;
 		const gemsStats: any[] = this.gems.map((gem) => filterData(gem));
-		console.log(gemsStats);
 
 		let finalSlotStats: any = {
 			power: 0,
@@ -208,6 +277,8 @@ export class ArmorSlot {
 
 				// Only happens if all have value
 				finalSlotStats['power'] += Math.floor(modifierStats['powerIncrement'] * levelMultiplier);
+				this.chosenAtlanteanAttribute = statRelations['powerIncrement'];
+				finalSlotStats.insanity += modifierStats.insanity;
 			} else {
 				// Regular modifier calculations
 				this.chosenAtlanteanAttribute = '';
@@ -224,6 +295,6 @@ export class ArmorSlot {
 		let slotCode: any[] = [];
 		slotCode = [this.armor, this.enchant, this.modifier, ...this.gems].map((item) => item.id);
 		slotCode.push(this.armorLevel);
-		return slotCode.join('.');
+		return slotCode.join(',');
 	}
 }

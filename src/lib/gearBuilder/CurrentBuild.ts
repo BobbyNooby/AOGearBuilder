@@ -1,11 +1,4 @@
 import { filterData } from '$lib/utils/filterData';
-import {
-	noneAccessory,
-	noneChestplate,
-	noneEnchant,
-	nonePants,
-	noneModifier
-} from './defaultGears';
 import type {
 	ArmorItemData,
 	GemItemData,
@@ -17,9 +10,12 @@ import type {
 import type { Player } from './playerClasses';
 
 import { ArmorSlot } from './ArmorSlot';
+import { noneModifier } from './defaultGears';
 //Move to frontend to handle
 
 export class CurrentBuild {
+	database: anyItem[] = [];
+
 	parentPlayer: Player;
 	slots: {
 		accessory1: ArmorSlot;
@@ -32,33 +28,77 @@ export class CurrentBuild {
 	constructor(parentPlayer: Player) {
 		//Establish two way interation between player and build
 		this.parentPlayer = parentPlayer;
+		this.database = parentPlayer.database;
+
+		const noneAccessory = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Accessory'
+		);
+		const noneChestplate = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Chestplate'
+		);
+		const nonePants = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Pants'
+		);
+
+		const noneEnchant = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Enchant'
+		);
+
+		const noneModifier = this.database.find(
+			(item) => item.name === 'None' && item.mainType === 'Modifier'
+		);
 
 		this.slots = {
-			accessory1: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			accessory2: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			accessory3: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			chestplate: new ArmorSlot(this, noneChestplate, noneEnchant, noneModifier),
-			pants: new ArmorSlot(this, nonePants, noneEnchant, noneModifier)
+			accessory1: new ArmorSlot(
+				this,
+				noneAccessory as ArmorItemData,
+				noneEnchant as EnchantItemData,
+				noneModifier as ModifierItemData
+			),
+			accessory2: new ArmorSlot(
+				this,
+				noneAccessory as ArmorItemData,
+				noneEnchant as EnchantItemData,
+				noneModifier as ModifierItemData
+			),
+			accessory3: new ArmorSlot(
+				this,
+				noneAccessory as ArmorItemData,
+				noneEnchant as EnchantItemData,
+				noneModifier as ModifierItemData
+			),
+			chestplate: new ArmorSlot(
+				this,
+				noneChestplate as ArmorItemData,
+				noneEnchant as EnchantItemData,
+				noneModifier as ModifierItemData
+			),
+			pants: new ArmorSlot(
+				this,
+				nonePants as ArmorItemData,
+				noneEnchant as EnchantItemData,
+				noneModifier as ModifierItemData
+			)
 		};
 	}
 
 	resetBuild() {
-		this.slots = {
-			accessory1: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			accessory2: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			accessory3: new ArmorSlot(this, noneAccessory, noneEnchant, noneModifier),
-			chestplate: new ArmorSlot(this, noneChestplate, noneEnchant, noneModifier),
-			pants: new ArmorSlot(this, nonePants, noneEnchant, noneModifier)
-		};
-	}
-
-	fixSlotLevels() {
-		for (const slot of Object.values(this.slots)) {
-			slot.fixArmorLevel();
+		for (const slot in this.slots) {
+			this.slots[slot as keyof typeof this.slots].resetSlot();
 		}
 	}
 
-	fixMagicFightingItems() {}
+	fixBuildLevels() {
+		for (const slot of Object.values(this.slots)) {
+			slot.fixSlotLevel();
+		}
+	}
+
+	fixBuildItems() {
+		for (const slot of Object.values(this.slots)) {
+			slot.fixSlotItems();
+		}
+	}
 
 	getBuildStats(): ArmorStats {
 		let finalBuildStats: any = {
@@ -143,6 +183,22 @@ export class CurrentBuild {
 			}
 		}
 
+		//Magic validation handling
+		if (item.statType && ['Magic', 'Strength'].includes(item.statType)) {
+			badConditions = [
+				(item, slot) =>
+					item.statType == 'Magic' &&
+					(!this.parentPlayer.magics.some((magic) => item.name.includes(magic)) ||
+						(this.parentPlayer.magics.includes('Light') && item.name.includes('Lightning'))),
+				(item, slot) =>
+					item.statType == 'Strength' &&
+					!this.parentPlayer.fightingStyles.some((strength) => item.name.includes(strength))
+			];
+			if (badConditions.some((condition) => condition(item, slot))) {
+				return false;
+			}
+		}
+
 		return true;
 	}
 
@@ -155,8 +211,8 @@ export class CurrentBuild {
 			} else if (item.mainType == 'Modifier') {
 				this.slots[slotKey].setModifier(item as ModifierItemData);
 			} else if (item.mainType == 'Gem' && gemIndex !== false) {
-				if (typeof gemIndex == "number") {
-					if (gemIndex as number < this.slots[slotKey].armor.gemNo) {
+				if (typeof gemIndex == 'number') {
+					if ((gemIndex as number) < this.slots[slotKey].armor.gemNo) {
 						this.slots[slotKey].setGem(gemIndex as number, item as GemItemData);
 					}
 				} else {

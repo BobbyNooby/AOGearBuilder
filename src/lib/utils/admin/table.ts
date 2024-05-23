@@ -339,6 +339,7 @@ export class Table {
 
 	getData() {
 		let data = this.columns.map((column) => column.getData());
+		console.log(data);
 
 		data = data.filter(function (column) {
 			return !(Object.keys(column).length <= 1 && 'level' in column);
@@ -347,8 +348,12 @@ export class Table {
 		if (this.levelVisibility) {
 			return data;
 		} else {
-			delete data[0].level;
-			return data[0];
+			if (data.length == 0) {
+				return {};
+			} else {
+				delete data[0].level;
+				return data[0];
+			}
 		}
 	}
 }

@@ -2,8 +2,16 @@
 	import { Player } from '$lib/gearBuilder/playerClasses';
 	import PlayerStatBar from './PlayerStatBar.svelte';
 	import { hexToRGB } from '$lib/utils/hexToRGB';
-	import { writable } from 'svelte/store';
+	import { get, writable } from 'svelte/store';
 	import { isMobile } from '$lib/utils/mobileStore';
+	import { clamp } from '$lib/utils/clamp';
+	import { magicRecords } from '$lib/data/playerMagics';
+	import { fightingStyleRecords } from '$lib/data/playerFightingStyles';
+	import MagicFsSelectButton from './MagicFSSelectButton.svelte';
+	import BlackButton from '$lib/components/misc/BlackButton.svelte';
+	import { savantChoiceStore, savantChoices } from '$lib/gearBuilder/savantChoiceStore';
+	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
 
 	export let player: Player, updatePage: any;
 
@@ -17,12 +25,40 @@
 	let baseHealth = 93 + player.level * 7;
 	player.health = baseHealth + player.build.getBuildStats().defense;
 
+	// This doesnt work atm im just lazy to remove :P
+	const tweenMethod = cubicOut;
+	const tweenDuration = 300;
+
+	const vitalityTween = tweened(player.vitalityPoints, {
+		duration: tweenDuration,
+		easing: tweenMethod
+	});
+
+	const magicTween = tweened(player.magicPoints, {
+		duration: tweenDuration,
+		easing: tweenMethod
+	});
+
+	const strengthTween = tweened(player.strengthPoints, {
+		duration: tweenDuration,
+		easing: tweenMethod
+	});
+
+	const weaponTween = tweened(player.weaponPoints, {
+		duration: tweenDuration,
+		easing: tweenMethod
+	});
+
 	function incrementStat(
 		statPoint: 'vitalityPoints' | 'magicPoints' | 'strengthPoints' | 'weaponPoints',
 		amount: number
 	) {
 		// Initializing
 		maximumPlayerStatPoints = player.level * 2;
+
+		// Deciding
+		player.changeStatPoint(statPoint, amount);
+
 		availablePlayerStatPoints =
 			maximumPlayerStatPoints -
 			player.vitalityPoints -
@@ -30,100 +66,43 @@
 			player.strengthPoints -
 			player.weaponPoints;
 
-		// Deciding
-		if (availablePlayerStatPoints > 0 && amount >= availablePlayerStatPoints) {
-			player[statPoint] += availablePlayerStatPoints;
-		} else if ((amount < 0 || availablePlayerStatPoints > 0) && player[statPoint] + amount >= 0) {
-			player[statPoint] += amount;
-		}
-		updatePage();
+		updateComponent();
 	}
 
 	$: {
-		// Level restraints
-		if (player.level > player.maxLevel) {
-			player.level = player.maxLevel;
-		} else if (player.level < player.minLevel) {
-			player.level = player.minLevel;
-		}
-
-		// Stat restraints
-		maximumPlayerStatPoints = player.level * 2;
-
-		// Restricting stat values
-		let currentPlayerStatPoints =
-			player.vitalityPoints + player.magicPoints + player.strengthPoints + player.weaponPoints;
-
-		if (currentPlayerStatPoints > maximumPlayerStatPoints) {
-			for (let i = 0; i < currentPlayerStatPoints - maximumPlayerStatPoints; i++) {
-				let highestStat = Math.max(
-					player.vitalityPoints,
-					player.magicPoints,
-					player.strengthPoints,
-					player.weaponPoints
-				);
-				let statToModify = '';
-				if (player.vitalityPoints === highestStat) {
-					statToModify = 'vitalityPoints';
-				} else if (player.magicPoints === highestStat) {
-					statToModify = 'magicPoints';
-				} else if (player.strengthPoints === highestStat) {
-					statToModify = 'strengthPoints';
-				} else {
-					statToModify = 'weaponPoints';
-				}
-				player[statToModify] -= 1;
-			}
-		}
-
-		availablePlayerStatPoints =
-			maximumPlayerStatPoints -
-			player.vitalityPoints -
-			player.magicPoints -
-			player.strengthPoints -
-			player.weaponPoints;
-
-		const playerStats: ('vitalityPoints' | 'magicPoints' | 'strengthPoints' | 'weaponPoints')[] = [
-			'vitalityPoints',
-			'magicPoints',
-			'strengthPoints',
-			'weaponPoints'
-		];
-
-		for (const stat of playerStats) {
-			if (player[stat] > maximumPlayerStatPoints) {
-				player[stat] = maximumPlayerStatPoints;
-			} else if (player[stat] < 0) {
-				player[stat] = 0;
-			}
-		}
+		player.level = clamp(player.level, player.minLevel, player.maxLevel);
 
 		baseHealth = 93 + player.level * 7;
-		player.health = baseHealth + player.build.getBuildStats().defense + player.vitalityPoints * 4;
-		player.build.fixSlotLevels();
+		player.updateHealth();
+		player.build.fixBuildLevels();
 	}
 
 	function handleLevelChange(amount: number) {
-		const newLevel = player.level + amount;
-		if (player.minLevel <= newLevel && newLevel <= player.maxLevel) {
-			player.level = newLevel;
-		}
+		player.changePlayerLevel(amount);
 	}
 
 	function resetAllPlayerStats() {
-		player.vitalityPoints = 0;
-		player.magicPoints = 0;
-		player.strengthPoints = 0;
-		player.weaponPoints = 0;
+		player.resetStatPoints();
+		updateComponent();
 	}
 
 	const keyStore = writable(false);
 
-	function updateComponent() {
-		updatePage();
-		player.build.fixSlotLevels();
+	async function updateComponent() {
+		player.build.fixBuildLevels();
+		player.updateStatBuild();
+
+		// Updating Tweens
+		vitalityTween.set(player.vitalityPoints);
+		magicTween.set(player.magicPoints);
+		strengthTween.set(player.strengthPoints);
+		weaponTween.set(player.weaponPoints);
+
 		keyStore.update((value) => !value);
+		updatePage();
 	}
+
+	let savantChoice = get(savantChoiceStore)[0];
 </script>
 
 {#key $keyStore}
@@ -134,8 +113,46 @@
 			<div class="h-full w-full flex flex-row">
 				<div class="flex flex-col w-1/3 h-full items-center">
 					<div class="m-3">
-						<div class="flex items-center justify-center my-5">
-							<!-- Leave for the future <MagicSelectButton {player} {updatePage}></MagicSelectButton> -->
+						<div class="flex flex-col items-center justify-center my-5">
+							<div class="flex flex-row">
+								{#each player.magics as _, i}
+									<MagicFsSelectButton
+										abilityType={'Magic'}
+										abilityName={player.magics[i]}
+										abilityImageId={magicRecords[player.magics[i]].imageId}
+										abilityIndex={i}
+										{player}
+										{updatePage}
+									/>
+									<!-- Leave for the future <MagicSelectButton {player} {updatePage}></MagicSelectButton> -->
+								{/each}
+							</div>
+							<div class="flex flex-row">
+								{#each player.fightingStyles as _, i}
+									<MagicFsSelectButton
+										abilityType={'Fighting Style'}
+										abilityName={player.fightingStyles[i]}
+										abilityImageId={fightingStyleRecords[player.fightingStyles[i]].imageId}
+										abilityIndex={i}
+										{player}
+										{updatePage}
+									/>
+								{/each}
+							</div>
+							{#if player.statBuild.name == 'Savant'}
+								<select
+									bind:value={savantChoice}
+									on:change={() => {
+										savantChoiceStore.set([savantChoice]);
+										updateComponent();
+									}}
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+								>
+									{#each savantChoices as savantChoice}
+										<option value={savantChoice}>{savantChoice}</option>
+									{/each}
+								</select>
+							{/if}
 						</div>
 						<div class="flex flex-row items-center">
 							<p style="font-family: Merriweather;" class=" text-white text-3xl m-3">Level</p>
@@ -194,7 +211,9 @@
 								background-color: 
 								rgba({hexToRGB('#AFA9EE').r}, {hexToRGB('#AFA9EE').g}, {hexToRGB('#AFA9EE').b}, 0.2); "
 								class="border-2 h-fit px-4 rounded items-center justify-center"
-								on:click={resetAllPlayerStats}><p class="text-l">Reset Stats</p></button
+								on:click={() => {
+									resetAllPlayerStats();
+								}}><p class="text-l">Reset Stats</p></button
 							>
 						</div>
 					</div>
@@ -215,6 +234,7 @@
 							barColor={'#22c55e'}
 							buttonColor={'#AFA9EE'}
 							incrementorFunction={incrementStat}
+							barValue={$vitalityTween}
 						/>
 
 						<PlayerStatBar
@@ -227,6 +247,7 @@
 							barColor={'#3b82f6'}
 							buttonColor={'#AFA9EE'}
 							incrementorFunction={incrementStat}
+							barValue={$magicTween}
 						/>
 
 						<PlayerStatBar
@@ -239,6 +260,7 @@
 							barColor={'#f87171'}
 							buttonColor={'#AFA9EE'}
 							incrementorFunction={incrementStat}
+							barValue={$strengthTween}
 						/>
 
 						<PlayerStatBar
@@ -251,6 +273,7 @@
 							barColor={'#FACC15'}
 							buttonColor={'#AFA9EE'}
 							incrementorFunction={incrementStat}
+							barValue={$weaponTween}
 						/>
 					</div>
 				</div>
@@ -271,10 +294,34 @@
 			<div class="h-full w-full flex flex-col">
 				<div>
 					<div class="flex items-center justify-center my-5">
-						<!-- Leave for the future <MagicSelectButton {player} {updatePage}></MagicSelectButton> -->
+						<div class="flex flex-col">
+							<div class="flex flex-row">
+								{#each Array(player.statBuild.magicNo) as _, i}
+									<MagicFsSelectButton
+										abilityType={'Magic'}
+										abilityName={player.magics[i]}
+										abilityImageId={magicRecords[player.magics[i]].imageId}
+										abilityIndex={i}
+										{player}
+										{updatePage}
+									/>
+									<!-- Leave for the future <MagicSelectButton {player} {updatePage}></MagicSelectButton> -->
+								{/each}
+							</div>
+							{#each Array(player.statBuild.fightingStyleNo) as _, i}
+								<MagicFsSelectButton
+									abilityType={'Fighting Style'}
+									abilityName={player.fightingStyles[i]}
+									abilityImageId={fightingStyleRecords[player.fightingStyles[i]].imageId}
+									abilityIndex={i}
+									{player}
+									{updatePage}
+								/>
+							{/each}
+						</div>
 					</div>
-					<div class="flex flex-row items-center">
-						<p style="font-family: Merriweather;" class=" text-white text-3xl">Level</p>
+					<div class="flex flex-row items-center justify-center">
+						<p style="font-family: Merriweather;" class=" text-white text-3xl mr-2">Level</p>
 						<div class="flex items-center">
 							<button
 								on:click={() => {
@@ -300,28 +347,32 @@
 							>
 						</div>
 					</div>
-					<div class="flex flex-row text-white my-2">
-						<p style="font-family: Merriweather;" class="text-xl">Health :</p>
-						<p style="font-family: Merriweather;" class=" text-green-500 text-xl">
-							{player.health}
+					<div class="flex flex-row text-white my-2 items-center justify-center">
+						<p style="font-family: Merriweather;" class="text-xl">
+							Health :
+							<span style="font-family: Merriweather;" class=" text-green-500 text-xl">
+								{player.health}</span
+							>
 						</p>
 					</div>
-					<div class="flex flex-row text-white my-2">
-						<p style="font-family: Merriweather;" class="text-xl">Base Health :</p>
-						<p style="font-family: Merriweather;" class=" text-green-200 text-xl">
-							{baseHealth}
+					<div class="flex flex-row text-white my-2 items-center justify-center">
+						<p style="font-family: Merriweather;" class="text-xl">
+							Base Health :
+							<span style="font-family: Merriweather;" class=" text-green-200 text-xl">
+								{baseHealth}</span
+							>
 						</p>
 					</div>
 				</div>
 
 				<div class="w-full justify-between flex flex-col my-4">
-					<div class="flex items-center text-left">
+					<div class="flex items-center text-left justify-center">
 						<p class="text-xl my-2" style="color : #9c95ea; font-family : Merriweather;">
 							Maximum Points : <span style="color : #c3bef3">{maximumPlayerStatPoints}</span><br />
 							Available Points : <span style="color : #c3bef3">{availablePlayerStatPoints}</span>
 						</p>
 					</div>
-					<div class="flex items-center text-right">
+					<div class="flex items-center text-right justify-center">
 						<button
 							style="
 						color: #AFA9EE; 
@@ -334,10 +385,9 @@
 					</div>
 				</div>
 
-				<p class="text-4xl my-4" style="color : #FFFFFF; font-family : Merriweather;">
-					Stat Build : <span style="color : {player.getStatBuild().color}"
-						>{player.getStatBuild().type}</span
-					>
+				<p class="text-4xl my-4 text-center" style="color : #FFFFFF; font-family : Merriweather;">
+					Stat Build<br />
+					<span style="color : {player.getStatBuild().color}">{player.getStatBuild().type}</span>
 				</p>
 				<div>
 					<PlayerStatBar
@@ -350,6 +400,7 @@
 						barColor={'#22c55e'}
 						buttonColor={'#AFA9EE'}
 						incrementorFunction={incrementStat}
+						barValue={$vitalityTween}
 					/>
 
 					<PlayerStatBar
@@ -362,6 +413,7 @@
 						barColor={'#3b82f6'}
 						buttonColor={'#AFA9EE'}
 						incrementorFunction={incrementStat}
+						barValue={$magicTween}
 					/>
 
 					<PlayerStatBar
@@ -374,6 +426,7 @@
 						barColor={'#f87171'}
 						buttonColor={'#AFA9EE'}
 						incrementorFunction={incrementStat}
+						barValue={$strengthTween}
 					/>
 
 					<PlayerStatBar
@@ -386,6 +439,7 @@
 						barColor={'#FACC15'}
 						buttonColor={'#AFA9EE'}
 						incrementorFunction={incrementStat}
+						barValue={$weaponTween}
 					/>
 				</div>
 			</div>

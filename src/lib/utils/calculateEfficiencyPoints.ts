@@ -1,5 +1,6 @@
 import type { ItemStats } from '$lib/gearBuilder/itemTypes';
 import type { Player } from '$lib/gearBuilder/playerClasses';
+import { roundDecimal } from './roundDecimal';
 
 export function calculateEfficiencyPoints(stats: ItemStats, playerLevel: number): number {
 	let efficiencyPoints = 0;
@@ -20,5 +21,5 @@ export function calculateEfficiencyPoints(stats: ItemStats, playerLevel: number)
 		}
 	}
 
-	return Math.round((efficiencyPoints + Number.EPSILON) * 100) / 100;
+	return roundDecimal(efficiencyPoints, 2);
 }

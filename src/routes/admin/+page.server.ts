@@ -6,6 +6,10 @@ import type { Actions } from './$types';
 let itemsDB = db.collection<anyItem>("items");
 
 async function verifySession(session:any) {
+	if (session == null) {
+		return fail(403, { "error":"Not logged in" });
+	}
+
 	let sessionobj = await db.collection("users").findOne({"id":session.user.id});
 	console.log(sessionobj)
 	if (sessionobj != null && sessionobj.permissions.database == true) {

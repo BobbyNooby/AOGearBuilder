@@ -66,7 +66,7 @@
 	<!-- Overlay with builds -->
 	{#if menuIsActive}
 		<div
-			class="z-10 fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 overflow-y-auto"
+			class="z-30 fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 overflow-y-auto"
 			in:fade={{ duration: 100 }}
 			out:fade={{ duration: 100 }}
 		>
