@@ -5,7 +5,7 @@
 		EnchantItemData,
 		GemItemData,
 		ModifierItemData
-	} from '$lib/gearBuilder/itemTypes';
+	} from '$lib/utils/itemTypes';
 	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import Item from './Item.svelte';
 	import { rarityColors, staticImagesRootFolder } from '$lib/dataConstants';

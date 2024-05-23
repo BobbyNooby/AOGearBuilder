@@ -1,4 +1,9 @@
-import type { ArmorItemData, GemItemData, EnchantItemData, ModifierItemData } from './itemTypes';
+import type {
+	ArmorItemData,
+	GemItemData,
+	EnchantItemData,
+	ModifierItemData
+} from '../utils/itemTypes';
 
 export const noneAccessory: ArmorItemData = {
 	id: 'AAA',

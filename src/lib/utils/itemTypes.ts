@@ -84,6 +84,18 @@ export type ShipStats = Partial<{
 	turning: number;
 }>;
 
+export type MainShip = ItemIdentifiers &
+	ShipStats & {
+		hullArmorSlot: number;
+		quartermasterSlot: number;
+		cannonSlot: number;
+		siegeWeaponSlot: number;
+		sailMaterialSlot: number;
+		shipCrewSlot: number;
+		ramSlot: number;
+		deckhandSlot: number;
+	};
+
 export type ArmorStats = GearBaseStats & GearStaticStats;
 export type GemStats = ArmorStats;
 export type ModifierStats = GearIncrementalStats & GearStaticStats;

@@ -1,4 +1,4 @@
-import type { Rarities } from './gearBuilder/itemTypes';
+import type { Rarities } from './utils/itemTypes';
 import type { magic } from './gearBuilder/playerTypes';
 
 export const staticImagesRootFolder: string =

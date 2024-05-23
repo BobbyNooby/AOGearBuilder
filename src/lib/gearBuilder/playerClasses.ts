@@ -8,7 +8,7 @@ import { isLegacyArmorBuild } from './buildCodeHandling/legacyCode';
 import { clamp } from '$lib/utils/clamp';
 import { statBuilds } from '$lib/data/statBuilds';
 import { magicRecords } from '$lib/data/playerMagics';
-import type { anyItem } from './itemTypes';
+import type { anyItem } from '../utils/itemTypes';
 import { fightingStyleRecords, listOfFightingStyles } from '$lib/data/playerFightingStyles';
 import { isPreMagicFSBuildCode, loadPreMagicFSBuildCode } from './buildCodeHandling/preMagicFS';
 import { savantChoiceStore } from './savantChoiceStore';

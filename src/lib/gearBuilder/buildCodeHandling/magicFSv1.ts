@@ -1,7 +1,7 @@
 import { listOfFightingStyles } from '$lib/data/playerFightingStyles';
 import { listOfMagics } from '$lib/dataConstants';
 import { getItemById } from '$lib/utils/getItemById';
-import type { anyItem } from '../itemTypes';
+import type { anyItem } from '../../utils/itemTypes';
 import type { Player } from '../playerClasses';
 import { savantChoiceStore } from '../savantChoiceStore';
 

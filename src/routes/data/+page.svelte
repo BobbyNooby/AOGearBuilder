@@ -1,7 +1,7 @@
 <script lang="ts">
 	import DataStats from "$lib/components/data/DataStats.svelte";
 	import { rarityColors } from "$lib/dataConstants";
-	import type { anyItem } from "$lib/gearBuilder/itemTypes";
+	import type { anyItem } from "$lib/utils/itemTypes";
 
 
 	export let data:any;

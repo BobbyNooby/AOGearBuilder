@@ -6,7 +6,7 @@
 		GemItemData,
 		EnchantItemData,
 		ModifierItemData
-	} from '$lib/gearBuilder/itemTypes';
+	} from '$lib/utils/itemTypes';
 	import { writable } from 'svelte/store';
 	import ItemTooltip from './ItemTooltip.svelte';
 	import type { Player } from '$lib/gearBuilder/playerClasses';

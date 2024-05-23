@@ -6,7 +6,7 @@ import type {
 	ModifierItemData,
 	ArmorStats,
 	anyItem
-} from './itemTypes';
+} from '../utils/itemTypes';
 import type { Player } from './playerClasses';
 
 import { ArmorSlot } from './ArmorSlot';

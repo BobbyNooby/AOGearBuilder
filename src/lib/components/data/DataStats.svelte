@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-	import type { anyItem } from '$lib/gearBuilder/itemTypes';
+	import type { anyItem } from '$lib/utils/itemTypes';
 	import { Column, Table } from '$lib/utils/admin/table';
 	import { rarityColors } from '$lib/dataConstants';
 	import DataImage from './DataImage.svelte';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ItemMenuButton from '$lib/components/admin/ItemMenuButton.svelte';
-	import type { anyItem } from '$lib//gearBuilder/itemTypes';
+	import type { anyItem } from '$lib/utils/itemTypes';
 	import { SignIn, SignOut } from '@auth/sveltekit/components';
 	import { page } from '$app/stores';
 	import { list } from 'postcss';

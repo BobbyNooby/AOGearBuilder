@@ -5,7 +5,7 @@
 		GemItemData,
 		EnchantItemData,
 		ModifierItemData
-	} from '$lib/gearBuilder/itemTypes';
+	} from '$lib/utils/itemTypes';
 	import { filterData } from '$lib/utils/filterData';
 	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import StatWithPercentEffectiveness from './StatWithPercentEffectiveness.svelte';
