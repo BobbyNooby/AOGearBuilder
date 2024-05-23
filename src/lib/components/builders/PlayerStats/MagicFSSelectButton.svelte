@@ -241,7 +241,7 @@
 				Select {abilityType}
 			</p>
 			<div
-				class="flex flex-row border-white rounded border w-3/4 overflow-x-scroll items-center min-h-36"
+				class="flex flex-row border-white rounded border w-3/4 overflow-x-scroll items-center min-h-44"
 			>
 				{#each Object.values(abilityList) as abilityOption}
 					<div class="m-2">
@@ -356,7 +356,7 @@
 				Select {abilityType}
 			</p>
 			<div
-				class="flex flex-row border-white rounded border min-h-40 w-full px-2 overflow-x-scroll items-center"
+				class="flex flex-row border-white rounded border min-h-44 w-full px-2 overflow-x-scroll items-center"
 			>
 				{#each Object.values(abilityList) as abilityOption}
 					<div class="m-2">
