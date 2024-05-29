@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Player } from '$lib/gearBuilder/playerClasses';
-	import BlackButton from '../Misc/BlackButton.svelte';
+	import BlackButton from '../misc/BlackButton.svelte';
 
 	export let database: any[], player: Player, updatePage: () => void;
 

@@ -211,14 +211,14 @@
 		{#if item.statType && item.statType != 'None'}
 			<img
 				style="opacity: {item.statType ? '1' : '0'};"
-				src="{staticImagesRootFolder}/Misc/{item.statType}Items.png"
+				src="{staticImagesRootFolder}/misc/{item.statType}Items.png"
 				alt="Magic"
 				class="w-full h-full absolute right-0 bottom-0 z-20"
 			/>
 		{/if}
 		<div class="absolute right-0 bottom-0 flex flex-row z-30">
 			{#each { length: item.gemNo } as _, i}
-				<img src="{staticImagesRootFolder}/Misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
+				<img src="{staticImagesRootFolder}/misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
 			{/each}
 		</div>
 		<img

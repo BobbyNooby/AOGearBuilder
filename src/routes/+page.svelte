@@ -2,7 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import NavGrid from '$lib/components/Misc/NavGrid.svelte';
+	import NavGrid from '$lib/components/misc/NavGrid.svelte';
 
 	// Fade in initiator
 	let ready = false;

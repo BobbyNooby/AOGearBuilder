@@ -8,7 +8,7 @@
 	import { magicRecords } from '$lib/data/playerMagics';
 	import { fightingStyleRecords } from '$lib/data/playerFightingStyles';
 	import MagicFsSelectButton from './MagicFSSelectButton.svelte';
-	import BlackButton from '$lib/components/Misc/BlackButton.svelte';
+	import BlackButton from '$lib/components/misc/BlackButton.svelte';
 	import { savantChoiceStore, savantChoices } from '$lib/gearBuilder/savantChoiceStore';
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
