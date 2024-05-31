@@ -4,7 +4,7 @@ import db, { filterCollection } from '$lib/dbHandler';
 export const load: PageServerLoad = async () => {
 	const data = await db
 		.collection('items')
-		.find({}, { projection: { _id: 0 } })
+		.find({ deleted: false }, { projection: { _id: 0 } })
 		.toArray();
 
 	return {

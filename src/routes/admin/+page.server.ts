@@ -3,36 +3,36 @@ import type { anyItem } from '$lib/gearBuilder/itemTypes.js';
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
-let itemsDB = db.collection<anyItem>("items");
+let itemsDB = db.collection<anyItem>('items');
 
-async function verifySession(session:any) {
+async function verifySession(session: any) {
 	if (session == null) {
-		return fail(403, { "error":"Not logged in" });
+		return fail(403, { error: 'Not logged in' });
 	}
 
-	let sessionobj = await db.collection("users").findOne({"id":session.user.id});
-	console.log(sessionobj)
+	let sessionobj = await db.collection('users').findOne({ id: session.user.id });
+	console.log(sessionobj);
 	if (sessionobj != null && sessionobj.permissions.database == true) {
-		return true
+		return true;
 	}
-	return fail(403, { "error":"No database access" });
+	return fail(403, { error: 'No database access' });
 }
 
 const maxIdGen = 100;
-const idLength:number = 3;
+const idLength: number = 3;
 
-const characters:string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+const characters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 function getRandomId() {
-	let id:string = "";
+	let id: string = '';
 	for (let i = 0; i < idLength; i++) {
-		id += characters.charAt(Math.floor(Math.random() * characters.length))
+		id += characters.charAt(Math.floor(Math.random() * characters.length));
 	}
 	return id;
 }
 
-function checkAttributes(item:anyItem) {
-	let attributes = ["id","name","legend","mainType","rarity","imageId","deleted"];
+function checkAttributes(item: anyItem) {
+	let attributes = ['id', 'name', 'legend', 'mainType', 'rarity', 'imageId', 'deleted'];
 
 	for (let attribute of attributes) {
 		if (!(attribute in item)) {
@@ -44,15 +44,20 @@ function checkAttributes(item:anyItem) {
 }
 
 export async function load({ fetch, setHeaders }) {
-
-    const data = await itemsDB.find({}, {projection: {
-		_id: 0
-	}}).toArray();
-
+	const data = await itemsDB
+		.find(
+			{ deleted: false },
+			{
+				projection: {
+					_id: 0
+				}
+			}
+		)
+		.toArray();
 
 	return {
 		items: data
-	}
+	};
 }
 
 /*
@@ -72,10 +77,8 @@ imageId: https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/stati
 
 */
 
-
-
 export const actions = {
-	create: async ( event ) => {
+	create: async (event) => {
 		let session = await event.locals.auth();
 		let validSession = await verifySession(session);
 		if (validSession != true) {
@@ -83,31 +86,33 @@ export const actions = {
 		}
 
 		const formData = await event.request.formData();
-		
 
-        let item:anyItem = JSON.parse((formData.get("itemData") as string));
+		let item: anyItem = JSON.parse(formData.get('itemData') as string);
 
 		// do validating checks
 		let validAttributes = checkAttributes(item);
 		if (validAttributes != true) {
-			return fail(403, { "error": `Missing ${validAttributes}` });
+			return fail(403, { error: `Missing ${validAttributes}` });
 		}
 
 		let newId = getRandomId();
 		let generatedIds = 0;
 
-		while (await itemsDB.findOne({"id":newId}, {projection: {_id: 0, id:1}})) {
+		while (await itemsDB.findOne({ id: newId }, { projection: { _id: 0, id: 1 } })) {
 			newId = getRandomId();
 			generatedIds += 1;
 			if (generatedIds > maxIdGen) {
-				return fail(403, { "error":"Something has gone wrong. Reached max IDs generated. The database maybe full please contact a developer." });
+				return fail(403, {
+					error:
+						'Something has gone wrong. Reached max IDs generated. The database maybe full please contact a developer.'
+				});
 			}
 		}
 		item.id = newId;
 
-        await db.collection("items").insertOne(item);
+		await db.collection('items').insertOne(item);
 	},
-	edit: async ( event ) => {
+	edit: async (event) => {
 		let session = await event.locals.auth();
 		let validSession = await verifySession(session);
 		if (validSession != true) {
@@ -116,14 +121,14 @@ export const actions = {
 
 		const formData = await event.request.formData();
 
-		let item:anyItem = JSON.parse((formData.get("itemData") as string));
+		let item: anyItem = JSON.parse(formData.get('itemData') as string);
 
 		// do validating checks
 		let validAttributes = checkAttributes(item);
 		if (validAttributes != true) {
-			return fail(403, { "error": `Missing ${validAttributes}` });
+			return fail(403, { error: `Missing ${validAttributes}` });
 		}
 
-		await db.collection("items").updateOne({"id":item.id}, { $set: item});
+		await db.collection('items').updateOne({ id: item.id }, { $set: item });
 	}
 } satisfies Actions;
