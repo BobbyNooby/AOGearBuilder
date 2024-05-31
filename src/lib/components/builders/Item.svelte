@@ -11,12 +11,13 @@
 	import ItemTooltip from './ItemTooltip.svelte';
 	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import { isMobile } from '$lib/utils/mobileStore';
-	import { gems } from '$lib/data/OLD/gear/gems';
+	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
 
 	export let item: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
 		slotKey: 'accessory1' | 'accessory2' | 'accessory3' | 'chestplate' | 'pants',
 		gemIndex: boolean | number,
-		player: Player,
+		player: Player | undefined = undefined,
+		ship: CurrentShipBuild | undefined = undefined,
 		toggleMenu: () => void,
 		updatePage: () => void;
 
@@ -79,12 +80,16 @@
 	}
 
 	function handleClick() {
-		const itemSetted: boolean = player.build.setGear(item, slotKey, gemIndex);
+		if (player) {
+			const itemSetted: boolean = player.build.setGear(item, slotKey, gemIndex);
 
-		console.log(itemSetted);
-		if (itemSetted === true) {
-			updatePage();
-			toggleMenu();
+			console.log(itemSetted);
+			if (itemSetted === true) {
+				updatePage();
+				toggleMenu();
+			}
+		} else if (ship) {
+			console.log('asd');
 		}
 	}
 
@@ -116,8 +121,6 @@
 	}
 
 	let validImage = true;
-
-	let image = new Image();
 </script>
 
 {#if !$isMobile}

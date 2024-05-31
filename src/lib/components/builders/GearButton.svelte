@@ -12,12 +12,14 @@
 	import { filterType, sortType } from '$lib/utils/filterSortStore';
 	import FilterButton from './FilterButton.svelte';
 	import SortButton from './SortButton.svelte';
+	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
 
 	export let currentItem: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
 		database: any,
 		slotKey: string,
-		player: Player,
-		gemIndex: boolean | number,
+		player: Player | undefined = undefined,
+		ship: CurrentShipBuild | undefined = undefined,
+		gemIndex: boolean | number = false,
 		updatePage: () => void;
 
 	let menuBool = false;
@@ -43,7 +45,7 @@
 					// (item.statType == 'Magic' && !player.magics.some((magic) => item.name.includes(magic))) ||
 					// (item.statType == 'Strength' &&
 					// 	!player.fightingStyles.some((style) => item.name.includes(style)))
-					!player.build.validateItem(item, slotKey)
+					player ? !player.build.validateItem(item, slotKey) : false
 				) {
 					return false;
 				} else {
@@ -181,11 +183,11 @@
 			<SortButton></SortButton>
 		</div>
 		<div class="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4">
-			<Item item={placeholderItem} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />
+			<Item item={placeholderItem} {slotKey} {gemIndex} {player} {ship} {toggleMenu} {updatePage} />
 
 			{#each sortedItems as item}
 				{#if item.name !== 'None'}
-					<Item {item} {slotKey} {gemIndex} {player} {toggleMenu} {updatePage} />
+					<Item {item} {slotKey} {gemIndex} {player} {ship} {toggleMenu} {updatePage} />
 				{/if}
 			{/each}
 		</div>

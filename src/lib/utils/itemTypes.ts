@@ -119,4 +119,6 @@ export type ShipItemData = ItemIdentifiers & ShipStats & { mainType: ShipMainTyp
 export type EnchantItemData = ItemIdentifiers & EnchantStats & { mainType: EnchantMainTypes };
 export type ModifierItemData = ItemIdentifiers & ModifierStats & { mainType: ModifierMainTypes };
 
-export type anyItem = Partial<ArmorItemData | GemItemData | EnchantItemData | ModifierItemData>;
+export type anyItem = Partial<
+	ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | ShipItemData
+>;
