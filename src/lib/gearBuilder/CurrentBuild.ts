@@ -192,7 +192,11 @@ export class CurrentBuild {
 						(this.parentPlayer.magics.includes('Light') && item.name.includes('Lightning'))),
 				(item, slot) =>
 					item.statType == 'Strength' &&
-					!this.parentPlayer.fightingStyles.some((strength) => item.name.includes(strength))
+					!this.parentPlayer.fightingStyles.some(
+						(strength) =>
+							(strength != 'Sailor Fist' && item.name.includes(strength)) ||
+							(strength == 'Sailor Fist' && item.name.includes('Sailor Style'))
+					)
 			];
 			if (badConditions.some((condition) => condition(item, slot))) {
 				return false;
