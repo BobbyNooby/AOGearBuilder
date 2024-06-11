@@ -272,7 +272,7 @@
 
 	let statsTable: Table;
 	if (mode == 'create') {
-		statsTable = new Table(90, 130, true);
+		statsTable = new Table(90, 140, true);
 	}
 	if (mode == 'edit') {
 		if ('minLevel' in item && 'maxLevel' in item) {
@@ -579,7 +579,7 @@
 								name={'Max Level'}
 								value={statsTable.maxLevel}
 								min={statsTable.minLevel}
-								max={130}
+								max={140}
 								step={10}
 								onChange={setMax}
 								isRequired={true}
@@ -629,7 +629,7 @@
 							{#if item.statType && item.statType != 'None'}
 								<img
 									style="opacity: {item.statType ? '1' : '0'};"
-									src="{staticImagesRootFolder}/misc/{item.statType}Items.png"
+									src="{staticImagesRootFolder}/Misc/{item.statType}Items.png"
 									alt="Magic"
 									class="w-full h-full absolute right-0 bottom-0 z-20"
 								/>
@@ -637,7 +637,7 @@
 							<div class="absolute right-0 bottom-0 flex flex-row z-30">
 								{#each { length: item.gemNo } as _, i}
 									<img
-										src="{staticImagesRootFolder}/misc/gemslot.png"
+										src="{staticImagesRootFolder}/Misc/gemslot.png"
 										alt="Gem slot"
 										class=" w-5 h-5"
 									/>

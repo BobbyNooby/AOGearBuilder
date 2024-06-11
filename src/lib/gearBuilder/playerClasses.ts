@@ -37,7 +37,7 @@ export class Player {
 
 	constructor(
 		database: anyItem[],
-		level = 136,
+		level = 140,
 		health = 93,
 
 		vitalityPoints = 0,
@@ -55,7 +55,7 @@ export class Player {
 		this.health = health + this.level * 7;
 
 		this.minLevel = 1;
-		this.maxLevel = 136;
+		this.maxLevel = 140;
 
 		this.build = new CurrentBuild(this);
 
