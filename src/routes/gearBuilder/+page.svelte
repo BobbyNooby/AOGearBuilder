@@ -22,7 +22,7 @@
 	export let data: PageData;
 	let ready = false;
 
-	let SessionPlayer = new Player(data.Database);
+	let SessionPlayer = new Player(data.Database, data.config.maxLevel);
 	const updatePageStore = writable(false);
 
 	function loadHash() {

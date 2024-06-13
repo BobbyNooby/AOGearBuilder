@@ -145,7 +145,7 @@
 		{#each missingStatsItems as item}
 			<div class="flex flex-col p-1">
 				{#key item.id}
-                	<DataStats {item} />
+                	<DataStats config={data.config} {item} />
 				{/key}
 			</div>
 		{/each}

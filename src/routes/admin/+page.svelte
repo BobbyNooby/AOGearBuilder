@@ -4,6 +4,9 @@
 	import { SignIn, SignOut } from '@auth/sveltekit/components';
 	import { page } from '$app/stores';
 	import { list } from 'postcss';
+	import ConfigMenuButton from '$lib/components/admin/ConfigMenuButton.svelte';
+	import { roundDown } from '$lib/utils/roundDown';
+	import UserManageMenuButton from '$lib/components/admin/UserManageMenuButton.svelte';
 
 	export let data: any;
 
@@ -106,9 +109,20 @@
 			</div>
 		</SignIn>
 	{/if}
+	{#if "config" in data.permissions && data.permissions.config == true }
+		<div class="pt-5">
+			<ConfigMenuButton config={data.config} />
+		</div>
+	{/if}
+	{#if "users" in data.permissions && data.permissions.users == true }
+		<div class="pt-5">
+			<UserManageMenuButton config={data.config} users={data.users} />
+		</div>
+	{/if}
 
 	<div class="pt-5 flex flex-wrap justify-center">
 		<ItemMenuButton
+			config={data.config}
 			item={{
 				id: '',
 				name: '',
@@ -118,7 +132,7 @@
 				statType: 'None',
 				rarity: 'None',
 				minLevel: 90,
-				maxLevel: 130,
+				maxLevel: roundDown(data.config.maxLevel, 10),
 				imageId: '',
 				gemNo: 0,
 				statsPerLevel: [],
@@ -141,7 +155,7 @@
 		{#each listItems as item}
 			<div class="flex flex-col p-1">
 				{#key item.id}
-					<ItemMenuButton {item} mode={'edit'} />
+					<ItemMenuButton config={data.config} {item} mode={'edit'} />
 				{/key}
 			</div>
 		{/each}
