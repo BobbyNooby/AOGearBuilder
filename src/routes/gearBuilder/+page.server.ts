@@ -7,6 +7,8 @@ export const load: PageServerLoad = async (): Promise<any> => {
 		.find({ deleted: false }, { projection: { _id: 0 } })
 		.toArray();
 
+	const config = await db.collection('config').findOne({"name":"config"}, { projection: { _id: 0 } });
+
 	// Readonly testing
 	// const data = await readOnlyClient
 	// 	.collection('items')
@@ -20,6 +22,7 @@ export const load: PageServerLoad = async (): Promise<any> => {
 		Pants: filterCollection(data, 'Pants'),
 		Enchant: filterCollection(data, 'Enchant'),
 		Gem: filterCollection(data, 'Gem'),
-		Modifier: filterCollection(data, 'Modifier')
+		Modifier: filterCollection(data, 'Modifier'),
+		config: config
 	};
 };

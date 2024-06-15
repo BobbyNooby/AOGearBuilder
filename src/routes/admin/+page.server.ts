@@ -1,21 +1,31 @@
 import db from '$lib/dbHandler';
-import type { anyItem } from '$lib/gearBuilder/itemTypes.js';
 import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import type { anyItem } from '$lib/utils/itemTypes';
 
 let itemsDB = db.collection<anyItem>('items');
+let configDB = db.collection<any>('config');
+let usersDB = db.collection<any>('users');
 
-async function verifySession(session: any) {
+async function verifySession(session: any, permissions: any[]) {
 	if (session == null) {
 		return fail(403, { error: 'Not logged in' });
 	}
 
 	let sessionobj = await db.collection('users').findOne({ id: session.user.id });
 	console.log(sessionobj);
-	if (sessionobj != null && sessionobj.permissions.database == true) {
-		return true;
+	if (sessionobj == null) {
+		return fail(403, { error: 'No access' });
 	}
-	return fail(403, { error: 'No database access' });
+
+	for (let perm of permissions) {
+		if (perm in sessionobj.permissions && sessionobj.permissions[perm] == true) {
+			continue;
+		}
+		return fail(403, { error: `No ${perm} permission` });
+	}
+
+	return true
 }
 
 const maxIdGen = 100;
@@ -31,11 +41,10 @@ function getRandomId() {
 	return id;
 }
 
-function checkAttributes(item: anyItem) {
-	let attributes = ['id', 'name', 'legend', 'mainType', 'rarity', 'imageId', 'deleted'];
+function checkAttributes(obj: any, attributes: string[]) {
 
 	for (let attribute of attributes) {
-		if (!(attribute in item)) {
+		if (!(attribute in obj)) {
 			return attribute;
 		}
 	}
@@ -43,7 +52,55 @@ function checkAttributes(item: anyItem) {
 	return true;
 }
 
-export async function load({ fetch, setHeaders }) {
+function checkItem(item: anyItem) {
+
+	let attributes = ['id', 'name', 'legend', 'mainType', 'rarity', 'imageId', 'deleted'];
+	
+	let valid = checkAttributes(item, attributes);
+
+	if (valid != true) {
+		return "Missing "+valid;
+	}
+
+	return true;
+}
+
+function checkConfig(config: any) {
+
+	let attributes = ['name', 'maxLevel'];
+
+	let valid = checkAttributes(config, attributes);
+
+	if (valid != true) {
+		return "Missing "+valid;
+	}
+
+	if (config.name != "config") {
+		return "Config name incorrect";
+	}
+
+	if (typeof config.maxLevel !== 'number') {
+		return "Max level must be a number";
+	}
+
+	return true;
+}
+
+function checkUser(user: any) {
+
+	let attributes = ['id', 'permissions'];
+
+	let valid = checkAttributes(user, attributes);
+
+	if (valid != true) {
+		return "Missing "+valid;
+	}
+
+	return true;
+}
+
+export async function load({ fetch, setHeaders, locals }) {
+	const session = await locals.auth();
 	const data = await itemsDB
 		.find(
 			{ deleted: false },
@@ -54,9 +111,22 @@ export async function load({ fetch, setHeaders }) {
 			}
 		)
 		.toArray();
+	const config = await configDB.findOne({"name":"config"}, { projection: { _id: 0 } });
+	const users = await usersDB.find({ }, { projection: { _id: 0 } }).toArray();
+	let permissions = {};
+
+	if (session != null && session.user != null) {
+		const sessionobj = await db.collection('users').findOne({ id: session.user.id }, { projection: { _id: 0 } });
+		if (sessionobj != null && "permissions" in sessionobj) {
+			permissions = sessionobj.permissions;
+		}
+	}
 
 	return {
-		items: data
+		items: data,
+		config: config,
+		permissions: permissions,
+		users: users
 	};
 }
 
@@ -80,7 +150,7 @@ imageId: https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/stati
 export const actions = {
 	create: async (event) => {
 		let session = await event.locals.auth();
-		let validSession = await verifySession(session);
+		let validSession = await verifySession(session, ["database"]);
 		if (validSession != true) {
 			return validSession;
 		}
@@ -90,9 +160,9 @@ export const actions = {
 		let item: anyItem = JSON.parse(formData.get('itemData') as string);
 
 		// do validating checks
-		let validAttributes = checkAttributes(item);
+		let validAttributes = checkItem(item);
 		if (validAttributes != true) {
-			return fail(403, { error: `Missing ${validAttributes}` });
+			return fail(403, { error: validAttributes });
 		}
 
 		let newId = getRandomId();
@@ -114,7 +184,7 @@ export const actions = {
 	},
 	edit: async (event) => {
 		let session = await event.locals.auth();
-		let validSession = await verifySession(session);
+		let validSession = await verifySession(session, ["database"]);
 		if (validSession != true) {
 			return validSession;
 		}
@@ -124,11 +194,63 @@ export const actions = {
 		let item: anyItem = JSON.parse(formData.get('itemData') as string);
 
 		// do validating checks
-		let validAttributes = checkAttributes(item);
+		let validAttributes = checkItem(item);
 		if (validAttributes != true) {
-			return fail(403, { error: `Missing ${validAttributes}` });
+			return fail(403, { error: validAttributes });
 		}
 
 		await db.collection('items').updateOne({ id: item.id }, { $set: item });
+	},
+	updateConfig: async (event) => {
+		let session = await event.locals.auth();
+		let validSession = await verifySession(session, ["config"]);
+		if (validSession != true) {
+			return validSession;
+		}
+
+		const formData = await event.request.formData();
+		let config: any = JSON.parse(formData.get('config') as string);
+
+		let validConfig = checkConfig(config);
+		if (validConfig != true) {
+			return fail(403, { error: validConfig });
+		}
+
+		await configDB.updateOne({"name":"config"}, { $set: config });
+	},
+	updateUser: async (event) => {
+		let session = await event.locals.auth();
+		let validSession = await verifySession(session, ["users"]);
+		if (validSession != true) {
+			return validSession;
+		}
+
+		const formData = await event.request.formData();
+		let user: any = JSON.parse(formData.get('user') as string);
+
+		let validUser = checkUser(user);
+		if (validUser != true) {
+			return fail(403, { error: validUser });
+		}
+
+		let stringToBoolean: Record<string, boolean> = {"true":true,"false":false}
+
+		for (var key of Object.keys(user.permissions)) {
+			if (user.permissions[key] in stringToBoolean) {
+				user.permissions[key] = stringToBoolean[user.permissions[key]];
+			} else if (typeof user.permissions[key] == "boolean") {
+				continue
+			}
+			else {
+				delete user.permissions[key];
+			}
+		}
+
+		const userObj = await usersDB.findOne({"id":user.id}, { projection: { _id: 0 } });
+		if (userObj != null && user.id == userObj.id) {
+			await usersDB.updateOne({"id":user.id}, { $set: user });
+		} else {
+			await usersDB.insertOne(user);
+		}
 	}
 } satisfies Actions;

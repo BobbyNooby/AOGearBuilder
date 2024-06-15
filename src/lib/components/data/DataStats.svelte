@@ -4,8 +4,9 @@
 	import { Column, Table } from '$lib/utils/admin/table';
 	import { rarityColors } from '$lib/dataConstants';
 	import DataImage from './DataImage.svelte';
+	import { roundDown } from '$lib/utils/roundDown';
 
-	export let item:anyItem;
+	export let item:anyItem, config: any;
 
     let open = false;
 
@@ -59,7 +60,7 @@
         statsTable.maxLevel = newMaxLevel;
         statsTable.columns = newColumns;
     } else {
-        statsTable = new Table(90, 130, false);
+        statsTable = new Table(90, roundDown(config.maxLevel, 10), false);
         let column: any = new Column(0, statsTable);
         for (const [key, value] of Object.entries(item)) {
             if (key in column) {

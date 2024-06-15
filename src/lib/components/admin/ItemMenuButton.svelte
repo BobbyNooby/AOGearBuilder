@@ -9,8 +9,9 @@
 	import RangeInput from './inputs/RangeInput.svelte';
 	import toast from 'svelte-french-toast';
 	import { rarityColors, staticImagesRootFolder } from '$lib/dataConstants';
+	import { roundDown } from '$lib/utils/roundDown';
 
-	export let item: anyItem, mode: 'edit' | 'create';
+	export let item: anyItem, mode: 'edit' | 'create', config: any;
 
 	let itemDefault: anyItem = Object.assign({}, item);
 
@@ -272,7 +273,7 @@
 
 	let statsTable: Table;
 	if (mode == 'create') {
-		statsTable = new Table(90, 140, true);
+		statsTable = new Table(90, roundDown(config.maxLevel, 10), true);
 	}
 	if (mode == 'edit') {
 		if ('minLevel' in item && 'maxLevel' in item) {
@@ -310,7 +311,7 @@
 			statsTable.maxLevel = newMaxLevel;
 			statsTable.columns = newColumns;
 		} else {
-			statsTable = new Table(90, 130, false);
+			statsTable = new Table(90, roundDown(config.maxLevel, 10), false);
 			let column: any = new Column(0, statsTable);
 			for (const [key, value] of Object.entries(item)) {
 				if (key in column) {
@@ -579,7 +580,7 @@
 								name={'Max Level'}
 								value={statsTable.maxLevel}
 								min={statsTable.minLevel}
-								max={140}
+								max={roundDown(config.maxLevel, 10)}
 								step={10}
 								onChange={setMax}
 								isRequired={true}
