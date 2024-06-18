@@ -7,7 +7,9 @@ export const load: PageServerLoad = async (): Promise<any> => {
 		.find({ deleted: false }, { projection: { _id: 0 } })
 		.toArray();
 
-	const config = await db.collection('config').findOne({"name":"config"}, { projection: { _id: 0 } });
+	const config = await db
+		.collection('config')
+		.findOne({ name: 'config' }, { projection: { _id: 0 } });
 
 	// Readonly testing
 	// const data = await readOnlyClient
@@ -17,12 +19,6 @@ export const load: PageServerLoad = async (): Promise<any> => {
 
 	return {
 		Database: data,
-		Accessory: filterCollection(data, 'Accessory'),
-		Chestplate: filterCollection(data, 'Chestplate'),
-		Pants: filterCollection(data, 'Pants'),
-		Enchant: filterCollection(data, 'Enchant'),
-		Gem: filterCollection(data, 'Gem'),
-		Modifier: filterCollection(data, 'Modifier'),
 		config: config
 	};
 };

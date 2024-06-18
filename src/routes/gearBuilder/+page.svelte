@@ -156,7 +156,7 @@
 										<div class="flex flex-col mb-10">
 											<div class="flex flex-row">
 												<GearButton
-													database={data}
+													database={data.Database}
 													currentItem={SessionPlayer.build.slots[slotKey].armor}
 													player={SessionPlayer}
 													{slotKey}
@@ -165,7 +165,7 @@
 												/>
 
 												<GearButton
-													database={data}
+													database={data.Database}
 													currentItem={SessionPlayer.build.slots[slotKey].enchant}
 													player={SessionPlayer}
 													{slotKey}
@@ -173,7 +173,7 @@
 													{updatePage}
 												/>
 												<GearButton
-													database={data}
+													database={data.Database}
 													currentItem={SessionPlayer.build.slots[slotKey].modifier}
 													player={SessionPlayer}
 													{slotKey}
@@ -210,7 +210,7 @@
 											<div class="flex flex-row">
 												{#each Object.values(SessionPlayer.build.slots[slotKey].gems) as gem, index}
 													<GearButton
-														database={data}
+														database={data.Database}
 														currentItem={gem}
 														player={SessionPlayer}
 														{slotKey}
@@ -229,7 +229,7 @@
 										<div class="flex flex-col mb-10">
 											<div class="flex flex-row">
 												<GearButton
-													database={data}
+													database={data.Database}
 													currentItem={SessionPlayer.build.slots[slotKey].armor}
 													player={SessionPlayer}
 													{slotKey}
@@ -238,7 +238,7 @@
 												/>
 
 												<GearButton
-													database={data}
+													database={data.Database}
 													currentItem={SessionPlayer.build.slots[slotKey].enchant}
 													player={SessionPlayer}
 													{slotKey}
@@ -246,7 +246,7 @@
 													{updatePage}
 												/>
 												<GearButton
-													database={data}
+													database={data.Database}
 													currentItem={SessionPlayer.build.slots[slotKey].modifier}
 													player={SessionPlayer}
 													{slotKey}
@@ -283,7 +283,7 @@
 											<div class="flex flex-row">
 												{#each Object.values(SessionPlayer.build.slots[slotKey].gems) as gem, index}
 													<GearButton
-														database={data}
+														database={data.Database}
 														currentItem={gem}
 														player={SessionPlayer}
 														{slotKey}
@@ -436,7 +436,7 @@
 											</div>
 											<div class="flex-row flex">
 												<GearButton
-													database={data}
+													database={data.Database}
 													currentItem={SessionPlayer.build.slots[slotKey].armor}
 													player={SessionPlayer}
 													{slotKey}
@@ -445,7 +445,7 @@
 												/>
 
 												<GearButton
-													database={data}
+													database={data.Database}
 													currentItem={SessionPlayer.build.slots[slotKey].enchant}
 													player={SessionPlayer}
 													{slotKey}
@@ -453,7 +453,7 @@
 													{updatePage}
 												/>
 												<GearButton
-													database={data}
+													database={data.Database}
 													currentItem={SessionPlayer.build.slots[slotKey].modifier}
 													player={SessionPlayer}
 													{slotKey}
@@ -464,7 +464,7 @@
 											<div class="flex flex-row">
 												{#each Object.values(SessionPlayer.build.slots[slotKey].gems) as gem, index}
 													<GearButton
-														database={data}
+														database={data.Database}
 														currentItem={gem}
 														player={SessionPlayer}
 														{slotKey}
