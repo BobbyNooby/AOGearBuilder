@@ -305,7 +305,7 @@
 								<ItemTooltip
 									player={SessionPlayer}
 									isItemMenu={false}
-									item={SessionPlayer.build.getBuildStats()}
+									fullItem={SessionPlayer.build.getBuildStats()}
 									showName={true}
 									atlanteanAttribute={''}
 									showOnlyAtlanteanStat={false}
@@ -400,7 +400,7 @@
 								<ItemTooltip
 									player={SessionPlayer}
 									isItemMenu={false}
-									item={SessionPlayer.build.getBuildStats()}
+									fullItem={SessionPlayer.build.getBuildStats()}
 									showName={true}
 									atlanteanAttribute={''}
 									showOnlyAtlanteanStat={false}

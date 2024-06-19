@@ -14,7 +14,38 @@ export const rarityColors: { [key in Rarities]: string } = {
 	Legendary: '#00FF00'
 };
 
-export const validStatKeys = [
+export type validStatKeysType =
+	| 'power'
+	| 'defense'
+	| 'agility'
+	| 'attackSpeed'
+	| 'attackSize'
+	| 'intensity'
+	| 'regeneration'
+	| 'piercing'
+	| 'resistance'
+	| 'insanity'
+	| 'warding'
+	| 'drawback'
+	| 'durability'
+	| 'magicStorage'
+	| 'ramDefense'
+	| 'ramStrength'
+	| 'resilience'
+	| 'speed'
+	| 'stability'
+	| 'turning'
+	| 'powerIncrement'
+	| 'defenseIncrement'
+	| 'agilityIncrement'
+	| 'attackSpeedIncrement'
+	| 'attackSizeIncrement'
+	| 'intensityIncrement'
+	| 'regenerationIncrement'
+	| 'piercingIncrement'
+	| 'resistanceIncrement';
+
+export const validStatKeys: validStatKeysType[] = [
 	'power',
 	'defense',
 	'agility',

@@ -18,6 +18,8 @@
 		gemIndex: boolean | number,
 		player: Player | undefined = undefined,
 		ship: CurrentShipBuild | undefined = undefined,
+		slotIndex: boolean | number = false,
+		shipPartType: 'base' | 'enchant' | undefined = undefined,
 		toggleMenu: () => void,
 		updatePage: () => void;
 
@@ -89,7 +91,9 @@
 				toggleMenu();
 			}
 		} else if (ship) {
-			console.log('asd');
+			ship.setShipPart(item, slotKey as keyof typeof ship.slots, slotIndex, shipPartType);
+			updatePage();
+			toggleMenu();
 		}
 	}
 
@@ -99,25 +103,34 @@
 	let showOnlyAtlanteanStat = false;
 
 	//Modifier calculations
-	modifierCalcs: if (item.name == 'Atlantean Essence') {
-		const atlantenOrder = ['power', 'defense', 'attackSize', 'attackSpeed', 'agility', 'intensity'];
+	if (player) {
+		modifierCalcs: if (item.name == 'Atlantean Essence') {
+			const atlantenOrder = [
+				'power',
+				'defense',
+				'attackSize',
+				'attackSpeed',
+				'agility',
+				'intensity'
+			];
 
-		let preAtlanteanArmor = player.build.slots[slotKey].getSlotStats(true);
+			let preAtlanteanArmor = player.build.slots[slotKey].getSlotStats(true);
 
-		//Calculations for Atlantean
-		for (const currentAttribute of atlantenOrder) {
-			if (preAtlanteanArmor[currentAttribute] == 0) {
-				chosenAtlanteanAttribute = currentAttribute;
-				showOnlyAtlanteanStat = true;
-				break modifierCalcs;
+			//Calculations for Atlantean
+			for (const currentAttribute of atlantenOrder) {
+				if (preAtlanteanArmor[currentAttribute] == 0) {
+					chosenAtlanteanAttribute = currentAttribute;
+					showOnlyAtlanteanStat = true;
+					break modifierCalcs;
+				}
 			}
+			// Only happens when all of them have a value so hence the loop around
+			chosenAtlanteanAttribute = 'power';
+			showOnlyAtlanteanStat = true;
+		} else {
+			chosenAtlanteanAttribute = '';
+			showOnlyAtlanteanStat = false;
 		}
-		// Only happens when all of them have a value so hence the loop around
-		chosenAtlanteanAttribute = 'power';
-		showOnlyAtlanteanStat = true;
-	} else {
-		chosenAtlanteanAttribute = '';
-		showOnlyAtlanteanStat = false;
 	}
 
 	let validImage = true;
@@ -192,8 +205,9 @@
 			</p>
 			<div class=" items-center text-center z-40">
 				<ItemTooltip
-					{item}
+					fullItem={item}
 					{player}
+					{ship}
 					{slotKey}
 					showName={true}
 					isItemMenu={true}
@@ -214,14 +228,14 @@
 		{#if item.statType && item.statType != 'None'}
 			<img
 				style="opacity: {item.statType ? '1' : '0'};"
-				src="{staticImagesRootFolder}/misc/{item.statType}Items.png"
+				src="{staticImagesRootFolder}/Misc/{item.statType}Items.png"
 				alt="Magic"
 				class="w-full h-full absolute right-0 bottom-0 z-20"
 			/>
 		{/if}
 		<div class="absolute right-0 bottom-0 flex flex-row z-30">
 			{#each { length: item.gemNo } as _, i}
-				<img src="{staticImagesRootFolder}/misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
+				<img src="{staticImagesRootFolder}/Misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
 			{/each}
 		</div>
 		<img
@@ -281,8 +295,9 @@
 					</p>
 					<div class=" items-center text-center z-40">
 						<ItemTooltip
-							{item}
+							fullItem={item}
 							{player}
+							{ship}
 							{slotKey}
 							showName={true}
 							isItemMenu={true}

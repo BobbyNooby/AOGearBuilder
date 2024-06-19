@@ -18,8 +18,10 @@
 		database: any,
 		slotKey: string,
 		player: Player | undefined = undefined,
-		ship: CurrentShipBuild | undefined = undefined,
 		gemIndex: boolean | number = false,
+		ship: CurrentShipBuild | undefined = undefined,
+		slotIndex: boolean | number = false,
+		shipPartType: 'base' | 'enchant' | undefined = undefined,
 		updatePage: () => void;
 
 	let menuBool = false;
@@ -34,8 +36,21 @@
 
 	let searchQuery = '';
 
-	let ItemMenuData = database[currentItem.mainType];
-	let placeholderItem = database[currentItem.mainType].find((item) => item.name === 'None');
+	let ItemMenuData = database.filter((item) => item.mainType == currentItem.mainType);
+	let placeholderItem = database.find(
+		(item) => item.name === 'None' && item.mainType === currentItem.mainType
+	);
+
+	let isEnchant = currentItem.mainType == 'Enchant';
+	let isShip = ship && player == undefined;
+	let isPlayer = player && ship == undefined;
+	// let enchantFilter = !(
+	// 	isEnchant &&
+	// 	((isShip && currentItem.enchantTypes.includes('ship')) ||
+	// 		(isPlayer && currentItem.enchantTypes.includes('gear')))
+	// );
+
+	console.log(isEnchant, isShip, isPlayer);
 
 	$: filteredData = ItemMenuData.filter((item) => {
 		if ($filterType.length === 0 || $filterType.includes(item.rarity) || item.name === 'None') {
@@ -183,11 +198,31 @@
 			<SortButton></SortButton>
 		</div>
 		<div class="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4">
-			<Item item={placeholderItem} {slotKey} {gemIndex} {player} {ship} {toggleMenu} {updatePage} />
+			<Item
+				item={placeholderItem}
+				{slotKey}
+				{slotIndex}
+				{gemIndex}
+				{player}
+				{ship}
+				{toggleMenu}
+				{updatePage}
+				{shipPartType}
+			/>
 
 			{#each sortedItems as item}
 				{#if item.name !== 'None'}
-					<Item {item} {slotKey} {gemIndex} {player} {ship} {toggleMenu} {updatePage} />
+					<Item
+						{item}
+						{shipPartType}
+						{slotKey}
+						{slotIndex}
+						{gemIndex}
+						{player}
+						{ship}
+						{toggleMenu}
+						{updatePage}
+					/>
 				{/if}
 			{/each}
 		</div>

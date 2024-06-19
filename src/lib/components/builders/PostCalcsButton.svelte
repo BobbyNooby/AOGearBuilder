@@ -104,7 +104,7 @@
 			>
 				<div class=" items-center text-center z-40">
 					<ItemTooltip
-						item={slotStats}
+						fullItem={slotStats}
 						showName={false}
 						{player}
 						{slotKey}
@@ -155,7 +155,7 @@
 					</p>
 					<div class="pb-4">
 						<ItemTooltip
-							item={slotStats}
+							fullItem={slotStats}
 							showName={false}
 							{player}
 							{slotKey}
