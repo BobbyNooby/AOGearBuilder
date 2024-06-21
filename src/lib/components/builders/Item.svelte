@@ -12,6 +12,7 @@
 	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import { isMobile } from '$lib/utils/mobileStore';
 	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
+	import ItemImage from '../shared/ItemImage.svelte';
 
 	export let item: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
 		slotKey: 'accessory1' | 'accessory2' | 'accessory3' | 'chestplate' | 'pants',
@@ -132,8 +133,6 @@
 			showOnlyAtlanteanStat = false;
 		}
 	}
-
-	let validImage = true;
 </script>
 
 {#if !$isMobile}
@@ -141,34 +140,9 @@
 		on:mousemove={handleMouseOver}
 		on:mouseleave={handleMouseOut}
 		on:click={handleClick}
-		class="relative m-1 w-20 h-20 md:w-24 md:h-24"
-		style="border-color: {rarityColors[item.rarity]}; border-width: 1px; background-color: #020202;"
+		class="m-1 w-20 h-20 md:w-24 md:h-24"
 	>
-		{#if item.statType && item.statType != 'None'}
-			<img
-				style="opacity: {item.statType ? '1' : '0'};"
-				src="{staticImagesRootFolder}/Misc/{item.statType}Items.png"
-				alt="Magic"
-				class="w-full h-full absolute right-0 bottom-0 z-20"
-			/>
-		{/if}
-		<div class="absolute right-0 bottom-0 flex flex-row z-30">
-			{#each { length: item.gemNo } as _, i}
-				<img src="{staticImagesRootFolder}/Misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
-			{/each}
-		</div>
-
-		<img
-			class="w-full h-full object-contain"
-			style="display: {validImage && item.imageId != '' ? 'block' : 'none'};"
-			src={item.imageId}
-			alt={item.name}
-			on:error={() => (validImage = false)}
-			on:load={() => (validImage = true)}
-		/>
-		<h1 style="display:{!validImage || item.imageId == '' ? 'block' : 'none'}; color:white;">
-			{item.name || 'None'}
-		</h1>
+		<ItemImage item={item} />
 	</button>
 	{#if isHovering}
 		<div
@@ -222,33 +196,9 @@
 		on:click={() => {
 			isMenuActive = !isMenuActive;
 		}}
-		class="relative m-1 w-20 h-20 md:w-24 md:h-24"
-		style="border-color: {rarityColors[item.rarity]}; border-width: 1px; background-color: #020202;"
+		class="m-1 w-20 h-20 md:w-24 md:h-24"
 	>
-		{#if item.statType && item.statType != 'None'}
-			<img
-				style="opacity: {item.statType ? '1' : '0'};"
-				src="{staticImagesRootFolder}/Misc/{item.statType}Items.png"
-				alt="Magic"
-				class="w-full h-full absolute right-0 bottom-0 z-20"
-			/>
-		{/if}
-		<div class="absolute right-0 bottom-0 flex flex-row z-30">
-			{#each { length: item.gemNo } as _, i}
-				<img src="{staticImagesRootFolder}/Misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
-			{/each}
-		</div>
-		<img
-			class="w-full h-full object-contain"
-			style="display: {validImage && item.imageId != '' ? 'block' : 'none'};"
-			src={item.imageId}
-			alt={item.name}
-			on:error={() => (validImage = false)}
-			on:load={() => (validImage = true)}
-		/>
-		<h1 style="display:{!validImage || item.imageId == '' ? 'block' : 'none'}; color:white;">
-			{item.name || 'None'}
-		</h1>
+		<ItemImage item={item} />
 
 		{#if isMenuActive}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -263,24 +213,9 @@
 			>
 				<div class="space-y-2 flex flex-col justify-center items-center z-40">
 					<div
-						class="m-1 w-20 h-20 items-center justify-center flex"
-						style="border-color: {rarityColors[
-							item.rarity
-						]}; border-width: 1px; background-color: #020202;"
+						class="m-1 w-20 h-20"
 					>
-						<img
-							class="w-full h-full object-contain"
-							style="display: {validImage && item.imageId != '' ? 'block' : 'none'};"
-							src={item.imageId}
-							alt={item.name}
-							on:error={() => (validImage = false)}
-							on:load={() => (validImage = true)}
-						/>
-						<h1
-							style="display:{!validImage || item.imageId == '' ? 'block' : 'none'}; color:white;"
-						>
-							{item.name || 'None'}
-						</h1>
+						<ItemImage item={item} hasGems={false} hasStatsOverlay={false} />
 					</div>
 					<h2 class="text-2xl z-40" style="color: white; font-family: Merriweather;">
 						{item.name}
