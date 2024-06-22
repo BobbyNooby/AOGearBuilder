@@ -10,6 +10,7 @@
 	import toast from 'svelte-french-toast';
 	import { rarityColors, staticImagesRootFolder } from '$lib/dataConstants';
 	import { roundDown } from '$lib/utils/roundDown';
+	import ItemImage from '../shared/ItemImage.svelte';
 
 	export let item: anyItem, mode: 'edit' | 'create', config: any;
 
@@ -420,34 +421,10 @@
 
 {#if mode == 'edit'}
 	<button
-		class="w-24 h-24 flex items-center justify-center relative"
-		style="border-color: {rarityColors[item.rarity]}; border-width: 1px; background-color: #020202;"
+		class="w-24 h-24"
 		on:click={() => handleToggle()}
 	>
-		{#if item.statType && item.statType != 'None'}
-			<img
-				style="opacity: {item.statType ? '1' : '0'};"
-				src="{staticImagesRootFolder}/Misc/{item.statType}Items.png"
-				alt="Magic"
-				class="w-full h-full absolute right-0 bottom-0 z-20"
-			/>
-		{/if}
-		<div class="absolute right-0 bottom-0 flex flex-row z-30">
-			{#each { length: item.gemNo } as _, i}
-				<img src="{staticImagesRootFolder}/Misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
-			{/each}
-		</div>
-		<img
-			class="w-full h-full object-contain"
-			style="display: {validImage && item.imageId != '' ? 'block' : 'none'};"
-			src={item.imageId}
-			alt={item.name}
-			on:error={() => (validImage = false)}
-			on:load={() => (validImage = true)}
-		/>
-		<h1 style="display:{!validImage || item.imageId == '' ? 'block' : 'none'}; color:white;">
-			{item.name || 'None'}
-		</h1>
+		<ItemImage item={item} />
 	</button>
 {/if}
 
@@ -622,38 +599,9 @@
 					
 					-->
 						<div
-							class="w-24 h-24 col-span-1 mx-auto my-auto relative"
-							style="background-color: #020202; border-color: {rarityColors[
-								item.rarity
-							]}; border-width: 2px;"
+							class="w-24 h-24 col-span-1 mx-auto my-auto"
 						>
-							{#if item.statType && item.statType != 'None'}
-								<img
-									style="opacity: {item.statType ? '1' : '0'};"
-									src="{staticImagesRootFolder}/Misc/{item.statType}Items.png"
-									alt="Magic"
-									class="w-full h-full absolute right-0 bottom-0 z-20"
-								/>
-							{/if}
-							<div class="absolute right-0 bottom-0 flex flex-row z-30">
-								{#each { length: item.gemNo } as _, i}
-									<img
-										src="{staticImagesRootFolder}/Misc/gemslot.png"
-										alt="Gem slot"
-										class=" w-5 h-5"
-									/>
-								{/each}
-							</div>
-							<img
-								style="display: {validImage && item.imageId != '' ? 'block' : 'none'};"
-								src={item.imageId}
-								alt={item.name}
-								on:error={() => (validImage = false)}
-								on:load={() => (validImage = true)}
-							/>
-							<p style="display:{!validImage || item.imageId == '' ? 'block' : 'none'};">
-								{item.name || 'None'}
-							</p>
+							<ItemImage item={item} borderWidth={2} />
 						</div>
 					</div>
 

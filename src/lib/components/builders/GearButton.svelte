@@ -13,6 +13,7 @@
 	import FilterButton from './FilterButton.svelte';
 	import SortButton from './SortButton.svelte';
 	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
+	import ItemImage from '../shared/ItemImage.svelte';
 
 	export let currentItem: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
 		database: any,
@@ -111,45 +112,14 @@
 			}
 		}
 	});
-
-	let validImage = true;
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 
 <!-- Button -->
-<button
-	class=" w-24 h-24 m-2 flex items-center justify-center relative"
-	style="border-color: {rarityColors[
-		currentItem.rarity
-	]}; border-width: 1px; background-color: #020202;"
-	on:click={handleClick}
->
-	{#if currentItem.statType && currentItem.statType != 'None'}
-		<img
-			style="opacity: {currentItem.statType ? '1' : '0'};"
-			src="{staticImagesRootFolder}/Misc/{currentItem.statType}Items.png"
-			alt="Magic"
-			class="w-full h-full absolute right-0 bottom-0 z-10"
-		/>
-	{/if}
-	<div class="absolute right-0 bottom-0 flex flex-row z-20">
-		{#each { length: currentItem.gemNo } as _, i}
-			<img src="{staticImagesRootFolder}/Misc/gemslot.png" alt="Gem slot" class=" w-5 h-5" />
-		{/each}
-	</div>
-	<img
-		class="w-full h-full object-contain"
-		style="display: {validImage && currentItem.imageId != '' ? 'block' : 'none'};"
-		src={currentItem.imageId}
-		alt={currentItem.name}
-		on:error={() => (validImage = false)}
-		on:load={() => (validImage = true)}
-	/>
-	<h1 style="display:{!validImage || currentItem.imageId == '' ? 'block' : 'none'}; color:white;">
-		{currentItem.name || 'None'}
-	</h1>
+<button class="m-2 w-24 h-24" on:click={handleClick}>
+	<ItemImage item={currentItem} />
 </button>
 
 <!-- <p>{reactiveTest}</p> -->
