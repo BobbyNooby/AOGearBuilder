@@ -72,11 +72,34 @@ export class Player {
 	}
 
 	fixPlayerStatPoints() {
-		const totalStatPoints =
-			this.vitalityPoints + this.magicPoints + this.strengthPoints + this.weaponPoints;
-		if (totalStatPoints > this.level * 2) {
-			const amountToChange = totalStatPoints - this.level * 2;
-			this.changePlayerLevel(-amountToChange);
+		// Statpoint Balancing
+		const maxStatPoints = this.level * 2;
+
+		while (
+			this.vitalityPoints + this.magicPoints + this.strengthPoints + this.weaponPoints >
+			maxStatPoints
+		) {
+			let currentPlayerStatPoints = {
+				vitalityPoints: this.vitalityPoints,
+				magicPoints: this.magicPoints,
+				strengthPoints: this.strengthPoints,
+				weaponPoints: this.weaponPoints
+			};
+			let highestStat = Math.max(
+				this.vitalityPoints,
+				this.magicPoints,
+				this.strengthPoints,
+				this.weaponPoints
+			);
+			for (let stat in currentPlayerStatPoints) {
+				if (currentPlayerStatPoints[stat as keyof typeof currentPlayerStatPoints] === highestStat) {
+					currentPlayerStatPoints[stat as keyof typeof currentPlayerStatPoints] -= 1;
+				}
+			}
+			this.vitalityPoints = currentPlayerStatPoints.vitalityPoints;
+			this.magicPoints = currentPlayerStatPoints.magicPoints;
+			this.strengthPoints = currentPlayerStatPoints.strengthPoints;
+			this.weaponPoints = currentPlayerStatPoints.weaponPoints;
 		}
 	}
 
@@ -178,36 +201,7 @@ export class Player {
 
 	changePlayerLevel(amount: number) {
 		this.level = clamp(this.level + amount, this.minLevel, this.maxLevel);
-
-		// Statpoint Balancing
-		const maxStatPoints = this.level * 2;
-
-		while (
-			this.vitalityPoints + this.magicPoints + this.strengthPoints + this.weaponPoints >
-			maxStatPoints
-		) {
-			let currentPlayerStatPoints = {
-				vitalityPoints: this.vitalityPoints,
-				magicPoints: this.magicPoints,
-				strengthPoints: this.strengthPoints,
-				weaponPoints: this.weaponPoints
-			};
-			let highestStat = Math.max(
-				this.vitalityPoints,
-				this.magicPoints,
-				this.strengthPoints,
-				this.weaponPoints
-			);
-			for (let stat in currentPlayerStatPoints) {
-				if (currentPlayerStatPoints[stat as keyof typeof currentPlayerStatPoints] === highestStat) {
-					currentPlayerStatPoints[stat as keyof typeof currentPlayerStatPoints] -= 1;
-				}
-			}
-			this.vitalityPoints = currentPlayerStatPoints.vitalityPoints;
-			this.magicPoints = currentPlayerStatPoints.magicPoints;
-			this.strengthPoints = currentPlayerStatPoints.strengthPoints;
-			this.weaponPoints = currentPlayerStatPoints.weaponPoints;
-		}
+		this.fixPlayerStatPoints();
 	}
 	resetStatPoints() {
 		this.vitalityPoints = 0;

@@ -90,6 +90,7 @@
 
 	async function updateComponent() {
 		player.build.fixBuildLevels();
+		player.fixPlayerStatPoints();
 		player.updateStatBuild();
 
 		// Updating Tweens
