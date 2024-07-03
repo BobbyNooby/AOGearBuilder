@@ -11,6 +11,7 @@
 	import { rarityColors, staticImagesRootFolder } from '$lib/dataConstants';
 	import { roundDown } from '$lib/utils/roundDown';
 	import ItemImage from '../shared/ItemImage.svelte';
+	import { EnchantTable, EnchantColumn } from '$lib/utils/admin/enchantTable';
 
 	export let item: anyItem, mode: 'edit' | 'create', config: any;
 
@@ -99,15 +100,6 @@
 			'insanity',
 			'warding',
 			'drawback',
-
-			'durability',
-			'magicStorage',
-			'ramDefense',
-			'ramStrength',
-			'resilience',
-			'speed',
-			'stability',
-			'turning'
 		],
 		ship: [
 			'durability',
@@ -273,8 +265,10 @@
 	};
 
 	let statsTable: Table;
+	let enchantTable: EnchantTable = new EnchantTable();
 	if (mode == 'create') {
 		statsTable = new Table(90, roundDown(config.maxLevel, 10), true);
+		enchantTable = new EnchantTable();
 	}
 	if (mode == 'edit') {
 		if ('minLevel' in item && 'maxLevel' in item) {
@@ -323,6 +317,45 @@
 				}
 			}
 			statsTable.columns = [column];
+		}
+
+		enchantTable = new EnchantTable();
+		if ("enchantTypes" in item) {
+			for (const [key, value] of Object.entries(item.enchantTypes as {})) {
+				enchantTable.selected[key].bool = true;
+				
+				if (key == "gear") {
+					statsTable = new Table(90, roundDown(config.maxLevel, 10), false);
+					let column: any = new Column(0, statsTable);
+					for (const [key, stat] of Object.entries(value as {})) {
+						if (key in column) {
+							column[key] = stat;
+						}
+						if (key in statsTable.visiBools) {
+							statsTable.visiBools[key].bool = true;
+						}
+					}
+					statsTable.columns = [column];
+				}
+
+				if (key == "ship") {
+					const newColumns = [];
+					for (const component of enchantTable.getComponentOptions()) {
+						if (component in (value as {})) {
+							let column: any = new EnchantColumn(component, enchantTable)
+							enchantTable.visiBoolsComponents[component].bool = true;
+							for (const [statName, stat] of Object.entries((value as any)[component])) {
+								column[statName] = stat;
+								if (statName != 'component') {
+									enchantTable.visiBools[statName].bool = true;
+								}
+							}
+							newColumns.push(column);
+						}
+					}
+					enchantTable.columns = newColumns;
+				}
+			}
 		}
 	}
 
@@ -393,6 +426,25 @@
 			for (const modifier in statsTable.validModifiers) {
 				if (statsTable.validModifiers[modifier] == true) {
 					tempItem.validModifiers.push(modifier);
+				}
+			}
+		} else if (['Enchant'].includes(item.mainType)) {
+			tempItem.enchantTypes = {};
+			if (enchantTable.selected.gear.bool == true) {
+				tempItem.enchantTypes["gear"] = {};
+				for (const statKey in statsTable.getData()) {
+					tempItem.enchantTypes.gear[statKey] = statsTable.getData()[statKey];
+				}
+			}
+			if (enchantTable.selected.ship.bool == true) {
+				tempItem.enchantTypes["ship"] = {};
+				for (let column of enchantTable.getData()) {
+					tempItem.enchantTypes.ship[column.component] = {};
+					for (const [key, value] of Object.entries(column)) {
+						if (!['parentTable', 'component'].includes(key)) {
+							tempItem.enchantTypes.ship[column.component][key] = value;
+						}
+					}
 				}
 			}
 		} else {
@@ -612,99 +664,193 @@
                     VisiBools
                     
                 -->
-
-					<h6 class="mb-1 text-md font-bold text-gray-900">Stat Options</h6>
-					<div class="flex flex-wrap items-center">
-						{#each validCategories as key}
-							<div class="px-2">
-								<input
-									id={key}
-									type="checkbox"
-									bind:checked={statsTable.visiBools[key].bool}
-									on:input={() => {
-										statsTable.updateColumns();
-									}}
-								/>
-								<label for={key}>{statsTable.visiBools[key].text}</label>
-							</div>
-						{/each}
-					</div>
-
-					<!-- 
-        
-                    Modifier Checkboxes 
-                
-                -->
-
-					{#if tableSettings.mainType[item.mainType].modifiable == true}
-						<h6 class="mb-1 text-md font-bold text-gray-900">Modifier Options</h6>
+					{#if item.mainType == "Enchant"}
+						<h6 class="mb-1 text-md font-bold text-gray-900">Stat Types</h6>
 						<div class="flex flex-wrap items-center">
-							{#each Object.keys(statsTable.validModifiers) as key}
+							{#each enchantTable.getSelectOptions() as key}
 								<div class="px-2">
 									<input
 										id={key}
 										type="checkbox"
-										bind:checked={statsTable.validModifiers[key]}
+										bind:checked={enchantTable.selected[key].bool}
 										on:input={() => {
-											statsTable.updateColumns();
+											enchantTable.updateColumns();
 										}}
 									/>
-									<label for={key}>{key}</label>
+									<label for={key}>{enchantTable.selected[key].text}</label>
 								</div>
 							{/each}
 						</div>
 					{/if}
 
-					<!--
-
-                    Table
-
-                -->
-
-					<div class="grid grid-cols-6 md:grid-cols-12">
-						<div class="col-span-1">
-							{#if statsTable.levelVisibility}
-								<div class="w-full mb-1 font-bold">Level</div>
-							{:else}
-								<div class="w-full mb-1 font-bold">Stats</div>
-							{/if}
-
-							{#each Object.keys(statsTable.visiBools) as stat}
-								{#if statsTable.visiBools[stat].bool === true}
-									<div class="w-full pb-1 h-6 items-center">
-										<img
-											class="object-contain h-6"
-											alt={statsTable.visiBools[stat].text}
-											src={statsTable.visiBools[stat].imageId}
-										/>
-									</div>
-								{/if}
+					{#if item.mainType != "Enchant" || (item.mainType == "Enchant" && enchantTable.selected.gear.bool == true) }
+						<h6 class="mb-1 text-md font-bold text-gray-900">Stat Options</h6>
+						<div class="flex flex-wrap items-center">
+							{#each validCategories as key}
+								<div class="px-2">
+									<input
+										id={key}
+										type="checkbox"
+										bind:checked={statsTable.visiBools[key].bool}
+										on:input={() => {
+											statsTable.updateColumns();
+										}}
+									/>
+									<label for={key}>{statsTable.visiBools[key].text}</label>
+								</div>
 							{/each}
 						</div>
-						{#each statsTable.columns as column}
+
+						<!-- 
+			
+						Modifier Checkboxes 
+					
+					-->
+
+						{#if tableSettings.mainType[item.mainType].modifiable == true}
+							<h6 class="mb-1 text-md font-bold text-gray-900">Modifier Options</h6>
+							<div class="flex flex-wrap items-center">
+								{#each Object.keys(statsTable.validModifiers) as key}
+									<div class="px-2">
+										<input
+											id={key}
+											type="checkbox"
+											bind:checked={statsTable.validModifiers[key]}
+											on:input={() => {
+												statsTable.updateColumns();
+											}}
+										/>
+										<label for={key}>{key}</label>
+									</div>
+								{/each}
+							</div>
+						{/if}
+
+						<!--
+
+						Table
+
+					-->
+
+						<div class="grid grid-cols-6 md:grid-cols-12">
 							<div class="col-span-1">
-								{#each Object.keys(column) as key}
-									{#if key != 'parentTable'}
-										{#if key === 'level'}
-											{#if statsTable.levelVisibility}
-												<div class="w-full mb-1 font-bold">{column.level}</div>
-											{:else}
-												<div class="w-full mb-1 font-bold">-</div>
-											{/if}
-										{:else if key !== 'level ' && statsTable.visiBools[key].bool === true}
-											<input
-												type="number"
-												step="any"
-												class="w-full h-6 max-w-full bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block p-1"
-												bind:value={column[key]}
-												placeholder={'0'}
+								{#if statsTable.levelVisibility}
+									<div class="w-full mb-1 font-bold">Level</div>
+								{:else}
+									<div class="w-full mb-1 font-bold">Stats</div>
+								{/if}
+
+								{#each Object.keys(statsTable.visiBools) as stat}
+									{#if statsTable.visiBools[stat].bool === true}
+										<div class="w-full pb-1 h-6 items-center">
+											<img
+												class="object-contain h-6"
+												alt={statsTable.visiBools[stat].text}
+												src={statsTable.visiBools[stat].imageId}
 											/>
-										{/if}
+										</div>
 									{/if}
 								{/each}
 							</div>
-						{/each}
-					</div>
+							{#each statsTable.columns as column}
+								<div class="col-span-1">
+									{#each Object.keys(column) as key}
+										{#if key != 'parentTable'}
+											{#if key === 'level'}
+												{#if statsTable.levelVisibility}
+													<div class="w-full mb-1 font-bold">{column.level}</div>
+												{:else}
+													<div class="w-full mb-1 font-bold">-</div>
+												{/if}
+											{:else if key !== 'level ' && statsTable.visiBools[key].bool === true}
+												<input
+													type="number"
+													step="any"
+													class="w-full h-6 max-w-full bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block p-1"
+													bind:value={column[key]}
+													placeholder={'0'}
+												/>
+											{/if}
+										{/if}
+									{/each}
+								</div>
+							{/each}
+						</div>
+					{/if}
+
+					{#if item.mainType == "Enchant" && enchantTable.selected.ship.bool == true }
+						<h6 class="mb-1 text-md font-bold text-gray-900">Ship Components</h6>
+						<div class="flex flex-wrap items-center">
+							{#each enchantTable.getComponentOptions() as key}
+								<div class="px-2">
+									<input
+										id={key}
+										type="checkbox"
+										bind:checked={enchantTable.visiBoolsComponents[key].bool}
+										on:input={(e) => {
+											enchantTable.visiBoolsComponents[key].bool = e.currentTarget?.checked
+											enchantTable.updateColumns();
+										}}
+									/>
+									<label for={key}>{enchantTable.visiBoolsComponents[key].text}</label>
+								</div>
+							{/each}
+						</div>
+
+						<h6 class="mb-1 text-md font-bold text-gray-900">Stat Options</h6>
+						<div class="flex flex-wrap items-center">
+							{#each mainTypeStats["ship"] as key}
+								<div class="px-2">
+									<input
+										id={key}
+										type="checkbox"
+										bind:checked={enchantTable.visiBools[key].bool}
+										on:input={() => {
+											enchantTable.updateColumns();
+										}}
+									/>
+									<label for={key}>{enchantTable.visiBools[key].text}</label>
+								</div>
+							{/each}
+						</div>
+
+						<div class="grid grid-cols-6 md:grid-cols-12">
+							<div class="col-span-1">
+								<div class="w-full mb-1 font-bold">Stats</div>
+
+								{#each Object.keys(enchantTable.visiBools) as stat}
+									{#if enchantTable.visiBools[stat].bool === true}
+										<div class="w-full pb-1 h-6 items-center">
+											<img
+												class="object-contain h-6"
+												alt={enchantTable.visiBools[stat].text}
+												src={enchantTable.visiBools[stat].imageId}
+											/>
+										</div>
+									{/if}
+								{/each}
+							</div>
+							{#each enchantTable.columns as column}
+								<div class="col-span-1">
+									{#each Object.keys(column) as key}
+										{#if key != 'parentTable'}
+											{#if key === 'component'}
+												<div class="w-full mb-1 font-bold">{enchantTable.visiBoolsComponents[column.component].text}</div>
+											{:else if key !== 'component ' && enchantTable.visiBools[key].bool === true}
+												<input
+													type="number"
+													step="any"
+													class="w-full h-6 max-w-full bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block p-1"
+													bind:value={column[key]}
+													placeholder={'0'}
+												/>
+											{/if}
+										{/if}
+									{/each}
+								</div>
+							{/each}
+						</div>
+					{/if}
 				</div>
 
 				<SubmitButton text={mode == 'create' ? 'Create' : 'Update'} />
