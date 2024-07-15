@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import type {
-		ArmorItemData,
-		EnchantItemData,
-		GemItemData,
-		ModifierItemData
+		anyItem,
+		ArmorItem,
+		EnchantItem,
+		GemItem,
+		ModifierItem
 	} from '$lib/utils/itemTypes';
 	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import Item from './Item.svelte';
@@ -15,7 +16,7 @@
 	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
 	import ItemImage from '../shared/ItemImage.svelte';
 
-	export let currentItem: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
+	export let currentItem: ArmorItem | GemItem | EnchantItem | ModifierItem | any,
 		database: any,
 		slotKey: string,
 		player: Player | undefined = undefined,
@@ -50,8 +51,11 @@
 	// 	((isShip && currentItem.enchantTypes.includes('ship')) ||
 	// 		(isPlayer && currentItem.enchantTypes.includes('gear')))
 	// );
-
-	console.log(isEnchant, isShip, isPlayer);
+	const partRelations = {
+		Ram: 'ram',
+		'Hull Armor': 'hull',
+		'Sail Material': 'sail'
+	};
 
 	$: filteredData = ItemMenuData.filter((item) => {
 		if ($filterType.length === 0 || $filterType.includes(item.rarity) || item.name === 'None') {
@@ -61,7 +65,8 @@
 					// (item.statType == 'Magic' && !player.magics.some((magic) => item.name.includes(magic))) ||
 					// (item.statType == 'Strength' &&
 					// 	!player.fightingStyles.some((style) => item.name.includes(style)))
-					player ? !player.build.validateItem(item, slotKey) : false
+					(player ? !player.build.validateItem(item, slotKey) : false) ||
+					(ship ? !ship.validateItem(item, slotKey, slotIndex) : false)
 				) {
 					return false;
 				} else {

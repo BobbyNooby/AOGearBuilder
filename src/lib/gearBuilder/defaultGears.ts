@@ -1,11 +1,6 @@
-import type {
-	ArmorItemData,
-	GemItemData,
-	EnchantItemData,
-	ModifierItemData
-} from '../utils/itemTypes';
+import type { ArmorItem, GemItem, EnchantItem, ModifierItem } from '../utils/itemTypes';
 
-export const noneAccessory: ArmorItemData = {
+export const noneAccessory: ArmorItem = {
 	id: 'AAA',
 	name: 'None',
 	legend: 'Ermmm this is a nothing accessory',
@@ -21,7 +16,7 @@ export const noneAccessory: ArmorItemData = {
 	validModifiers: []
 };
 
-export const noneChestplate: ArmorItemData = {
+export const noneChestplate: ArmorItem = {
 	id: 'AAB',
 	name: 'None',
 	legend: 'Nope. Big nothingburger chestplate here.',
@@ -37,7 +32,7 @@ export const noneChestplate: ArmorItemData = {
 	validModifiers: []
 };
 
-export const nonePants: ArmorItemData = {
+export const nonePants: ArmorItem = {
 	id: 'AAC',
 	name: 'None',
 	legend: 'Yep, big nothing pants over here nothing to see.',
@@ -53,7 +48,7 @@ export const nonePants: ArmorItemData = {
 	validModifiers: []
 };
 
-export const noneGem: GemItemData = {
+export const noneGem: GemItem = {
 	id: 'AAF',
 	name: 'None',
 	legend: 'Shine bright like a NOTHING',
@@ -64,7 +59,7 @@ export const noneGem: GemItemData = {
 	deleted: false
 };
 
-export const noneEnchant: EnchantItemData = {
+export const noneEnchant: EnchantItem = {
 	id: 'AAD',
 	name: 'None',
 	legend: 'Nope nothing enchanting about this at all',
@@ -75,7 +70,7 @@ export const noneEnchant: EnchantItemData = {
 	deleted: false
 };
 
-export const noneModifier: ModifierItemData = {
+export const noneModifier: ModifierItem = {
 	id: 'AAE',
 	name: 'None',
 	legend: 'This modifies NOTHING it serves ZERO PURPOSE it should disappear NOW!!',

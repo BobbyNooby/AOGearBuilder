@@ -41,7 +41,7 @@ export type ItemIdentifiers = {
 	imageId: string;
 } & Partial<{ deleted: boolean; subType: string; statType: StatTypes }>;
 
-export type GearBaseStats = Partial<{
+export type GearStats = Partial<{
 	power: number;
 	defense: number;
 	agility: number;
@@ -52,25 +52,10 @@ export type GearBaseStats = Partial<{
 	regeneration: number;
 	piercing: number;
 	resistance: number;
-}>;
 
-export type GearStaticStats = Partial<{
 	insanity: number;
 	warding: number;
 	drawback: number;
-}>;
-
-export type GearIncrementalStats = Partial<{
-	powerIncrement: number;
-	defenseIncrement: number;
-	agilityIncrement: number;
-	attackSpeedIncrement: number;
-	attackSizeIncrement: number;
-	intensityIncrement: number;
-
-	regenerationIncrement: number;
-	piercingIncrement: number;
-	resistanceIncrement: number;
 }>;
 
 export type ShipStats = Partial<{
@@ -84,6 +69,50 @@ export type ShipStats = Partial<{
 	turning: number;
 }>;
 
+export type GearEnchantStats = Partial<{
+	powerIncrement: number;
+	defenseIncrement: number;
+	agilityIncrement: number;
+	attackSpeedIncrement: number;
+	attackSizeIncrement: number;
+	intensityIncrement: number;
+
+	regenerationIncrement: number;
+	piercingIncrement: number;
+	resistanceIncrement: number;
+
+	insanity: number;
+	warding: number;
+	drawback: number;
+}>;
+
+export type ShipEnchantStats = Record<Partial<'ram' | 'hull' | 'sail'>, ShipStats>;
+
+type statsPerLevel = {
+	level: number;
+} & GearStats;
+
+export type ArmorItem = ItemIdentifiers & {
+	gemNo: number;
+	mainType: ArmorMainTypes;
+	minLevel: number;
+	maxLevel: number;
+	statsPerLevel: statsPerLevel[];
+	validModifiers: string[];
+};
+export type GemItem = ItemIdentifiers & GearStats;
+export type ShipPartItem = ItemIdentifiers & {
+	mainType: ShipMainTypes;
+} & ShipStats;
+
+export type EnchantItem = ItemIdentifiers & {
+	mainType: EnchantMainTypes;
+	enchantTypes: Record<Partial<'gear' | 'ship'>, GearEnchantStats | ShipEnchantStats>;
+};
+
+export type ModifierItem = ItemIdentifiers & GearEnchantStats & { mainType: ModifierMainTypes };
+
+export type anyItem = Partial<ArmorItem | GemItem | EnchantItem | ModifierItem | ShipPartItem>;
 export type MainShip = ItemIdentifiers &
 	ShipStats & {
 		hullArmorSlot: number;
@@ -95,31 +124,3 @@ export type MainShip = ItemIdentifiers &
 		ramSlot: number;
 		deckhandSlot: number;
 	};
-
-export type ArmorStats = GearBaseStats & GearStaticStats;
-export type GemStats = ArmorStats;
-export type ModifierStats = GearIncrementalStats & GearStaticStats;
-export type EnchantStats = ModifierStats & ShipStats;
-export type ItemStats = GearBaseStats & GearIncrementalStats & GearStaticStats & ShipStats;
-
-export type ArmorLevelStats = {
-	level: number;
-} & ArmorStats;
-
-export type ArmorItemData = ItemIdentifiers & {
-	gemNo: number;
-	mainType: ArmorMainTypes;
-	minLevel: number;
-	maxLevel: number;
-	statsPerLevel: ArmorLevelStats[];
-	validModifiers: string[];
-};
-export type GemItemData = ItemIdentifiers & { mainType: GemMainTypes } & GemStats;
-export type ShipItemData = ItemIdentifiers & ShipStats & { mainType: ShipMainTypes };
-export type EnchantItemData = ItemIdentifiers &
-	EnchantStats & { mainType: EnchantMainTypes; enchantTypes: 'gear' | 'ship'[] };
-export type ModifierItemData = ItemIdentifiers & ModifierStats & { mainType: ModifierMainTypes };
-
-export type anyItem = Partial<
-	ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | ShipItemData
->;

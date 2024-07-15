@@ -3,7 +3,7 @@ import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import type { anyItem } from '$lib/utils/itemTypes';
 
-let itemsDB = db.collection<anyItem>('items');
+let itemsDB = db.collection<anyItem>('items-test');
 let configDB = db.collection<any>('config');
 let usersDB = db.collection<any>('users');
 
@@ -25,7 +25,7 @@ async function verifySession(session: any, permissions: any[]) {
 		return fail(403, { error: `No ${perm} permission` });
 	}
 
-	return true
+	return true;
 }
 
 const maxIdGen = 100;
@@ -42,7 +42,6 @@ function getRandomId() {
 }
 
 function checkAttributes(obj: any, attributes: string[]) {
-
 	for (let attribute of attributes) {
 		if (!(attribute in obj)) {
 			return attribute;
@@ -53,47 +52,44 @@ function checkAttributes(obj: any, attributes: string[]) {
 }
 
 function checkItem(item: anyItem) {
-
 	let attributes = ['id', 'name', 'legend', 'mainType', 'rarity', 'imageId', 'deleted'];
-	
+
 	let valid = checkAttributes(item, attributes);
 
 	if (valid != true) {
-		return "Missing "+valid;
+		return 'Missing ' + valid;
 	}
 
 	return true;
 }
 
 function checkConfig(config: any) {
-
 	let attributes = ['name', 'maxLevel'];
 
 	let valid = checkAttributes(config, attributes);
 
 	if (valid != true) {
-		return "Missing "+valid;
+		return 'Missing ' + valid;
 	}
 
-	if (config.name != "config") {
-		return "Config name incorrect";
+	if (config.name != 'config') {
+		return 'Config name incorrect';
 	}
 
 	if (typeof config.maxLevel !== 'number') {
-		return "Max level must be a number";
+		return 'Max level must be a number';
 	}
 
 	return true;
 }
 
 function checkUser(user: any) {
-
 	let attributes = ['id', 'permissions'];
 
 	let valid = checkAttributes(user, attributes);
 
 	if (valid != true) {
-		return "Missing "+valid;
+		return 'Missing ' + valid;
 	}
 
 	return true;
@@ -111,13 +107,15 @@ export async function load({ fetch, setHeaders, locals }) {
 			}
 		)
 		.toArray();
-	const config = await configDB.findOne({"name":"config"}, { projection: { _id: 0 } });
-	const users = await usersDB.find({ }, { projection: { _id: 0 } }).toArray();
+	const config = await configDB.findOne({ name: 'config' }, { projection: { _id: 0 } });
+	const users = await usersDB.find({}, { projection: { _id: 0 } }).toArray();
 	let permissions = {};
 
 	if (session != null && session.user != null) {
-		const sessionobj = await db.collection('users').findOne({ id: session.user.id }, { projection: { _id: 0 } });
-		if (sessionobj != null && "permissions" in sessionobj) {
+		const sessionobj = await db
+			.collection('users')
+			.findOne({ id: session.user.id }, { projection: { _id: 0 } });
+		if (sessionobj != null && 'permissions' in sessionobj) {
 			permissions = sessionobj.permissions;
 		}
 	}
@@ -150,7 +148,7 @@ imageId: https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/stati
 export const actions = {
 	create: async (event) => {
 		let session = await event.locals.auth();
-		let validSession = await verifySession(session, ["database"]);
+		let validSession = await verifySession(session, ['database']);
 		if (validSession != true) {
 			return validSession;
 		}
@@ -180,11 +178,11 @@ export const actions = {
 		}
 		item.id = newId;
 
-		await db.collection('items').insertOne(item);
+		await db.collection('items-test').insertOne(item);
 	},
 	edit: async (event) => {
 		let session = await event.locals.auth();
-		let validSession = await verifySession(session, ["database"]);
+		let validSession = await verifySession(session, ['database']);
 		if (validSession != true) {
 			return validSession;
 		}
@@ -199,11 +197,11 @@ export const actions = {
 			return fail(403, { error: validAttributes });
 		}
 
-		await db.collection('items').updateOne({ id: item.id }, { $set: item });
+		await db.collection('items-test').updateOne({ id: item.id }, { $set: item });
 	},
 	updateConfig: async (event) => {
 		let session = await event.locals.auth();
-		let validSession = await verifySession(session, ["config"]);
+		let validSession = await verifySession(session, ['config']);
 		if (validSession != true) {
 			return validSession;
 		}
@@ -216,11 +214,11 @@ export const actions = {
 			return fail(403, { error: validConfig });
 		}
 
-		await configDB.updateOne({"name":"config"}, { $set: config });
+		await configDB.updateOne({ name: 'config' }, { $set: config });
 	},
 	updateUser: async (event) => {
 		let session = await event.locals.auth();
-		let validSession = await verifySession(session, ["users"]);
+		let validSession = await verifySession(session, ['users']);
 		if (validSession != true) {
 			return validSession;
 		}
@@ -233,22 +231,21 @@ export const actions = {
 			return fail(403, { error: validUser });
 		}
 
-		let stringToBoolean: Record<string, boolean> = {"true":true,"false":false}
+		let stringToBoolean: Record<string, boolean> = { true: true, false: false };
 
 		for (var key of Object.keys(user.permissions)) {
 			if (user.permissions[key] in stringToBoolean) {
 				user.permissions[key] = stringToBoolean[user.permissions[key]];
-			} else if (typeof user.permissions[key] == "boolean") {
-				continue
-			}
-			else {
+			} else if (typeof user.permissions[key] == 'boolean') {
+				continue;
+			} else {
 				delete user.permissions[key];
 			}
 		}
 
-		const userObj = await usersDB.findOne({"id":user.id}, { projection: { _id: 0 } });
+		const userObj = await usersDB.findOne({ id: user.id }, { projection: { _id: 0 } });
 		if (userObj != null && user.id == userObj.id) {
-			await usersDB.updateOne({"id":user.id}, { $set: user });
+			await usersDB.updateOne({ id: user.id }, { $set: user });
 		} else {
 			await usersDB.insertOne(user);
 		}

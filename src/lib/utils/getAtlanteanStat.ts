@@ -1,4 +1,4 @@
-import type { ArmorItemData, ItemStats } from "$lib/gearBuilder/itemTypes";
+import type { ArmorItem, ItemStats } from "$lib/gearBuilder/itemTypes";
 
 export function getAtlanteanStat(stats : ItemStats) : string | boolean{
 

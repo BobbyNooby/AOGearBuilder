@@ -1,10 +1,10 @@
 import { filterData } from '$lib/utils/filterData';
 import type {
 	anyItem,
-	EnchantItemData,
+	EnchantItem,
 	EnchantMainTypes,
 	MainShip,
-	ShipItemData,
+	ShipPartItem,
 	ShipStats
 } from '$lib/utils/itemTypes';
 import { ships } from './shipList';
@@ -25,14 +25,14 @@ export class CurrentShipBuild {
 		deckhandSlot: ShipItemSlot[];
 	};
 	noneItems: {
-		hullArmorSlot: ShipItemSlot;
-		quartermasterSlot: ShipItemSlot;
-		cannonSlot: ShipItemSlot;
-		siegeWeaponSlot: ShipItemSlot;
-		sailMaterialSlot: ShipItemSlot;
-		shipCrewSlot: ShipItemSlot;
-		ramSlot: ShipItemSlot;
-		deckhandSlot: ShipItemSlot;
+		hullArmorSlot: { base: ShipPartItem; enchant: EnchantItem | undefined };
+		quartermasterSlot: { base: ShipPartItem; enchant: EnchantItem | undefined };
+		cannonSlot: { base: ShipPartItem; enchant: EnchantItem | undefined };
+		siegeWeaponSlot: { base: ShipPartItem; enchant: EnchantItem | undefined };
+		sailMaterialSlot: { base: ShipPartItem; enchant: EnchantItem | undefined };
+		shipCrewSlot: { base: ShipPartItem; enchant: EnchantItem | undefined };
+		ramSlot: { base: ShipPartItem; enchant: EnchantItem | undefined };
+		deckhandSlot: { base: ShipPartItem; enchant: EnchantItem | undefined };
 	};
 	constructor(database: anyItem[]) {
 		this.database = database;
@@ -52,41 +52,41 @@ export class CurrentShipBuild {
 
 		const noneHullArmor = database.find(
 			(item) => item.name === 'None' && item.mainType === 'Hull Armor'
-		) as ShipItemData;
+		) as ShipPartItem;
 		const noneQuartermaster = database.find(
 			(item) => item.name === 'None' && item.mainType === 'Quartermaster'
-		) as ShipItemData;
+		) as ShipPartItem;
 		const noneCannon = database.find(
 			(item) => item.name === 'None' && item.mainType === 'Cannon'
-		) as ShipItemData;
+		) as ShipPartItem;
 		const noneRam = database.find(
 			(item) => item.name === 'None' && item.mainType === 'Ram'
-		) as ShipItemData;
+		) as ShipPartItem;
 		const noneSailMaterial = database.find(
 			(item) => item.name === 'None' && item.mainType === 'Sail Material'
-		) as ShipItemData;
+		) as ShipPartItem;
 		const noneSiegeWeapon = database.find(
 			(item) => item.name === 'None' && item.mainType === 'Siege Weapon'
-		) as ShipItemData;
+		) as ShipPartItem;
 		const noneShipCrew = database.find(
 			(item) => item.name === 'None' && item.mainType === 'Ship Crew'
-		) as ShipItemData;
+		) as ShipPartItem;
 		const noneDeckhand = database.find(
 			(item) => item.name === 'None' && item.mainType === 'Deckhand'
-		) as ShipItemData;
+		) as ShipPartItem;
 		const noneEnchant = database.find(
 			(item) => item.name === 'None' && item.mainType === 'Enchant'
-		) as EnchantItemData;
+		) as EnchantItem;
 
 		this.noneItems = {
-			hullArmorSlot: new ShipItemSlot(noneHullArmor, noneEnchant),
-			quartermasterSlot: new ShipItemSlot(noneQuartermaster),
-			cannonSlot: new ShipItemSlot(noneCannon, noneEnchant),
-			siegeWeaponSlot: new ShipItemSlot(noneSiegeWeapon, noneEnchant),
-			sailMaterialSlot: new ShipItemSlot(noneSailMaterial, noneEnchant),
-			shipCrewSlot: new ShipItemSlot(noneShipCrew),
-			ramSlot: new ShipItemSlot(noneRam, noneEnchant),
-			deckhandSlot: new ShipItemSlot(noneDeckhand)
+			hullArmorSlot: { base: noneHullArmor, enchant: noneEnchant },
+			quartermasterSlot: { base: noneQuartermaster, enchant: undefined },
+			cannonSlot: { base: noneCannon, enchant: undefined },
+			siegeWeaponSlot: { base: noneSiegeWeapon, enchant: undefined },
+			sailMaterialSlot: { base: noneSailMaterial, enchant: noneEnchant },
+			shipCrewSlot: { base: noneShipCrew, enchant: undefined },
+			ramSlot: { base: noneRam, enchant: noneEnchant },
+			deckhandSlot: { base: noneDeckhand, enchant: undefined }
 		};
 
 		this.fixShipSlots();
@@ -106,22 +106,23 @@ export class CurrentShipBuild {
 
 			if (difference > 0) {
 				for (let i = 0; i < difference; i++) {
-					this.slots[key as keyof typeof this.slots].push(noneItem);
+					this.slots[key as keyof typeof this.slots].push(
+						new ShipItemSlot(noneItem.base, noneItem.enchant)
+					);
 				}
 			} else if (difference < 0) {
 				this.slots[key as keyof typeof this.slots].splice(this.ship[key]);
 			}
 		}
-
-		console.log(this.slots);
 	}
 
 	setShipPart(
-		item: ShipItemData,
+		item: ShipPartItem,
 		slotKey: keyof typeof this.slots,
 		slotIndex: number | boolean = false,
 		shipPartType: 'base' | 'enchant' | undefined = undefined
 	) {
+		console.log(slotKey, slotIndex);
 		if (slotIndex !== false) {
 			if (this.slots[slotKey][slotIndex as number].base.id != undefined) {
 				if (shipPartType === 'base') {
@@ -137,6 +138,10 @@ export class CurrentShipBuild {
 		}
 	}
 
+	getShipPart(slotKey: keyof typeof this.slots, slotIndex: number) {
+		return this.slots[slotKey][slotIndex];
+	}
+
 	getShipBuildStats() {
 		let finalStats = filterData(this.ship);
 
@@ -147,5 +152,67 @@ export class CurrentShipBuild {
 		}
 
 		return finalStats;
+	}
+
+	validateItem(
+		item: anyItem,
+		slotKey: keyof typeof this.slots,
+		slotIndex: number | boolean = false
+	) {
+		const partRelations = {
+			Ram: 'ram',
+			'Hull Armor': 'hull',
+			'Sail Material': 'sail'
+		};
+
+		let badConditions: Array<
+			(item: anyItem, slotKey: keyof typeof this.slots, slotIndex: number | boolean) => boolean
+		> = [];
+
+		//Full Slot Checking (Warship)
+
+		for (const slotArrayKey in this.slots) {
+			for (const slot of this.slots[slotArrayKey as keyof typeof this.slots]) {
+				const slotArrayIndex = this.slots[slotArrayKey as keyof typeof this.slots].indexOf(slot);
+
+				badConditions = [
+					(item, slotKey, slotIndex) =>
+						slotArrayKey !== slotKey &&
+						item.mainType == 'Enchant' &&
+						item.name == 'Warship' &&
+						slot.enchant != null &&
+						slot.enchant.name == 'Warship',
+					(item, slotKey, slotIndex) =>
+						slotArrayKey == slotKey &&
+						slotArrayIndex != slotIndex &&
+						item.mainType == 'Quartermaster' &&
+						slot.base.id == item.id
+				];
+
+				try {
+					if (badConditions.some((condition) => condition(item, slotKey, slotIndex))) {
+						return false;
+					}
+				} catch (e) {
+					return false;
+				}
+			}
+		}
+
+		badConditions = [
+			(item, slotKey, slotIndex) =>
+				item.mainType == 'Enchant' &&
+				!item.enchantTypes.ship[partRelations[this.getShipPart(slotKey, slotIndex).base.mainType]]
+		];
+
+		try {
+			if (badConditions.some((condition) => condition(item, slotKey, slotIndex))) {
+				return false;
+			}
+		} catch (e) {
+			return false;
+		}
+
+		return true;
 	}
 }

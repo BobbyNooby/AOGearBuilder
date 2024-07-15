@@ -1,25 +1,23 @@
 <script lang="ts">
 	import { calculateEfficiencyPoints } from '$lib/utils/calculateEfficiencyPoints';
-	import type {
-		ArmorItemData,
-		GemItemData,
-		EnchantItemData,
-		ModifierItemData
-	} from '$lib/utils/itemTypes';
+	import type { ArmorItem, GemItem, EnchantItem, ModifierItem } from '$lib/utils/itemTypes';
 	import { filterData } from '$lib/utils/filterData';
 	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import StatWithPercentEffectiveness from './StatWithPercentEffectiveness.svelte';
 	import { staticImagesRootFolder } from '$lib/dataConstants';
 	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
+	import { base } from '$app/paths';
 
-	export let fullItem: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
+	export let fullItem: ArmorItem | GemItem | EnchantItem | ModifierItem | any,
 		showName: boolean,
 		player: Player | undefined = undefined,
 		ship: CurrentShipBuild | undefined = undefined,
 		slotKey: string,
+		slotIndex: number | boolean = false,
 		isItemMenu: boolean = false,
 		atlanteanAttribute: string = '',
-		showOnlyAtlanteanStat: boolean = false; //importing the Item that was selected cos thats the only thing thats needed
+		showOnlyAtlanteanStat: boolean = false, //importing the Item that was selected cos thats the only thing thats needed
+		shipPartType: 'base' | 'enchant' | undefined = undefined;
 	// This document is a tooltip for the items
 
 	let item = fullItem;
@@ -259,9 +257,35 @@
 			efficiencyPointsString = calculateEfficiencyPoints(chosenStat, player.level).toString();
 		}
 	} else if (ship) {
-		chosenStat = filterData(item);
-		console.log(chosenStat);
-		efficiencyPointsString = '-';
+		if (shipPartType === 'base') {
+			chosenStat = filterData(item);
+			console.log(chosenStat);
+			efficiencyPointsString = '-';
+		} else if (shipPartType === 'enchant') {
+			const partRelations = {
+				Ram: 'ram',
+				'Hull Armor': 'hull',
+				'Sail Material': 'sail'
+			};
+
+			const baseMainType = ship.getShipPart(slotKey as keyof typeof ship.slots, slotIndex as number)
+				.base.mainType;
+			const enchantItem = item as EnchantItem;
+
+			console.log(baseMainType);
+			let enchantValues = {};
+			try {
+				enchantValues = enchantItem.enchantTypes.ship[partRelations[baseMainType]];
+			} catch {
+				enchantValues = {};
+			}
+
+			chosenStat = filterData(enchantValues);
+			console.log(chosenStat);
+		} else {
+			chosenStat = filterData(item);
+			efficiencyPointsString = '-';
+		}
 	}
 </script>
 
@@ -296,7 +320,7 @@
 								{#if showName && chosenStat[stat] > 0}
 									+
 								{/if}
-								{chosenStat[stat]}
+								{chosenStat[stat]}{#if ['stability', 'resilience'].includes(stat)}%{/if}
 								{#if showName}{itemStats[stat].name}{/if}
 							</p>
 						</div>

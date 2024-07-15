@@ -1,11 +1,11 @@
 import { filterData } from '$lib/utils/filterData';
 import type {
-	ArmorItemData,
-	GemItemData,
-	EnchantItemData,
-	ModifierItemData,
-	ArmorStats,
-	anyItem
+	ArmorItem,
+	GemItem,
+	EnchantItem,
+	ModifierItem,
+	anyItem,
+	GearStats
 } from '../utils/itemTypes';
 import type { Player } from './playerClasses';
 
@@ -51,33 +51,33 @@ export class CurrentBuild {
 		this.slots = {
 			accessory1: new ArmorSlot(
 				this,
-				noneAccessory as ArmorItemData,
-				noneEnchant as EnchantItemData,
-				noneModifier as ModifierItemData
+				noneAccessory as ArmorItem,
+				noneEnchant as EnchantItem,
+				noneModifier as ModifierItem
 			),
 			accessory2: new ArmorSlot(
 				this,
-				noneAccessory as ArmorItemData,
-				noneEnchant as EnchantItemData,
-				noneModifier as ModifierItemData
+				noneAccessory as ArmorItem,
+				noneEnchant as EnchantItem,
+				noneModifier as ModifierItem
 			),
 			accessory3: new ArmorSlot(
 				this,
-				noneAccessory as ArmorItemData,
-				noneEnchant as EnchantItemData,
-				noneModifier as ModifierItemData
+				noneAccessory as ArmorItem,
+				noneEnchant as EnchantItem,
+				noneModifier as ModifierItem
 			),
 			chestplate: new ArmorSlot(
 				this,
-				noneChestplate as ArmorItemData,
-				noneEnchant as EnchantItemData,
-				noneModifier as ModifierItemData
+				noneChestplate as ArmorItem,
+				noneEnchant as EnchantItem,
+				noneModifier as ModifierItem
 			),
 			pants: new ArmorSlot(
 				this,
-				nonePants as ArmorItemData,
-				noneEnchant as EnchantItemData,
-				noneModifier as ModifierItemData
+				nonePants as ArmorItem,
+				noneEnchant as EnchantItem,
+				noneModifier as ModifierItem
 			)
 		};
 	}
@@ -100,7 +100,7 @@ export class CurrentBuild {
 		}
 	}
 
-	getBuildStats(): ArmorStats {
+	getBuildStats(): GearStats {
 		let finalBuildStats: any = {
 			power: 0,
 			defense: 0,
@@ -174,7 +174,8 @@ export class CurrentBuild {
 				(item, slot) => item.name == 'Virtuous' && slot.modifier.name == 'Atlantean Essence',
 				(item, slot) => item.name == 'Atlantean Essence' && slot.enchant.name == 'Virtuous',
 				(item, slot) =>
-					item.mainType === 'Modifier' && !slot.armor.validModifiers.includes(item.name)
+					item.mainType === 'Modifier' && !slot.armor.validModifiers.includes(item.name),
+				(item, slot) => item.mainType === 'Enchant' && !item.enchantTypes.gear
 			];
 
 			// console.log(item.mainType == 'Modifier' && !slot.armor.validModifiers.includes(item.name));
@@ -209,18 +210,18 @@ export class CurrentBuild {
 	setGear(item: anyItem, slotKey: keyof typeof this.slots, gemIndex: number | boolean = false) {
 		if (this.validateItem(item, slotKey) || item.name == 'None') {
 			if (['Accessory', 'Chestplate', 'Pants'].includes(item.mainType)) {
-				this.slots[slotKey].setArmor(item as ArmorItemData);
+				this.slots[slotKey].setArmor(item as ArmorItem);
 			} else if (item.mainType == 'Enchant') {
-				this.slots[slotKey].setEnchant(item as EnchantItemData);
+				this.slots[slotKey].setEnchant(item as EnchantItem);
 			} else if (item.mainType == 'Modifier') {
-				this.slots[slotKey].setModifier(item as ModifierItemData);
+				this.slots[slotKey].setModifier(item as ModifierItem);
 			} else if (item.mainType == 'Gem' && gemIndex !== false) {
 				if (typeof gemIndex == 'number') {
 					if ((gemIndex as number) < this.slots[slotKey].armor.gemNo) {
-						this.slots[slotKey].setGem(gemIndex as number, item as GemItemData);
+						this.slots[slotKey].setGem(gemIndex as number, item as GemItem);
 					}
 				} else {
-					this.slots[slotKey].setGem(0, item as GemItemData);
+					this.slots[slotKey].setGem(0, item as GemItem);
 				}
 			}
 			return true;

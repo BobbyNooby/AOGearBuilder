@@ -472,11 +472,8 @@
 {/if}
 
 {#if mode == 'edit'}
-	<button
-		class="w-24 h-24"
-		on:click={() => handleToggle()}
-	>
-		<ItemImage item={item} />
+	<button class="w-24 h-24" on:click={() => handleToggle()}>
+		<ItemImage {item} />
 	</button>
 {/if}
 
@@ -650,10 +647,8 @@
 					
 					
 					-->
-						<div
-							class="w-24 h-24 col-span-1 mx-auto my-auto"
-						>
-							<ItemImage item={item} borderWidth={2} />
+						<div class="w-24 h-24 col-span-1 mx-auto my-auto">
+							<ItemImage {item} borderWidth={2} />
 						</div>
 					</div>
 

@@ -1,12 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { rarityColors, staticImagesRootFolder } from '$lib/dataConstants';
-	import type {
-		ArmorItemData,
-		GemItemData,
-		EnchantItemData,
-		ModifierItemData
-	} from '$lib/utils/itemTypes';
+	import type { ArmorItem, GemItem, EnchantItem, ModifierItem } from '$lib/utils/itemTypes';
 	import { writable } from 'svelte/store';
 	import ItemTooltip from './ItemTooltip.svelte';
 	import type { Player } from '$lib/gearBuilder/playerClasses';
@@ -14,7 +9,7 @@
 	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
 	import ItemImage from '../shared/ItemImage.svelte';
 
-	export let item: ArmorItemData | GemItemData | EnchantItemData | ModifierItemData | any,
+	export let item: ArmorItem | GemItem | EnchantItem | ModifierItem | any,
 		slotKey: 'accessory1' | 'accessory2' | 'accessory3' | 'chestplate' | 'pants',
 		gemIndex: boolean | number,
 		player: Player | undefined = undefined,
@@ -92,6 +87,7 @@
 				toggleMenu();
 			}
 		} else if (ship) {
+			console.log(slotKey, slotIndex);
 			ship.setShipPart(item, slotKey as keyof typeof ship.slots, slotIndex, shipPartType);
 			updatePage();
 			toggleMenu();
@@ -142,7 +138,7 @@
 		on:click={handleClick}
 		class="m-1 w-20 h-20 md:w-24 md:h-24"
 	>
-		<ItemImage item={item} />
+		<ItemImage {item} />
 	</button>
 	{#if isHovering}
 		<div
@@ -187,6 +183,8 @@
 					isItemMenu={true}
 					atlanteanAttribute={chosenAtlanteanAttribute}
 					{showOnlyAtlanteanStat}
+					{shipPartType}
+					{slotIndex}
 				/>
 			</div>
 		</div>
@@ -198,7 +196,7 @@
 		}}
 		class="m-1 w-20 h-20 md:w-24 md:h-24"
 	>
-		<ItemImage item={item} />
+		<ItemImage {item} />
 
 		{#if isMenuActive}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -212,10 +210,8 @@
 				}}
 			>
 				<div class="space-y-2 flex flex-col justify-center items-center z-40">
-					<div
-						class="m-1 w-20 h-20"
-					>
-						<ItemImage item={item} hasGems={false} hasStatsOverlay={false} />
+					<div class="m-1 w-20 h-20">
+						<ItemImage {item} hasGems={false} hasStatsOverlay={false} />
 					</div>
 					<h2 class="text-2xl z-40" style="color: white; font-family: Merriweather;">
 						{item.name}
@@ -238,6 +234,8 @@
 							isItemMenu={true}
 							atlanteanAttribute={chosenAtlanteanAttribute}
 							{showOnlyAtlanteanStat}
+							{shipPartType}
+							{slotIndex}
 						/>
 					</div>
 					<div class="flex flex-row space-x-2">
