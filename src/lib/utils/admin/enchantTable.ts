@@ -1,4 +1,3 @@
-
 type visiBoolOptions = {
 	bool: boolean;
 	text: string;
@@ -40,7 +39,15 @@ function filterData(inputData: any, visiBools: any) {
 		'resilience',
 		'speed',
 		'stability',
-		'turning'
+		'turning',
+
+		'damageMultiplier',
+		'rangeMultiplier',
+		'spreadMultiplier',
+		'fuseLength',
+		'reloadTime',
+
+		'ramSpeed'
 	];
 
 	for (const key of keys) {
@@ -56,8 +63,8 @@ export type statSlot = { visible: boolean; value: number };
 export class EnchantColumn {
 	parentTable: EnchantTable;
 
-	component:string;
-	
+	component: string;
+
 	power: number | null = null;
 	defense: number | null = null;
 	agility: number | null = null;
@@ -90,6 +97,14 @@ export class EnchantColumn {
 	speed: number | null = null;
 	stability: number | null = null;
 	turning: number | null = null;
+
+	damageMultiplier: number | null = null;
+	rangeMultiplier: number | null = null;
+	spreadMultiplier: number | null = null;
+	fuseLength: number | null = null;
+	reloadTime: number | null = null;
+
+	ramSpeed: number | null = null;
 	constructor(component: string, parentTable: EnchantTable) {
 		this.parentTable = parentTable;
 
@@ -114,12 +129,11 @@ export class EnchantColumn {
 	}
 }
 
-
 export class EnchantTable {
-	selected: { [key: string]: { bool: boolean;text: string; } };
+	selected: { [key: string]: { bool: boolean; text: string } };
 	columns: EnchantColumn[];
 	visiBools: { [key: string]: visiBoolOptions };
-	visiBoolsComponents: { [key: string]: { bool: boolean;text: string; } }
+	visiBoolsComponents: { [key: string]: { bool: boolean; text: string } };
 
 	constructor() {
 		this.columns = [];
@@ -272,6 +286,36 @@ export class EnchantTable {
 				bool: false,
 				text: 'Turning',
 				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			damageMultiplier: {
+				bool: false,
+				text: 'Damage Multiplier',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			rangeMultiplier: {
+				bool: false,
+				text: 'Range Multiplier',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			fuseLength: {
+				bool: false,
+				text: 'Fuse Length',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			spreadMultiplier: {
+				bool: false,
+				text: 'Spread Multiplier',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			reloadTime: {
+				bool: false,
+				text: 'Reload Time',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			ramSpeed: {
+				bool: false,
+				text: 'Ram Speed',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
 			}
 		};
 		this.visiBoolsComponents = {
@@ -300,7 +344,7 @@ export class EnchantTable {
 		};
 
 		for (const [key, value] of Object.entries(this.visiBoolsComponents)) {
-			if ("bool" in value && value.bool == true) {
+			if ('bool' in value && value.bool == true) {
 				this.columns.push(new EnchantColumn(key, this));
 			}
 		}
@@ -321,11 +365,10 @@ export class EnchantTable {
 
 	//Resie method
 	updateColumns() {
-
 		const newColumns = [];
 
 		for (const [key, value] of Object.entries(this.visiBoolsComponents)) {
-			if ("bool" in value && value.bool == true) {
+			if ('bool' in value && value.bool == true) {
 				let column: any = this.columns.find((column) => column.component === key);
 				if (column) {
 					newColumns.push(column);

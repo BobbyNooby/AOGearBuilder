@@ -152,6 +152,23 @@
 			'spreadMultiplier',
 			'fuseLength',
 			'reloadTime'
+		],
+		allShipStats: [
+			'durability',
+			'magicStorage',
+			'ramDefense',
+			'ramStrength',
+			'resilience',
+			'speed',
+			'stability',
+			'turning',
+			'ramSpeed',
+
+			'damageMultiplier',
+			'rangeMultiplier',
+			'spreadMultiplier',
+			'fuseLength',
+			'reloadTime'
 		]
 	};
 
@@ -842,7 +859,7 @@
 
 						<h6 class="mb-1 text-md font-bold text-gray-900">Stat Options</h6>
 						<div class="flex flex-wrap items-center">
-							{#each mainTypeStats['ship'] as key}
+							{#each mainTypeStats['allShipStats'] as key}
 								<div class="px-2">
 									<input
 										id={key}
