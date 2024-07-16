@@ -99,7 +99,7 @@
 
 			'insanity',
 			'warding',
-			'drawback',
+			'drawback'
 		],
 		ship: [
 			'durability',
@@ -110,6 +110,48 @@
 			'speed',
 			'stability',
 			'turning'
+		],
+		cannon: [
+			'durability',
+			'magicStorage',
+			'ramDefense',
+			'ramStrength',
+			'resilience',
+			'speed',
+			'stability',
+			'turning',
+
+			'damageMultiplier',
+			'rangeMultiplier',
+			'fuseLength',
+			'reloadTime'
+		],
+		ram: [
+			'durability',
+			'magicStorage',
+			'ramDefense',
+			'ramStrength',
+			'resilience',
+			'speed',
+			'stability',
+			'turning',
+			'ramSpeed'
+		],
+		siegeWeapon: [
+			'durability',
+			'magicStorage',
+			'ramDefense',
+			'ramStrength',
+			'resilience',
+			'speed',
+			'stability',
+			'turning',
+
+			'damageMultiplier',
+			'rangeMultiplier',
+			'spreadMultiplier',
+			'fuseLength',
+			'reloadTime'
 		]
 	};
 
@@ -320,11 +362,11 @@
 		}
 
 		enchantTable = new EnchantTable();
-		if ("enchantTypes" in item) {
+		if ('enchantTypes' in item) {
 			for (const [key, value] of Object.entries(item.enchantTypes as {})) {
 				enchantTable.selected[key].bool = true;
-				
-				if (key == "gear") {
+
+				if (key == 'gear') {
 					statsTable = new Table(90, roundDown(config.maxLevel, 10), false);
 					let column: any = new Column(0, statsTable);
 					for (const [key, stat] of Object.entries(value as {})) {
@@ -338,11 +380,11 @@
 					statsTable.columns = [column];
 				}
 
-				if (key == "ship") {
+				if (key == 'ship') {
 					const newColumns = [];
 					for (const component of enchantTable.getComponentOptions()) {
 						if (component in (value as {})) {
-							let column: any = new EnchantColumn(component, enchantTable)
+							let column: any = new EnchantColumn(component, enchantTable);
 							enchantTable.visiBoolsComponents[component].bool = true;
 							for (const [statName, stat] of Object.entries((value as any)[component])) {
 								column[statName] = stat;
@@ -375,6 +417,12 @@
 			validCategories = mainTypeStats.gearIncrement;
 		} else if (['Enchant'].includes(item.mainType)) {
 			validCategories = mainTypeStats.enchant;
+		} else if (['Ram'].includes(item.mainType)) {
+			validCategories = mainTypeStats.ram;
+		} else if (['Cannon'].includes(item.mainType)) {
+			validCategories = mainTypeStats.cannon;
+		} else if (['Siege Weapon'].includes(item.mainType)) {
+			validCategories = mainTypeStats.siegeWeapon;
 		} else {
 			validCategories = mainTypeStats.ship;
 		}
@@ -431,13 +479,13 @@
 		} else if (['Enchant'].includes(item.mainType)) {
 			tempItem.enchantTypes = {};
 			if (enchantTable.selected.gear.bool == true) {
-				tempItem.enchantTypes["gear"] = {};
+				tempItem.enchantTypes['gear'] = {};
 				for (const statKey in statsTable.getData()) {
 					tempItem.enchantTypes.gear[statKey] = statsTable.getData()[statKey];
 				}
 			}
 			if (enchantTable.selected.ship.bool == true) {
-				tempItem.enchantTypes["ship"] = {};
+				tempItem.enchantTypes['ship'] = {};
 				for (let column of enchantTable.getData()) {
 					tempItem.enchantTypes.ship[column.component] = {};
 					for (const [key, value] of Object.entries(column)) {
@@ -659,7 +707,7 @@
                     VisiBools
                     
                 -->
-					{#if item.mainType == "Enchant"}
+					{#if item.mainType == 'Enchant'}
 						<h6 class="mb-1 text-md font-bold text-gray-900">Stat Types</h6>
 						<div class="flex flex-wrap items-center">
 							{#each enchantTable.getSelectOptions() as key}
@@ -678,7 +726,7 @@
 						</div>
 					{/if}
 
-					{#if item.mainType != "Enchant" || (item.mainType == "Enchant" && enchantTable.selected.gear.bool == true) }
+					{#if item.mainType != 'Enchant' || (item.mainType == 'Enchant' && enchantTable.selected.gear.bool == true)}
 						<h6 class="mb-1 text-md font-bold text-gray-900">Stat Options</h6>
 						<div class="flex flex-wrap items-center">
 							{#each validCategories as key}
@@ -773,7 +821,7 @@
 						</div>
 					{/if}
 
-					{#if item.mainType == "Enchant" && enchantTable.selected.ship.bool == true }
+					{#if item.mainType == 'Enchant' && enchantTable.selected.ship.bool == true}
 						<h6 class="mb-1 text-md font-bold text-gray-900">Ship Components</h6>
 						<div class="flex flex-wrap items-center">
 							{#each enchantTable.getComponentOptions() as key}
@@ -783,7 +831,7 @@
 										type="checkbox"
 										bind:checked={enchantTable.visiBoolsComponents[key].bool}
 										on:input={(e) => {
-											enchantTable.visiBoolsComponents[key].bool = e.currentTarget?.checked
+											enchantTable.visiBoolsComponents[key].bool = e.currentTarget?.checked;
 											enchantTable.updateColumns();
 										}}
 									/>
@@ -794,7 +842,7 @@
 
 						<h6 class="mb-1 text-md font-bold text-gray-900">Stat Options</h6>
 						<div class="flex flex-wrap items-center">
-							{#each mainTypeStats["ship"] as key}
+							{#each mainTypeStats['ship'] as key}
 								<div class="px-2">
 									<input
 										id={key}
@@ -830,7 +878,9 @@
 									{#each Object.keys(column) as key}
 										{#if key != 'parentTable'}
 											{#if key === 'component'}
-												<div class="w-full mb-1 font-bold">{enchantTable.visiBoolsComponents[column.component].text}</div>
+												<div class="w-full mb-1 font-bold">
+													{enchantTable.visiBoolsComponents[column.component].text}
+												</div>
 											{:else if key !== 'component ' && enchantTable.visiBools[key].bool === true}
 												<input
 													type="number"

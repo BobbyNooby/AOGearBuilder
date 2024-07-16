@@ -40,7 +40,15 @@ function filterData(inputData: any, visiBools: any) {
 		'resilience',
 		'speed',
 		'stability',
-		'turning'
+		'turning',
+
+		'damageMultiplier',
+		'rangeMultiplier',
+		'spreadMultiplier',
+		'fuseLength',
+		'reloadTime',
+
+		'ramSpeed'
 	];
 
 	for (const key of keys) {
@@ -89,6 +97,15 @@ export class Column {
 	speed: number | null = null;
 	stability: number | null = null;
 	turning: number | null = null;
+
+	damageMultiplier: number | null = null;
+	rangeMultiplier: number | null = null;
+	spreadMultiplier: number | null = null;
+	fuseLength: number | null = null;
+	reloadTime: number | null = null;
+
+	ramSpeed: number | null = null;
+
 	constructor(level: number, parentTable: Table) {
 		this.parentTable = parentTable;
 
@@ -273,6 +290,36 @@ export class Table {
 			turning: {
 				bool: false,
 				text: 'Turning',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			damageMultiplier: {
+				bool: false,
+				text: 'Damage Multiplier',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			rangeMultiplier: {
+				bool: false,
+				text: 'Range Multiplier',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			fuseLength: {
+				bool: false,
+				text: 'Fuse Length',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			spreadMultiplier: {
+				bool: false,
+				text: 'Spread Multiplier',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			reloadTime: {
+				bool: false,
+				text: 'Reload Time',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			ramSpeed: {
+				bool: false,
+				text: 'Ram Speed',
 				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
 			}
 		};
