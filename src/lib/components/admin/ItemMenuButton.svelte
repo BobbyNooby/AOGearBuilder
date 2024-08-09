@@ -109,6 +109,25 @@
 			'resilience',
 			'speed',
 			'stability',
+			'turning',
+
+			'hullArmorSlot',
+			'quarterMasterSlot',
+			'cannonSlot',
+			'siegeWeaponSlot',
+			'sailMaterialSlot',
+			'shipCrewSlot',
+			'ramSlot',
+			'deckhandSlot'
+		],
+		shipStats: [
+			'durability',
+			'magicStorage',
+			'ramDefense',
+			'ramStrength',
+			'resilience',
+			'speed',
+			'stability',
 			'turning'
 		],
 		cannon: [
@@ -306,7 +325,7 @@
 			},
 			Ship: {
 				levelVisibility: false,
-				subTypes: ['Rowboat', 'Sailboat', 'Caravel', 'Ketch', 'Brig'],
+				subTypes: null,
 				statTypes: null,
 				gemVisibility: false,
 				modifiable: false,
@@ -440,8 +459,10 @@
 			validCategories = mainTypeStats.cannon;
 		} else if (['Siege Weapon'].includes(item.mainType)) {
 			validCategories = mainTypeStats.siegeWeapon;
-		} else {
+		} else if (['Ship'].includes(item.mainType)) {
 			validCategories = mainTypeStats.ship;
+		} else {
+			validCategories = mainTypeStats.shipStats;
 		}
 
 		for (const stat in statsTable.visiBools) {
@@ -471,18 +492,6 @@
 		if (['Accessory', 'Chestplate', 'Pants'].includes(item.mainType)) {
 			tempItem.subType = item.subType;
 			tempItem.statType = item.statType;
-			tempItem.gemNo = item.gemNo;
-			tempItem.minLevel = statsTable.minLevel;
-			tempItem.maxLevel = statsTable.maxLevel;
-			tempItem.statsPerLevel = statsTable.getData();
-			tempItem.validModifiers = [];
-			for (const modifier in statsTable.validModifiers) {
-				if (statsTable.validModifiers[modifier] == true) {
-					tempItem.validModifiers.push(modifier);
-				}
-			}
-		} else if (['Ship'].includes(item.mainType)) {
-			tempItem.subType = item.subType;
 			tempItem.gemNo = item.gemNo;
 			tempItem.minLevel = statsTable.minLevel;
 			tempItem.maxLevel = statsTable.maxLevel;

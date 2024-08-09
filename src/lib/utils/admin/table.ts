@@ -106,6 +106,15 @@ export class Column {
 
 	ramSpeed: number | null = null;
 
+	hullArmorSlot: number | null = null;
+	quarterMasterSlot: number | null = null;
+	cannonSlot: number | null = null;
+	siegeWeaponSlot: number | null = null;
+	sailMaterialSlot: number | null = null;
+	shipCrewSlot: number | null = null;
+	ramSlot: number | null = null;
+	deckhandSlot: number | null = null;
+
 	constructor(level: number, parentTable: Table) {
 		this.parentTable = parentTable;
 
@@ -320,6 +329,46 @@ export class Table {
 			ramSpeed: {
 				bool: false,
 				text: 'Ram Speed',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			hullArmorSlot: {
+				bool: false,
+				text: 'Hull Armor Slot',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			quarterMasterSlot: {
+				bool: false,
+				text: 'Quarter Master Slot',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			cannonSlot: {
+				bool: false,
+				text: 'Cannon Slot',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			siegeWeaponSlot: {
+				bool: false,
+				text: 'Siege Weapon Slot',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			sailMaterialSlot: {
+				bool: false,
+				text: 'Sail Material Slot',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			shipCrewSlot: {
+				bool: false,
+				text: 'Ship Crew Slot',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			ramSlot: {
+				bool: false,
+				text: 'Ram Slot',
+				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
+			},
+			deckhandSlot: {
+				bool: false,
+				text: 'Deckhand Slot',
 				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
 			}
 		};
