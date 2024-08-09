@@ -37,7 +37,7 @@ export class Player {
 
 	constructor(
 		database: anyItem[],
-		maxLevel:number,
+		maxLevel: number,
 		level = maxLevel,
 		health = 93,
 
@@ -128,9 +128,19 @@ export class Player {
 
 	updateStatBuild() {
 		this.statBuild = statBuilds[this.getStatBuild().type];
+		let magicNo = this.statBuild.magicNo;
+		let fightingStyleNo = this.statBuild.fightingStyleNo;
 
-		if (this.magics.length < this.statBuild.magicNo) {
-			const diff = this.statBuild.magicNo - this.magics.length;
+		if (this.getStatBuild().type === 'Savant') {
+			if (get(savantChoiceStore).includes('Magic')) {
+				magicNo += 1;
+			} else if (get(savantChoiceStore).includes('Fighting Style')) {
+				fightingStyleNo += 1;
+			}
+		}
+
+		if (this.magics.length < magicNo) {
+			const diff = magicNo - this.magics.length;
 			for (let i = 0; i < diff; i++) {
 				const otherMagics = Object.keys(magicRecords).filter(
 					(magic) => !this.magics.includes(magic as magic)
@@ -139,8 +149,8 @@ export class Player {
 			}
 		}
 
-		if (this.fightingStyles.length < this.statBuild.fightingStyleNo) {
-			const diff = this.statBuild.fightingStyleNo - this.fightingStyles.length;
+		if (this.fightingStyles.length < fightingStyleNo) {
+			const diff = fightingStyleNo - this.fightingStyles.length;
 			for (let i = 0; i < diff; i++) {
 				const otherFightingStyles = Object.keys(fightingStyleRecords).filter(
 					(fightingStyle) => !this.fightingStyles.includes(fightingStyle as fightingStyle)
@@ -149,23 +159,8 @@ export class Player {
 			}
 		}
 
-		this.magics.splice(this.statBuild.magicNo);
-		this.fightingStyles.splice(this.statBuild.fightingStyleNo);
-
-		if (this.getStatBuild().type === 'Savant') {
-			if (get(savantChoiceStore).includes('Magic')) {
-				const otherMagics = Object.keys(magicRecords).filter(
-					(magic) => !this.magics.includes(magic as magic)
-				) as magic[];
-				this.magics.push(otherMagics[0] as magic);
-			}
-			if (get(savantChoiceStore).includes('Fighting Style')) {
-				const otherFightingStyles = Object.keys(fightingStyleRecords).filter(
-					(fightingStyle) => !this.fightingStyles.includes(fightingStyle as fightingStyle)
-				);
-				this.fightingStyles.push(otherFightingStyles[0] as fightingStyle);
-			}
-		}
+		this.magics.splice(magicNo);
+		this.fightingStyles.splice(fightingStyleNo);
 
 		this.build.fixBuildItems();
 	}
