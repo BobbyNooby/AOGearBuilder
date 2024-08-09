@@ -396,7 +396,9 @@
 				<div class="flex justify-center items-center">
 					<div class="flex flex-col">
 						<div class="flex flex-col">
-							<div class=" m-20 w-80 h-96 p-2 border-2 border-white rounded bg-black bg-opacity-40">
+							<div
+								class=" m-20 w-80 h-auto p-2 border-2 border-white rounded bg-black bg-opacity-40"
+							>
 								<ItemTooltip
 									player={SessionPlayer}
 									isItemMenu={false}
