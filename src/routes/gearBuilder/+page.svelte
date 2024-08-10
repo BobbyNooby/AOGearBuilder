@@ -18,8 +18,12 @@
 	import { isMobile } from '$lib/utils/mobileStore';
 	import BuildsOverrideButton from '$lib/components/builders/BuildsOverrideButton.svelte';
 	import RandomButton from '$lib/components/builders/RandomButton.svelte';
+	import { calculateScaling } from '$lib/utils/calculateScaling';
 
 	export let data: PageData;
+
+	data = calculateScaling(data);
+
 	let ready = false;
 
 	let SessionPlayer = new Player(data.Database, data.config.maxLevel);
