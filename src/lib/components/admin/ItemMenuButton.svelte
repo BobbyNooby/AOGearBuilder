@@ -12,6 +12,8 @@
 	import { roundDown } from '$lib/utils/roundDown';
 	import ItemImage from '../shared/ItemImage.svelte';
 	import { EnchantTable, EnchantColumn } from '$lib/utils/admin/enchantTable';
+	import { calculateStatScaling, findImbue } from '$lib/utils/calculateScaling';
+	import { ScalingTable, ScalingColumn } from '$lib/utils/admin/scalingTable';
 
 	export let item: anyItem, mode: 'edit' | 'create', config: any;
 
@@ -344,9 +346,11 @@
 
 	let statsTable: Table;
 	let enchantTable: EnchantTable = new EnchantTable();
+	let scalingTable: ScalingTable = new ScalingTable();
 	if (mode == 'create') {
 		statsTable = new Table(90, roundDown(config.maxLevel, 10), true);
 		enchantTable = new EnchantTable();
+		scalingTable = new ScalingTable();
 	}
 	if (mode == 'edit') {
 		if ('minLevel' in item && 'maxLevel' in item) {
@@ -435,6 +439,16 @@
 				}
 			}
 		}
+
+		scalingTable = new ScalingTable();
+		if ('scaling' in item) {
+			let column: any = new ScalingColumn(scalingTable);
+			for (let statName of Object.keys(item.scaling)) {
+				column[statName] = item.scaling[statName];
+				statsTable.visiBools[statName].bool = true;
+			}
+			scalingTable.column = column;
+		}
 	}
 
 	let validCategories: string[] = mainTypeStats.gearStatic;
@@ -487,6 +501,11 @@
 
 		if (!validImage) {
 			tempItem.imageId = 'NO_IMAGE';
+		}
+
+		let scalingTableData = scalingTable.getData();
+		if (Object.keys(scalingTableData).length != 0) {
+			tempItem.scaling = scalingTableData;
 		}
 
 		if (['Accessory', 'Chestplate', 'Pants'].includes(item.mainType)) {
@@ -797,6 +816,53 @@
 
 						<!--
 
+						Scaling Table
+
+						-->
+
+						{#if ['Accessory', 'Chestplate', 'Pants'].includes(item.mainType || '')}
+							<div class="grid grid-cols-6 md:grid-cols-12">
+								<div class="col-span-1">
+									<div class="w-full mb-1 font-bold">Scaling</div>
+
+									{#each Object.keys(scalingTable.visiBools) as stat}
+										{#if statsTable.visiBools[stat].bool === true}
+											<div class="w-full pb-1 h-6 items-center">
+												<img
+													class="object-contain h-6"
+													alt={scalingTable.visiBools[stat].text}
+													src={scalingTable.visiBools[stat].imageId}
+												/>
+											</div>
+										{/if}
+									{/each}
+								</div>
+								<div class="col-span-1">
+									<div class="w-full mb-1 font-bold">-</div>
+									{#each Object.keys(scalingTable.column) as key}
+										{#if key != 'parentTable'}
+											{#if statsTable.visiBools[key].bool === true}
+												<input
+													type="number"
+													step="any"
+													class="w-full h-6 max-w-full bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block p-1"
+													bind:value={scalingTable.column[key]}
+													placeholder={'0'}
+												/>
+											{/if}
+										{/if}
+									{/each}
+								</div>
+							</div>
+							{#if statsTable.visiBools['insanity'].bool || statsTable.visiBools['drawback'].bool || statsTable.visiBools['warding'].bool}
+								<h6 class="text-sm font-bold text-gray-900">
+									Insanity, Drawback and Warding scaling will be treated as flat values.
+								</h6>
+							{/if}
+						{/if}
+
+						<!--
+
 						Table
 
 					-->
@@ -837,7 +903,13 @@
 													step="any"
 													class="w-full h-6 max-w-full bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block p-1"
 													bind:value={column[key]}
-													placeholder={'0'}
+													placeholder={calculateStatScaling(
+														{ ...item, scaling: scalingTable.column },
+														key,
+														column.level,
+														config,
+														findImbue(item, config)
+													).toString()}
 												/>
 											{/if}
 										{/if}

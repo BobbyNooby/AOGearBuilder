@@ -4,33 +4,34 @@
 	import SubmitButton from './inputs/SubmitButton.svelte';
 	import toast from 'svelte-french-toast';
 	import NumberInput from './inputs/NumberInput.svelte';
+	import { capitalizeEachWord } from '$lib/utils/admin/stringUtils';
 
 	export let config: any;
 
 	let open = false;
 
-    let finalSubmitData: string = '';
+	let finalSubmitData: string = '';
 
 	let title = 'Config';
+
+	let imbueType = 'acid';
 
 	$: title = 'Config';
 	const handleToggle = () => {
 		open = !open;
 	};
 
-    function generateEntry() {
+	function generateEntry() {
 		finalSubmitData = JSON.stringify(config);
 	}
 
-	onMount(() => {
-	});
+	onMount(() => {});
 </script>
 
 <button
-    class="font-bold text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-    on:click={() => handleToggle()}>Config</button
+	class="font-bold text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+	on:click={() => handleToggle()}>Config</button
 >
-
 
 {#if open}
 	<div
@@ -43,7 +44,7 @@
 			<form
 				method="POST"
 				action="?/updateConfig"
-                on:submit={generateEntry}
+				on:submit={generateEntry}
 				use:enhance={() => {
 					return async ({ result, update }) => {
 						update({ reset: false });
@@ -87,18 +88,58 @@
 				</div>
 
 				<div class="content p-8 pt-2 overflow-y-auto">
-                    <input type="hidden" id="config" name="config" value={finalSubmitData} required />
+					<input type="hidden" id="config" name="config" value={finalSubmitData} required />
 
+					<h6 class="mb-1 text-lg font-bold text-gray-900">General Config</h6>
 					<div class="grid gap-6 mb-6 md:grid-cols-4">
 						<NumberInput
 							id={'maxLevel'}
 							name={'Max Level'}
 							placeholder={config.maxLevel}
 							isRequired={true}
-                            bind:value={config.maxLevel}
+							bind:value={config.maxLevel}
 						/>
 					</div>
-                </div>
+
+					<h6 class="mb-1 text-lg font-bold text-gray-900">Imbue Config</h6>
+					<div class="mb-6">
+						<div>
+							<label for={'imbueType'} class="block mb-2 text-sm font-medium text-gray-900"
+								>Imbue Type</label
+							>
+							<select
+								bind:value={imbueType}
+								id={'imbueType'}
+								name={'imbueType'}
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+							>
+								{#each Object.keys(config.scaling.imbuedStatType) as option}
+									<option value={option}>{capitalizeEachWord(option)}</option>
+								{/each}
+							</select>
+						</div>
+					</div>
+					{#if imbueType in config.scaling.imbuedStatType}
+						<div class="grid gap-6 mb-6 md:grid-cols-4">
+							{#each Object.keys(config.scaling.imbuedStatType[imbueType]) as key}
+								<div>
+									<label for={key} class="block mb-2 text-sm font-medium text-gray-900"
+										>{capitalizeEachWord(key)}</label
+									>
+									<input
+										bind:value={config.scaling.imbuedStatType[imbueType][key]}
+										type="number"
+										id={key}
+										name={key}
+										placeholder={config.scaling.imbuedStatType[imbueType][key].toString()}
+										step="any"
+										class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+									/>
+								</div>
+							{/each}
+						</div>
+					{/if}
+				</div>
 
 				<SubmitButton text={'Update'} />
 			</form>
