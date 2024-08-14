@@ -10,7 +10,7 @@
 	import type { Player } from '$lib/gearBuilder/playerClasses';
 	import Item from './Item.svelte';
 	import { rarityColors, staticImagesRootFolder } from '$lib/dataConstants';
-	import { filterType, sortType } from '$lib/utils/filterSortStore';
+	import { filterType, sortType, sortTypeStat } from '$lib/utils/filterSortStore';
 	import FilterButton from './FilterButton.svelte';
 	import SortButton from './SortButton.svelte';
 	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
@@ -105,6 +105,84 @@
 		} else if ($sortType === 'maxLevelLowest') {
 			//Sort item.maxLevel from Lowest to Highest
 			return a.maxlevel - b.maxlevel;
+		} else if ($sortType === 'statHighest' || $sortType === 'statLowest') {
+			//Sort item.maxLevel from Lowest to Highest
+			if (['Accessory', 'Chestplate', 'Pants'].includes(a.mainType)) {
+				if (a.statsPerLevel.length == 0 && b.statsPerLevel.length == 0) {
+					return 0;
+				} else if (b.statsPerLevel.length == 0) {
+					return -1;
+				} else if (a.statsPerLevel.length == 0) {
+					return 1;
+				}
+
+				if ($sortTypeStat in a.statsPerLevel.at(-1) && $sortTypeStat in b.statsPerLevel.at(-1)) {
+					return (
+						(b.statsPerLevel.at(-1)[$sortTypeStat] - a.statsPerLevel.at(-1)[$sortTypeStat]) *
+						($sortType === 'statHighest' ? 1 : -1)
+					); // Will flip the sort order to lowest to highest by multiplying by -1
+				} else if ($sortTypeStat in a.statsPerLevel.at(-1)) {
+					return -1;
+				} else if ($sortTypeStat in b.statsPerLevel.at(-1)) {
+					return 1;
+				} else {
+					return 0;
+				}
+			} else if (['Enchant'].includes(a.mainType)) {
+				if (!('gear' in a.enchantTypes) && !('gear' in b.enchantTypes)) {
+					return 0;
+				} else if (!('gear' in b.enchantTypes)) {
+					return -1;
+				} else if (!('gear' in a.enchantTypes)) {
+					return 1;
+				}
+
+				if (
+					$sortTypeStat + 'Increment' in a.enchantTypes.gear &&
+					$sortTypeStat + 'Increment' in b.enchantTypes.gear
+				) {
+					return (
+						(b.enchantTypes.gear[$sortTypeStat + 'Increment'] -
+							a.enchantTypes.gear[$sortTypeStat + 'Increment']) *
+						($sortType === 'statHighest' ? 1 : -1)
+					);
+				} else if ($sortTypeStat + 'Increment' in a.enchantTypes.gear) {
+					return -1;
+				} else if ($sortTypeStat + 'Increment' in b.enchantTypes.gear) {
+					return 1;
+				} else {
+					return 0;
+				}
+			} else if (['Modifier'].includes(a.mainType)) {
+				if ($sortTypeStat == 'insanity') {
+					return 0;
+				}
+
+				if ($sortTypeStat + 'Increment' in a && $sortTypeStat + 'Increment' in b) {
+					return (
+						(b[$sortTypeStat + 'Increment'] - a[$sortTypeStat + 'Increment']) *
+						($sortType === 'statHighest' ? 1 : -1)
+					);
+				} else if ($sortTypeStat + 'Increment' in a) {
+					return -1;
+				} else if ($sortTypeStat + 'Increment' in b) {
+					return 1;
+				} else {
+					return 0;
+				}
+			} else if (['Gem'].includes(a.mainType)) {
+				if ($sortTypeStat in a && $sortTypeStat in b) {
+					return (b[$sortTypeStat] - a[$sortTypeStat]) * ($sortType === 'statHighest' ? 1 : -1);
+				} else if ($sortTypeStat in a) {
+					return -1;
+				} else if ($sortTypeStat in b) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+
+			return 0;
 		} else {
 			if ($sortType === 'atoz') {
 				// Sort by name A - Z
@@ -185,7 +263,7 @@
 				{shipPartType}
 			/>
 
-			{#each sortedItems as item}
+			{#each sortedItems as item (item.id)}
 				{#if item.name !== 'None'}
 					<Item
 						{item}
