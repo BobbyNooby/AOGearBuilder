@@ -28,5 +28,15 @@ export const sortList = [
 		id: 5,
 		name: 'Lowest Level',
 		sortMethod: 'maxLevelLowest'
+	},
+	{
+		id: 6,
+		name: 'Stat Highest',
+		sortMethod: 'statHighest'
+	},
+	{
+		id: 7,
+		name: 'Stat Lowest',
+		sortMethod: 'statLowest'
 	}
 ];
