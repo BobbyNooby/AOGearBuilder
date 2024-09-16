@@ -15,7 +15,10 @@
 	import { calculateStatScaling, findImbue } from '$lib/utils/calculateScaling';
 	import { ScalingTable, ScalingColumn } from '$lib/utils/admin/scalingTable';
 
-	export let item: anyItem, mode: 'edit' | 'create', config: any;
+	export let item: anyItem,
+		mode: 'edit' | 'create',
+		config: any,
+		modifiers: Record<string, boolean>;
 
 	let itemDefault: anyItem = Object.assign({}, item);
 
@@ -348,13 +351,13 @@
 	let enchantTable: EnchantTable = new EnchantTable();
 	let scalingTable: ScalingTable = new ScalingTable();
 	if (mode == 'create') {
-		statsTable = new Table(90, roundDown(config.maxLevel, 10), true);
+		statsTable = new Table(90, roundDown(config.maxLevel, 10), true, modifiers);
 		enchantTable = new EnchantTable();
 		scalingTable = new ScalingTable();
 	}
 	if (mode == 'edit') {
 		if ('minLevel' in item && 'maxLevel' in item) {
-			statsTable = new Table(item.minLevel, item.maxLevel, true);
+			statsTable = new Table(item.minLevel, item.maxLevel, true, modifiers);
 			const newMinLevel = Math.min(item.minLevel, item.maxLevel);
 			const newMaxLevel = Math.max(item.minLevel, item.maxLevel);
 
@@ -388,7 +391,7 @@
 			statsTable.maxLevel = newMaxLevel;
 			statsTable.columns = newColumns;
 		} else {
-			statsTable = new Table(90, roundDown(config.maxLevel, 10), false);
+			statsTable = new Table(90, roundDown(config.maxLevel, 10), false, modifiers);
 			let column: any = new Column(0, statsTable);
 			for (const [key, value] of Object.entries(item)) {
 				if (key in column) {
@@ -407,7 +410,7 @@
 				enchantTable.selected[key].bool = true;
 
 				if (key == 'gear') {
-					statsTable = new Table(90, roundDown(config.maxLevel, 10), false);
+					statsTable = new Table(90, roundDown(config.maxLevel, 10), false, modifiers);
 					let column: any = new Column(0, statsTable);
 					for (const [key, stat] of Object.entries(value as {})) {
 						if (key in column) {

@@ -6,7 +6,7 @@
 	import DataImage from './DataImage.svelte';
 	import { roundDown } from '$lib/utils/roundDown';
 
-	export let item:anyItem, config: any;
+	export let item:anyItem, config: any, modifiers: Record<string, boolean>;
 
     let open = false;
 
@@ -26,7 +26,7 @@
 
     let statsTable: Table;
     if ("minLevel" in item && "maxLevel" in item) {
-        statsTable = new Table(item.minLevel, item.maxLevel, true);
+        statsTable = new Table(item.minLevel, item.maxLevel, true, modifiers);
         const newMinLevel = Math.min(item.minLevel, item.maxLevel);
         const newMaxLevel = Math.max(item.minLevel, item.maxLevel);
 
@@ -60,7 +60,7 @@
         statsTable.maxLevel = newMaxLevel;
         statsTable.columns = newColumns;
     } else {
-        statsTable = new Table(90, roundDown(config.maxLevel, 10), false);
+        statsTable = new Table(90, roundDown(config.maxLevel, 10), false, modifiers);
         let column: any = new Column(0, statsTable);
         for (const [key, value] of Object.entries(item)) {
             if (key in column) {

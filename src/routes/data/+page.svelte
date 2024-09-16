@@ -1,10 +1,13 @@
 <script lang="ts">
 	import DataStats from "$lib/components/data/DataStats.svelte";
 	import { rarityColors } from "$lib/dataConstants";
+	import { getModifiers } from "$lib/utils/getModifiers";
 	import type { anyItem } from "$lib/utils/itemTypes";
 
 
 	export let data:any;
+
+	let modifiers: Record<string, boolean> = getModifiers(data.items);
 
 	let imageSearchQuery = '';
 	let statSearchQuery = '';
@@ -145,7 +148,7 @@
 		{#each missingStatsItems as item}
 			<div class="flex flex-col p-1">
 				{#key item.id}
-                	<DataStats config={data.config} {item} />
+                	<DataStats config={data.config} {item} {modifiers} />
 				{/key}
 			</div>
 		{/each}
