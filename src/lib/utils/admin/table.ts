@@ -146,7 +146,12 @@ export class Table {
 	columns: Column[];
 	visiBools: { [key: string]: visiBoolOptions };
 	validModifiers: { [key: string]: boolean };
-	constructor(minLevel: number, maxLevel: number, levelVisibility: boolean) {
+	constructor(
+		minLevel: number,
+		maxLevel: number,
+		levelVisibility: boolean,
+		validModifiers: Record<string, boolean>
+	) {
 		this.minLevel = minLevel;
 		this.maxLevel = maxLevel;
 		this.levelVisibility = levelVisibility;
@@ -372,16 +377,7 @@ export class Table {
 				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
 			}
 		};
-		this.validModifiers = {
-			'Atlantean Essence': false,
-			Frozen: false,
-			Archaic: false,
-			Sandy: false,
-			Superheated: false,
-			Drowned: false,
-			Blasted: false,
-			Crystalline: false
-		};
+		this.validModifiers = validModifiers;
 
 		for (let level = minLevel; level <= maxLevel; level += 10) {
 			this.columns.push(new Column(level, this));

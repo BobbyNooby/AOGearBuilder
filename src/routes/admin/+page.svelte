@@ -7,8 +7,11 @@
 	import ConfigMenuButton from '$lib/components/admin/ConfigMenuButton.svelte';
 	import { roundDown } from '$lib/utils/roundDown';
 	import UserManageMenuButton from '$lib/components/admin/UserManageMenuButton.svelte';
+	import { getModifiers } from '$lib/utils/getModifiers';
 
 	export let data: any;
+
+	let modifiers: Record<string, boolean> = getModifiers(data.items);
 
 	let searchQuery = '';
 
@@ -27,26 +30,29 @@
 </script>
 
 <svelte:head>
-    <!-- Primary Meta Tags -->
-    <title>Gear Builder Admin</title>
-    <meta name="title" content="Gear Builder Admin" />
-    <meta name="description" content="Gear Builder Admin for Arcane Odyssey by BobbyNooby" />
+	<!-- Primary Meta Tags -->
+	<title>Gear Builder Admin</title>
+	<meta name="title" content="Gear Builder Admin" />
+	<meta name="description" content="Gear Builder Admin for Arcane Odyssey by BobbyNooby" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.arcaneodyssey.net/admin" />
-    <meta property="og:title" content="Gear Builder Admin" />
-    <meta property="og:description" content="Gear Builder Admin for Arcane Odyssey by BobbyNooby" />
-    <meta property="og:image" content="https://i.imgur.com/c6n3LP1.png" />
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://tools.arcaneodyssey.net/admin" />
+	<meta property="og:title" content="Gear Builder Admin" />
+	<meta property="og:description" content="Gear Builder Admin for Arcane Odyssey by BobbyNooby" />
+	<meta property="og:image" content="https://i.imgur.com/c6n3LP1.png" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://tools.arcaneodyssey.net/admin" />
-    <meta property="twitter:title" content="Gear Builder Admin" />
-    <meta property="twitter:description" content="Gear Builder Admin for Arcane Odyssey by BobbyNooby" />
-    <meta property="twitter:image" content="https://i.imgur.com/c6n3LP1.png" />
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://tools.arcaneodyssey.net/admin" />
+	<meta property="twitter:title" content="Gear Builder Admin" />
+	<meta
+		property="twitter:description"
+		content="Gear Builder Admin for Arcane Odyssey by BobbyNooby"
+	/>
+	<meta property="twitter:image" content="https://i.imgur.com/c6n3LP1.png" />
 
-    <!-- Meta Tags Generated with https://metatags.io -->
+	<!-- Meta Tags Generated with https://metatags.io -->
 </svelte:head>
 
 <div class="p-5">
@@ -80,9 +86,12 @@
 			</div>
 		</SignOut>
 	{:else}
-		<SignIn authorizationParams={{
-			prompt:"none",
-		  }} provider="discord">
+		<SignIn
+			authorizationParams={{
+				prompt: 'none'
+			}}
+			provider="discord"
+		>
 			<div slot="submitButton" class="buttonPrimary">
 				<button
 					class="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
@@ -111,12 +120,12 @@
 			</div>
 		</SignIn>
 	{/if}
-	{#if "config" in data.permissions && data.permissions.config == true }
+	{#if 'config' in data.permissions && data.permissions.config == true}
 		<div class="pt-5">
 			<ConfigMenuButton config={data.config} />
 		</div>
 	{/if}
-	{#if "users" in data.permissions && data.permissions.users == true }
+	{#if 'users' in data.permissions && data.permissions.users == true}
 		<div class="pt-5">
 			<UserManageMenuButton config={data.config} users={data.users} />
 		</div>
@@ -141,6 +150,7 @@
 				validModifiers: [],
 				deleted: false
 			}}
+			{modifiers}
 			mode={'create'}
 		/>
 	</div>
@@ -157,7 +167,7 @@
 		{#each listItems as item}
 			<div class="flex flex-col p-1">
 				{#key item.id}
-					<ItemMenuButton config={data.config} {item} mode={'edit'} />
+					<ItemMenuButton config={data.config} {item} {modifiers} mode={'edit'} />
 				{/key}
 			</div>
 		{/each}
