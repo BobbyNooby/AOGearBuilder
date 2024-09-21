@@ -43,7 +43,21 @@ export type validStatKeysType =
 	| 'intensityIncrement'
 	| 'regenerationIncrement'
 	| 'piercingIncrement'
-	| 'resistanceIncrement';
+	| 'resistanceIncrement'
+	| 'damageMultiplier'
+	| 'rangeMultiplier'
+	| 'spreadMultiplier'
+	| 'fuseLength'
+	| 'reloadTime'
+	| 'ramSpeed'
+	| 'hullArmorSlot'
+	| 'quarterMasterSlot'
+	| 'cannonSlot'
+	| 'siegeWeaponSlot'
+	| 'sailMaterialSlot'
+	| 'shipCrewSlot'
+	| 'ramSlot'
+	| 'deckhandSlot';
 
 export const validStatKeys: validStatKeysType[] = [
 	'power',
@@ -77,7 +91,24 @@ export const validStatKeys: validStatKeysType[] = [
 	'resilience',
 	'speed',
 	'stability',
-	'turning'
+	'turning',
+
+	'damageMultiplier',
+	'rangeMultiplier',
+	'spreadMultiplier',
+	'fuseLength',
+	'reloadTime',
+
+	'ramSpeed',
+
+	'hullArmorSlot',
+	'quarterMasterSlot',
+	'cannonSlot',
+	'siegeWeaponSlot',
+	'sailMaterialSlot',
+	'shipCrewSlot',
+	'ramSlot',
+	'deckhandSlot'
 ];
 
 export const listOfMagics: magic[] = [

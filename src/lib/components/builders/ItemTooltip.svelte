@@ -7,6 +7,7 @@
 	import { staticImagesRootFolder } from '$lib/dataConstants';
 	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
 	import { base } from '$app/paths';
+	import StatWithBar from './StatWithBar.svelte';
 
 	export let fullItem: ArmorItem | GemItem | EnchantItem | ModifierItem | any,
 		showName: boolean,
@@ -128,7 +129,32 @@
 		speed: { name: 'SPEED', fillColor: '#FFFFFF', strokeColor: '#00ffff', suffix: '' },
 		resilience: { name: 'RESILIENCE', fillColor: '#FFFFFF', strokeColor: '#AF2230', suffix: '%' },
 		ramStrength: { name: 'RAM STRENGTH', fillColor: '#FF8400', strokeColor: '#000000', suffix: '' },
-		ramDefense: { name: 'RAM DEFENSE', fillColor: '#FFFFFF', strokeColor: '#6B6BD7', suffix: '' }
+		ramDefense: { name: 'RAM DEFENSE', fillColor: '#FFFFFF', strokeColor: '#6B6BD7', suffix: '' },
+
+		damageMultiplier: {
+			name: 'DAMAGE MULTIPLIER',
+			fillColor: '#FFFFFF',
+			strokeColor: '#000000',
+			suffix: ''
+		},
+
+		rangeMultiplier: {
+			name: 'RANGE MULTIPLIER',
+			fillColor: '#FFFFFF',
+			strokeColor: '#000000',
+			suffix: ''
+		},
+
+		spreadMultiplier: {
+			name: 'SPREAD MULTIPLIER',
+			fillColor: '#FFFFFF',
+			strokeColor: '#000000',
+			suffix: ''
+		},
+
+		fuseLength: { name: 'FUSE LENGTH', fillColor: '#FFFFFF', strokeColor: '#000000', suffix: '' },
+		reloadTime: { name: 'RELOAD TIME', fillColor: '#FFFFFF', strokeColor: '#000000', suffix: '' },
+		ramSpeed: { name: 'RAM SPEED', fillColor: '#FFFFFF', strokeColor: '#000000', suffix: '' }
 	};
 
 	if (atlanteanAttribute != '' && !showOnlyAtlanteanStat) {
@@ -287,6 +313,25 @@
 			efficiencyPointsString = '-';
 		}
 	}
+
+	const statWithEffectivenessKeys = [
+		'agility',
+		'attackSpeed',
+		'attackSize',
+		'intensity',
+		'regeneration',
+		'piercing',
+		'resistance'
+	];
+
+	const shipStatsWithBarKeys = [
+		'damageMultiplier',
+		'rangeMultiplier',
+		'spreadMultiplier',
+		'fuseLength',
+		'reloadTime',
+		'ramSpeed'
+	];
 </script>
 
 {#if true}
@@ -305,8 +350,10 @@
 		{#if !showOnlyAtlanteanStat}
 			{#each Object.keys(itemStats) as stat}
 				{#if chosenStat[stat]}
-					{#if ['agility', 'attackSpeed', 'attackSize', 'intensity', 'regeneration', 'piercing', 'resistance'].includes(stat)}
+					{#if statWithEffectivenessKeys.includes(stat)}
 						<StatWithPercentEffectiveness {stat} {chosenStat} {itemStats} {showName} {player} />
+					{:else if shipStatsWithBarKeys.includes(stat)}
+						<StatWithBar key={stat} value={chosenStat[stat]}></StatWithBar>
 					{:else}
 						<div class="flex items-center justify-center">
 							<img class="h-6" src="{staticImagesRootFolder}/stats/{stat}.png" alt={stat} />

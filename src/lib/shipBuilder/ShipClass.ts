@@ -37,7 +37,7 @@ export class CurrentShipBuild {
 	constructor(database: anyItem[]) {
 		this.database = database;
 
-		this.ship = ships.find((ship): ship is MainShip => ship.name === 'Rowboat') as MainShip;
+		this.ship = database.find((ship): ship is MainShip => ship.name === 'Rowboat') as MainShip;
 
 		this.slots = {
 			hullArmorSlot: [],
@@ -122,6 +122,11 @@ export class CurrentShipBuild {
 		slotIndex: number | boolean = false,
 		shipPartType: 'base' | 'enchant' | undefined = undefined
 	) {
+		if (slotKey == 'Ship') {
+			this.setShip(item as MainShip);
+			return true;
+		}
+
 		console.log(slotKey, slotIndex);
 		if (slotIndex !== false) {
 			if (this.slots[slotKey][slotIndex as number].base.id != undefined) {
@@ -159,6 +164,10 @@ export class CurrentShipBuild {
 		slotKey: keyof typeof this.slots,
 		slotIndex: number | boolean = false
 	) {
+		if (slotKey == 'MainShip') {
+			return true;
+		}
+
 		const partRelations = {
 			Ram: 'ram',
 			'Hull Armor': 'hull',
@@ -215,4 +224,6 @@ export class CurrentShipBuild {
 
 		return true;
 	}
+
+	getBuildCode() {}
 }
