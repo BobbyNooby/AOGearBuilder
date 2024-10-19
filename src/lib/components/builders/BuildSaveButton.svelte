@@ -4,7 +4,7 @@
 		builderVersion,
 		shipBuilderVersion
 	} from '$lib/gearBuilder/buildCodeHandling/misc/versionConstants';
-	import { currentBuildCode } from '$lib/utils/buildSavingUtils';
+	import { currentBuildCode, currentShipBuildCode } from '$lib/utils/buildSavingUtils';
 	import { fade } from 'svelte/transition';
 	export let type: string;
 
@@ -58,7 +58,7 @@
 		} else if (type == 'ship') {
 			newBuild = {
 				name: buildName,
-				code: 'null',
+				code: $currentShipBuildCode,
 				builderVersion: shipBuilderVersion,
 				buildType: 'ship'
 			};

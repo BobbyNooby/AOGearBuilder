@@ -10,6 +10,8 @@ import type {
 import { ships } from './shipList';
 import { ShipItemSlot } from './ShipItemSlot';
 import { joinObjects } from '$lib/utils/joinObject';
+import { isLegacyShipBuild, loadOldShipCode } from './buildCodeHandling/legacyShipCode';
+import { isShipBuildv1, loadShipBuildv1 } from './buildCodeHandling/shipBuildV1';
 
 export class CurrentShipBuild {
 	database: anyItem[];
@@ -92,6 +94,21 @@ export class CurrentShipBuild {
 		this.fixShipSlots();
 	}
 
+	resetBuild() {
+		this.slots = {
+			hullArmorSlot: [],
+			quartermasterSlot: [],
+			cannonSlot: [],
+			siegeWeaponSlot: [],
+			sailMaterialSlot: [],
+			shipCrewSlot: [],
+			ramSlot: [],
+			deckhandSlot: []
+		};
+
+		this.fixShipSlots();
+	}
+
 	setShip(ship: MainShip) {
 		this.ship = ship;
 		this.fixShipSlots();
@@ -102,7 +119,9 @@ export class CurrentShipBuild {
 			const noneItem = this.noneItems[key as keyof typeof this.noneItems];
 			// console.log(this.slots[key]);
 
-			const difference = this.ship[key] - this.slots[key as keyof typeof this.slots].length;
+			const keyValue = key in this.ship ? this.ship[key] : 0;
+
+			const difference = keyValue - this.slots[key as keyof typeof this.slots].length;
 
 			if (difference > 0) {
 				for (let i = 0; i < difference; i++) {
@@ -111,7 +130,7 @@ export class CurrentShipBuild {
 					);
 				}
 			} else if (difference < 0) {
-				this.slots[key as keyof typeof this.slots].splice(this.ship[key]);
+				this.slots[key as keyof typeof this.slots].splice(keyValue);
 			}
 		}
 	}
@@ -225,5 +244,32 @@ export class CurrentShipBuild {
 		return true;
 	}
 
-	getBuildCode() {}
+	getBuildCode() {
+		let codeArray = [];
+		codeArray.push(this.ship.id);
+		for (const slot of Object.values(this.slots)) {
+			let slotArray = [];
+			for (const part of slot) {
+				slotArray.push(part.getSlotCode());
+			}
+			codeArray.push(slotArray.join(','));
+		}
+		return codeArray.join('-');
+	}
+
+	loadBuildCode(database: any[], codeString: string) {
+		try {
+			codeString = decodeURI(codeString);
+			if (isLegacyShipBuild(codeString)) {
+				codeString = loadOldShipCode(codeString);
+				loadShipBuildv1(this, database, codeString);
+			} else if (isShipBuildv1(codeString)) {
+				loadShipBuildv1(this, database, codeString);
+			}
+		} catch (error) {
+			console.log(error);
+			this.resetBuild();
+			return false;
+		}
+	}
 }

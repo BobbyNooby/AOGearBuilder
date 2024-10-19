@@ -51,7 +51,7 @@ export type validStatKeysType =
 	| 'reloadTime'
 	| 'ramSpeed'
 	| 'hullArmorSlot'
-	| 'quarterMasterSlot'
+	| 'quartermasterSlot'
 	| 'cannonSlot'
 	| 'siegeWeaponSlot'
 	| 'sailMaterialSlot'
@@ -102,7 +102,7 @@ export const validStatKeys: validStatKeysType[] = [
 	'ramSpeed',
 
 	'hullArmorSlot',
-	'quarterMasterSlot',
+	'quartermasterSlot',
 	'cannonSlot',
 	'siegeWeaponSlot',
 	'sailMaterialSlot',

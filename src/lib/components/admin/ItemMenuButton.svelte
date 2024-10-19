@@ -117,7 +117,7 @@
 			'turning',
 
 			'hullArmorSlot',
-			'quarterMasterSlot',
+			'quartermasterSlot',
 			'cannonSlot',
 			'siegeWeaponSlot',
 			'sailMaterialSlot',
