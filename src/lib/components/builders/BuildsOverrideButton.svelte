@@ -1,5 +1,5 @@
 <script>
-	import { currentBuildCode } from '$lib/utils/buildSavingUtils';
+	import { currentBuildCode, currentShipBuildCode } from '$lib/utils/buildSavingUtils';
 	import { fade } from 'svelte/transition';
 
 	// @ts-nocheck
@@ -35,9 +35,9 @@
 				build.name === savedBuild['name'] ? { ...build, code: $currentBuildCode } : build
 			);
 		} else if (type == 'ship') {
-			// savedBuilds = savedBuilds.map((build) =>
-			// 	build.name === savedBuild['name'] ? { ...build, code: $currentShipBuildId } : build
-			// );
+			savedBuilds = savedBuilds.map((build) =>
+				build.name === savedBuild['name'] ? { ...build, code: $currentShipBuildCode } : build
+			);
 		}
 
 		localStorage.setItem(saveBuildType, JSON.stringify(savedBuilds));

@@ -178,7 +178,7 @@ export const actions = {
 		}
 		item.id = newId;
 
-		await db.collection('items-test').insertOne(item);
+		await itemsDB.insertOne(item);
 	},
 	edit: async (event) => {
 		let session = await event.locals.auth();
@@ -197,7 +197,7 @@ export const actions = {
 			return fail(403, { error: validAttributes });
 		}
 
-		await db.collection('items-test').updateOne({ id: item.id }, { $set: item });
+		await itemsDB.updateOne({ id: item.id }, { $set: item });
 	},
 	updateConfig: async (event) => {
 		let session = await event.locals.auth();

@@ -59,4 +59,14 @@ export class ShipItemSlot {
 
 		return joinObjects(baseStats, enchantStats) || {};
 	}
+
+	getSlotCode() {
+		let slotCode: any[] = [];
+		slotCode.push(this.base);
+		if (this.enchant != undefined && this.enchant.name != 'None') {
+			slotCode.push(this.enchant);
+		}
+		slotCode = slotCode.map((item) => item.id);
+		return slotCode.join("'");
+	}
 }

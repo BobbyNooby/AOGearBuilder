@@ -1,9 +1,11 @@
-<script>
+<script lang="ts">
 	import { sortType, sortTypeStat } from '$lib/utils/filterSortStore';
 	import { fade } from 'svelte/transition';
 	import { sortList } from '$lib/data/sortList';
 	import { staticImagesRootFolder } from '$lib/dataConstants';
-	import { capitalizeEachWord } from '$lib/utils/admin/stringUtils';
+	import { camelCaseToWords, capitalizeEachWord } from '$lib/utils/admin/stringUtils';
+
+	export let type: keyof typeof validStats = 'gear';
 
 	function setSortType(value) {
 		sortType.set(value);
@@ -16,21 +18,40 @@
 	let menuIsActive = false;
 	let statMenuIsActive = false;
 
-	let gearStats = [
-		'power',
-		'defense',
-		'agility',
-		'attackSpeed',
-		'attackSize',
-		'intensity',
-		'regeneration',
-		'piercing',
-		'resistance',
+	let validStats = {
+		gear: [
+			'power',
+			'defense',
+			'agility',
+			'attackSpeed',
+			'attackSize',
+			'intensity',
+			'regeneration',
+			'piercing',
+			'resistance',
 
-		'insanity',
-		'warding',
-		'drawback'
-	];
+			'insanity',
+			'warding',
+			'drawback'
+		],
+		ship: [
+			'durability',
+			'magicStorage',
+			'ramDefense',
+			'ramSpeed',
+			'ramStrength',
+			'resilience',
+			'speed',
+			'stability',
+			'turning',
+
+			'damageMultiplier',
+			'fuseLength',
+			'rangeMultiplier',
+			'reloadTime',
+			'spreadMultiplier'
+		]
+	};
 
 	function menuToggle() {
 		menuIsActive = !menuIsActive;
@@ -64,6 +85,9 @@
 									class:selected={sort.sortMethod === $sortType}
 									on:click={() => {
 										setSortType(sort.sortMethod);
+										if (!validStats[type].includes($sortTypeStat)) {
+											setSortTypeStat(validStats[type][0]);
+										}
 
 										menuToggle();
 										if (sort.sortMethod == 'statHighest' || sort.sortMethod == 'statLowest') {
@@ -78,7 +102,7 @@
 							</div>
 						{/each}
 					{:else if statMenuIsActive}
-						{#each gearStats as stat}
+						{#each validStats[type] as stat}
 							<div class="mb-4">
 								<button
 									class="w-full bg-black border border-white text-white font-bold text-lg py-2 px-4 rounded"
@@ -90,7 +114,7 @@
 									}}
 								>
 									<p>
-										{capitalizeEachWord(stat)}
+										{capitalizeEachWord(camelCaseToWords(stat))}
 									</p>
 								</button>
 							</div>

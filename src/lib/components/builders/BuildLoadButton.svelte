@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { Player } from '$lib/gearBuilder/playerClasses';
+	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
 	import { fade } from 'svelte/transition';
 
-	export let database: [], type: string, parentPlayer: Player, updatePage: () => void;
+	export let database: [],
+		type: string,
+		parentPlayer: Player | CurrentShipBuild,
+		updatePage: () => void;
 
 	let saveBuildType = '';
 
@@ -146,7 +150,8 @@
 										updatePage();
 										console.log(savedBuild);
 									} else if (type == 'ship') {
-										// loadShipCode(savedBuild.code);
+										parentPlayer.loadBuildCode(database, savedBuild.code);
+										updatePage();
 									}
 								}}
 								style="text-align: center; white-space: normal; word-wrap: break-word;"

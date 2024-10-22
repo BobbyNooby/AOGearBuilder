@@ -17,7 +17,11 @@
 
 	$: listItems = data.items.filter((item: anyItem) => {
 		// Check if the search query is empty or if the item name includes the search query
-		if (searchQuery === '' || item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+		if (
+			searchQuery === '' ||
+			item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+			item.mainType.toLowerCase().includes(searchQuery.toLowerCase())
+		) {
 			return true;
 		}
 		return false;

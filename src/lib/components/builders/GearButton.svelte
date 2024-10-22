@@ -129,29 +129,76 @@
 					return 0;
 				}
 			} else if (['Enchant'].includes(a.mainType)) {
-				if (!('gear' in a.enchantTypes) && !('gear' in b.enchantTypes)) {
-					return 0;
-				} else if (!('gear' in b.enchantTypes)) {
-					return -1;
-				} else if (!('gear' in a.enchantTypes)) {
-					return 1;
-				}
+				if (isPlayer) {
+					if (!('gear' in a.enchantTypes) && !('gear' in b.enchantTypes)) {
+						return 0;
+					} else if (!('gear' in b.enchantTypes)) {
+						return -1;
+					} else if (!('gear' in a.enchantTypes)) {
+						return 1;
+					}
 
-				if (
-					$sortTypeStat + 'Increment' in a.enchantTypes.gear &&
-					$sortTypeStat + 'Increment' in b.enchantTypes.gear
-				) {
-					return (
-						(b.enchantTypes.gear[$sortTypeStat + 'Increment'] -
-							a.enchantTypes.gear[$sortTypeStat + 'Increment']) *
-						($sortType === 'statHighest' ? 1 : -1)
-					);
-				} else if ($sortTypeStat + 'Increment' in a.enchantTypes.gear) {
-					return -1;
-				} else if ($sortTypeStat + 'Increment' in b.enchantTypes.gear) {
-					return 1;
+					if (
+						$sortTypeStat + 'Increment' in a.enchantTypes.gear &&
+						$sortTypeStat + 'Increment' in b.enchantTypes.gear
+					) {
+						return (
+							(b.enchantTypes.gear[$sortTypeStat + 'Increment'] -
+								a.enchantTypes.gear[$sortTypeStat + 'Increment']) *
+							($sortType === 'statHighest' ? 1 : -1)
+						);
+					} else if ($sortTypeStat + 'Increment' in a.enchantTypes.gear) {
+						return -1;
+					} else if ($sortTypeStat + 'Increment' in b.enchantTypes.gear) {
+						return 1;
+					} else {
+						return 0;
+					}
 				} else {
-					return 0;
+					if (!('ship' in a.enchantTypes) && !('ship' in b.enchantTypes)) {
+						return 0;
+					} else if (!('ship' in b.enchantTypes)) {
+						return -1;
+					} else if (!('ship' in a.enchantTypes)) {
+						return 1;
+					}
+
+					const partRelations = {
+						Ram: 'ram',
+						'Hull Armor': 'hull',
+						'Sail Material': 'sail'
+					};
+
+					if (
+						$sortTypeStat in
+							a.enchantTypes.ship[
+								partRelations[ship.getShipPart(slotKey, slotIndex).base.mainType]
+							] &&
+						$sortTypeStat in
+							b.enchantTypes.ship[partRelations[ship.getShipPart(slotKey, slotIndex).base.mainType]]
+					) {
+						return (
+							(b.enchantTypes.ship[
+								partRelations[ship.getShipPart(slotKey, slotIndex).base.mainType]
+							][$sortTypeStat] -
+								a.enchantTypes.ship[
+									partRelations[ship.getShipPart(slotKey, slotIndex).base.mainType]
+								][$sortTypeStat]) *
+							($sortType === 'statHighest' ? 1 : -1)
+						);
+					} else if (
+						$sortTypeStat in
+						a.enchantTypes.ship[partRelations[ship.getShipPart(slotKey, slotIndex).base.mainType]]
+					) {
+						return -1;
+					} else if (
+						$sortTypeStat in
+						b.enchantTypes.ship[partRelations[ship.getShipPart(slotKey, slotIndex).base.mainType]]
+					) {
+						return 1;
+					} else {
+						return 0;
+					}
 				}
 			} else if (['Modifier'].includes(a.mainType)) {
 				if ($sortTypeStat == 'insanity') {
@@ -171,6 +218,27 @@
 					return 0;
 				}
 			} else if (['Gem'].includes(a.mainType)) {
+				if ($sortTypeStat in a && $sortTypeStat in b) {
+					return (b[$sortTypeStat] - a[$sortTypeStat]) * ($sortType === 'statHighest' ? 1 : -1);
+				} else if ($sortTypeStat in a) {
+					return -1;
+				} else if ($sortTypeStat in b) {
+					return 1;
+				} else {
+					return 0;
+				}
+			} else if (
+				[
+					'Hull Armor',
+					'Quartermaster',
+					'Cannon',
+					'Siege Weapon',
+					'Sail Material',
+					'Ship Crew',
+					'Ram',
+					'Deckhand'
+				].includes(a.mainType)
+			) {
 				if ($sortTypeStat in a && $sortTypeStat in b) {
 					return (b[$sortTypeStat] - a[$sortTypeStat]) * ($sortType === 'statHighest' ? 1 : -1);
 				} else if ($sortTypeStat in a) {
@@ -248,7 +316,7 @@
 		/>
 		<div class="flex flex-row space-x-5 my-4">
 			<FilterButton></FilterButton>
-			<SortButton></SortButton>
+			<SortButton type={isPlayer ? 'gear' : 'ship'}></SortButton>
 		</div>
 		<div class="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4">
 			<Item

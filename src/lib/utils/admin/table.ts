@@ -107,7 +107,7 @@ export class Column {
 	ramSpeed: number | null = null;
 
 	hullArmorSlot: number | null = null;
-	quarterMasterSlot: number | null = null;
+	quartermasterSlot: number | null = null;
 	cannonSlot: number | null = null;
 	siegeWeaponSlot: number | null = null;
 	sailMaterialSlot: number | null = null;
@@ -341,9 +341,9 @@ export class Table {
 				text: 'Hull Armor Slot',
 				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
 			},
-			quarterMasterSlot: {
+			quartermasterSlot: {
 				bool: false,
-				text: 'Quarter Master Slot',
+				text: 'Quartermaster Slot',
 				imageId: `https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images/stats/turning.png`
 			},
 			cannonSlot: {

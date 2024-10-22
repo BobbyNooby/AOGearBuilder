@@ -9,3 +9,7 @@ export function capitalizeEachWord(string: string) {
 	}
 	return splitStr.join(' ');
 }
+
+export function camelCaseToWords(s: string) {
+	return s.replace(/([A-Z])/g, ' $1').toLowerCase();
+}

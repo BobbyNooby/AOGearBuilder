@@ -109,9 +109,7 @@
 					<BlackButton
 						parentFunction={async () => {
 							let code =
-								location.protocol +
-								'//' +
-								location.host +
+								location.origin +
 								location.pathname +
 								(location.search ? location.search : '') +
 								'#' +
@@ -148,7 +146,7 @@
 
 				<div class="flex flex-row space-x-2 mt-5 mb-2">
 					<FilterButton></FilterButton>
-					<SortButton></SortButton>
+					<SortButton type={'gear'}></SortButton>
 				</div>
 
 				<div class="flex justify-center items-center">
@@ -356,9 +354,7 @@
 					<BlackButton
 						parentFunction={async () => {
 							let code =
-								location.protocol +
-								'//' +
-								location.host +
+								location.origin +
 								location.pathname +
 								(location.search ? location.search : '') +
 								'#' +
@@ -394,7 +390,7 @@
 
 				<div class="flex flex-row space-x-2 mt-5 mb-2">
 					<FilterButton></FilterButton>
-					<SortButton></SortButton>
+					<SortButton type={'gear'}></SortButton>
 				</div>
 
 				<div class="flex justify-center items-center">

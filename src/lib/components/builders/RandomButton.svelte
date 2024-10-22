@@ -1,8 +1,16 @@
 <script lang="ts">
 	import type { Player } from '$lib/gearBuilder/playerClasses';
+	import type { CurrentShipBuild } from '$lib/shipBuilder/ShipClass';
+	import type { ShipItemSlot } from '$lib/shipBuilder/ShipItemSlot';
+	import { filterData } from '$lib/utils/filterData';
+	import type { ShipPartItem } from '$lib/utils/itemTypes';
+	import ItemMenuButton from '../admin/ItemMenuButton.svelte';
 	import BlackButton from '../misc/BlackButton.svelte';
 
-	export let database: any[], player: Player, updatePage: () => void;
+	export let database: any[],
+		player: Player | CurrentShipBuild,
+		updatePage: () => void,
+		type: string = 'gear';
 
 	function randomItemFromList(list: any[], includeNone: boolean) {
 		let filteredList = list;
@@ -14,7 +22,15 @@
 		return filteredList[Math.floor(Math.random() * filteredList.length)];
 	}
 
-	function randomizeBuild(database: any[], player: Player) {
+	function randomizeBuild(database: any[], player: Player | CurrentShipBuild) {
+		if (type == 'gear') {
+			randomizeGearBuild(database, player as Player);
+		} else if (type == 'ship') {
+			randomizeShipBuild(database, player as CurrentShipBuild);
+		}
+	}
+
+	function randomizeGearBuild(database: any[], player: Player) {
 		const accessoriesList = database.filter((item) => item.mainType === 'Accessory');
 		const chestplatesList = database.filter((item) => item.mainType === 'Chestplate');
 		const pantsList = database.filter((item) => item.mainType === 'Pants');
@@ -74,6 +90,77 @@
 							slotKey as keyof typeof playerBuildSlots,
 							i
 						)
+					);
+				}
+			}
+		}
+		updatePage();
+	}
+
+	function getShipEnchants(database: any[], part: string) {
+		const partRelations = {
+			Ram: 'ram',
+			'Hull Armor': 'hull',
+			'Sail Material': 'sail'
+		};
+
+		try {
+			return database.filter((item) => {
+				if (item.mainType !== 'Enchant') {
+					return false;
+				}
+				if (
+					'enchantTypes' in item &&
+					'ship' in item.enchantTypes &&
+					partRelations[part] in item.enchantTypes.ship
+				) {
+					return true;
+				}
+			});
+		} catch (e) {
+			return [];
+		}
+	}
+
+	function randomizeShipBuild(database: any[], ship: CurrentShipBuild) {
+		const keyToCat = {
+			hullArmorSlot: 'Hull Armor',
+			quartermasterSlot: 'Quartermaster',
+			cannonSlot: 'Cannon',
+			siegeWeaponSlot: 'Siege Weapon',
+			sailMaterialSlot: 'Sail Material',
+			shipCrewSlot: 'Ship Crew',
+			ramSlot: 'Ram',
+			deckhandSlot: 'Deckhand'
+		};
+
+		const hasEnchant = ['Hull Armor', 'Sail Material', 'Ram'];
+
+		ship.resetBuild();
+
+		for (const slotKey of Object.keys(ship.slots) as Array<keyof typeof keyToCat>) {
+			for (let i = 0; i < ship.slots[slotKey].length; i++) {
+				let slotIndex = ship.slots[slotKey].filter((slot) => slot.base.name !== 'None').length;
+				let randomItem: any;
+
+				do {
+					randomItem = randomItemFromList(
+						database.filter((item) => item.mainType === keyToCat[slotKey]),
+						false
+					);
+				} while (
+					keyToCat[slotKey as keyof typeof keyToCat] != 'Deckhand' &&
+					ship.slots[slotKey].filter((slot) => slot.base.id === randomItem.id).length > 0
+				);
+
+				ship.setShipPart(randomItem, slotKey, slotIndex, 'base');
+
+				if (hasEnchant.includes(keyToCat[slotKey])) {
+					ship.setShipPart(
+						randomItemFromList(getShipEnchants(database, keyToCat[slotKey]), false),
+						slotKey,
+						slotIndex,
+						'enchant'
 					);
 				}
 			}
