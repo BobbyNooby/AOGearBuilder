@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { Player } from '$lib/gearBuilder/Player';
-	import type { AnyItemDetails } from '$lib/types/itemTypes';
-	import type { AOTConfig } from '$lib/types/utilTypes';
 	import type { PageData } from '../$types';
 	import type { PlayerBuildSlot } from '$lib/gearBuilder/PlayerBuildSlot';
 	import MenuTrigger from '$lib/components/builders/menu/MenuTrigger.svelte';
+	import StatList from '$lib/components/builders/stats/StatList.svelte';
+	import type { PageServerData } from './$types';
 
-	let { data }: { data: PageData & { items: AnyItemDetails[]; config: AOTConfig } } = $props();
+	let { data }: { data: PageData & PageServerData } = $props();
 
 	let database = data.items;
 
@@ -69,6 +69,10 @@
 					</div>
 				{/if}
 			{/each}
+		</div>
+
+		<div>
+			<StatList isMenu={false} showStatName={true} item={player.build.getBuildStats()} />
 		</div>
 	</div>
 {/key}

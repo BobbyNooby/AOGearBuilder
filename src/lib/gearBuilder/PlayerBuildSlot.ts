@@ -141,11 +141,7 @@ export class PlayerBuildSlot {
 		this.gems.splice(this.armor.gemNo);
 
 		//Modifier fix [TEMP]
-		if (
-			!this.armor.source?.some((source) =>
-				this.config.modifiers[source].includes(this.modifier.name)
-			)
-		) {
+		if (!this.armor.validModifiers.includes(this.modifier.name)) {
 			this.modifier = noneModifier as ModifierDetails;
 		}
 

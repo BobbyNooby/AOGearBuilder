@@ -1,41 +1,51 @@
 import type { GearEnchantStats, GearStats, ShipStats } from './itemTypes';
 
 export type AOTConfig = {
+	name: 'config';
 	maxLevel: number;
 	modifiers: Record<string, string[]>;
-	epValues: {
-		power: number;
-		defense: number;
-		substat: number;
-		drawback: number;
-		warding: number;
-		insanity: number;
-	};
+	epPerStat: Required<GearStats>;
 	scalings: {
-		epPer10: {
-			power: number;
-			defense: number;
-			substat: number;
-		};
+		internal: Required<GearStats>; // formula to get stat = itemScalingValue * internalScalingMultipler * levelMultiplier
 	};
 };
 
 export const tempConfig: AOTConfig = {
+	name: 'config',
 	maxLevel: 140,
 	modifiers: {},
-	epValues: {
+	epPerStat: {
 		power: 3,
-		defense: 1 / 3,
-		substat: 1,
-		drawback: 0,
-		warding: 0,
-		insanity: 0
+		defense: 3 / 11,
+
+		agility: 1,
+		attackSpeed: 1,
+		attackSize: 1,
+		intensity: 1,
+		regeneration: 1,
+		piercing: 1,
+		resistance: 1,
+
+		drawback: -3, // Varied EP Value : -3 * levelMultiplier
+		warding: 1.5, // Varied EP Value : 1.5 * levelMultiplier
+		insanity: -3 // Varied EP Value : -3 * levelMultiplier
 	},
 	scalings: {
-		epPer10: {
-			power: 10.5,
-			defense: 9,
-			substat: 5
+		internal: {
+			power: 3.5,
+			defense: 33,
+
+			agility: 5,
+			attackSpeed: 5,
+			attackSize: 5,
+			intensity: 5,
+			regeneration: 5,
+			piercing: 5,
+			resistance: 5,
+
+			insanity: -1,
+			warding: -1,
+			drawback: -1
 		}
 	}
 };

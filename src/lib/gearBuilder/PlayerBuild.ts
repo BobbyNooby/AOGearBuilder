@@ -177,6 +177,7 @@ export class PlayerBuild {
 			} else if (item.mainType == 'Enchant') {
 				this.slots[slotKey].setEnchant(item as EnchantDetails);
 			} else if (item.mainType == 'Modifier') {
+				console.log(item);
 				this.slots[slotKey].setModifier(item as ModifierDetails);
 			} else if (item.mainType == 'Gem' && gemIndex !== null) {
 				if (typeof gemIndex == 'number') {

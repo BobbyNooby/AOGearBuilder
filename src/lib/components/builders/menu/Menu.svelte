@@ -25,9 +25,14 @@
 
 	let itemMainType = item.mainType;
 	let filteredDatabse = database.filter(
-		(i) => i.mainType === itemMainType && player?.build.validateItem(i, slotKey) === true
+		(i) =>
+			i.mainType === itemMainType &&
+			player?.build.validateItem(i, slotKey) === true &&
+			i.name !== 'None'
 	);
-	let noneItem = filteredDatabse.find((i) => i.name === 'None' && i.mainType === itemMainType);
+	let noneItem = database.find(
+		(i) => i.name === 'None' && i.mainType === itemMainType
+	) as AnyItemDetails;
 </script>
 
 <div
@@ -62,6 +67,7 @@
 
 	<!-- Items menu -->
 	<div class="grid grid-cols-4 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9">
+		<MenuItem item={noneItem} {player} {slotKey} {closeMenu} {gemIndex} {updateState} />
 		{#each filteredDatabse as item}
 			<MenuItem {item} {player} {slotKey} {closeMenu} {gemIndex} {updateState} />
 		{/each}

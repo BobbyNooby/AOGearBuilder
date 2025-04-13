@@ -131,7 +131,7 @@ export type ArmorDetails = ItemIdentifiers & {
 	gemNo: number;
 	minLevel: number;
 	maxLevel: number;
-	statsPerLevel: Record<number, GearStats>;
+	statsPerLevel: ({ level: number } & GearStats)[];
 	scaling: GearStats;
 };
 
