@@ -1,8 +1,9 @@
 <script lang="ts">
+	import TooltipTrigger from '$lib/components/ui/TooltipTrigger.svelte';
 	import type { Player } from '$lib/gearBuilder/Player';
 	import type { AnyItemDetails, GearStats } from '$lib/types/itemTypes';
 	import { consoleBob } from '$lib/utils';
-	import { writable } from 'svelte/store';
+	import { onMount } from 'svelte';
 	import Item from './Item.svelte';
 	import ItemTooltip from './ItemTooltip.svelte';
 
@@ -30,58 +31,6 @@
 				closeMenu();
 			}
 		}
-	}
-
-	let isHovering = $state(false);
-	let mousePosition = $state({ x: 0, y: 0 });
-	let hoverWidth = $state(300);
-
-	function handleMouseOver(event: MouseEvent) {
-		isHovering = true;
-		mousePosition = { x: event.clientX, y: event.clientY };
-	}
-
-	function handleMouseOut(event: MouseEvent) {
-		isHovering = false;
-	}
-
-	function setBoxPositionOverflow() {
-		if (mousePosition.x + hoverWidth + 20 >= document.getElementById('menuouter').clientWidth) {
-			if (document.getElementById('menuouter') != null) {
-				mousePosition.x =
-					mousePosition.x - 40 - hoverWidth + document.getElementById('menuouter').scrollLeft;
-			}
-		} else {
-			if (document.getElementById('menuouter') != null) {
-				mousePosition.x += document.getElementById('menuouter').scrollLeft;
-			}
-		}
-
-		if (document.getElementById('hover') != null) {
-			if (
-				mousePosition.y + document.getElementById('hover').offsetHeight >=
-				document.getElementById('menuouter').clientHeight
-			) {
-				if (document.getElementById('menuouter') != null) {
-					mousePosition.y =
-						mousePosition.y -
-						document.getElementById('hover').offsetHeight +
-						document.getElementById('menuouter').scrollTop;
-				}
-			} else {
-				if (document.getElementById('menuouter') != null) {
-					mousePosition.y += document.getElementById('menuouter').scrollTop;
-				}
-			}
-		}
-	}
-
-	function createdHover() {
-		setBoxPositionOverflow();
-	}
-
-	function handleBlur() {
-		isHovering = false;
 	}
 
 	let chosenAtlanteanAttribute: string = $state('');
@@ -126,28 +75,34 @@
 			levelRangeString = `${minLevel} - ${maxLevel}`;
 		}
 	}
+
+	let container: HTMLElement = $state(document.getElementById('menuouter')!);
+	onMount(() => {
+		container = document.getElementById('menuouter')!;
+	});
 </script>
 
-<button
-	class="aspect-square h-24 w-24"
-	onclick={handleClick}
-	onmousemove={handleMouseOver}
-	onmouseout={handleMouseOut}
-	onblur={handleBlur}
->
-	<Item {item} />
-</button>
+{#snippet MenuItem()}
+	<button onclick={handleClick} class="aspect-square h-24 w-24">
+		<Item {item} />
+	</button>
+{/snippet}
 
-{#if isHovering}
+{#snippet ItemTooltipSnippet()}
 	<ItemTooltip
 		{levelRangeString}
 		{player}
 		{slotKey}
 		{item}
-		{createdHover}
-		{hoverWidth}
-		{mousePosition}
 		atlanteanAttribute={chosenAtlanteanAttribute}
 		{showOnlyAtlanteanStat}
 	/>
-{/if}
+{/snippet}
+
+<TooltipTrigger
+	containerElement={container}
+	triggerSnippet={MenuItem}
+	tooltipContent={ItemTooltipSnippet}
+	cursorOffset={{ x: 20, y: 0 }}
+	tooltipWidth={300}
+/>

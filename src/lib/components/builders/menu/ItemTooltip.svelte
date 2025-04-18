@@ -5,20 +5,14 @@
 	import StatList from '../stats/StatList.svelte';
 
 	let {
-		createdHover,
-		hoverWidth,
 		item,
-		mousePosition,
 		levelRangeString,
 		player,
 		slotKey,
 		atlanteanAttribute,
 		showOnlyAtlanteanStat
 	}: {
-		createdHover: () => void;
-		hoverWidth: number;
 		item: AnyItemDetails;
-		mousePosition: { x: number; y: number };
 		levelRangeString: string;
 		player?: Player;
 		slotKey: keyof typeof Player.prototype.build.slots;
@@ -28,20 +22,14 @@
 </script>
 
 <div
-	use:createdHover
-	class="z-40 items-center rounded text-center"
-	id="hover"
+	class="z-40 w-full items-center rounded text-center"
 	style="
-	  position: absolute;
 	  background-color: black;  
-	  width: {hoverWidth}px; 
 	  padding: 10px;
 	  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 	  border: 3px solid white;
 	  border-color: {rarityColors[item.rarity]};
 	  color: white;
-	  top: {mousePosition.y}px; 
-	  left: {mousePosition.x + 20}px;
 	  z-index : 40
 	"
 >

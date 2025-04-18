@@ -1,13 +1,24 @@
 <script lang="ts">
-	import { writable } from 'svelte/store';
-
+	let {
+		triggerSnippet,
+		tooltipContent,
+		containerElement,
+		cursorOffset,
+		tooltipWidth
+	}: {
+		triggerSnippet: () => any;
+		tooltipContent: any;
+		containerElement: HTMLElement;
+		cursorOffset: { x: number; y: number };
+		tooltipWidth: number;
+	} = $props();
 	let isHovering = $state(false);
 	let mousePosition = $state({ x: 0, y: 0 });
-	let hoverWidth = $state(300);
 
 	function handleMouseOver(event: MouseEvent) {
 		isHovering = true;
 		mousePosition = { x: event.clientX, y: event.clientY };
+		setBoxPositionOverflow(containerElement);
 	}
 
 	function handleMouseOut() {
@@ -18,37 +29,42 @@
 		isHovering = false;
 	}
 
-	function setBoxPositionOverflow(containerId: string, tooltipElement: HTMLElement) {
-		const container = document.getElementById(containerId);
+	function setBoxPositionOverflow(container: HTMLElement) {
 		if (!container) return;
 
-		// Adjust horizontal position if tooltip would go off screen right
-		if (mousePosition.x + hoverWidth + 20 >= container.clientWidth) {
-			mousePosition.x = mousePosition.x - 40 - hoverWidth + container.scrollLeft;
+		if (mousePosition.x + tooltipWidth + 20 >= container.clientWidth) {
+			mousePosition.x = mousePosition.x - 40 - tooltipWidth + container.scrollLeft;
 		} else {
 			mousePosition.x += container.scrollLeft;
 		}
 
-		// Adjust vertical position if tooltip would go off screen bottom
+		const tooltipElement = document.getElementById('hover');
+		if (!tooltipElement) return;
+
 		if (mousePosition.y + tooltipElement.offsetHeight >= container.clientHeight) {
 			mousePosition.y = mousePosition.y - tooltipElement.offsetHeight + container.scrollTop;
 		} else {
 			mousePosition.y += container.scrollTop;
 		}
 	}
-
-	function createdHover(containerId: string, tooltipElement: HTMLElement) {
-		setBoxPositionOverflow(containerId, tooltipElement);
-	}
-
-	let { containerId = 'menuouter' } = $props();
 </script>
 
 <div
-	on:mousemove={handleMouseOver}
-	on:mouseout={handleMouseOut}
-	on:blur={handleBlur}
+	role="tooltip"
+	onmousemove={handleMouseOver}
+	onmouseout={handleMouseOut}
+	onblur={handleBlur}
 	class="tooltip-trigger"
 >
-	<slot {isHovering} {mousePosition} {hoverWidth} {createdHover} />
+	{@render triggerSnippet()}
 </div>
+
+{#if isHovering}
+	<div
+		id="hover"
+		style="position: absolute; width: {tooltipWidth}px; top: {mousePosition.y +
+			cursorOffset.y}px; left: {mousePosition.x + cursorOffset.x}px; z-index: 999;"
+	>
+		{@render tooltipContent()}
+	</div>
+{/if}

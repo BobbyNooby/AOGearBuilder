@@ -3,6 +3,7 @@
 	import type { PlayerBuildSlot } from '$lib/gearBuilder/PlayerBuildSlot';
 	import type { AnyItemDetails } from '$lib/types/itemTypes';
 	import MenuTrigger from '../menu/MenuTrigger.svelte';
+	import PostCalcsButton from '../stats/PostCalcsButton.svelte';
 
 	let {
 		database,
@@ -53,5 +54,6 @@
 				<option>{level}</option>
 			{/each}
 		</select>
+		<PostCalcsButton></PostCalcsButton>
 	</div>
 </div>
