@@ -1,38 +1,59 @@
-# sv
+# Arcane Odyssey Tools
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Who wouldve thought my first ever coding project would be because of a roblox game 🤷🏼‍♂️
 
-## Creating a project
+Website : https://tools.arcaneodyssey.net
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Changelogs
 
-```bash
-# create a new project in the current directory
-npx sv create
+20 April 2024 - Nimbus Sea Part 1 Site Overhaul.
 
-# create a new project in my-app
-npx sv create my-app
-```
+25 February 2024 - Added efficiency points.
 
-## Developing
+16 February 2024 - Added color highlighting for stats affected by Atlantean Essence.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+5 February 2024 - Added hover over secondary stats to show percent increase in effectiveness.
 
-```bash
-npm run dev
+13 January 2024 - Added hover to view stats + QOL Changes + Mobile item UI
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+26 December 2023 - Added the Ship Builder.
 
-## Building
+12 December 2023 - Added health calculator
 
-To create a production version of your app:
+4 November 2023 Added save/load builds locally.
 
-```bash
-npm run build
-```
+1 November 2023 - Made it so that the last build you did will show up on the page instead of clearing everytime. Added clear button. Moved filter and sort into item menu.
 
-You can preview the production build with `npm run preview`.
+30 October 2023 - Added Mute button.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+27 October 2023 - Added share link, link hashing, random items, and cleaned up a bit of code. Thx woodyloody
+
+24 October 2023 - Added generating and loading build codes for easier sharing.
+
+21 October 2023 - Ported to Svelte, GUI Revamp, Mobile Compatability, and foundaion for other tools. Renamed to Arcane Odyssey Tools
+
+13 October 2023 - Added Atlantean Modifier. Bug fixes.
+
+10 October 2023 - Added the new gems. Should have most of the things now
+
+9 October 2023 - Added most of the dark sea update gear content (new gear and enchants) except for jewels. Fixed amulet selection operators (again). Fixed jewels not resetting every gear change.
+
+6 October 2023 - Fixed arcsphere being unable to be selected if crown or any head item is equipped.
+
+3 October 2023 - Fixed duplicate amulets
+
+2 October 2023 - Revamped whole website with GUI and added Jewels.
+
+12 July 2023 - Added JSON and JQuery usage to make future additions easier.
+
+10 July 2023 - Added metadata link preview stuff, and sunken defense fix
+
+24 June 2023 - 1.13 Item Buffs/Nerfs (Cenyx/Sunken)
+
+16 May 2023 - Added page and title icon
+
+14 May 2023 - Release, Design Update
+
+10 May 2023 - Barebones Update
+
+9 May 2023 - First Page
