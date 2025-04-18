@@ -1,19 +1,13 @@
 <script lang="ts">
-	import * as Sidebar from '$lib/components/ui/sidebar/index';
-	import AppSidebar from '$lib/components/sidebar/app-sidebar.svelte';
 	import '../app.css';
 	import type { PageData } from './$types';
 	let { data, children }: { data: PageData; children: () => any } = $props();
 </script>
 
 <section class="app merriweather-regular">
-	<Sidebar.Provider>
-		<AppSidebar />
-		<Sidebar.Trigger class="text-white" />
 		<main class="main-content">
 			{@render children()}
 		</main>
-	</Sidebar.Provider>
 </section>
 
 <style>

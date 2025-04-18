@@ -2,9 +2,9 @@
 	import { Player } from '$lib/gearBuilder/Player';
 	import type { PageData } from '../$types';
 	import type { PlayerBuildSlot } from '$lib/gearBuilder/PlayerBuildSlot';
-	import MenuTrigger from '$lib/components/builders/menu/MenuTrigger.svelte';
 	import StatList from '$lib/components/builders/stats/StatList.svelte';
 	import type { PageServerData } from './$types';
+	import GearSection from '$lib/components/builders/gear/GearSection.svelte';
 
 	let { data }: { data: PageData & PageServerData } = $props();
 
@@ -29,21 +29,7 @@
 		<div>
 			{#each slots as [slotKey, slot] (slotKey)}
 				{#if ['accessory1', 'accessory2', 'accessory3'].includes(slotKey)}
-					<div class="flex flex-col">
-						<!-- Armor / Enchant / Modifier -->
-						<div class="flex flex-row">
-							<MenuTrigger {database} {player} item={slot.armor} {slotKey} {updateState} />
-							<MenuTrigger {database} {player} item={slot.enchant} {slotKey} {updateState} />
-							<MenuTrigger {database} {player} item={slot.modifier} {slotKey} {updateState} />
-						</div>
-
-						<!-- Gems -->
-						<div class="flex flex-row">
-							{#each slot.gems as gem, gemIndex}
-								<MenuTrigger {database} {player} item={gem} {slotKey} {gemIndex} {updateState} />
-							{/each}
-						</div>
-					</div>
+					<GearSection {database} {player} {slot} {slotKey} {updateState} />
 				{/if}
 			{/each}
 		</div>
@@ -52,26 +38,12 @@
 		<div>
 			{#each slots as [slotKey, slot] (slotKey)}
 				{#if ['chestplate', 'pants'].includes(slotKey)}
-					<div class="flex flex-col">
-						<!-- Armor / Enchant / Modifier -->
-						<div class="flex flex-row">
-							<MenuTrigger {database} {player} item={slot.armor} {slotKey} {updateState} />
-							<MenuTrigger {database} {player} item={slot.enchant} {slotKey} {updateState} />
-							<MenuTrigger {database} {player} item={slot.modifier} {slotKey} {updateState} />
-						</div>
-
-						<!-- Gems -->
-						<div class="flex flex-row">
-							{#each slot.gems as gem, gemIndex}
-								<MenuTrigger {database} {player} item={gem} {slotKey} {gemIndex} {updateState} />
-							{/each}
-						</div>
-					</div>
+					<GearSection {database} {player} {slot} {slotKey} {updateState} />
 				{/if}
 			{/each}
 		</div>
 
-		<div>
+		<div class= "m-10 w-80 h-auto p-2 border-2 border-white rounded bg-black bg-opacity-40">
 			<StatList isMenu={false} showStatName={true} item={player.build.getBuildStats()} />
 		</div>
 	</div>

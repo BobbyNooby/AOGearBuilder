@@ -3,20 +3,18 @@ import type { AOTConfig } from '$lib/types/utilTypes';
 
 export function fillStatsPerLevel(items: AnyItemDetails[], config: AOTConfig) {
 	for (const item of items) {
-		if (
-			item.scaling &&
-			item.minLevel !== undefined &&
-			item.maxLevel !== undefined
-		) {
-			// Initialize statsPerLevel as an object if needed
-			if (!item.statsPerLevel || Array.isArray(item.statsPerLevel)) {
-				item.statsPerLevel = {};
+		if (item.scaling && item.minLevel !== undefined && item.maxLevel !== undefined) {
+			// Initialize statsPerLevel as an array if needed
+			if (!item.statsPerLevel || !Array.isArray(item.statsPerLevel)) {
+				item.statsPerLevel = [];
 			}
 
 			for (let level = item.minLevel; level <= item.maxLevel; level += 10) {
-				// Ensure level entry exists
-				if (!item.statsPerLevel[level]) {
-					item.statsPerLevel[level] = {};
+				// Find or create entry for this level
+				let levelEntry = item.statsPerLevel.find((entry) => entry.level === level);
+				if (!levelEntry) {
+					levelEntry = { level };
+					item.statsPerLevel.push(levelEntry);
 				}
 
 				const levelMultiplier = level / 10;
@@ -34,12 +32,11 @@ export function fillStatsPerLevel(items: AnyItemDetails[], config: AOTConfig) {
 					);
 
 					// Only set if missing
-					if (item.statsPerLevel[level][stat] === undefined) {
-						item.statsPerLevel[level][stat] = statValue;
+					if (levelEntry[stat] === undefined) {
+						levelEntry[stat] = statValue;
 					}
 				}
 			}
 		}
 	}
 }
-

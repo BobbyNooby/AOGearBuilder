@@ -43,7 +43,7 @@ export class PlayerBuildSlot {
 		this.armorLevel =
 			Object.keys(this.armor.statsPerLevel).length === 0
 				? 0
-				: Math.max(...Object.keys(this.armor.statsPerLevel).map((key) => parseInt(key)));
+				: Math.max(...this.armor.statsPerLevel.map((entry) => entry.level));
 		this.enchant = enchant;
 		this.modifier = modifier;
 		this.gems = [];
@@ -91,15 +91,12 @@ export class PlayerBuildSlot {
 
 	fixSlotLevel() {
 		if (this.build.player.level) {
+			// If armor level is greater than player level
 			if (this.armorLevel > this.build.player.level) {
 				// Filter armor levels within player level range
-				let validStatsPerLevels = Object.keys(this.armor.statsPerLevel)
-					.filter((key) => {
-						if (this.build.player.level) {
-							return Number(key) <= this.build.player.level;
-						}
-					})
-					.map((key) => Number(key));
+				let validStatsPerLevels = this.armor.statsPerLevel
+					.filter((entry) => entry.level <= this.build.player.level)
+					.map((entry) => entry.level);
 
 				// Get max armor level or set to 0
 				if (validStatsPerLevels.length > 0) {
@@ -107,6 +104,22 @@ export class PlayerBuildSlot {
 				} else {
 					this.armorLevel = 0;
 				}
+			}
+
+			// If armor level is less than available statsPerLevelLevels
+			if (this.armor.statsPerLevel.length > 0) {
+				const minStatPerLevel = Math.min(...this.armor.statsPerLevel.map((entry) => entry.level));
+				if (this.armorLevel < minStatPerLevel) {
+					this.armorLevel = minStatPerLevel;
+				}
+			}
+
+			// Make sure armor level is within min/max level constraints
+			if (this.armorLevel < this.armor.minLevel) {
+				this.armorLevel = this.armor.minLevel;
+			}
+			if (this.armorLevel > this.armor.maxLevel) {
+				this.armorLevel = this.armor.maxLevel;
 			}
 		} else {
 			consoleBob('ArmorSlot.fixSlotLevel() - this.build.player.level is undefined');
@@ -144,16 +157,17 @@ export class PlayerBuildSlot {
 		if (!this.armor.validModifiers.includes(this.modifier.name)) {
 			this.modifier = noneModifier as ModifierDetails;
 		}
-
-		this.fixSlotLevel();
 	}
 
 	getArmorDataAtLevel(level: number) {
-		return this.armor.statsPerLevel[level];
+		const data = this.armor.statsPerLevel.find((entry) => entry.level === level);
+		if (data) return filterData(data) as GearStats;
 	}
 
 	setArmor(armor: ArmorDetails) {
 		this.armor = armor;
+		const highestLevel = Math.max(...this.armor.statsPerLevel.map((entry) => entry.level));
+		this.armorLevel = highestLevel;
 		this.fixSlotItems();
 	}
 
@@ -172,9 +186,14 @@ export class PlayerBuildSlot {
 		this.fixSlotItems();
 	}
 
+	setArmorLevel(level: number) {
+		this.armorLevel = level;
+		this.fixSlotItems();
+	}
+
 	getSlotStats(preAtlantean: boolean = false) {
 		const armorStats: GearStats = filterData(
-			this.getArmorDataAtLevel(this.armorLevel)
+			this.getArmorDataAtLevel(this.armorLevel)!
 		) as GearStats;
 
 		let enchantStats: GearEnchantStats = {};
@@ -303,7 +322,7 @@ export class PlayerBuildSlot {
 						finalSlotStats[statRelationKey] += Math.floor(statValue * levelMultiplier);
 						this.chosenAtlanteanAttribute = statRelations[stat];
 
-						finalSlotStats.insanity += Math.floor(modifierStats.insanity! * levelMultiplier);
+						finalSlotStats.insanity += Math.floor(modifierStats.insanity!);
 						break modifierCalcs;
 					}
 				}

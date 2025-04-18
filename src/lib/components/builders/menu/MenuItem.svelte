@@ -117,6 +117,15 @@
 			showOnlyAtlanteanStat = false;
 		}
 	}
+
+	let levelRangeString = '';
+	if (player) {
+		if (['Accessory', 'Chestplate', 'Pants'].includes(item.mainType)) {
+			const minLevel = Math.min(...item.statsPerLevel.map((statPerLevel) => statPerLevel.level));
+			const maxLevel = Math.max(...item.statsPerLevel.map((statPerLevel) => statPerLevel.level));
+			levelRangeString = `${minLevel} - ${maxLevel}`;
+		}
+	}
 </script>
 
 <button
@@ -131,6 +140,7 @@
 
 {#if isHovering}
 	<ItemTooltip
+		{levelRangeString}
 		{player}
 		{slotKey}
 		{item}

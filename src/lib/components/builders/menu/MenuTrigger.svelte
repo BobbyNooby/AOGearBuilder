@@ -30,7 +30,7 @@
 	}
 </script>
 
-<button class="m-2 flex aspect-square h-24 w-24" onclick={openMenu}>
+<button class="flex aspect-square h-24 w-24" onclick={openMenu}>
 	<Item {item} />
 </button>
 

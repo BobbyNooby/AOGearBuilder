@@ -61,24 +61,105 @@
 		return result;
 	}
 
-	function extractStatsFromEnchant(enchantStats: GearEnchantStats): Record<string, string> {
+	function extractStatsFromEnchant(
+		enchantStats: GearEnchantStats,
+		slotKey?: keyof typeof Player.prototype.build.slots,
+		player?: Player
+	): Record<string, string> {
 		const stats: Record<string, string> = {};
 		for (const stat in enchantStats) {
 			const key = stat as keyof GearEnchantStats;
-			if (['warding', 'insanity', 'drawback'].includes(stat)) {
-				if (enchantStats[key] > 0) {
-					stats[key] = enchantStats[key]?.toString();
+			const levelMultiplier = player!.build.slots[slotKey!].armorLevel / 10; 
+			if (levelMultiplier !== 0) { // Prevent 0s from being displayed
+				if (['warding', 'insanity', 'drawback'].includes(stat)) {
+					if (enchantStats[key]! > 0) {
+						stats[key] = enchantStats[key]?.toString();
+					}
+				} else {
+					const derivedKey = statRelations[key];
+					const scaledValue = Math.floor((enchantStats[key] ?? 0) * levelMultiplier);
+					stats[derivedKey] = scaledValue.toString();
 				}
-			} else {
-				const derivedKey = statRelations[key];
-				const scaledValue = Math.floor(
-					((enchantStats[key] ?? 0) * player!.build.slots[slotKey!].armorLevel) / 10
-				);
-				console.log(player?.build.slots[slotKey!].armorLevel);
-				stats[derivedKey] = scaledValue.toString();
 			}
 		}
 		return stats;
+	}
+
+	function extractStatsFromAtlantean(
+		modifierStats: GearEnchantStats,
+		slotKey?: keyof typeof Player.prototype.build.slots,
+		player?: Player,
+		currentStats?: Record<string, number>
+	): Record<string, string> {
+		const stats: Record<string, string> = {};
+		const levelMultiplier = player!.build.slots[slotKey!].armorLevel / 10;
+
+		// Define the Atlantean order of stats to check
+		const atlanteanOrder: (keyof GearEnchantStats)[] = [
+			'powerIncrement',
+			'defenseIncrement',
+			'attackSizeIncrement',
+			'attackSpeedIncrement',
+			'agilityIncrement',
+			'intensityIncrement'
+		];
+
+		// If we're showing only the Atlantean stat that was chosen
+		if (showOnlyAtlanteanStat && atlanteanAttribute) {
+			// Find the matching increment stat for the selected attribute
+			const incrementKey = Object.entries(statRelations).find(
+				([, value]) => value === atlanteanAttribute
+			)?.[0] as keyof GearEnchantStats;
+
+			if (incrementKey && modifierStats[incrementKey]) {
+				const derivedKey = statRelations[incrementKey];
+				const scaledValue = Math.floor((modifierStats[incrementKey] ?? 0) * levelMultiplier);
+				stats[derivedKey] = scaledValue.toString();
+			}
+
+			// Always include insanity
+			if (modifierStats.insanity) {
+				stats.insanity = modifierStats.insanity.toString();
+			}
+
+			return stats;
+		}
+
+		// If we have currentStats, determine which Atlantean stat would be chosen
+		if (currentStats) {
+			let chosenAttribute = '';
+
+			// Check each attribute in order to find the first one with zero value
+			for (const stat of atlanteanOrder) {
+				const statRelationKey = statRelations[stat];
+				if (currentStats[statRelationKey] === 0) {
+					const statValue = modifierStats[stat];
+					if (statValue) {
+						const scaledValue = Math.floor(statValue * levelMultiplier);
+						stats[statRelationKey] = scaledValue.toString();
+						chosenAttribute = statRelationKey;
+						break;
+					}
+				}
+			}
+
+			// If no stat with zero value was found, default to power
+			if (!chosenAttribute) {
+				const scaledValue = Math.floor((modifierStats.powerIncrement ?? 0) * levelMultiplier);
+				stats.power = scaledValue.toString();
+				chosenAttribute = 'power';
+			}
+
+			// Always include insanity
+			if (modifierStats.insanity) {
+				stats.insanity = modifierStats.insanity.toString();
+			}
+
+			return stats;
+		}
+
+		// Default case: return all modifier stats
+		return extractStatsFromEnchant(modifierStats, slotKey, player);
 	}
 
 	function filterAndStringifyStats(stats: Record<string, any>): Record<string, string> {
@@ -142,10 +223,61 @@
 				}
 			}
 		} else if (item.mainType === 'Enchant') {
-			chosenStat = extractStatsFromEnchant(item.enchantTypes.gear as GearEnchantStats);
+			chosenStat = extractStatsFromEnchant(
+				item.enchantTypes.gear as GearEnchantStats,
+				slotKey,
+				player
+			);
 		} else if (item.mainType === 'Modifier') {
-			const modStats = extractStatsFromEnchant(filterData(item) as GearEnchantStats);
-			chosenStat = modStats;
+			// Handle Atlantean Essence modifier differently
+			if (item.name === 'Atlantean Essence' && slotKey && player) {
+				// Get the current stats of the armor and gems
+				const slot = player.build.slots[slotKey];
+				const armorStats = filterData(slot.getArmorDataAtLevel(slot.armorLevel)!);
+
+				// Combine armor stats with gem stats
+				const currentStats: Record<string, number> = { ...armorStats };
+				for (const gem of slot.gems) {
+					const gemStats = filterData(gem);
+					for (const stat in gemStats) {
+						if (currentStats[stat]) {
+							currentStats[stat] += gemStats[stat];
+						} else {
+							currentStats[stat] = gemStats[stat];
+						}
+					}
+				}
+
+				// Also include enchant stats
+				const enchantStats = slot.enchant.enchantTypes.gear
+					? filterData(slot.enchant.enchantTypes.gear)
+					: {};
+				for (const stat in enchantStats) {
+					const key = stat as keyof GearEnchantStats;
+					if (!['warding', 'insanity', 'drawback'].includes(stat)) {
+						const derivedKey = statRelations[key];
+						if (currentStats[derivedKey]) {
+							currentStats[derivedKey] += Math.floor(enchantStats[key] * (slot.armorLevel / 10));
+						} else {
+							currentStats[derivedKey] = Math.floor(enchantStats[key] * (slot.armorLevel / 10));
+						}
+					}
+				}
+
+				chosenStat = extractStatsFromAtlantean(
+					filterData(item) as GearEnchantStats,
+					slotKey,
+					player,
+					currentStats
+				);
+			} else {
+				const modStats = extractStatsFromEnchant(
+					filterData(item) as GearEnchantStats,
+					slotKey,
+					player
+				);
+				chosenStat = modStats;
+			}
 		} else {
 			chosenStat = filterAndStringifyStats(item);
 		}
