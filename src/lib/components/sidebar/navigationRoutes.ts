@@ -1,6 +1,6 @@
 import { Bug, CircleGauge, Cog, House, Info, NotebookTabs, Sailboat } from 'lucide-svelte';
 
-type navigationRoute = {
+export type navigationRoute = {
 	title: string;
 	url: string;
 	icon: any;

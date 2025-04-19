@@ -70,9 +70,11 @@
 	let levelRangeString = '';
 	if (player) {
 		if (['Accessory', 'Chestplate', 'Pants'].includes(item.mainType)) {
-			const minLevel = Math.min(...item.statsPerLevel.map((statPerLevel) => statPerLevel.level));
-			const maxLevel = Math.max(...item.statsPerLevel.map((statPerLevel) => statPerLevel.level));
-			levelRangeString = `${minLevel} - ${maxLevel}`;
+			if (item.name != 'None') {
+				const minLevel = Math.min(...item.statsPerLevel.map((statPerLevel) => statPerLevel.level));
+				const maxLevel = Math.max(...item.statsPerLevel.map((statPerLevel) => statPerLevel.level));
+				levelRangeString = `${minLevel} - ${maxLevel}`;
+			}
 		}
 	}
 

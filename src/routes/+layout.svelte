@@ -1,13 +1,17 @@
 <script lang="ts">
+	import Loader from '$lib/components/ui/Loader.svelte';
+	import NavBar from '$lib/components/ui/NavBar.svelte';
 	import '../app.css';
 	import type { PageData } from './$types';
 	let { data, children }: { data: PageData; children: () => any } = $props();
 </script>
 
 <section class="app merriweather-regular">
-		<main class="main-content">
-			{@render children()}
-		</main>
+	<NavBar />
+	<main class="main-content">
+		{@render children()}
+		<Loader />
+	</main>
 </section>
 
 <style>
