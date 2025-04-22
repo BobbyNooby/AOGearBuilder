@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte';
 	import { cubicInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
-	import NavBarSeperator from './NavBarSeperator.svelte';
-	import { navigationRoutes } from '../sidebar/navigationRoutes';
-	import NavGroup from './NavGroup.svelte';
+	import { navigationRoutes } from '../../sidebar/navigationRoutes';
 	import { page } from '$app/state';
+	import BarSeperator from '../BarSeperator.svelte';
+	import NavGroup from './NavGroup.svelte';
 
 	let ready = $state(false);
 	let navOpen = $state(false);
@@ -66,12 +66,12 @@
 				<p>Arcane Odyssey Tools</p>
 			</div>
 
-			<NavBarSeperator />
+			<BarSeperator />
 			<div class="flex w-full flex-col space-y-2">
 				<NavGroup routes={publicRoutes} label={'Tools'} />
 				<NavGroup routes={devRoutes} label={'Developer'} />
 				{#if page.data.session && page.data.isAdmin}
-					<NavGroup routes={adminRoutes} label={'Admin'} />
+					<NavGroup routes={adminRoutes} label={'Admin'} color={'admin'} />
 				{/if}
 			</div>
 		</div>

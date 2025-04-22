@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Loader from '$lib/components/ui/Loader.svelte';
-	import NavBar from '$lib/components/ui/NavBar.svelte';
+	import NavBar from '$lib/components/ui/NavBar/NavBar.svelte';
+	import UserButton from '$lib/components/ui/UserButton.svelte';
 	import '../app.css';
 	import type { PageData } from './$types';
 	let { data, children }: { data: PageData; children: () => any } = $props();
@@ -8,6 +9,7 @@
 
 <section class="app merriweather-regular">
 	<NavBar />
+	<UserButton />
 	<main class="main-content">
 		{@render children()}
 		<Loader />
