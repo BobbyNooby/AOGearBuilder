@@ -54,6 +54,6 @@
 				<option>{level}</option>
 			{/each}
 		</select>
-		<PostCalcsButton></PostCalcsButton>
+		<PostCalcsButton {slot}></PostCalcsButton>
 	</div>
 </div>

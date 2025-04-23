@@ -12,8 +12,9 @@
 		ship,
 		slotKey,
 		isMenu,
-		atlanteanAttribute = '',
+		atlanteanAttribute,
 		showOnlyAtlanteanStat = false,
+		highlightAtlanteanStat = false,
 		shipPartType
 	}: {
 		item: AnyItemDetails;
@@ -24,6 +25,7 @@
 		isMenu?: boolean;
 		atlanteanAttribute?: string;
 		showOnlyAtlanteanStat?: boolean;
+		highlightAtlanteanStat?: boolean;
 		shipPartType?: 'base' | 'enchant';
 	} = $props();
 
@@ -69,8 +71,9 @@
 		const stats: Record<string, string> = {};
 		for (const stat in enchantStats) {
 			const key = stat as keyof GearEnchantStats;
-			const levelMultiplier = player!.build.slots[slotKey!].armorLevel / 10; 
-			if (levelMultiplier !== 0) { // Prevent 0s from being displayed
+			const levelMultiplier = player!.build.slots[slotKey!].armorLevel / 10;
+			if (levelMultiplier !== 0) {
+				// Prevent 0s from being displayed
 				if (['warding', 'insanity', 'drawback'].includes(stat)) {
 					if (enchantStats[key]! > 0) {
 						stats[key] = enchantStats[key]?.toString();
@@ -283,6 +286,7 @@
 		}
 	}
 
+	console.log(atlanteanAttribute);
 	setupStats();
 </script>
 
@@ -294,9 +298,13 @@
 				font-family: 'Open Sans', sans-serif;
 				font-weight: 700;
 				font-size: 20px;
-				-webkit-text-fill-color: {statsStyles[stat].fillColor};
+				-webkit-text-fill-color: {highlightAtlanteanStat && atlanteanAttribute == stat
+				? statsStyles['insanity'].fillColor
+				: statsStyles[stat].fillColor};
 				-webkit-text-stroke: 1px;
-				-webkit-text-stroke-color: {statsStyles[stat].strokeColor};
+				-webkit-text-stroke-color: {highlightAtlanteanStat && atlanteanAttribute == stat
+				? statsStyles['insanity'].strokeColor
+				: statsStyles[stat].strokeColor};
 				text-align: center;
 			"
 		>
