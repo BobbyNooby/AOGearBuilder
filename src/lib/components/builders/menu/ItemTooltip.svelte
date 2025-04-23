@@ -1,11 +1,13 @@
 <script lang="ts">
 	import type { Player } from '$lib/gearBuilder/Player';
 	import type { AnyItemDetails } from '$lib/types/itemTypes';
+	import type { AOTConfig } from '$lib/types/utilTypes';
 	import { rarityColors } from '$lib/utils';
 	import StatList from '../stats/StatList.svelte';
 
 	let {
 		item,
+		config,
 		levelRangeString,
 		player,
 		slotKey,
@@ -13,6 +15,7 @@
 		showOnlyAtlanteanStat
 	}: {
 		item: AnyItemDetails;
+		config: AOTConfig;
 		levelRangeString: string;
 		player?: Player;
 		slotKey: keyof typeof Player.prototype.build.slots;
@@ -46,6 +49,7 @@
 	</p>
 	<div class=" z-40 items-center text-center">
 		<StatList
+			{config}
 			{item}
 			{player}
 			{slotKey}

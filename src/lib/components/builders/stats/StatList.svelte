@@ -1,11 +1,21 @@
 <script lang="ts">
+	import BarSeperator from '$lib/components/ui/BarSeperator.svelte';
 	import type { Player } from '$lib/gearBuilder/Player';
-	import type { AllStats, AnyItemDetails, GearEnchantStats, GearStats } from '$lib/types/itemTypes';
+	import type {
+		AllStats,
+		AnyItemDetails,
+		GearEnchantStats,
+		GearStats,
+		ModifierDetails
+	} from '$lib/types/itemTypes';
+	import type { AOTConfig } from '$lib/types/utilTypes';
 	import { staticImagesRootFolder, statsStyles } from '$lib/utils';
 	import { clamp } from '$lib/utils/clamp';
+	import { calculateEP } from '$lib/utils/EfficiencyPointsCalcs';
 	import { filterData } from '$lib/utils/filterData';
 
 	let {
+		config,
 		item,
 		showStatName,
 		player,
@@ -17,6 +27,7 @@
 		highlightAtlanteanStat = false,
 		shipPartType
 	}: {
+		config: AOTConfig;
 		item: AnyItemDetails;
 		showStatName: boolean;
 		player?: Player;
@@ -30,6 +41,7 @@
 	} = $props();
 
 	let chosenStat: Partial<Record<keyof AllStats, string>> = {};
+	let chosenEP: string = '';
 
 	const statRelations: Record<keyof GearEnchantStats, keyof GearStats> = {
 		powerIncrement: 'power',
@@ -169,6 +181,10 @@
 		return stringifyStats(filterData(stats));
 	}
 
+	function filterAndStringifyEP(stats: Record<string, string>) {
+		return calculateEP(config, filterData(stats), player!).toString();
+	}
+
 	function setupStats() {
 		if (isMenu && item.mainType === 'Enchant') {
 			const keysToRemove = player
@@ -202,6 +218,7 @@
 
 		if (!player) {
 			chosenStat = filterAndStringifyStats(item);
+			chosenEP = filterAndStringifyEP(item);
 			return;
 		}
 
@@ -225,12 +242,14 @@
 							: `${minStats[stat]} ~ ${maxStats[stat]}`;
 				}
 			}
+			chosenEP = `${filterAndStringifyEP(minStats)} ~ ${filterAndStringifyEP(maxStats)}`;
 		} else if (item.mainType === 'Enchant') {
 			chosenStat = extractStatsFromEnchant(
 				item.enchantTypes.gear as GearEnchantStats,
 				slotKey,
 				player
 			);
+			chosenEP = filterAndStringifyEP(chosenStat);
 		} else if (item.mainType === 'Modifier') {
 			// Handle Atlantean Essence modifier differently
 			if (item.name === 'Atlantean Essence' && slotKey && player) {
@@ -273,6 +292,7 @@
 					player,
 					currentStats
 				);
+				chosenEP = filterAndStringifyEP(chosenStat);
 			} else {
 				const modStats = extractStatsFromEnchant(
 					filterData(item) as GearEnchantStats,
@@ -280,13 +300,14 @@
 					player
 				);
 				chosenStat = modStats;
+				chosenEP = filterAndStringifyEP(modStats);
 			}
 		} else {
 			chosenStat = filterAndStringifyStats(item);
+			chosenEP = filterAndStringifyEP(item);
 		}
 	}
 
-	console.log(atlanteanAttribute);
 	setupStats();
 </script>
 
@@ -316,3 +337,13 @@
 		</p>
 	</div>
 {/each}
+
+{#if chosenEP != ''}
+	<BarSeperator />
+	<p
+		style="font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 20px; text-align: center; -webkit-text-fill-color: white"
+	>
+		EP: {chosenEP}
+	</p>
+	<BarSeperator />
+{/if}

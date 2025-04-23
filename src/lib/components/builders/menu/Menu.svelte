@@ -4,9 +4,11 @@
 	import { fade } from 'svelte/transition';
 	import MenuItem from './MenuItem.svelte';
 	import type { PlayerBuildSlot } from '$lib/gearBuilder/PlayerBuildSlot';
+	import type { AOTConfig } from '$lib/types/utilTypes';
 
 	let {
 		database,
+		config,
 		player,
 		slotKey,
 		gemIndex,
@@ -15,6 +17,7 @@
 		updateState
 	}: {
 		database: AnyItemDetails[];
+		config: AOTConfig;
 		player?: Player;
 		slotKey: keyof typeof Player.prototype.build.slots;
 		gemIndex?: number;
@@ -67,9 +70,9 @@
 
 	<!-- Items menu -->
 	<div class="grid grid-cols-4 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9">
-		<MenuItem item={noneItem} {player} {slotKey} {closeMenu} {gemIndex} {updateState} />
+		<MenuItem {config} item={noneItem} {player} {slotKey} {closeMenu} {gemIndex} {updateState} />
 		{#each filteredDatabse as item}
-			<MenuItem {item} {player} {slotKey} {closeMenu} {gemIndex} {updateState} />
+			<MenuItem {config} {item} {player} {slotKey} {closeMenu} {gemIndex} {updateState} />
 		{/each}
 	</div>
 </div>

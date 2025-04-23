@@ -24,12 +24,16 @@
 
 {#key update}
 	<!-- Horizontal Row -->
+
+	<div class="mb-5">
+		<p class="text-7xl text-white">Gear Builder</p>
+	</div>
 	<div class="flex flex-row space-x-10">
 		<!-- accessory1 / accessory2 / accessory3 -->
 		<div>
 			{#each slots as [slotKey, slot] (slotKey)}
 				{#if ['accessory1', 'accessory2', 'accessory3'].includes(slotKey)}
-					<GearSection {database} {player} {slot} {slotKey} {updateState} />
+					<GearSection config={data.config} {database} {player} {slot} {slotKey} {updateState} />
 				{/if}
 			{/each}
 		</div>
@@ -38,13 +42,19 @@
 		<div>
 			{#each slots as [slotKey, slot] (slotKey)}
 				{#if ['chestplate', 'pants'].includes(slotKey)}
-					<GearSection {database} {player} {slot} {slotKey} {updateState} />
+					<GearSection config={data.config} {database} {player} {slot} {slotKey} {updateState} />
 				{/if}
 			{/each}
 		</div>
 
-		<div class= "m-10 w-80 h-auto p-2 border-2 border-white rounded bg-black bg-opacity-40">
-			<StatList isMenu={false} showStatName={true} item={player.build.getBuildStats()} />
+		<div class="m-10 h-auto w-80 rounded border-2 border-white bg-black bg-opacity-40 p-2">
+			<StatList
+				config={data.config}
+				isMenu={false}
+				showStatName={true}
+				item={player.build.getBuildStats() as any}
+				{player}
+			/>
 		</div>
 	</div>
 {/key}

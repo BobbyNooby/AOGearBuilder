@@ -3,9 +3,11 @@
 	import type { AnyItemDetails } from '$lib/types/itemTypes';
 	import Menu from './Menu.svelte';
 	import Item from './Item.svelte';
+	import type { AOTConfig } from '$lib/types/utilTypes';
 
 	let {
 		database,
+		config,
 		player,
 		slotKey,
 		gemIndex = undefined,
@@ -13,6 +15,7 @@
 		updateState
 	}: {
 		database: AnyItemDetails[];
+		config: AOTConfig;
 		player?: Player;
 		slotKey: keyof typeof Player.prototype.build.slots;
 		gemIndex?: number;
@@ -35,5 +38,5 @@
 </button>
 
 {#if menuToggled}
-	<Menu {database} {player} {item} {slotKey} {gemIndex} {closeMenu} {updateState} />
+	<Menu {config} {database} {player} {item} {slotKey} {gemIndex} {closeMenu} {updateState} />
 {/if}

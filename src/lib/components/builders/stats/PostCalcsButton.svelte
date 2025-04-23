@@ -5,8 +5,11 @@
 	import { onMount } from 'svelte';
 	import StatList from './StatList.svelte';
 	import type { AnyItemDetails } from '$lib/types/itemTypes';
+	import type { AOTConfig } from '$lib/types/utilTypes';
+	import type { Player } from '$lib/gearBuilder/Player';
 
-	let { slot }: { slot: PlayerBuildSlot } = $props();
+	let { slot, config, player }: { slot: PlayerBuildSlot; config: AOTConfig; player: Player } =
+		$props();
 
 	const stats = slot.getSlotStats() as AnyItemDetails;
 	const itemName = slot.armor.name;
@@ -30,6 +33,8 @@
 	>
 		<p>{itemName}</p>
 		<StatList
+			{player}
+			{config}
 			item={stats}
 			showStatName={false}
 			{atlanteanAttribute}

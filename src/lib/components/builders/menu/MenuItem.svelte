@@ -6,9 +6,11 @@
 	import { onMount } from 'svelte';
 	import Item from './Item.svelte';
 	import ItemTooltip from './ItemTooltip.svelte';
+	import type { AOTConfig } from '$lib/types/utilTypes';
 
 	let {
 		player,
+		config,
 		slotKey,
 		gemIndex,
 		item,
@@ -16,6 +18,7 @@
 		updateState
 	}: {
 		player?: Player;
+		config: AOTConfig;
 		slotKey: keyof typeof Player.prototype.build.slots;
 		gemIndex?: number;
 		item: AnyItemDetails;
@@ -26,7 +29,6 @@
 	function handleClick() {
 		if (player) {
 			if (player.build.setGear(item, slotKey, gemIndex)) {
-				consoleBob(item);
 				updateState();
 				closeMenu();
 			}
@@ -92,6 +94,7 @@
 
 {#snippet ItemTooltipSnippet()}
 	<ItemTooltip
+		{config}
 		{levelRangeString}
 		{player}
 		{slotKey}

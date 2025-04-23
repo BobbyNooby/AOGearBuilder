@@ -1,7 +1,10 @@
 import type { AllStats } from '$lib/types/itemTypes';
 import { validStatKeys, type validStatKeysType } from '$lib/types/utilTypes';
 
-export function filterData(input: AllStats, ...doNotIncludeList: validStatKeysType[]): AllStats {
+export function filterData(
+	input: AllStats | Record<string, string>,
+	...doNotIncludeList: validStatKeysType[]
+): AllStats {
 	let returnObject: AllStats = {};
 
 	for (const key in input) {
@@ -9,7 +12,7 @@ export function filterData(input: AllStats, ...doNotIncludeList: validStatKeysTy
 			validStatKeys.includes(key as validStatKeysType) &&
 			!doNotIncludeList.includes(key as validStatKeysType)
 		) {
-			returnObject[key as validStatKeysType] = input[key as validStatKeysType];
+			returnObject[key as keyof AllStats] = parseFloat(input[key as keyof AllStats]);
 		}
 	}
 
