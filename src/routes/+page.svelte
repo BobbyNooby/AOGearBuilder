@@ -1,7 +1,24 @@
 <script lang="ts">
+	import { page } from '$app/state';
+	import { navigationRoutes } from '$lib/components/sidebar/navigationRoutes';
+	import BarSeperator from '$lib/components/ui/BarSeperator.svelte';
+	import HorizontalNav from '$lib/components/ui/MainPage/HorizontalNav.svelte';
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 
-	onMount(async () => {});
+	const publicRoutes = navigationRoutes.public;
+	const adminRoutes = navigationRoutes.admin;
+	const devRoutes = navigationRoutes.developer;
+
+	function getDelayFromOrder(order: number) {
+		return order * 100;
+	}
+
+	let ready = $state(false);
+
+	onMount(() => {
+		ready = true;
+	});
 </script>
 
 <svelte:head>
@@ -27,5 +44,21 @@
 	<!-- Meta Tags Generated with https://metatags.io -->
 </svelte:head>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+{#if ready}
+	<div in:fade={{ duration: 1000 }} class="flex flex-col items-center space-y-4 text-white">
+		<img src="/logo.png" alt="Arcane Odyssey Tools" class="h-64 w-64" />
+		<p class="text-6xl">Arcane Odyssey Tools</p>
+		<BarSeperator />
+		<p class="text-3xl">Tools</p>
+		<HorizontalNav routes={publicRoutes} />
+		<BarSeperator />
+		<p class="text-3xl">Developer Tools</p>
+		<HorizontalNav routes={devRoutes} />
+
+		{#if ready && page.data.session && page.data.isAdmin}
+			<BarSeperator />
+			<p class="text-3xl">Admin</p>
+			<HorizontalNav routes={adminRoutes} />
+		{/if}
+	</div>
+{/if}

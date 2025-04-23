@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { signOut } from '@auth/sveltekit/client';
-	import { SignIn, SignOut } from '@auth/sveltekit/components';
+	import { SignIn } from '@auth/sveltekit/components';
 	import { onMount } from 'svelte';
 	import { cubicInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
@@ -49,6 +48,7 @@
 	{#if ready}
 		<SignIn provider="discord">
 			<button
+				aria-label="Sign in with Discord"
 				slot="submitButton"
 				in:fly={{ duration: 300, x: 100, easing: cubicInOut }}
 				out:fly={{ duration: 300, x: 100, easing: cubicInOut }}
@@ -93,7 +93,9 @@
 
 				<div class="mt-4 flex w-full justify-center">
 					<button
-						onclick={signOut}
+						onclick={() => {
+							signOut();
+						}}
 						class="rounded-md border border-white bg-gray-800 px-4 py-2 hover:bg-gray-700"
 					>
 						Sign Out

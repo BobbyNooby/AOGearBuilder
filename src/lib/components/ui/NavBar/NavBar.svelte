@@ -71,7 +71,7 @@
 				<NavGroup routes={publicRoutes} label={'Tools'} />
 				<NavGroup routes={devRoutes} label={'Developer'} />
 				{#if page.data.session && page.data.isAdmin}
-					<NavGroup routes={adminRoutes} label={'Admin'} color={'admin'} />
+					<NavGroup routes={adminRoutes} label={'Admin'} />
 				{/if}
 			</div>
 		</div>
