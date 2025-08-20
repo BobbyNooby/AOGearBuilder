@@ -28,7 +28,7 @@ export type MainTypes =
 	| 'Ship';
 
 export type SubTypes =
-	| 'None '
+	| 'None'
 	| 'Head'
 	| 'Helmet'
 	| 'Hat'

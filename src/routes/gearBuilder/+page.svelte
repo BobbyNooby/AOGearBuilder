@@ -5,6 +5,7 @@
 	import StatList from '$lib/components/builders/stats/StatList.svelte';
 	import type { PageServerData } from './$types';
 	import GearSection from '$lib/components/builders/gear/GearSection.svelte';
+	import RandomButton from '$lib/components/builders/shared/RandomButton.svelte';
 
 	let { data }: { data: PageData & PageServerData } = $props();
 
@@ -25,9 +26,14 @@
 {#key update}
 	<!-- Horizontal Row -->
 
-	<div class="mb-5">
+	<div id="title" class="mb-5">
 		<p class="text-7xl text-white">Gear Builder</p>
 	</div>
+
+	<div id="buttons">
+		<RandomButton {player} {updateState} />
+	</div>
+
 	<div class="flex flex-row space-x-10">
 		<!-- accessory1 / accessory2 / accessory3 -->
 		<div>
