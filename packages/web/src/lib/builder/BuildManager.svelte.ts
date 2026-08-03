@@ -1,4 +1,4 @@
-import { aggregateBuildStats, getSlotStats, effectiveMagicSlots, effectiveFsSlots, validateSlotItem, type PlayerState, type SlotData, type GameConfig } from '@aotools/shared';
+import { aggregateBuildStats, getSlotStats, effectiveMagicSlots, effectiveFsSlots, validateSlotItem, type PlayerState, type SlotData, type GameConfig, DEFAULT_MAX_LEVEL } from '@aotools/shared';
 import { encodeBuild, tryLoadBuild, evalFormulaDef, type BuildObject } from '@aotools/shared';
 
 export class BuildManager {
@@ -9,7 +9,7 @@ export class BuildManager {
 	fightingStyles: any[];
 
 	player: PlayerState & { selectedMagic?: string[]; selectedFS?: string[] } = $state({
-		level: 150,
+		level: DEFAULT_MAX_LEVEL,
 		spirit: 0,
 		magic: 0,
 		strength: 0,
@@ -91,7 +91,7 @@ export class BuildManager {
 			delta = Math.max(delta, -cur);
 		}
 		(this.player as any)[stat] = cur + delta;
-		this.player.level = Math.min(Math.max(this.player.level, 1), this.config.maxLevel || 175);
+		this.player.level = Math.min(Math.max(this.player.level, 1), this.config.maxLevel || DEFAULT_MAX_LEVEL);
 	}
 
 	resetStatPoints(): void {
@@ -417,7 +417,7 @@ export class BuildManager {
 				slot.modifier = null;
 			}
 
-			const gemCount = Math.min(armor.jewelSlots || armor.gemNo || 0, 4);
+			const gemCount = Math.min(armor.jewelSlots || 0, 4);
 			if (gemCount > 0 && gemPool.length) {
 				const picked: any[] = [];
 				for (let g = 0; g < gemCount; g++) {

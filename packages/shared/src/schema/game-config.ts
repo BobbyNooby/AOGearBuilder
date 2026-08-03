@@ -2,6 +2,8 @@
 
 import type { Formulas } from './formulas';
 
+export const DEFAULT_MAX_LEVEL = 175;
+
 export interface StatDef {
   category: 'primary' | 'secondary' | 'tertiary' | 'weapon' | 'ship';
   epPerPoint: number;
@@ -11,9 +13,12 @@ export interface StatDef {
 export interface BuildType {
   id: string;
   color: string;
-  magicSlots: number;
-  fsSlots: number;
-  weaponSlots: number;
+  activeStats?: string[];
+  abilitySlots?: {
+    magic: number;
+    fs: number;
+    weapon: number;
+  };
   conditions: Array<
     { stat: string; minPercent: number } | { type: 'any'; minPercent: number; countAtLeast: number }
   >;

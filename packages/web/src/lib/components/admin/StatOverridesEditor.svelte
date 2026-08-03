@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { STAT_NAMES } from '@aotools/shared';
+	import { STAT_NAMES, DEFAULT_MAX_LEVEL } from '@aotools/shared';
 
 	interface Props {
 		value?: Record<string, Record<string, number>>;
@@ -8,7 +8,7 @@
 		onChange: (v: Record<string, Record<string, number>>) => void;
 	}
 
-	let { value = {}, maxLevel = 175, stats = STAT_NAMES, onChange }: Props = $props();
+	let { value = {}, maxLevel = DEFAULT_MAX_LEVEL, stats = STAT_NAMES, onChange }: Props = $props();
 
 	const levels = $derived(Array.from({ length: Math.floor(maxLevel / 10) }, (_, i) => String((i + 1) * 10)));
 	const allStats = $derived(stats);

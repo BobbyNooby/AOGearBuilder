@@ -2,7 +2,7 @@
 	import StatBar from './StatBar.svelte';
 	import AbilitySelector from './AbilitySelector.svelte';
 	import { BuildManager } from '$lib/builder/BuildManager.svelte';
-
+	import { DEFAULT_MAX_LEVEL } from '@aotools/shared';
 	let {
 		bm
 	}: {
@@ -33,7 +33,7 @@
 	}
 
 	function handleLevelChange(delta: number) {
-		bm.player.level = Math.min(Math.max(bm.player.level + delta, 1), bm.config.maxLevel || 175);
+		bm.player.level = Math.min(Math.max(bm.player.level + delta, 1), bm.config.maxLevel || DEFAULT_MAX_LEVEL);
 	}
 
 	const STAT_CONFIG = [
@@ -79,8 +79,8 @@
 						type="number"
 						value={bm.player.level}
 						min={1}
-						max={bm.config.maxLevel || 175}
-						onchange={(e) => { bm.player.level = parseInt((e.target as HTMLInputElement).value) || 150; }}
+						max={bm.config.maxLevel || DEFAULT_MAX_LEVEL}
+						onchange={(e) => { bm.player.level = parseInt((e.target as HTMLInputElement).value) || DEFAULT_MAX_LEVEL; }}
 						class="w-20 rounded border border-white bg-[#020202] px-2 py-1 text-center text-white"
 					/>
 					<button
@@ -103,9 +103,6 @@
 					>
 						{bm.detectedBuild.id.toUpperCase()}
 					</span>
-					{#if bm.player.awakened && bm.detectedBuild.awakening?.bonus}
-						<span class="ml-2 text-xs text-white">{bm.detectedBuild.awakening.bonus}</span>
-					{/if}
 				</div>
 			{/if}
 

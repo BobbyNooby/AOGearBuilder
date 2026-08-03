@@ -1,6 +1,6 @@
 import { apiFetch } from '$lib/api';
 import { loadGameConfig } from '$lib/config/load';
-import { tryLoadBuild, type BuildObject } from '@aotools/shared';
+import { tryLoadBuild, type BuildObject, DEFAULT_MAX_LEVEL } from '@aotools/shared';
 
 export async function load({ url }: { url: URL }) {
 	try {
@@ -29,7 +29,7 @@ export async function load({ url }: { url: URL }) {
 			modifiers: [],
 			magics: [],
 			fightingStyles: [],
-			config: { maxLevel: 175, scalings: { power: 0.315, defense: 2.7, substat: 0.5, rounding: 'round' }, statRegistry: {}, buildTypes: [], playerConstraints: {}, formulas: {} },
+			config: { maxLevel: DEFAULT_MAX_LEVEL, scalings: { power: 0.315, defense: 2.7, substat: 0.5, rounding: 'round' }, statRegistry: {}, buildTypes: [], playerConstraints: {}, formulas: {} },
 			initialBuild: null,
 			shortId: null
 		};

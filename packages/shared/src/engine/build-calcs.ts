@@ -233,12 +233,12 @@ export function getAmuletVariantStats(
 
 export function effectiveMagicSlots(player: PlayerState, build: Record<string, any> | null): number {
 	if (!player.awakened || !build) return 1;
-	return build.abilitySlots?.magicSlots ?? 0;
+	return build.abilitySlots?.magic ?? 0;
 }
 
 export function effectiveFsSlots(player: PlayerState, build: Record<string, any> | null): number {
 	if (!player.awakened || !build) return 1;
-	return build.abilitySlots?.fsSlots ?? 0;
+	return build.abilitySlots?.fs ?? 0;
 }
 
 export function applyModifier(
@@ -305,7 +305,7 @@ export function applyModifier(
 }
 
 export function getSocketCount(armor: Record<string, any>, modifier: Record<string, any> | null): number {
-	let count = armor?.jewelSlots ?? armor?.gemNo ?? 0;
+	let count = armor?.jewelSlots ?? 0;
 	if (modifier) {
 		for (const r of modifier.effects || []) {
 			if (r.type === 'addSocket') count += r.amount || 0;
