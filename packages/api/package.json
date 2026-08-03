@@ -12,7 +12,9 @@
 	"seed": "bun run scripts/seed.ts",
 	"seed:images": "bun run src/scripts/seedItemImages.ts",
 	"seed:config": "bun run src/scripts/seedGameConfig.ts",
-	"sync": "bun run scripts/sync-to-db.ts"
+	"seed:config:dump": "bun run src/scripts/dumpGameConfig.ts",
+	"sync": "bun run scripts/sync-to-db.ts",
+	"normalize:images": "bun run src/scripts/normalizeImageUrls.ts"
 	},
 	"dependencies": {
 		"@aotools/shared": "workspace:*",
