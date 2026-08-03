@@ -51,3 +51,7 @@ docker compose up --build
 | API Key | `X-API-Key` | Configurable per key | Scoped read/write |
 | Internal | `X-Internal-Key` | Unlimited | Full access (web server only) |
 | Admin | Discord OAuth session | Unlimited | Full access + key management |
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full project context, architecture, and development conventions.
