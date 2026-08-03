@@ -1,42 +1,40 @@
-# sv
+# @aotools/web
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+SvelteKit 5 frontend for Arcane Odyssey build tools.
 
-## Creating a project
+## Routes
 
-If you're seeing this, you've probably already done this step. Congrats!
+| Route | Page |
+|-------|------|
+| `/` | Landing page |
+| `/builder` | Gear builder (equip items, enchants, modifiers, gems, magics) |
+| `/b/[shortId]` | Shared build viewer |
+| `/atlas` | Game data atlas (collapsible item/modifier browser) |
+| `/admin` | Admin dashboard (items, modifiers, config, formulas) |
+| `/admin/platform` | Admin platform (users, API keys, roles) |
 
-```sh
-# create a new project
-npx sv create my-app
+## Tech
+
+- **SvelteKit 5** with runes (`$state`, `$derived`, `$props`)
+- **Tailwind CSS** — dark theme, all inline utility classes
+- **lucide-svelte** — icons
+- No component library — all UI is raw HTML + Tailwind
+
+## Running
+
+```bash
+pnpm dev        # http://localhost:3000
+pnpm build      # Production build
+pnpm check      # svelte-check type checking
 ```
 
-To recreate this project with the same configuration:
+## Key files
 
-```sh
-# recreate this project
-pnpm dlx sv@0.16.5 create --template minimal --types ts --add prettier eslint vitest="usages:unit,component" playwright tailwindcss="plugins:none" sveltekit-adapter="adapter:auto" better-auth="demo:password" paraglide="languageTags:en, es, jp+demo:yes" storybook drizzle="database:postgresql+postgresql:postgres.js+docker:yes" --install pnpm aotools
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+| File | Purpose |
+|------|---------|
+| `src/lib/builder/BuildManager.svelte.ts` | Core builder state machine |
+| `src/lib/adminSchemas.ts` | Admin form schema definitions |
+| `src/lib/utils.ts` | Display constants (colors, labels, icons) |
+| `src/lib/components/ui/` | Reusable UI primitives (FilterBar, FilterChip, modals) |
+| `src/lib/components/admin/` | Admin-specific editors (SchemaForm, StatOverridesEditor) |
+| `src/lib/components/Builder/` | Builder components (GearSlot, PickerModal, BuildStats) |
