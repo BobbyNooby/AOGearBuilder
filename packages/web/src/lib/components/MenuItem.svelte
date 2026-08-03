@@ -2,7 +2,7 @@
 	import TooltipTrigger from './TooltipTrigger.svelte';
 	import Item from './Item.svelte';
 	import ItemTooltip from './ItemTooltip.svelte';
-	import type { PlayerState } from '$lib/stats';
+	import type { PlayerState } from '@aotools/shared';
 
 	let {
 		item, slotData, player

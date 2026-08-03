@@ -1,4 +1,4 @@
-import { tryLoadBuild, encodeBuild, validateBuild, type BuildObject, type SavedBuild } from '$lib/stats';
+import { tryLoadBuild, encodeBuild, validateBuild, type BuildObject, type SavedBuild } from '@aotools/shared';
 
 const LS_KEY = 'aotools.savedBuilds';
 const LEGACY_KEYS = ['savedBuilds', 'savedShipBuilds', 'gearBuild', 'shipBuild'];

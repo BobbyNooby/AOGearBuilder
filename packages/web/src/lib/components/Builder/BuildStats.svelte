@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { statsStyles, staticImagesRootFolder } from '$lib/utils';
-	import { secondaryStatEffect, type GameConfig } from '$lib/stats';
+	import { secondaryStatEffect, type GameConfig } from '@aotools/shared';
 
 	let {
 		stats,

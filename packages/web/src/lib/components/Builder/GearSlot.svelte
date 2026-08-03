@@ -2,7 +2,7 @@
 	import Item from '../Item.svelte';
 	import PickerModal from './PickerModal.svelte';
 	import PostCalcsButton from './PostCalcsButton.svelte';
-	import { getSlotStats } from '$lib/stats';
+	import { getSlotStats } from '@aotools/shared';
 	import { statsStyles, staticImagesRootFolder } from '$lib/utils';
 	import { BuildManager } from '$lib/builder/BuildManager.svelte';
 

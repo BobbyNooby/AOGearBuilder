@@ -1,4 +1,4 @@
-import { aggregateBuildStats, getSlotStats, effectiveMagicSlots, effectiveFsSlots, validateSlotItem, type PlayerState, type SlotData, type GameConfig } from '$lib/stats';
+import { aggregateBuildStats, getSlotStats, effectiveMagicSlots, effectiveFsSlots, validateSlotItem, type PlayerState, type SlotData, type GameConfig } from '@aotools/shared';
 import { encodeBuild, tryLoadBuild, evalFormulaDef, type BuildObject } from '@aotools/shared';
 
 export class BuildManager {
