@@ -37,14 +37,3 @@ export function validateBuild(
 
 	return { valid: true };
 }
-
-export function validateBuildWithFallback(
-	code: string,
-	items: Item[],
-	modifiers: ModifierDef[],
-	config: GameConfig
-): { build: BuildObject; migrated: boolean } | null {
-	// This is a placeholder for a more robust load + validate flow.
-	// It is implemented in the web layer because it requires item data.
-	return null;
-}

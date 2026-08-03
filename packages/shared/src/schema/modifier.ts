@@ -1,5 +1,5 @@
 // Modifier definition — everything layered on a base item.
-// Composed from rule-types interpreted by engine/rule-engine.ts.
+// Composed from rule-types interpreted by engine/build-calcs.ts.
 
 export type ModifierType = 'enchant' | 'modifier' | 'faction' | 'imbue' | 'cosmetic';
 
