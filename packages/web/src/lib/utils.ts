@@ -107,3 +107,26 @@ export const equipTypeLabel: Record<string, string> = {
 	'colossal thrusting': 'Colossal Lance',
 	'heavy cleaver':    'Cleaver',
 };
+
+import type { GameConfig } from '@aotools/shared';
+
+export function rarityColor(rarity?: string, config?: Partial<GameConfig>): string {
+	if (config?.rarities?.[rarity ?? '']?.color) return config.rarities[rarity ?? ''].color;
+	return rarityColors[rarity ?? ''] ?? '#30363d';
+}
+
+export function rarityOrder(rarity?: string, config?: Partial<GameConfig>): number {
+	if (config?.rarities?.[rarity ?? '']?.order != null) return config.rarities[rarity ?? ''].order;
+	return RARITY_ORDER.indexOf(rarity ?? 'None');
+}
+
+export function statTypeColor(statType?: string, config?: Partial<GameConfig>): string {
+	if (config?.statTypes?.[statType ?? '']?.color) return config.statTypes[statType ?? ''].color;
+	return statTypeBorderColors[statType ?? ''] ?? '';
+}
+
+export function resolveEquipTypeLabel(equipType?: string, config?: Partial<GameConfig>): string {
+	if (config?.equipTypes?.[equipType ?? '']?.label) return config.equipTypes[equipType ?? ''].label;
+	const key = equipType ?? '';
+	return equipTypeLabel[key] ?? (key ? key[0].toUpperCase() + key.slice(1) : '');
+}

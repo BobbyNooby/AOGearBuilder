@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { rarityColors, staticImagesRootFolder, statsStyles, equipTypeLabel } from '$lib/utils';
-	import { formatStatRange, displayMaxLevel, formatModifierStats, computeEP } from '$lib/stats';
-	import type { GameConfig, PlayerState } from '$lib/stats';
+	import { rarityColor, resolveEquipTypeLabel, statTypeColor, staticImagesRootFolder, statsStyles } from '$lib/utils';
+	import { formatStatRange, displayMaxLevel, formatModifierStats, computeEP } from '@aotools/shared';
+	import type { GameConfig, PlayerState } from '@aotools/shared';
 	import { page } from '$app/state';
 
 	let {
@@ -18,6 +18,9 @@
 		statPointMaxFormula: '',
 		scalings: page.data.scalings,
 		statRegistry: page.data.statRegistry,
+		rarities: page.data.rarities,
+		statTypes: page.data.statTypes,
+		equipTypes: page.data.equipTypes,
 		buildTypes: [],
 		playerTransforms: {}
 	};
@@ -46,20 +49,18 @@
 		pierce: 'piercing', regeneration: 'regeneration', resistance: 'resistance',
 		insanity: 'insanity', warding: 'warding', drawback: 'drawback',
 	};
-	const statTypeColors: Record<string, string> = { Magic: '#02B1EB', Arcanium: '#02B1EB', Strength: '#FF6060', Vitality: '#00FF00' };
-
 	function cap(s: string): string { return s ? s[0].toUpperCase() + s.slice(1) : ''; }
 </script>
 
 <div
 	class="rounded p-3 text-center shadow-lg"
-	style="background:#000; border:3px solid {rarityColors[item.rarity] || '#fff'}; color:white; z-index:50"
+	style="background:#000; border:3px solid {rarityColor(item.rarity, config) || '#fff'}; color:white; z-index:50"
 >
 	<h2 class="text-2xl" style="font-family:Merriweather,serif; color:white">{item.name || item.id}</h2>
 	<p class="text-md" style="font-family:Merriweather,serif; color:white">
-		{item.rarity ? `${item.rarity} ` : ''}{equipTypeLabel[item.equipType] || cap(item.equipType) || cap(item.type)}
+		{item.rarity ? `${item.rarity} ` : ''}{resolveEquipTypeLabel(item.equipType, config) || cap(item.type)}
 		{#if item.statType && item.statType !== 'Normal' && item.statType !== 'None'}
-			<span style="color:{statTypeColors[item.statType] || '#fff'}; font-size:0.85em"> · {item.statType}</span>
+			<span style="color:{statTypeColor(item.statType, config) || '#fff'}; font-size:0.85em"> · {item.statType}</span>
 		{/if}
 	</p>
 

@@ -413,7 +413,7 @@ export function validateSlotItem(
 	const validation = config.playerConstraints?.validation || {};
 
 	const equipTypeExclusive: string[][] = validation.equipTypeExclusive || [];
-	if (item.equipType) {
+			if (item.equipType) {
 		for (const group of equipTypeExclusive) {
 			if (group.includes(item.equipType)) {
 				for (let i = 0; i < slots.length; i++) {
@@ -423,6 +423,16 @@ export function validateSlotItem(
 						return { valid: false, reason: `Only one ${group.join('/')} allowed` };
 					}
 				}
+			}
+		}
+	}
+
+	if (validation.uniqueEquipType && item.equipType) {
+		for (let i = 0; i < slots.length; i++) {
+			if (i === slotIdx) continue;
+			if (slots[i].armor?.equipType === item.equipType) {
+				const label = config.equipTypes?.[item.equipType]?.label ?? item.equipType;
+				return { valid: false, reason: `Only one ${label} allowed` };
 			}
 		}
 	}

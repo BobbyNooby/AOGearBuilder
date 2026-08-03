@@ -24,6 +24,9 @@ export async function load({ cookies, request }) {
 		gameMaxLevel: config.maxLevel,
 		scalings: config.scalings,
 		statRegistry: config.statRegistry,
+		rarities: config.rarities,
+		statTypes: config.statTypes,
+		equipTypes: config.equipTypes,
 		user,
 		permissions
 	};

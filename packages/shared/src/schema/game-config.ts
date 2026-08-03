@@ -29,6 +29,19 @@ export interface PlayerTransform {
   status?: string;
 }
 
+export interface RarityDef {
+  order: number;
+  color: string;
+}
+
+export interface StatTypeDef {
+  color: string;
+}
+
+export interface EquipTypeDef {
+  label: string;
+}
+
 export interface GameConfig {
   maxLevel: number;
   pointsPerLevel: number;
@@ -55,6 +68,7 @@ export interface GameConfig {
       namePatternExclusive?: string[][];
       duplicateItemRule?: string;
       statTypeMatch?: boolean;
+      uniqueEquipType?: boolean;
     };
   };
   arcaniumAttunements?: {
@@ -67,5 +81,8 @@ export interface GameConfig {
     types: string[];
     tiers: Record<string, { levelRange: number[]; scaling: Record<string, number> }>;
   };
+  rarities?: Record<string, RarityDef>;
+  statTypes?: Record<string, StatTypeDef>;
+  equipTypes?: Record<string, EquipTypeDef>;
   formulas?: Formulas;
 }

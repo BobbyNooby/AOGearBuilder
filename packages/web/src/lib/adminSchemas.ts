@@ -93,6 +93,17 @@ const amuletVariantsSchema: Schema = [
 	{ key: 'tiers', label: 'Tiers', type: 'record:object', valueSchema: [{ key: 'levelRange', type: 'array:string' }, { key: 'scaling', type: 'json' }], required: true }
 ];
 
+const rarityDefSchema: Schema = [
+	{ key: 'order', label: 'Order', type: 'number', required: true },
+	{ key: 'color', label: 'Color', type: 'string', required: true }
+];
+const statTypeDefSchema: Schema = [
+	{ key: 'color', label: 'Color', type: 'string', required: true }
+];
+const equipTypeDefSchema: Schema = [
+	{ key: 'label', label: 'Label', type: 'string', required: true }
+];
+
 export const gameConfigSchema: Schema = [
 	{ key: 'maxLevel', label: 'Max Level', type: 'number', required: true },
 	{ key: 'pointsPerLevel', label: 'Points Per Level', type: 'number', required: true },
@@ -103,7 +114,10 @@ export const gameConfigSchema: Schema = [
 	{ key: 'playerTransforms', label: 'Player Transforms', type: 'record:object', valueSchema: playerTransformSchema },
 	{ key: 'playerConstraints', label: 'Player Constraints', type: 'json' },
 	{ key: 'arcaniumAttunements', label: 'Arcanium Attunements', type: 'record:object', valueSchema: arcaniumAttunementsSchema },
-	{ key: 'amuletVariants', label: 'Amulet Variants', type: 'record:object', valueSchema: amuletVariantsSchema }
+	{ key: 'amuletVariants', label: 'Amulet Variants', type: 'record:object', valueSchema: amuletVariantsSchema },
+	{ key: 'rarities', label: 'Rarities', type: 'record:object', valueSchema: rarityDefSchema },
+	{ key: 'statTypes', label: 'Stat Types', type: 'record:object', valueSchema: statTypeDefSchema },
+	{ key: 'equipTypes', label: 'Equip Types', type: 'record:object', valueSchema: equipTypeDefSchema }
 ];
 
 export const formulaItemSchema: Schema = [

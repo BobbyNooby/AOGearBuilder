@@ -40,7 +40,8 @@
       "equipTypeExclusive": [["amulet", "helmet"]],
       "namePatternExclusive": [["arcsphere"]],
       "duplicateItemRule": "uniquePerSlot",
-      "statTypeMatch": true
+      "statTypeMatch": true,
+      "uniqueEquipType": true
     }
   },
   "arcaniumAttunements": {
@@ -77,5 +78,71 @@
       "dull": { "levelRange": [50, 100], "scaling": { "power": 0.635, "defense": 0.66, "secondary": 1.2 } },
       "fair": { "levelRange": [100, 250], "scaling": { "power": 0.724, "defense": 0.832, "secondary": 1.49 } }
     }
+  },
+  "rarities": {
+    "None":      { "order": 0, "color": "#FFFFFF" },
+    "Common":    { "order": 1, "color": "#7D7D7F" },
+    "Uncommon":  { "order": 2, "color": "#817346" },
+    "Rare":      { "order": 3, "color": "#6765EC" },
+    "Epic":      { "order": 4, "color": "#8B00FF" },
+    "Legendary": { "order": 5, "color": "#00FF00" },
+    "Exotic":    { "order": 6, "color": "#FF0000" },
+    "Mythical":  { "order": 7, "color": "#FFD700" },
+    "Sunken":    { "order": 8, "color": "#00CED1" },
+    "Seasonal":  { "order": 9, "color": "#C001C2" }
+  },
+  "statTypes": {
+    "Magic":    { "color": "#02B1EB" },
+    "Strength": { "color": "#FF6060" },
+    "Vitality": { "color": "#00FF00" },
+    "Arcanium": { "color": "#02B1EB" }
+  },
+  "equipTypes": {
+    "chestpiece":    { "label": "Chestplate" },
+    "legging":       { "label": "Leggings" },
+    "helmet":        { "label": "Helmet" },
+    "hat":           { "label": "Hat" },
+    "neck":          { "label": "Neck Accessory" },
+    "arm":           { "label": "Arm Accessory" },
+    "face":          { "label": "Face Accessory" },
+    "collar":        { "label": "Collar Accessory" },
+    "collar accessory": { "label": "Collar Accessory" },
+    "shoulder":      { "label": "Shoulder Accessory" },
+    "waist":         { "label": "Waist Accessory" },
+    "back":          { "label": "Back Accessory" },
+    "front":         { "label": "Front Accessory" },
+    "head":          { "label": "Head Accessory" },
+    "boots":         { "label": "Boots" },
+    "leggings":      { "label": "Leggings" },
+    "bladed":            { "label": "Sword" },
+    "dual bladed":       { "label": "Dual Swords" },
+    "dual light bladed": { "label": "Dual Rapiers" },
+    "dual heavy bladed": { "label": "Dual Greatswords" },
+    "light bladed":    { "label": "Rapier" },
+    "heavy bladed":    { "label": "Greatsword" },
+    "long bladed":     { "label": "Spear" },
+    "thrusting":       { "label": "Lance" },
+    "bludgeon":        { "label": "Mace" },
+    "blunt":           { "label": "Club" },
+    "heavy blunt":     { "label": "Warhammer" },
+    "light blunt":     { "label": "Light Blunt" },
+    "claws":           { "label": "Claws" },
+    "bow":             { "label": "Bow" },
+    "heavy bow":       { "label": "Greatbow" },
+    "axe":             { "label": "Axe" },
+    "pistol":          { "label": "Pistol" },
+    "multi pistols":   { "label": "Dual Pistols" },
+    "rifle":           { "label": "Rifle" },
+    "polearm":         { "label": "Polearm" },
+    "staff":           { "label": "Staff" },
+    "shield":          { "label": "Shield" },
+    "greatshield":     { "label": "Greatshield" },
+    "spirit":          { "label": "Spirit Weapon" },
+    "colossal bladed":   { "label": "Colossal Sword" },
+    "colossal blunt":    { "label": "Colossal Club" },
+    "colossal claws":    { "label": "Colossal Claws" },
+    "colossal cleaver":  { "label": "Colossal Cleaver" },
+    "colossal thrusting": { "label": "Colossal Lance" },
+    "heavy cleaver":    { "label": "Cleaver" }
   }
 }
