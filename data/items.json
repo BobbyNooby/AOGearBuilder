@@ -1,0 +1,71 @@
+[
+  {
+    "id": "abc",
+    "name": "Test Helmet",
+    "type": "armor",
+    "equipType": "helmet",
+    "rarity": "Common",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "jewelSlots": 1,
+    "scaling": { "defense": 1 }
+  },
+  {
+    "id": "def",
+    "name": "Test Chestplate",
+    "type": "armor",
+    "equipType": "chestpiece",
+    "rarity": "Common",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "jewelSlots": 2,
+    "scaling": { "defense": 2 }
+  },
+  {
+    "id": "ghi",
+    "name": "Test Pants",
+    "type": "armor",
+    "equipType": "legging",
+    "rarity": "Common",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "jewelSlots": 1,
+    "scaling": { "defense": 1.5 }
+  },
+  {
+    "id": "jkl",
+    "name": "Test Amulet",
+    "type": "accessory",
+    "equipType": "accessory",
+    "rarity": "Common",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "jewelSlots": 0,
+    "scaling": { "power": 0.5 }
+  },
+  {
+    "id": "mno",
+    "name": "Arcsphere",
+    "type": "accessory",
+    "equipType": "accessory",
+    "rarity": "Exotic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "jewelSlots": 0,
+    "statType": "Arcanium",
+    "scaling": { "power": 1, "defense": 1 }
+  },
+  {
+    "id": "pqr",
+    "name": "Oracle Robe",
+    "type": "armor",
+    "equipType": "chestpiece",
+    "rarity": "Exotic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "jewelSlots": 2,
+    "statType": "Vitality",
+    "tags": ["vitality-scaling"],
+    "scaling": { "defense": 1, "power": 0.5 }
+  }
+]

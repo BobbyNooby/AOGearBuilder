@@ -1,0 +1,81 @@
+{
+  "maxLevel": 175,
+  "pointsPerLevel": 2,
+  "statPointMaxFormula": "level * 2",
+  "scalings": {
+    "power": 0.315,
+    "defense": 2.7,
+    "substat": 0.5,
+    "rounding": "round"
+  },
+  "statRegistry": {
+    "power": { "category": "primary", "epPerPoint": 3.333, "scaling": "level" },
+    "defense": { "category": "primary", "epPerPoint": 0.333, "scaling": "level" },
+    "size": { "category": "secondary", "epPerPoint": 1, "scaling": "level" },
+    "haste": { "category": "secondary", "epPerPoint": 1, "scaling": "level" },
+    "dexterity": { "category": "secondary", "epPerPoint": 1, "scaling": "level" },
+    "range": { "category": "secondary", "epPerPoint": 1, "scaling": "level" },
+    "regeneration": { "category": "secondary", "epPerPoint": 1, "scaling": "level" },
+    "pierce": { "category": "secondary", "epPerPoint": 1, "scaling": "level" },
+    "resistance": { "category": "secondary", "epPerPoint": 1, "scaling": "level" },
+    "insanity": { "category": "tertiary", "epPerPoint": -2.25, "scaling": "flat" },
+    "warding": { "category": "tertiary", "epPerPoint": 0.15, "scaling": "flat" },
+    "drawback": { "category": "tertiary", "epPerPoint": -0.15, "scaling": "flat" }
+  },
+  "buildTypes": [
+    { "id": "mage", "color": "#3b82f6", "conditions": [{ "stat": "magic", "minPercent": 0.6 }], "activeStats": ["magic"], "abilitySlots": { "magic": 2, "fs": 0, "weapon": 0 } },
+    { "id": "berserker", "color": "#ef4444", "conditions": [{ "stat": "strength", "minPercent": 0.6 }], "activeStats": ["strength"], "abilitySlots": { "magic": 0, "fs": 2, "weapon": 0 } },
+    { "id": "warrior", "color": "#eab308", "conditions": [{ "stat": "weapon", "minPercent": 0.6 }], "activeStats": ["weapons"], "abilitySlots": { "magic": 0, "fs": 0, "weapon": 2 } },
+    { "id": "oracle", "color": "#22c55e", "conditions": [{ "stat": "spirit", "minPercent": 0.6 }], "activeStats": ["spirit"], "abilitySlots": { "magic": 1, "fs": 1, "weapon": 0 } },
+    { "id": "warlord", "color": "#f97316", "conditions": [{ "stat": "strength", "minPercent": 0.4 }, { "stat": "weapon", "minPercent": 0.4 }], "activeStats": ["strength", "weapons"], "abilitySlots": { "magic": 0, "fs": 1, "weapon": 1 } },
+    { "id": "conjurer", "color": "#a855f7", "conditions": [{ "stat": "magic", "minPercent": 0.4 }, { "stat": "strength", "minPercent": 0.4 }], "activeStats": ["magic", "strength"], "abilitySlots": { "magic": 1, "fs": 1, "weapon": 0 } },
+    { "id": "savant", "color": "#94a3b8", "conditions": [{ "type": "any", "minPercent": 0.15, "countAtLeast": 3 }], "activeStats": ["spirit", "magic", "strength", "weapons"], "abilitySlots": { "magic": 1, "fs": 1, "weapon": 1 } }
+  ],
+  "playerTransforms": {},
+  "playerConstraints": {
+    "awakeningLevel": 120,
+    "buildStats": ["spirit", "magic", "strength", "weapons"],
+    "fiftyPercentRule": true,
+    "validation": {
+      "equipTypeExclusive": [["amulet", "helmet"]],
+      "namePatternExclusive": [["arcsphere"]],
+      "duplicateItemRule": "uniquePerSlot",
+      "statTypeMatch": true
+    }
+  },
+  "arcaniumAttunements": {
+    "baseLevel": 100,
+    "itemMultiplier": { "default": 0.75, "arcsphere": 1.0, "chestpiece": 1.0, "arm": 1.0, "pants": 0.75, "accessory": 0.75 },
+    "epValue": { "power": 0.9, "defense": 8.84, "substat": 2.93 },
+    "magics": {
+      "acid-magic": { "pierce": 100 },
+      "water-magic": { "size": 75, "haste": 25 },
+      "fire-magic": { "power": 100 },
+      "earth-magic": { "defense": 75, "size": 25 },
+      "ice-magic": { "resistance": 75, "defense": 25 },
+      "lightning-magic": { "dexterity": 75, "range": 25 },
+      "magma-magic": { "power": 50, "size": 50 },
+      "wood-magic": { "defense": 75, "power": 25 },
+      "light-magic": { "dexterity": 125, "size": -25 },
+      "wind-magic": { "range": 25, "dexterity": 50, "size": 25 },
+      "shadow-magic": { "power": 50, "dexterity": 50 },
+      "metal-magic": { "defense": 100, "resistance": 25, "range": -25 },
+      "poison-magic": { "power": 75, "pierce": 25 },
+      "plasma-magic": { "power": 75, "haste": 25 },
+      "sand-magic": { "haste": 100 },
+      "glass-magic": { "power": 125, "defense": -25 },
+      "crystal-magic": { "defense": 50, "haste": 50 },
+      "snow-magic": { "size": 75, "dexterity": 25 },
+      "explosion-magic": { "size": 100 },
+      "ash-magic": { "size": 75, "power": 25 }
+    }
+  },
+  "amuletVariants": {
+    "types": ["power", "defense", "size", "haste", "dexterity", "range", "regeneration", "pierce", "resistance"],
+    "tiers": {
+      "poor": { "levelRange": [1, 50], "scaling": { "power": 0, "defense": 0.6, "secondary": 1.0 } },
+      "dull": { "levelRange": [50, 100], "scaling": { "power": 0.635, "defense": 0.66, "secondary": 1.2 } },
+      "fair": { "levelRange": [100, 250], "scaling": { "power": 0.724, "defense": 0.832, "secondary": 1.49 } }
+    }
+  }
+}

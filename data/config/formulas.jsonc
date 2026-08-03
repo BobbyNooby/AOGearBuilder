@@ -1,0 +1,17 @@
+{
+  "vitalityScaling": {
+    "description": "Vitality multiplier for vitality-scaling items",
+    "expression": "clamp((spirit / (level * 2)) * 3, floor, ceiling)",
+    "params": { "spirit": 3, "floor": 0.3, "ceiling": 1 }
+  },
+  "healthFormula": {
+    "description": "Base health from level and defense",
+    "expression": "93 + level * 7 + defense + spirit * 4",
+    "params": {}
+  },
+  "substatEfficiency": {
+    "description": "Generic substat efficiency curve",
+    "expression": "(1.35 * ((16 * ln(0.1 * s + 4) ^ 3 * 0.09 + 0.15 * s) / (0.1 + 0.15 * sqrt(m)) - 0.79)) * eff * 100",
+    "params": { "s": 0, "m": 175, "eff": 1 }
+  }
+}

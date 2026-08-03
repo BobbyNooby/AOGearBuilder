@@ -1,0 +1,16 @@
+{
+	"name": "@aotools/shared",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc --watch"
+	},
+	"devDependencies": {
+		"@types/node": "^22",
+		"typescript": "^6.0.3"
+	}
+}

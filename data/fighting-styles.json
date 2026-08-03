@@ -1,0 +1,5 @@
+[
+  { "id": "basic-combat", "name": "Basic Combat", "type": "fightingStyle", "stats": { "damage": 1, "speed": 1, "size": 1 } },
+  { "id": "boxing", "name": "Boxing", "type": "fightingStyle", "stats": { "damage": 0.9, "speed": 1.3, "size": 1 } },
+  { "id": "sailor-fist", "name": "Sailor Fist", "type": "fightingStyle", "stats": { "damage": 1.1, "speed": 1, "size": 1.1 } }
+]

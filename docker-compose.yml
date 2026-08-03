@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - aotools
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    networks:
+      - aotools
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: packages/api/Dockerfile
+    environment:
+      - PORT=4000
+      - MONGO_CONNECT_URL=${MONGO_CONNECT_URL}
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
+      - BETTER_AUTH_URL=${BETTER_AUTH_URL}
+      - DISCORD_CLIENT_ID=${DISCORD_CLIENT_ID}
+      - DISCORD_CLIENT_SECRET=${DISCORD_CLIENT_SECRET}
+      - ADMIN_DISCORD_IDS=${ADMIN_DISCORD_IDS}
+      - INTERNAL_API_KEY=${INTERNAL_API_KEY}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      - API_URL=${API_URL}
+    ports:
+      - '4000:4000'
+    networks:
+      - aotools
+    depends_on:
+      - mongo
+      - redis
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: packages/web/Dockerfile
+    environment:
+      - PORT=3000
+      - API_BASE_URL=http://api:4000
+      - INTERNAL_API_KEY=${INTERNAL_API_KEY}
+      - PUBLIC_API_URL=${PUBLIC_API_URL}
+      - PUBLIC_ORIGIN=${PUBLIC_ORIGIN}
+    ports:
+      - '3000:3000'
+    networks:
+      - aotools
+    depends_on:
+      - api
+    restart: unless-stopped
+
+networks:
+  aotools:
+
+volumes:
+  mongo-data:

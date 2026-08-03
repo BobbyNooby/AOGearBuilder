@@ -1,0 +1,63 @@
+{
+  "strong-power": {
+    "id": "strong-power",
+    "name": "Strong (Power)",
+    "type": "enchant",
+    "applicableTo": ["armor", "accessory"],
+    "effects": [
+      { "type": "steppedStat", "stat": "powerIncrement", "per10": 3 }
+    ]
+  },
+  "hard-defense": {
+    "id": "hard-defense",
+    "name": "Hard (Defense)",
+    "type": "enchant",
+    "applicableTo": ["armor", "accessory"],
+    "effects": [
+      { "type": "steppedStat", "stat": "defenseIncrement", "per10": 3 }
+    ]
+  },
+  "powerful-substat": {
+    "id": "powerful-substat",
+    "name": "Powerful (Substat)",
+    "type": "enchant",
+    "applicableTo": ["armor", "accessory"],
+    "effects": [
+      { "type": "steppedStat", "stat": "sizeIncrement", "per10": 2 },
+      { "type": "steppedStat", "stat": "hasteIncrement", "per10": 2 }
+    ]
+  },
+  "atlantean-essence": {
+    "id": "atlantean-essence",
+    "name": "Atlantean Essence",
+    "type": "modifier",
+    "applicableTo": ["armor", "accessory"],
+    "effects": [
+      {
+        "type": "priorityFill",
+        "order": ["power", "defense", "size", "haste", "dexterity", "range"],
+        "fallback": "power",
+        "per10": { "power": 3, "defense": 3, "size": 2, "haste": 2, "dexterity": 2, "range": 2 }
+      },
+      { "type": "flatStat", "stat": "insanity", "value": 10 }
+    ]
+  },
+  "imbued": {
+    "id": "imbued",
+    "name": "Imbued",
+    "type": "modifier",
+    "applicableTo": ["armor", "accessory"],
+    "effects": [
+      { "type": "imbuedBonus", "ratio": 0.5 }
+    ]
+  },
+  "gilded": {
+    "id": "gilded",
+    "name": "Gilded",
+    "type": "modifier",
+    "applicableTo": ["armor", "accessory"],
+    "effects": [
+      { "type": "addSocket", "amount": 2 }
+    ]
+  }
+}

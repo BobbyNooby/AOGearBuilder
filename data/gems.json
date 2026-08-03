@@ -1,0 +1,29 @@
+[
+  {
+    "id": "gem-p",
+    "name": "Power Gem",
+    "type": "gem",
+    "rarity": "Common",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": { "power": 0.5 }
+  },
+  {
+    "id": "gem-d",
+    "name": "Defense Gem",
+    "type": "gem",
+    "rarity": "Common",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": { "defense": 1.5 }
+  },
+  {
+    "id": "gem-sz",
+    "name": "Size Gem",
+    "type": "gem",
+    "rarity": "Common",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": { "size": 1 }
+  }
+]

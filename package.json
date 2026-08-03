@@ -1,45 +1,19 @@
 {
-	"name": "ao-gear-builder",
-	"version": "0.0.1",
+	"name": "aotools-monorepo",
+	"private": true,
+	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ."
+		"dev": "turbo run dev",
+		"build": "turbo run build",
+		"check": "turbo run check",
+		"test": "turbo run test",
+		"lint": "turbo run lint",
+		"db:seed": "pnpm --filter api seed",
+		"db:sync": "pnpm --filter api sync"
 	},
 	"devDependencies": {
-		"@lucide/svelte": "^0.501.0",
-		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/kit": "^2.20.7",
-		"@sveltejs/vite-plugin-svelte": "^4.0.0",
-		"autoprefixer": "^10.4.20",
-		"bits-ui": "^1.3.19",
-		"clsx": "^2.1.1",
-		"eslint": "^9.7.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.36.0",
-		"globals": "^15.0.0",
-		"lucide-svelte": "^0.501.0",
-		"prettier": "^3.3.2",
-		"prettier-plugin-svelte": "^3.2.6",
-		"prettier-plugin-tailwindcss": "^0.6.5",
-		"svelte": "^5.0.0",
-		"svelte-check": "^4.0.0",
-		"tailwind-merge": "^3.2.0",
-		"tailwind-variants": "^1.0.0",
-		"tailwindcss": "^3.4.9",
-		"tailwindcss-animate": "^1.0.7",
-		"typescript": "^5.0.0",
-		"typescript-eslint": "^8.0.0",
-		"vite": "^5.0.3"
+		"turbo": "^2.0.14"
 	},
-	"dependencies": {
-		"@auth/sveltekit": "^1.7.4",
-		"mongodb": "^6.11.0",
-		"remixicon": "^4.5.0"
-	}
+	"packageManager": "pnpm@9.15.0"
 }

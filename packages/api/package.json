@@ -1,0 +1,31 @@
+{
+	"name": "@aotools/api",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "bun --watch src/index.ts",
+		"start": "bun src/index.ts",
+		"build": "bun build --target=bun src/index.ts --outdir dist",
+		"check": "tsc --noEmit",
+		"test": "bun test",
+	"seed": "bun run scripts/seed.ts",
+	"seed:images": "bun run src/scripts/seedItemImages.ts",
+	"seed:config": "bun run src/scripts/seedGameConfig.ts",
+	"sync": "bun run scripts/sync-to-db.ts"
+	},
+	"dependencies": {
+		"@aotools/shared": "workspace:*",
+		"@elysiajs/cors": "^1.1.0",
+		"better-auth": "^1.0.0",
+		"elysia": "^1.1.0",
+		"ioredis": "^5.4.0",
+		"mongodb": "^6.15.0",
+		"zod": "^4.0.0"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.1.0",
+		"mongodb-memory-server": "^10.0.0",
+		"typescript": "^6.0.3"
+	}
+}

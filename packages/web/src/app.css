@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import 'tailwindcss';
+
+@layer utilities {
+	.merriweather-light { font-family: 'Merriweather', serif; font-weight: 300; }
+	.merriweather-regular { font-family: 'Merriweather', serif; font-weight: 400; }
+	.merriweather-bold { font-family: 'Merriweather', serif; font-weight: 700; }
+	.merriweather-black { font-family: 'Merriweather', serif; font-weight: 900; }
+	.cormorant-garamond-light { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+	.cormorant-garamond-regular { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+	.cormorant-garamond-semibold { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+	.cormorant-garamond-bold { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
+	.open-sans { font-family: 'Open Sans', sans-serif; }
+	.gear-text-stroke {
+		-webkit-text-stroke: 1px;
+	}
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}

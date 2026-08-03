@@ -1,10 +1,17 @@
 node_modules
+.pnpm-debug.log*
 
 # Output
 .output
 .vercel
-/.svelte-kit
-/build
+.netlify
+.wrangler
+**/.svelte-kit
+**/build
+**/dist
+
+# Turbo
+.turbo
 
 # OS
 .DS_Store
@@ -19,3 +26,14 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Playwright
+test-results
+
+# Storybook
+*storybook.log
+storybook-static
+
+# Misc
+*.pem
+

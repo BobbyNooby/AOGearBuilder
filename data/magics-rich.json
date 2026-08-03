@@ -1,0 +1,6 @@
+[
+  { "id": "heat-magic", "name": "Heat", "type": "magic", "stats": { "damage": 1, "size": 1.2, "speed": 1 }, "temperature": "heat", "synergies": ["cold-magic"] },
+  { "id": "cold-magic", "name": "Cold", "type": "magic", "stats": { "damage": 1, "size": 1, "speed": 1.2 }, "temperature": "cold", "synergies": ["heat-magic"] },
+  { "id": "lightning-magic", "name": "Lightning", "type": "magic", "stats": { "damage": 1, "size": 0.8, "speed": 1.4 }, "temperature": "neutral", "synergies": [] },
+  { "id": "shadow-magic", "name": "Shadow", "type": "magic", "stats": { "damage": 1.1, "size": 1, "speed": 1 }, "temperature": "neutral", "synergies": [] }
+]

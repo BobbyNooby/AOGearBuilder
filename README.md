@@ -1,59 +1,53 @@
-# Arcane Odyssey Tools
+# Aotools Monorepo
 
-Who wouldve thought my first ever coding project would be because of a roblox game 🤷🏼‍♂️
+Arcane Odyssey build tools — now a monorepo with a separate public API and web frontend.
 
-Website : https://tools.arcaneodyssey.net
+## Packages
 
-## Changelogs
+| Package | Description | Runtime |
+|---------|-------------|---------|
+| `packages/api` | ElysiaJS + BetterAuth backend. Public read API, admin CRUD, API keys, rate limiting. | Bun |
+| `packages/web` | SvelteKit frontend. Gear builder, item list, admin dashboard. | Bun/Node |
+| `packages/shared` | Shared schemas and engine from AOPlanningRework. | TS |
 
-20 April 2024 - Nimbus Sea Part 1 Site Overhaul.
+## Development
 
-25 February 2024 - Added efficiency points.
+```bash
+# Install dependencies
+pnpm install
 
-16 February 2024 - Added color highlighting for stats affected by Atlantean Essence.
+# Start both API and web side-by-side
+pnpm dev
+```
 
-5 February 2024 - Added hover over secondary stats to show percent increase in effectiveness.
+- Web → http://localhost:3000
+- API → http://localhost:4000
 
-13 January 2024 - Added hover to view stats + QOL Changes + Mobile item UI
+## Environment
 
-26 December 2023 - Added the Ship Builder.
+Copy `.env.example` to `.env` and fill in values. Discord OAuth is optional for local dev.
 
-12 December 2023 - Added health calculator
+## Production (Docker)
 
-4 November 2023 Added save/load builds locally.
+```bash
+docker compose up --build
+```
 
-1 November 2023 - Made it so that the last build you did will show up on the page instead of clearing everytime. Added clear button. Moved filter and sort into item menu.
+## Commands
 
-30 October 2023 - Added Mute button.
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start all packages in dev mode |
+| `pnpm build` | Build all packages |
+| `pnpm check` | Type-check all packages |
+| `pnpm test` | Run API integration tests with in-memory MongoDB |
+| `pnpm db:seed` | Seed MongoDB from AOPlanningRework data |
 
-27 October 2023 - Added share link, link hashing, random items, and cleaned up a bit of code. Thx woodyloody
+## Public API
 
-24 October 2023 - Added generating and loading build codes for easier sharing.
-
-21 October 2023 - Ported to Svelte, GUI Revamp, Mobile Compatability, and foundaion for other tools. Renamed to Arcane Odyssey Tools
-
-13 October 2023 - Added Atlantean Modifier. Bug fixes.
-
-10 October 2023 - Added the new gems. Should have most of the things now
-
-9 October 2023 - Added most of the dark sea update gear content (new gear and enchants) except for jewels. Fixed amulet selection operators (again). Fixed jewels not resetting every gear change.
-
-6 October 2023 - Fixed arcsphere being unable to be selected if crown or any head item is equipped.
-
-3 October 2023 - Fixed duplicate amulets
-
-2 October 2023 - Revamped whole website with GUI and added Jewels.
-
-12 July 2023 - Added JSON and JQuery usage to make future additions easier.
-
-10 July 2023 - Added metadata link preview stuff, and sunken defense fix
-
-24 June 2023 - 1.13 Item Buffs/Nerfs (Cenyx/Sunken)
-
-16 May 2023 - Added page and title icon
-
-14 May 2023 - Release, Design Update
-
-10 May 2023 - Barebones Update
-
-9 May 2023 - First Page
+| Tier | Auth | Rate limit | Access |
+|------|------|------------|--------|
+| Public | None | 6 req/min / IP | Read-only |
+| API Key | `X-API-Key` | Configurable per key | Scoped read/write |
+| Internal | `X-Internal-Key` | Unlimited | Full access (web server only) |
+| Admin | Discord OAuth session | Unlimited | Full access + key management |
