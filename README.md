@@ -4,6 +4,13 @@ Who would've thought my first ever coding project would be because of a Roblox g
 
 Website: https://tools.arcaneodyssey.net
 
+## Development
+
+- [@aotools/web](packages/web/README.md) — SvelteKit 5 frontend
+- [@aotools/api](packages/api/README.md) — ElysiaJS backend
+- [@aotools/shared](packages/shared/README.md) — Shared engine + types
+- [CONTRIBUTING.md](CONTRIBUTING.md) — Full project context for contributors
+
 ## Changelogs
 
 20 April 2024 - Nimbus Sea Part 1 Site Overhaul.
@@ -57,10 +64,3 @@ Website: https://tools.arcaneodyssey.net
 10 May 2023 - Barebones Update
 
 9 May 2023 - First Page
-
-## Development
-
-- [@aotools/web](packages/web/README.md) — SvelteKit 5 frontend
-- [@aotools/api](packages/api/README.md) — ElysiaJS backend
-- [@aotools/shared](packages/shared/README.md) — Shared engine + types
-- [CONTRIBUTING.md](CONTRIBUTING.md) — Full project context for contributors
