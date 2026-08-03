@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { rarityColor, resolveEquipTypeLabel, statTypeColor, staticImagesRootFolder, statsStyles } from '$lib/utils';
+	import { rarityColor, resolveEquipTypeLabel, statIconMap, statTypeColor, staticImagesRootFolder, statsStyles } from '$lib/utils';
 	import { formatStatRange, displayMaxLevel, formatModifierStats, computeEP } from '@aotools/shared';
 	import type { GameConfig, PlayerState } from '@aotools/shared';
 	import { page } from '$app/state';
@@ -42,13 +42,6 @@
 		return computeEP(modifierStats, level, config);
 	});
 
-	// map new stat names → icon filename used in GitHub images repo
-	const iconMap: Record<string, string> = {
-		power: 'power', defense: 'defense',
-		size: 'attackSize', haste: 'attackSpeed', dexterity: 'agility', range: 'intensity',
-		pierce: 'piercing', regeneration: 'regeneration', resistance: 'resistance',
-		insanity: 'insanity', warding: 'warding', drawback: 'drawback',
-	};
 	function cap(s: string): string { return s ? s[0].toUpperCase() + s.slice(1) : ''; }
 </script>
 
@@ -95,7 +88,7 @@
 		<div class="flex flex-col items-center mt-2 gap-1">
 			{#each Object.entries(statRange.stats) as [stat, val]}
 				{@const style = statsStyles[stat]}
-				{@const icon = iconMap[stat] || stat}
+				{@const icon = statIconMap[stat] || stat}
 				<div class="flex items-center justify-center">
 					<img class="h-6 w-6" src="{staticImagesRootFolder}/stats/{icon}.png" alt={stat} />
 					<p
@@ -116,7 +109,7 @@
 		<div class="flex flex-col items-center mt-2 gap-1">
 			{#each Object.entries(modifierStats) as [stat, val]}
 				{@const style = statsStyles[stat]}
-				{@const icon = iconMap[stat] || stat}
+				{@const icon = statIconMap[stat] || stat}
 				{#if val !== 0}
 					<div class="flex items-center justify-center">
 						<img class="h-6 w-6" src="{staticImagesRootFolder}/stats/{icon}.png" alt={stat} />

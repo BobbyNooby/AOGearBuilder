@@ -1,5 +1,6 @@
 <script lang="ts">
 	import TooltipTrigger from '../TooltipTrigger.svelte';
+	import { statIconMap } from '$lib/utils';
 
 	let {
 		stats,
@@ -12,13 +13,6 @@
 		statsStyles: Record<string, { name: string; fillColor: string; strokeColor: string; suffix: string }>;
 		staticImagesRootFolder: string;
 	} = $props();
-
-	const iconMap: Record<string, string> = {
-		power: 'power', defense: 'defense',
-		size: 'attackSize', haste: 'attackSpeed', dexterity: 'agility', range: 'intensity',
-		pierce: 'piercing', regeneration: 'regeneration', resistance: 'resistance',
-		insanity: 'insanity', warding: 'warding', drawback: 'drawback',
-	};
 
 	let entries = $derived(
 		Object.entries(stats).filter(([k, v]) => v > 0 && !k.startsWith('_'))
@@ -41,7 +35,7 @@
 				<div class="mt-1 flex flex-col gap-1">
 					{#each entries as [stat, val]}
 						{@const style = statsStyles[stat]}
-						{@const icon = iconMap[stat] || stat}
+						{@const icon = statIconMap[stat] || stat}
 						<div class="flex items-center justify-center">
 							<img class="h-6 w-6" src="{staticImagesRootFolder}/stats/{icon}.png" alt={stat} />
 							<p

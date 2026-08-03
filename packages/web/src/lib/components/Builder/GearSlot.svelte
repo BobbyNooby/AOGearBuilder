@@ -3,7 +3,7 @@
 	import PickerModal from './PickerModal.svelte';
 	import PostCalcsButton from './PostCalcsButton.svelte';
 	import { getSlotStats } from '@aotools/shared';
-	import { statsStyles, staticImagesRootFolder } from '$lib/utils';
+	import { staticNoneBaseRoot, statsStyles, staticImagesRootFolder } from '$lib/utils';
 	import { BuildManager } from '$lib/builder/BuildManager.svelte';
 
 	let {
@@ -52,9 +52,8 @@
 		}
 	});
 
-	const NONE_BASE = 'https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images';
 	function noneItem(kind: string) {
-		return { id: '', name: 'None', rarity: 'None', type: kind, imageUrl: `${NONE_BASE}/${kind}/0.jpg` };
+		return { id: '', name: 'None', rarity: 'None', type: kind, imageUrl: `${staticNoneBaseRoot}/${kind}/0.jpg` };
 	}
 	function armorNoneItem() {
 		const kind = slot.equipType === 'legging' ? 'pants' : (slot.equipType === 'chestpiece' ? 'chestplate' : 'accessory');
@@ -79,9 +78,9 @@
 	</div>
 
 	<!-- Gems -->
-	{#if slot.armor && (slot.armor.jewelSlots || slot.armor.gemNo) > 0}
+	{#if slot.armor && (slot.armor.jewelSlots || 0) > 0}
 		<div class="flex flex-row space-x-4">
-			{#each Array(Math.min(slot.armor.jewelSlots || slot.armor.gemNo, 4)) as _, gi}
+			{#each Array(Math.min(slot.armor.jewelSlots || 0, 4)) as _, gi}
 				<button onclick={() => openModal('gem')} class="flex aspect-square h-24 w-24 items-center justify-center rounded bg-[#020202]">
 					{#if slot.gems?.[gi]} <Item item={slot.gems[gi]} /> {:else} <Item item={noneItem('gem')} /> {/if}
 				</button>

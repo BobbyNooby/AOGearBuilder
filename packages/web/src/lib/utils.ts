@@ -1,6 +1,9 @@
 export const staticImagesRootFolder: string =
 	'https://raw.githubusercontent.com/BobbyNooby/AOGearBuilderImages/main';
 
+export const staticNoneBaseRoot: string =
+	'https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images';
+
 export const rarityColors: Record<string, string> = {
 	None: '#FFFFFF', Common: '#7D7D7F', Uncommon: '#817346',
 	Rare: '#6765EC', Exotic: '#FF0000', Seasonal: '#C001C2',
@@ -53,6 +56,13 @@ export const statsStyles: Record<string, { name: string; fillColor: string; stro
 	sailResilience: { name: 'RESILIENCE', fillColor: '#FFFFFF', strokeColor: '#AF2230', suffix: '%' },
 	ramStrength:  { name: 'RAM STRENGTH', fillColor: '#FF8400', strokeColor: '#000000', suffix: '' },
 	ramDefense:   { name: 'RAM DEFENSE', fillColor: '#FFFFFF', strokeColor: '#6B6BD7', suffix: '' },
+};
+
+export const statIconMap: Record<string, string> = {
+	power: 'power', defense: 'defense',
+	size: 'attackSize', haste: 'attackSpeed', dexterity: 'agility', range: 'intensity',
+	pierce: 'piercing', regeneration: 'regeneration', resistance: 'resistance',
+	insanity: 'insanity', warding: 'warding', drawback: 'drawback',
 };
 
 // Hard-coded equipType → display label map (fixes spelling, spacing, and double-text issues)

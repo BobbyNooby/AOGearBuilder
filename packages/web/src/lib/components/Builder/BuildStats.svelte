@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { statsStyles, staticImagesRootFolder } from '$lib/utils';
+	import { statIconMap, statsStyles, staticImagesRootFolder } from '$lib/utils';
 	import { secondaryStatEffect, type GameConfig } from '@aotools/shared';
 
 	let {
@@ -13,11 +13,6 @@
 	} = $props();
 
 	const STAT_NAMES = ['power','defense','size','haste','dexterity','range','regeneration','pierce','resistance','insanity','warding','drawback'];
-	const ICONS: Record<string, string> = {
-		power:'power',defense:'defense',size:'attackSize',haste:'attackSpeed',dexterity:'agility',
-		range:'intensity',pierce:'piercing',regeneration:'regeneration',resistance:'resistance',
-		insanity:'insanity',warding:'warding',drawback:'drawback',
-	};
 	const tooltips: Record<string, string> = $derived(
 		Object.fromEntries(
 			['size','haste','dexterity','range','regeneration','pierce','resistance']
@@ -35,7 +30,7 @@
 		{@const tip = tooltips[stat]}
 		{#if val > 0}
 			<div class="flex items-center justify-center" title={tip || ''}>
-				<img class="h-6 w-6" src="{staticImagesRootFolder}/stats/{ICONS[stat] || stat}.png" alt={stat} />
+				<img class="h-6 w-6" src="{staticImagesRootFolder}/stats/{statIconMap[stat] || stat}.png" alt={stat} />
 				<p
 					class="ml-2"
 					style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:20px;

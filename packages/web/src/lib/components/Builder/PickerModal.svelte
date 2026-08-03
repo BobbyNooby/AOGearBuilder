@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
+	import { X } from 'lucide-svelte';
 	import MenuItem from '../MenuItem.svelte';
 	import Item from '../Item.svelte';
 	import FilterBar from '../ui/FilterBar.svelte';
 	import type { ActiveFilter, FilterCategory, SortOption } from '../ui/FilterBar.svelte';
-	import { staticImagesRootFolder, RARITY_ORDER, statsStyles } from '$lib/utils';
+	import { staticImagesRootFolder, staticNoneBaseRoot, RARITY_ORDER, statsStyles } from '$lib/utils';
 
 	let {
 		show, items, field, onSelect, onClose,
@@ -26,6 +27,10 @@
 
 	function cap(s: string): string {
 		return s ? s[0].toUpperCase() + s.slice(1) : '';
+	}
+
+	function handleSortChange(e: Event) {
+		pickerSort = (e.target as HTMLSelectElement).value;
 	}
 
 	const pickerSortOptions = $derived.by((): SortOption[] => {
@@ -151,7 +156,6 @@
 	function selectItem(id: string) { onSelect(id); }
 
 	function noneImageUrl() {
-		const base = 'https://raw.githubusercontent.com/BobbyNooby/AOGearBuilder/master/static/assets/images';
 		const first = items[0];
 		let kind = field;
 		if (first?.type === 'armor') kind = first.equipType === 'legging' ? 'pants' : 'chestplate';
@@ -159,7 +163,7 @@
 		else if (field === 'gem') kind = 'gem';
 		else if (field === 'enchant') kind = 'enchant';
 		else if (field === 'modifier') kind = 'modifier';
-		return `${base}/${kind}/0.jpg`;
+		return `${staticNoneBaseRoot}/${kind}/0.jpg`;
 	}
 
 	let noneItem = $derived({
@@ -176,57 +180,76 @@
 		id="menuouter"
 		role="button"
 		tabindex="0"
-		class="fixed inset-0 z-50 flex flex-col items-center overflow-y-auto bg-black bg-opacity-70 p-4"
+		class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
 		transition:fade={{ duration: 69 }}
 		onclick={(e) => { if (e.target === e.currentTarget) onClose(); }}
 		onkeydown={(e) => { if (e.key === 'Escape') onClose(); }}
 	>
-		<!-- Close button -->
-		<button aria-label="Close menu" onclick={onClose}>
-			<div class="relative my-4 flex h-24 w-24 items-center justify-center rounded border border-white bg-black text-white">
-				<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-					<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-				</svg>
-			</div>
-		</button>
+		<div class="flex max-h-[calc(100vh-2rem)] w-full max-w-6xl overflow-hidden rounded-lg border border-white/10 bg-black shadow-2xl">
+			<!-- Left sidebar -->
+			<div class="flex w-56 shrink-0 flex-col gap-2 border-r border-white/10 p-3">
+				<div class="flex items-center justify-between">
+					<span class="text-xs font-bold uppercase tracking-wider text-gray-400">{field}</span>
+					<button
+						aria-label="Close menu"
+						onclick={onClose}
+						class="rounded p-0.5 text-gray-400 hover:bg-white/10 hover:text-white"
+					>
+						<X class="h-4 w-4" />
+					</button>
+				</div>
 
-		<!-- Search -->
-		<div class="mb-4 w-full max-w-2xl space-y-2">
-			<!-- svelte-ignore a11y_autofocus -->
-			<input
-				type="text"
-				placeholder="Search {items.length} {field}..."
-				autofocus
-				bind:value={search}
-				class="w-full rounded-md border border-white bg-black px-4 py-2 text-sm text-white outline-none placeholder:text-gray-500 focus:border-[#58a6ff]"
-			/>
-			<div class="flex flex-wrap items-center justify-center">
+				<!-- svelte-ignore a11y_autofocus -->
+				<input
+					type="text"
+					placeholder="Search..."
+					autofocus
+					bind:value={search}
+					class="w-full rounded border border-white/20 bg-black px-2 py-1.5 text-sm text-white outline-none placeholder:text-gray-500 focus:border-[#58a6ff]"
+				/>
+
 				<FilterBar
 					categories={pickerFilterCategories}
-					sortOptions={pickerSortOptions}
 					filters={pickerFilters}
 					sort={pickerSort}
-					onChange={(filters, sort) => {
+					sortOptions={[]}
+					showCount={false}
+					onChange={(filters, _sort) => {
 						pickerFilters = filters;
-						pickerSort = sort;
 					}}
 				/>
+
+				<div class="mt-auto flex flex-col gap-2 border-t border-white/10 pt-2">
+					<select
+						value={pickerSort}
+						onchange={handleSortChange}
+						class="w-full rounded border border-white/20 bg-black px-2 py-1 text-xs text-white focus:border-white focus:outline-none"
+					>
+						{#each pickerSortOptions as option (option.value)}
+							<option value={option.value}>{option.label}</option>
+						{/each}
+					</select>
+
+					<p class="text-center text-xs text-gray-400">
+						{filtered.length} / {items.length} items
+					</p>
+				</div>
 			</div>
-			<p class="text-center text-xs text-gray-400">{filtered.length} / {items.length}</p>
-		</div>
 
-		<!-- Item grid -->
-		<div class="grid grid-cols-4 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9">
-			<!-- None -->
-			<button onclick={selectNone} class="aspect-square h-24 w-24 cursor-pointer">
-				<Item item={noneItem} />
-			</button>
+			<!-- Right grid -->
+			<div class="flex flex-1 overflow-y-auto p-3">
+				<div class="grid grid-cols-[repeat(auto-fill,minmax(80px,1fr))] gap-8 w-full content-start">
+					<button onclick={selectNone} class="aspect-square w-full cursor-pointer">
+						<Item item={noneItem} />
+					</button>
 
-			{#each filtered as it (it.id || it._id)}
-				<button onclick={() => selectItem(it.id || it._id)} class="aspect-square h-24 w-24 cursor-pointer">
-					<MenuItem item={it} />
-				</button>
-			{/each}
+					{#each filtered as it (it.id || it._id)}
+						<button onclick={() => selectItem(it.id || it._id)} class="aspect-square w-full cursor-pointer">
+							<MenuItem item={it} />
+						</button>
+					{/each}
+				</div>
+			</div>
 		</div>
 	</div>
 {/if}
