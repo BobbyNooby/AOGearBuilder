@@ -6,54 +6,61 @@ Website: https://tools.arcaneodyssey.net
 
 ## Changelogs
 
-2026 Rework — Full monorepo rewrite with ElysiaJS API, SvelteKit 5 frontend, and formula-driven engine.
+20 April 2024 - Nimbus Sea Part 1 Site Overhaul.
 
-2024 — Nimbus Sea Part 1 site overhaul, efficiency points, secondary stat hover tooltips, ship builder, health calculator, Atlantean modifier, gems, amulets, jewels, share links, build codes, mobile UI, local save/load, ported to Svelte, GUI revamp.
+25 February 2024 - Added efficiency points.
 
-2023 — Relaunch, Atlantean, gems, jewels, build codes, Svelte port, dark sea update, JSON/JQuery usage, metadata link preview, page icon, design update, barebones, first page.
+16 February 2024 - Added color highlighting for stats affected by Atlantean Essence.
 
-## Packages
+5 February 2024 - Added hover over secondary stats to show percent increase in effectiveness.
 
-| Package | Description | Runtime |
-|---------|-------------|---------|
-| `packages/api` | ElysiaJS backend. Public API, admin CRUD, RBAC, rate limiting. | Bun |
-| `packages/web` | SvelteKit 5 frontend. Gear builder, admin dashboard. | Bun/Node |
-| `packages/shared` | Shared schemas and engine. | TS |
+13 January 2024 - Added hover to view stats + QOL Changes + Mobile item UI
 
-See [packages/api](packages/api/README.md), [packages/web](packages/web/README.md), [packages/shared](packages/shared/README.md) for per-package details.
+26 December 2023 - Added the Ship Builder.
+
+12 December 2023 - Added health calculator
+
+4 November 2023 Added save/load builds locally.
+
+1 November 2023 - Made it so that the last build you did will show up on the page instead of clearing everytime. Added clear button. Moved filter and sort into item menu.
+
+30 October 2023 - Added Mute button.
+
+27 October 2023 - Added share link, link hashing, random items, and cleaned up a bit of code. Thx woodyloody
+
+24 October 2023 - Added generating and loading build codes for easier sharing.
+
+21 October 2023 - Ported to Svelte, GUI Revamp, Mobile Compatability, and foundation for other tools. Renamed to Arcane Odyssey Tools
+
+13 October 2023 - Added Atlantean Modifier. Bug fixes.
+
+10 October 2023 - Added the new gems. Should have most of the things now
+
+9 October 2023 - Added most of the dark sea update gear content (new gear and enchants) except for jewels. Fixed amulet selection operators (again). Fixed jewels not resetting every gear change.
+
+6 October 2023 - Fixed arcsphere being unable to be selected if crown or any head item is equipped.
+
+3 October 2023 - Fixed duplicate amulets
+
+2 October 2023 - Revamped whole website with GUI and added Jewels.
+
+12 July 2023 - Added JSON and JQuery usage to make future additions easier.
+
+10 July 2023 - Added metadata link preview stuff, and sunken defense fix
+
+24 June 2023 - 1.13 Item Buffs/Nerfs (Cenyx/Sunken)
+
+16 May 2023 - Added page and title icon
+
+14 May 2023 - Release, Design Update
+
+10 May 2023 - Barebones Update
+
+9 May 2023 - First Page
 
 ## Development
 
-```bash
-pnpm install
-pnpm dev          # API → http://localhost:4000, Web → http://localhost:3000
-```
-
-Copy `.env.example` to `.env` and fill in values. Discord OAuth is optional for local dev.
-
-## Production
-
-```bash
-docker compose up --build
-```
-
-## Commands
-
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start all packages |
-| `pnpm build` | Build all packages |
-| `pnpm check` | Type-check all packages |
-| `pnpm test` | Run integration tests |
-
-## Public API
-
-| Tier | Auth | Rate limit | Access |
-|------|------|------------|--------|
-| Public | None | 6 req/min / IP | Read-only |
-| API Key | `X-API-Key` | Configurable | Scoped read/write |
-| Admin | Discord OAuth | Unlimited | Full access |
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for full project context, architecture, and development conventions.
+- [@aotools/web](packages/web/README.md) — SvelteKit 5 frontend
+- [@aotools/api](packages/api/README.md) — ElysiaJS backend
+- [@aotools/shared](packages/shared/README.md) — Shared engine + types
+- [CONTRIBUTING.md](CONTRIBUTING.md) — Full project context for contributors
