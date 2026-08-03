@@ -6,7 +6,11 @@
     "power": 0.315,
     "defense": 2.7,
     "substat": 0.5,
-    "rounding": "round"
+    "rounding": "round",
+    "toStat": {},
+    "imbuedStatType": {},
+    "imbuedMulti": {},
+    "dragon": { "colors": [] }
   },
   "statRegistry": {
     "power": { "category": "primary", "epPerPoint": 3.333, "scaling": "level" },
@@ -87,9 +91,10 @@
     "Epic":      { "order": 4, "color": "#8B00FF" },
     "Legendary": { "order": 5, "color": "#00FF00" },
     "Exotic":    { "order": 6, "color": "#FF0000" },
-    "Mythical":  { "order": 7, "color": "#FFD700" },
-    "Sunken":    { "order": 8, "color": "#00CED1" },
-    "Seasonal":  { "order": 9, "color": "#C001C2" }
+    "Mystic":    { "order": 7, "color": "#AA00FF" },
+    "Mythical":  { "order": 8, "color": "#FFD700" },
+    "Sunken":    { "order": 9, "color": "#00CED1" },
+    "Seasonal":  { "order": 10, "color": "#C001C2" }
   },
   "statTypes": {
     "Magic":    { "color": "#02B1EB" },

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Home, Cog, KeyRound, Package, FileJson, Users, Server, Shield, List, Settings } from 'lucide-svelte';
+	import { Home, Cog, KeyRound, Package, FileJson, Users, Server, Shield, Library, Settings } from 'lucide-svelte';
 	import { hasAnyPermission, PERMISSIONS } from '@aotools/shared';
 
 	let { permissions, onNavigate }: { permissions: string[]; onNavigate?: () => void } = $props();
@@ -12,7 +12,7 @@
 	const appLinks = [
 		{ href: '/', label: 'Home', icon: Home },
 		{ href: '/builder', label: 'Gear Builder', icon: Cog },
-		{ href: '/itemlist', label: 'Item List', icon: List }
+		{ href: '/atlas', label: 'Atlas', icon: Library }
 	];
 
 	const gameAdminLink = { href: '/admin', label: 'Game Data', icon: Package };

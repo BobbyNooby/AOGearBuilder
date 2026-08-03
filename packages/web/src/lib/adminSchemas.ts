@@ -11,7 +11,7 @@ const itemTypes = [
 	'magic'
 ];
 
-const rarities = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary', 'Exotic', 'Mythical', 'Sunken'];
+const rarities = ['None', 'Common', 'Uncommon', 'Rare', 'Epic', 'Mystic', 'Seasonal', 'Legendary', 'Exotic', 'Mythical', 'Sunken'];
 
 export const itemSchema: Schema = [
 	{ key: 'id', label: 'ID', type: 'string', required: true, readonly: true },
@@ -65,9 +65,8 @@ const buildTypeConditionSchema: Schema = [
 const buildTypeSchema: Schema = [
 	{ key: 'id', label: 'ID', type: 'string', required: true },
 	{ key: 'color', label: 'Color', type: 'string', required: true },
-	{ key: 'magicSlots', label: 'Magic Slots', type: 'number', required: true },
-	{ key: 'fsSlots', label: 'Fighting Style Slots', type: 'number', required: true },
-	{ key: 'weaponSlots', label: 'Weapon Slots', type: 'number', required: true },
+	{ key: 'activeStats', label: 'Active Stats', type: 'array:string' },
+	{ key: 'abilitySlots', label: 'Ability Slots', type: 'json' },
 	{ key: 'conditions', label: 'Conditions', type: 'array:object', itemSchema: buildTypeConditionSchema }
 ];
 
