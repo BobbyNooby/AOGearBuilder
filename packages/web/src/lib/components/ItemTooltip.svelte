@@ -32,13 +32,13 @@
 	// enchant / modifier exact contribution at current slot level
 	const modifierStats = $derived.by(() => {
 		if (!item.effects || item.effects.length === 0) return null;
-		const level = slotData?.level || player?.level || 0;
+		const level = slotData?.level || player?.level || config.maxLevel;
 		return formatModifierStats(item, level, config);
 	});
 
 	const modifierEP = $derived.by(() => {
 		if (!modifierStats || Object.keys(modifierStats).length === 0) return 0;
-		const level = slotData?.level || player?.level || 0;
+		const level = slotData?.level || player?.level || config.maxLevel;
 		return computeEP(modifierStats, level, config);
 	});
 

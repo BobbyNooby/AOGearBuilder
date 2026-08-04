@@ -105,12 +105,13 @@
 					{/if}
 				</div>
 			</div>
-			<SchemaForm schema={itemFormSchema} value={itemStore.draft} onChange={(next: any) => (itemStore.draft = next)} />
+			<SchemaForm schema={itemFormSchema} value={itemStore.draft} onChange={(next: any) => (itemStore.draft = next)} typeFilter={itemStore.draft?.type} config={configStore.gameConfig} />
 			<div class="mt-4">
 				<StatOverridesEditor
 					value={itemStore.draft.statOverrides}
 					maxLevel={configStore.gameConfig.maxLevel}
 					stats={Object.keys(configStore.gameConfig.statRegistry ?? {})}
+					config={configStore.gameConfig}
 					onChange={(next: any) => (itemStore.draft = { ...itemStore.draft, statOverrides: next })}
 				/>
 			</div>

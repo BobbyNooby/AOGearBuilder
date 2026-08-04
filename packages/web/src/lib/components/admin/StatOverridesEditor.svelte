@@ -1,14 +1,16 @@
 <script lang="ts">
 	import { STAT_NAMES, DEFAULT_MAX_LEVEL } from '@aotools/shared';
+	import { statsStyles, statImageUrl } from '$lib/utils';
 
 	interface Props {
 		value?: Record<string, Record<string, number>>;
 		maxLevel?: number;
 		stats?: string[];
+		config?: { statRegistry?: Record<string, { imageUrl?: string }> };
 		onChange: (v: Record<string, Record<string, number>>) => void;
 	}
 
-	let { value = {}, maxLevel = DEFAULT_MAX_LEVEL, stats = STAT_NAMES, onChange }: Props = $props();
+	let { value = {}, maxLevel = DEFAULT_MAX_LEVEL, stats = STAT_NAMES, config, onChange }: Props = $props();
 
 	const levels = $derived(Array.from({ length: Math.floor(maxLevel / 10) }, (_, i) => String((i + 1) * 10)));
 	const allStats = $derived(stats);
@@ -82,6 +84,12 @@
 					{#each allStats as stat}
 						<th class="px-3 py-2">
 							<div class="flex items-center gap-2">
+								<img
+									class="h-4 w-4"
+									src={statImageUrl(stat, config)}
+									alt={stat}
+									onerror={(e) => (e.currentTarget as HTMLElement).remove()}
+								/>
 								{stat}
 								<button onclick={() => removeStat(stat)} class="text-red-400 hover:text-red-300" aria-label="Remove stat column">×</button>
 							</div>
