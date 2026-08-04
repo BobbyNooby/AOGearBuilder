@@ -3,7 +3,7 @@ import { getDb } from '../db';
 import { PERMISSIONS } from '@aotools/shared';
 import { guardResource } from '../middleware/adminGuard';
 
-export const magicRoutes = new Elysia({ prefix: '/magics' }).onBeforeHandle((ctx: any) =>
+export const magicRoutes = new Elysia({ prefix: '/magics', detail: { tags: ['Admin: Magics'] } }).onBeforeHandle((ctx: any) =>
 	guardResource(ctx.auth, ctx.request, ctx.set, {
 		read: PERMISSIONS.ITEMS_READ,
 		write: PERMISSIONS.ITEMS_WRITE

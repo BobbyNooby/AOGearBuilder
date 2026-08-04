@@ -8,7 +8,7 @@ function denied(set: any) {
 	return { error: 'Forbidden: insufficient permissions.' };
 }
 
-export const configRoutes = new Elysia({ prefix: '/config' })
+export const configRoutes = new Elysia({ prefix: '/config', detail: { tags: ['Admin: Config'] } })
 	.get('/', async () => {
 		const db = getDb();
 		const configCol = db.collection<any>('config');

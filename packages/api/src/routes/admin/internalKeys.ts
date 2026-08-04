@@ -13,7 +13,7 @@ function generateKey() {
 	return result;
 }
 
-export const internalKeyRoutes = new Elysia({ prefix: '/internal-keys' }).onBeforeHandle((ctx: any) =>
+export const internalKeyRoutes = new Elysia({ prefix: '/internal-keys', detail: { tags: ['Admin: Platform'] } }).onBeforeHandle((ctx: any) =>
 	guardResource(ctx.auth, ctx.request, ctx.set, {
 		read: PERMISSIONS.INTERNAL_KEYS_READ,
 		write: PERMISSIONS.INTERNAL_KEYS_WRITE

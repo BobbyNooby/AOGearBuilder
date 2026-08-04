@@ -5,7 +5,7 @@ import { guardResource } from '../../middleware/adminGuard';
 
 const ALLOWED_ID_RE = /^[a-z0-9-]+$/;
 
-export const roleRoutes = new Elysia({ prefix: '/roles' }).onBeforeHandle((ctx: any) =>
+export const roleRoutes = new Elysia({ prefix: '/roles', detail: { tags: ['Admin: Platform'] } }).onBeforeHandle((ctx: any) =>
 	guardResource(ctx.auth, ctx.request, ctx.set, {
 		read: PERMISSIONS.ROLES_READ,
 		write: PERMISSIONS.ROLES_WRITE

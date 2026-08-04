@@ -21,7 +21,7 @@ async function getOwnerId(auth: AuthContext): Promise<string | null> {
 	return null;
 }
 
-export const buildRoutes = new Elysia({ prefix: '/builds' })
+export const buildRoutes = new Elysia({ prefix: '/builds', detail: { tags: ['Builds'] } })
 	.post('/', async (ctx: any) => {
 		const { body, auth, set }: { body: any; auth: AuthContext; set: any } = ctx;
 		if (!requirePermission(auth, PERMISSIONS.BUILDS_WRITE)) {

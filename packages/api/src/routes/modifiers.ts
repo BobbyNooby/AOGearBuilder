@@ -4,7 +4,7 @@ import { generateUniqueId } from '../lib/itemIds';
 import { PERMISSIONS } from '@aotools/shared';
 import { guardResource } from '../middleware/adminGuard';
 
-export const modifierRoutes = new Elysia({ prefix: '/modifiers' }).onBeforeHandle((ctx: any) =>
+export const modifierRoutes = new Elysia({ prefix: '/modifiers', detail: { tags: ['Admin: Modifiers'] } }).onBeforeHandle((ctx: any) =>
 	guardResource(ctx.auth, ctx.request, ctx.set, {
 		read: PERMISSIONS.MODIFIERS_READ,
 		write: PERMISSIONS.MODIFIERS_WRITE

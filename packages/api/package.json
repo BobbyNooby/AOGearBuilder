@@ -9,15 +9,16 @@
 		"build": "bun build --target=bun src/index.ts --outdir dist",
 		"check": "tsc --noEmit",
 		"test": "bun test",
-	"seed": "bun run scripts/seed.ts",
-	"seed:images": "bun run src/scripts/seedItemImages.ts",
-	"seed:config": "bun run src/scripts/seedGameConfig.ts",
-	"seed:config:dump": "bun run src/scripts/dumpGameConfig.ts",
-	"sync": "bun run scripts/sync-to-db.ts",
-	"normalize:images": "bun run src/scripts/normalizeImageUrls.ts"
+		"seed": "bun run scripts/seed.ts",
+		"seed:images": "bun run src/scripts/seedItemImages.ts",
+		"seed:config": "bun run src/scripts/seedGameConfig.ts",
+		"seed:config:dump": "bun run src/scripts/dumpGameConfig.ts",
+		"sync": "bun run scripts/sync-to-db.ts",
+		"normalize:images": "bun run src/scripts/normalizeImageUrls.ts"
 	},
 	"dependencies": {
 		"@aotools/shared": "workspace:*",
+		"@elysia/openapi": "^1.4.15",
 		"@elysiajs/cors": "^1.1.0",
 		"better-auth": "^1.0.0",
 		"elysia": "^1.1.0",

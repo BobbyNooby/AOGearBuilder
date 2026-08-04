@@ -1,4 +1,5 @@
 import { Elysia } from 'elysia';
+import { openapi } from '@elysia/openapi';
 import { connectDb } from './db';
 import { initDb } from './lib/initDb';
 import { auth } from './auth';
@@ -40,6 +41,10 @@ export async function createApp() {
 					auth: await resolveAuth(request, headers)
 				}))
 				.onBeforeHandle(async ({ auth, request, set }) => {
+					if (auth.type === 'invalidApiKey') {
+						set.status = 401;
+						return { error: 'Invalid API key' };
+					}
 					const result = await checkRateLimit(auth, request, rateLimitStore);
 					if (!result.allowed) {
 						set.status = 429;
@@ -76,6 +81,43 @@ export async function createApp() {
 					.use(adminIdRoutes)
 			)
 			.use(buildRoutes)
+		)
+		.guard({
+			beforeHandle: ({ headers, set }) => {
+				if (headers['x-internal-key'] !== config.INTERNAL_API_KEY) {
+					set.status = 401;
+					return { error: 'Unauthorized' };
+				}
+			}
+		}, (app) =>
+			app.use(openapi({
+				path: '/api/docs/internal',
+				provider: 'scalar',
+				documentation: {
+					info: {
+						title: 'AOGearBuilder API (Internal)',
+						version: '1.0.0',
+						description: 'Full API reference for Arcane Odyssey build tools — internal use only'
+					},
+					tags: [
+						{ name: 'Public', description: 'Read-only public data endpoints' },
+						{ name: 'Admin: Items', description: 'Item CRUD operations' },
+						{ name: 'Admin: Modifiers', description: 'Modifier CRUD operations' },
+						{ name: 'Admin: Magics', description: 'Magic CRUD operations' },
+						{ name: 'Admin: Fighting Styles', description: 'Fighting style CRUD operations' },
+						{ name: 'Admin: Config', description: 'Game config and formulas' },
+						{ name: 'Admin: Platform', description: 'Users, API keys, roles, stats' },
+						{ name: 'Builds', description: 'Build save/load via API key' }
+					],
+					components: {
+						securitySchemes: {
+							apiKey: { type: 'apiKey', in: 'header', name: 'X-API-Key', description: 'Scoped API key for write access' },
+							internalKey: { type: 'apiKey', in: 'header', name: 'X-Internal-Key', description: 'Server-to-server internal key' }
+						}
+					}
+				},
+				scalar: { theme: 'purple', darkMode: true }
+			}))
 		)
 		.onError(({ code, error, set }) => {
 			console.error(code, error);

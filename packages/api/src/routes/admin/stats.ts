@@ -3,7 +3,7 @@ import { getDb } from '../../db';
 import { PERMISSIONS } from '@aotools/shared';
 import { requirePermission } from '../../middleware/adminGuard';
 
-export const statsRoutes = new Elysia({ prefix: '/stats' }).onBeforeHandle((ctx: any) => {
+export const statsRoutes = new Elysia({ prefix: '/stats', detail: { tags: ['Admin: Platform'] } }).onBeforeHandle((ctx: any) => {
 	if (!requirePermission(ctx.auth, PERMISSIONS.STATS_READ)) {
 		ctx.set.status = 403;
 		return { error: 'Forbidden: insufficient permissions.' };

@@ -15,7 +15,7 @@ function generateKey() {
 	return result;
 }
 
-export const keyRoutes = new Elysia({ prefix: '/keys' }).onBeforeHandle((ctx: any) =>
+export const keyRoutes = new Elysia({ prefix: '/keys', detail: { tags: ['Admin: Platform'] } }).onBeforeHandle((ctx: any) =>
 	guardResource(ctx.auth, ctx.request, ctx.set, {
 		read: PERMISSIONS.KEYS_READ,
 		write: PERMISSIONS.KEYS_WRITE

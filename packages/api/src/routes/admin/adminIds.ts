@@ -4,7 +4,7 @@ import type { AuthContext } from '../../middleware/types';
 import { PERMISSIONS } from '@aotools/shared';
 import { guardResource } from '../../middleware/adminGuard';
 
-export const adminIdRoutes = new Elysia({ prefix: '/admin-ids' }).onBeforeHandle((ctx: any) =>
+export const adminIdRoutes = new Elysia({ prefix: '/admin-ids', detail: { tags: ['Admin: Platform'] } }).onBeforeHandle((ctx: any) =>
 	guardResource(ctx.auth, ctx.request, ctx.set, {
 		read: PERMISSIONS.ADMIN_IDS_READ,
 		write: PERMISSIONS.ADMIN_IDS_WRITE

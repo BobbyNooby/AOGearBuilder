@@ -1,7 +1,7 @@
 import { Elysia } from 'elysia';
 import { getDb } from '../db';
 
-export const publicRoutes = new Elysia({ prefix: '/public' })
+export const publicRoutes = new Elysia({ prefix: '/public', detail: { tags: ['Public'] } })
 	.get('/items', async ({ query }) => {
 		const db = getDb();
 		const filters: Record<string, any> = {};

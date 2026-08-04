@@ -3,7 +3,7 @@ import { getDb } from '../../db';
 import { PERMISSIONS } from '@aotools/shared';
 import { guardResource } from '../../middleware/adminGuard';
 
-export const userRoutes = new Elysia({ prefix: '/users' }).onBeforeHandle((ctx: any) =>
+export const userRoutes = new Elysia({ prefix: '/users', detail: { tags: ['Admin: Platform'] } }).onBeforeHandle((ctx: any) =>
 	guardResource(ctx.auth, ctx.request, ctx.set, {
 		read: PERMISSIONS.USERS_READ,
 		write: PERMISSIONS.USERS_WRITE

@@ -4,7 +4,7 @@ import { generateItemId } from '../lib/itemIds';
 import { PERMISSIONS } from '@aotools/shared';
 import { guardResource } from '../middleware/adminGuard';
 
-export const itemRoutes = new Elysia({ prefix: '/items' }).onBeforeHandle((ctx: any) =>
+export const itemRoutes = new Elysia({ prefix: '/items', detail: { tags: ['Admin: Items'] } }).onBeforeHandle((ctx: any) =>
 	guardResource(ctx.auth, ctx.request, ctx.set, {
 		read: PERMISSIONS.ITEMS_READ,
 		write: PERMISSIONS.ITEMS_WRITE
