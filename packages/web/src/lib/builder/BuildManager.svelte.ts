@@ -1,5 +1,5 @@
 import { aggregateBuildStats, getSlotStats, effectiveMagicSlots, effectiveFsSlots, validateSlotItem, type PlayerState, type SlotData, type GameConfig, DEFAULT_MAX_LEVEL } from '@aotools/shared';
-import { encodeBuild, tryLoadBuild, evalFormulaDef, type BuildObject } from '@aotools/shared';
+import { encodeBuild, tryLoadBuild, evalFormulaDef, computeFusedGemStats, buildFusedGemItem, parseFusedGemId, type BuildObject } from '@aotools/shared';
 
 export class BuildManager {
 	config: GameConfig;
@@ -26,9 +26,17 @@ export class BuildManager {
 		{ key: 'accessory3', equipType: 'accessory', armor: null, level: 0, enchant: null, modifier: null, gems: [], attunement: null, amuletVariant: null },
 		{ key: 'chestplate', equipType: 'chestpiece', armor: null, level: 0, enchant: null, modifier: null, gems: [], attunement: null, amuletVariant: null },
 		{ key: 'pants',      equipType: 'legging',    armor: null, level: 0, enchant: null, modifier: null, gems: [], attunement: null, amuletVariant: null },
+		{ key: 'weapon',     equipType: 'weapon',     armor: null, level: 0, enchant: null, modifier: null, gems: [], attunement: null, amuletVariant: null },
 	]);
 
 	buildStats: Record<string, number>;
+
+	fuseState: {
+		active: boolean;
+		slotIdx: number;
+		gemIdx: number;
+		gemA: string | null;
+	} = $state({ active: false, slotIdx: -1, gemIdx: -1, gemA: null });
 
 	// --- Derived (initialized in constructor) ---
 	maxPoints: number;
@@ -269,11 +277,47 @@ export class BuildManager {
 		slot.amuletVariant = null;
 	}
 
+	startFuse(slotIdx: number, gemIdx: number): void {
+		this.fuseState = { active: true, slotIdx, gemIdx, gemA: null };
+	}
+
+	cancelFuse(): void {
+		this.fuseState = { active: false, slotIdx: -1, gemIdx: -1, gemA: null };
+	}
+
+	handleFusePick(itemId: string): 'need_more' | 'done' {
+		if (!this.fuseState.active) return 'done';
+		if (!this.fuseState.gemA) {
+			this.fuseState.gemA = itemId;
+			return 'need_more';
+		}
+		const gemAId = this.fuseState.gemA;
+		const gemBId = itemId;
+		this.fuseGemsAndPlace(this.fuseState.slotIdx, this.fuseState.gemIdx, gemAId, gemBId);
+		this.fuseState = { active: false, slotIdx: -1, gemIdx: -1, gemA: null };
+		return 'done';
+	}
+
+	fuseGemsAndPlace(slotIdx: number, gemIdx: number, gemAId: string, gemBId: string): void {
+		const gemA = this.findById(gemAId, this.allItems);
+		const gemB = this.findById(gemBId, this.allItems);
+		if (!gemA || !gemB) return;
+		const fused = buildFusedGemItem(gemA, gemB, this.config);
+		const slot = this.slots[slotIdx];
+		if (!slot.gems) slot.gems = [];
+		slot.gems[gemIdx] = fused;
+	}
+
 	// --- Picker filtering ---
 
 	getPickerItems(field: string, slotIdx: number): any[] {
 		const slot = this.slots[slotIdx];
 		if (field === 'armor') {
+			if (slot.equipType === 'weapon') {
+				return this.allItems.filter((i: any) =>
+					i.type === 'weapon' && (i.equipType === 'shield' || i.equipType === 'greatshield')
+				);
+			}
 			const isArmorSlot = ['chestpiece', 'legging'].includes(slot.equipType || '');
 			return this.allItems.filter((i: any) => {
 				if (isArmorSlot) return i.type === 'armor' && i.equipType === slot.equipType;
@@ -308,6 +352,7 @@ export class BuildManager {
 
 	pickItem(field: string, slotIdx: number, id: string | null): void {
 		const slot = this.slots[slotIdx];
+		const isWeapon = slot.equipType === 'weapon';
 		if (!id) {
 			if (field === 'armor') {
 				this.clearSlot(slot);
@@ -331,6 +376,10 @@ export class BuildManager {
 			slot.level = hi;
 			if (slot.level < lo) slot.level = lo;
 			if (slot.level > hi) slot.level = hi;
+			if (isWeapon) {
+				slot.enchant = null;
+				slot.modifier = null;
+			}
 			slot.gems = [];
 		} else if (field === 'enchant') {
 			slot.enchant = it;
@@ -385,7 +434,9 @@ export class BuildManager {
 		const modifierPool: any[] = this.modifiers.filter((m: any) => m.type === 'modifier' || m.type === 'faction');
 
 		for (const slot of this.slots) {
+			const isWeapon = slot.equipType === 'weapon';
 			const validArmor = this.allItems.filter((i: any) => {
+				if (slot.equipType === 'weapon') return i.type === 'weapon' && (i.equipType === 'shield' || i.equipType === 'greatshield');
 				if (slot.equipType === 'accessory') return i.type === 'accessory';
 				return i.type === 'armor' && i.equipType === slot.equipType;
 			});
@@ -394,6 +445,12 @@ export class BuildManager {
 			slot.armor = armor;
 			slot.level = Math.min(armor.maxLevel ?? this.player.level, this.player.level);
 			slot.gems = [];
+
+			if (isWeapon) {
+				slot.enchant = null;
+				slot.modifier = null;
+				continue;
+			}
 
 			const armorType = armor.type;
 
@@ -469,7 +526,13 @@ export class BuildManager {
 				level: slot.level,
 				enchantId: this.getItemId(slot.enchant),
 				modifierId: this.getItemId(slot.modifier),
-				gemIds: (slot.gems || []).map((g) => this.getItemId(g)).filter(Boolean) as string[],
+				gemIds: (slot.gems || []).map((g) => {
+					const id = this.getItemId(g);
+					if (g?._fused && g?._fusedFrom) {
+						return `fused:${g._fusedFrom[0]}:${g._fusedFrom[1]}`;
+					}
+					return id;
+				}).filter(Boolean) as string[],
 				attunement: slot.attunement ?? null,
 				amuletVariant: slot.amuletVariant ?? null
 			}))
@@ -507,7 +570,16 @@ export class BuildManager {
 			if (savedSlot.modifierId) slot.modifier = this.findById(savedSlot.modifierId, this.modifiers);
 			if (savedSlot.gemIds?.length) {
 				slot.gems = savedSlot.gemIds
-					.map((id) => this.findById(id, this.allItems))
+					.map((id) => {
+						const fused = parseFusedGemId(id as string);
+						if (fused) {
+							const gemA = this.findById(fused.gemAId, this.allItems);
+							const gemB = this.findById(fused.gemBId, this.allItems);
+							if (gemA && gemB) return buildFusedGemItem(gemA, gemB, this.config);
+							return null;
+						}
+						return this.findById(id as string, this.allItems);
+					})
 					.filter(Boolean);
 			}
 			slot.attunement = savedSlot.attunement ?? null;
