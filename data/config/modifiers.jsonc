@@ -39,7 +39,7 @@
         "fallback": "power",
         "per10": { "power": 3, "defense": 3, "size": 2, "haste": 2, "dexterity": 2, "range": 2 }
       },
-      { "type": "flatStat", "stat": "insanity", "value": 10 }
+      { "type": "flatStat", "stat": "insanity", "value": 1 }
     ]
   },
   "imbued": {
