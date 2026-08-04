@@ -65,6 +65,11 @@ export const statIconMap: Record<string, string> = {
 	insanity: 'insanity', warding: 'warding', drawback: 'drawback',
 };
 
+export function statImageUrl(stat: string, config?: { statRegistry?: Record<string, { imageUrl?: string }> }): string {
+	return config?.statRegistry?.[stat]?.imageUrl
+		?? `${staticImagesRootFolder}/stats/${statIconMap[stat] || stat}.png`;
+}
+
 // Hard-coded equipType → display label map (fixes spelling, spacing, and double-text issues)
 export const equipTypeLabel: Record<string, string> = {
 	// Armor

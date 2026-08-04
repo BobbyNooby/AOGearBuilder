@@ -13,19 +13,38 @@ const itemTypes = [
 
 const rarities = ['None', 'Common', 'Uncommon', 'Rare', 'Epic', 'Mystic', 'Seasonal', 'Legendary', 'Exotic', 'Mythical', 'Sunken'];
 
+export const typeLabels: Record<string, string> = {
+	armor: 'Armor', weapon: 'Weapon', shipPart: 'Ship Part',
+	accessory: 'Accessory', gem: 'Gem', enchant: 'Enchant',
+	modifier: 'Modifier', magic: 'Magic'
+};
+
+export const typeFields: Record<string, string[]> = {
+	armor:     ['equipType', 'jewelSlots', 'imbue', 'dragonColor', 'requiresMagic', 'statType'],
+	weapon:    ['equipType', 'statType'],
+	shipPart:  ['equipType', 'statType'],
+	accessory: ['equipType', 'jewelSlots', 'imbue', 'statType'],
+	gem:       ['scaling'],
+	enchant:   [],
+	modifier:  [],
+	magic:     []
+};
+
 export const itemSchema: Schema = [
 	{ key: 'id', label: 'ID', type: 'string', required: true, readonly: true },
 	{ key: 'name', label: 'Name', type: 'string', required: true },
-	{ key: 'type', label: 'Type', type: 'select', options: itemTypes, required: true },
-	{ key: 'equipType', label: 'Equip Type', type: 'string' },
+	{ key: 'type', label: 'Type', type: 'select', options: itemTypes, labels: typeLabels, required: true },
+	{ key: 'equipType', label: 'Subtype', type: 'select', options: [], constrainedBy: 'type' },
 	{ key: 'rarity', label: 'Rarity', type: 'select', options: rarities },
-	{ key: 'minLevel', label: 'Min Level', type: 'number', required: true },
-	{ key: 'maxLevel', label: 'Max Level', type: 'number', nullable: true },
-	{ key: 'scaling', label: 'Scaling', type: 'record:number', required: true },
-	{ key: 'jewelSlots', label: 'Jewel Slots', type: 'number' },
+	{ key: 'minLevel', label: 'Level Range', type: 'range', min: 10, max: 175, step: 10, required: true },
+	{ key: 'scaling', label: 'Stat Scaling', type: 'stat-map', required: true },
+	{ key: 'jewelSlots', label: 'Jewel Slots', type: 'number', min: 0, max: 3 },
 	{ key: 'description', label: 'Description', type: 'string' },
 	{ key: 'imageUrl', label: 'Image URL', type: 'string' },
-	{ key: 'statType', label: 'Stat Type', type: 'string' },
+	{ key: 'statType', label: 'Stat Type', type: 'select', options: ['Normal', 'Magic', 'Strength', 'Vitality', 'Arcanium'] },
+	{ key: 'imbue', label: 'Imbue', type: 'select', options: ['heat', 'cold', 'neutral'] },
+	{ key: 'dragonColor', label: 'Dragon Color', type: 'select', options: ['red', 'blue'] },
+	{ key: 'requiresMagic', label: 'Requires Magic', type: 'array:string' },
 	{ key: 'obtainedBy', label: 'Obtained By', type: 'array:string' },
 	{ key: 'tags', label: 'Tags', type: 'array:string' },
 	{ key: 'isEndgame', label: 'Endgame', type: 'boolean' },
@@ -52,7 +71,8 @@ export const modifierSchema: Schema = [
 const statDefSchema: Schema = [
 	{ key: 'category', label: 'Category', type: 'select', options: ['primary', 'secondary', 'tertiary', 'weapon', 'ship'], required: true },
 	{ key: 'epPerPoint', label: 'EP per Point', type: 'number', required: true },
-	{ key: 'scaling', label: 'Scaling', type: 'select', options: ['level', 'flat'], required: true }
+	{ key: 'scaling', label: 'Scaling', type: 'select', options: ['level', 'flat'], required: true },
+	{ key: 'imageUrl', label: 'Icon URL', type: 'string' }
 ];
 
 const buildTypeConditionSchema: Schema = [
@@ -100,7 +120,8 @@ const statTypeDefSchema: Schema = [
 	{ key: 'color', label: 'Color', type: 'string', required: true }
 ];
 const equipTypeDefSchema: Schema = [
-	{ key: 'label', label: 'Label', type: 'string', required: true }
+	{ key: 'label', label: 'Label', type: 'string', required: true },
+	{ key: 'appliesTo', label: 'Applies To', type: 'array:string', required: true }
 ];
 
 export const gameConfigSchema: Schema = [
