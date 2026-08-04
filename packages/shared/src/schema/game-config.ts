@@ -8,6 +8,7 @@ export interface StatDef {
   category: 'primary' | 'secondary' | 'tertiary' | 'weapon' | 'ship';
   epPerPoint: number;
   scaling: 'level' | 'flat';
+  imageUrl?: string;
 }
 
 export interface BuildType {
@@ -45,6 +46,7 @@ export interface StatTypeDef {
 
 export interface EquipTypeDef {
   label: string;
+  appliesTo: string[];
 }
 
 export interface GameConfig {
