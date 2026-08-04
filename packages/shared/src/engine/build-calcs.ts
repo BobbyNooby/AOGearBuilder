@@ -63,6 +63,7 @@ export function computeItemStats(
 	for (const [stat, raw] of Object.entries(item.scaling)) {
 		const mult = Number(raw);
 		if (!isFinite(mult) || mult === 0) continue;
+
 		const def = config.statRegistry[stat];
 		const cat = def?.category || 'secondary';
 		if (cat === 'tertiary') {
@@ -77,6 +78,13 @@ export function computeItemStats(
 				: config.scalings.substat;
 		const val = mult * level * constant * dragonMulti;
 		out[stat] = isFinite(val) ? round(val, config.scalings.rounding) : 0;
+	}
+
+	if (item.flatStats) {
+		for (const [stat, val] of Object.entries(item.flatStats)) {
+			const n = Number(val);
+			if (isFinite(n)) out[stat] = (out[stat] || 0) + n;
+		}
 	}
 
 	// Imbued bonus
@@ -406,8 +414,11 @@ export function validateSlotItem(
 	if (slotIdx === -1) return { valid: true };
 
 	const slot = slots[slotIdx];
-	if (['enchant', 'modifier', 'gem'].includes(item.type) && !slot.armor) {
-		return { valid: false, reason: 'Equip armor first' };
+	const isWeapon = slot.equipType === 'weapon';
+
+	if (['enchant', 'modifier', 'gem'].includes(item.type)) {
+		if (isWeapon) return { valid: false, reason: 'Weapons cannot use enchants, modifiers, or gems' };
+		if (!slot.armor) return { valid: false, reason: 'Equip armor first' };
 	}
 
 	const validation = config.playerConstraints?.validation || {};

@@ -91,5 +91,10 @@ export interface GameConfig {
   rarities?: Record<string, RarityDef>;
   statTypes?: Record<string, StatTypeDef>;
   equipTypes?: Record<string, EquipTypeDef>;
+  gemFusion?: {
+    enabled: boolean;
+    maxFuseLevel: number;
+    reduction: number;
+  };
   formulas?: Formulas;
 }
