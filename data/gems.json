@@ -1,320 +1,789 @@
 [
   {
-    "id": "power-gem",
-    "name": "Power Gem",
+    "id": "ame",
+    "name": "Amethyst",
     "type": "gem",
+    "equipType": "gem",
     "rarity": "Rare",
     "minLevel": 1,
     "maxLevel": 175,
     "scaling": {
-      "power": 0.072562
+      "defense": 0.083175
     },
-    "jewelSlots": 0,
+    "flatStats": {},
     "statOverrides": {},
-    "flags": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Defense.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
     "tags": [
       "gem",
       "rare"
-    ]
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2e/Amethyst.png"
   },
   {
-    "id": "defense-gem",
-    "name": "Defense Gem",
+    "id": "dia",
+    "name": "Diamond",
     "type": "gem",
+    "equipType": "gem",
     "rarity": "Rare",
     "minLevel": 1,
     "maxLevel": 175,
     "scaling": {
-      "defense": 0.08254
+      "defense": 0.083175
     },
-    "jewelSlots": 0,
+    "flatStats": {},
     "statOverrides": {},
-    "flags": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Defense.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
     "tags": [
       "gem",
       "rare"
-    ]
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/45/Diamond_2.png"
   },
   {
-    "id": "lapis-lazuli",
+    "id": "ony",
+    "name": "Onyx",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "defense": 0.083175
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Defense.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fb/Onyx.png"
+  },
+  {
+    "id": "rub",
+    "name": "Ruby",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "power": 0.070748
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Power.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a9/Ruby.png"
+  },
+  {
+    "id": "sun",
+    "name": "Sunstone",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "power": 0.070748
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Power.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/57/Sunstone.png"
+  },
+  {
+    "id": "zir",
+    "name": "Zircon",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "power": 0.070748
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Power.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4e/Zircon.png"
+  },
+  {
+    "id": "sap",
+    "name": "Sapphire",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "dexterity": 0.149714
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Dexterity.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/5d/Saphire.png"
+  },
+  {
+    "id": "tan",
+    "name": "Tanzanite",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "dexterity": 0.149714
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Dexterity.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8d/Tanzanite.png"
+  },
+  {
+    "id": "eme",
+    "name": "Emerald",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "size": 0.149714
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Size.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6a/Emerald.png"
+  },
+  {
+    "id": "per",
+    "name": "Peridot",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "size": 0.149714
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Size.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/24/Peridot.png"
+  },
+  {
+    "id": "aqu",
+    "name": "Aquamarine",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "range": 0.149714
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Range.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/af/Aquamarine_2.png"
+  },
+  {
+    "id": "tou",
+    "name": "Tourmaline",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "range": 0.149714
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Range.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6f/Tourmarine.png"
+  },
+  {
+    "id": "cit",
+    "name": "Citrine",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "haste": 0.149714
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Haste.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a5/Citrine_2.png"
+  },
+  {
+    "id": "top",
+    "name": "Topaz",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "haste": 0.149714
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Haste.",
+    "obtainedBy": [
+      "Chests",
+      "Breaking Rocks",
+      "Sealed Chests",
+      "Treasure Charts"
+    ],
+    "tags": [
+      "gem",
+      "rare"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a5/Topaz.png"
+  },
+  {
+    "id": "lap",
     "name": "Lapis Lazuli",
     "type": "gem",
+    "equipType": "gem",
     "rarity": "Mystic",
     "minLevel": 1,
     "maxLevel": 175,
     "scaling": {
-      "dexterity": 0.102857,
-      "range": 0.102857
+      "dexterity": 0.112,
+      "range": 0.112
     },
-    "jewelSlots": 0,
+    "flatStats": {},
     "statOverrides": {},
-    "flags": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Dexterity and Range.",
+    "obtainedBy": [
+      "Fishing"
+    ],
     "tags": [
       "gem",
       "mystic"
-    ]
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9f/Lapis_Lazuli.png"
   },
   {
-    "id": "agate",
+    "id": "lar",
+    "name": "Larimar",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "dexterity": 0.112,
+      "haste": 0.112
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Dexterity and Haste.",
+    "obtainedBy": [
+      "Fishing"
+    ],
+    "tags": [
+      "gem",
+      "mystic"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/ba/Larimar.png"
+  },
+  {
+    "id": "aga",
     "name": "Agate",
     "type": "gem",
+    "equipType": "gem",
     "rarity": "Mystic",
     "minLevel": 1,
     "maxLevel": 175,
     "scaling": {
-      "defense": 0.08254,
-      "size": 0.068571
+      "size": 0.074286,
+      "defense": 0.083175
     },
-    "jewelSlots": 0,
+    "flatStats": {},
     "statOverrides": {},
-    "flags": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Size and Defense.",
+    "obtainedBy": [
+      "Treasure Chests"
+    ],
     "tags": [
       "gem",
       "mystic"
-    ]
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/52/Agate_2.png"
   },
   {
-    "id": "malachite",
+    "id": "mal",
     "name": "Malachite",
     "type": "gem",
+    "equipType": "gem",
     "rarity": "Mystic",
     "minLevel": 1,
     "maxLevel": 175,
     "scaling": {
-      "power": 0.072562,
-      "size": 0.068571
+      "power": 0.070748,
+      "size": 0.074286
     },
-    "jewelSlots": 0,
+    "flatStats": {},
     "statOverrides": {},
-    "flags": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Power and Size.",
+    "obtainedBy": [
+      "Treasure Chests"
+    ],
     "tags": [
       "gem",
       "mystic"
-    ]
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f9/Malachite_2.png"
   },
   {
-    "id": "painite",
-    "name": "Painite",
+    "id": "can",
+    "name": "Candelaria",
     "type": "gem",
+    "equipType": "gem",
     "rarity": "Mystic",
     "minLevel": 1,
     "maxLevel": 175,
     "scaling": {
-      "defense": 0.397883
+      "power": 0.070748,
+      "dexterity": 0.074286
     },
-    "jewelSlots": 0,
+    "flatStats": {},
     "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Power and Dexterity.",
+    "obtainedBy": [
+      "Sealed Chests"
+    ],
+    "tags": [
+      "gem",
+      "mystic"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c3/Candelaria_full_detail.png"
+  },
+  {
+    "id": "mor",
+    "name": "Morenci",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "power": 0.070748,
+      "range": 0.074286
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Power and Range.",
+    "obtainedBy": [
+      "Sealed Chests"
+    ],
+    "tags": [
+      "gem",
+      "mystic"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/26/MorenciFix.png"
+  },
+  {
+    "id": "mus",
+    "name": "Musgravite",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {},
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "x2 secondary jewel effect (Reagent stats)",
+    "obtainedBy": [
+      "Dark Sealed Chests"
+    ],
+    "tags": [
+      "gem",
+      "mystic"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/57/Musgravite_2.png"
+  },
+  {
+    "id": "pai",
+    "name": "Painite",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "defense": 0.398095
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Drawback and Defense.",
+    "obtainedBy": [
+      "Dark Sealed Chests"
+    ],
+    "tags": [
+      "gem",
+      "mystic"
+    ],
     "flags": {
       "tertiary": {
         "drawback": 1
       }
     },
-    "tags": [
-      "gem",
-      "mystic"
-    ]
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/20/Painite_2.png"
   },
   {
-    "id": "kyanite",
+    "id": "kya",
     "name": "Kyanite",
     "type": "gem",
+    "equipType": "gem",
     "rarity": "Mystic",
     "minLevel": 1,
     "maxLevel": 175,
     "scaling": {
-      "range": 0.102857,
-      "haste": 0.102857
+      "range": 0.112,
+      "haste": 0.112
     },
-    "jewelSlots": 0,
+    "flatStats": {},
     "statOverrides": {},
-    "flags": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Range and Haste.",
+    "obtainedBy": [
+      "Treasure Charts"
+    ],
     "tags": [
       "gem",
       "mystic"
-    ]
-  },
-  {
-    "id": "fire-opal",
-    "name": "Fire Opal",
-    "type": "gem",
-    "rarity": "Mystic",
-    "minLevel": 1,
-    "maxLevel": 175,
-    "scaling": {
-      "pierce": 0.217143
-    },
-    "jewelSlots": 0,
-    "statOverrides": {},
+    ],
     "flags": {},
-    "tags": [
-      "gem",
-      "mystic"
-    ]
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e4/Kyanite.png"
   },
   {
-    "id": "size-gem",
-    "name": "Size Gem",
-    "type": "gem",
-    "rarity": "Rare",
-    "minLevel": 1,
-    "maxLevel": 175,
-    "scaling": {
-      "size": 0.148571
-    },
-    "jewelSlots": 0,
-    "statOverrides": {},
-    "flags": {},
-    "tags": [
-      "gem",
-      "rare"
-    ]
-  },
-  {
-    "id": "larimar",
-    "name": "Larimar",
-    "type": "gem",
-    "rarity": "Mystic",
-    "minLevel": 1,
-    "maxLevel": 175,
-    "scaling": {
-      "dexterity": 0.102857,
-      "haste": 0.102857
-    },
-    "jewelSlots": 0,
-    "statOverrides": {},
-    "flags": {},
-    "tags": [
-      "gem",
-      "mystic"
-    ]
-  },
-  {
-    "id": "morenci",
-    "name": "Morenci",
-    "type": "gem",
-    "rarity": "Mystic",
-    "minLevel": 1,
-    "maxLevel": 175,
-    "scaling": {
-      "power": 0.072562,
-      "range": 0.068571
-    },
-    "jewelSlots": 0,
-    "statOverrides": {},
-    "flags": {},
-    "tags": [
-      "gem",
-      "mystic"
-    ]
-  },
-  {
-    "id": "variscite",
+    "id": "var",
     "name": "Variscite",
     "type": "gem",
+    "equipType": "gem",
     "rarity": "Mystic",
     "minLevel": 1,
     "maxLevel": 175,
     "scaling": {
-      "range": 0.102857,
-      "size": 0.102857
+      "range": 0.112,
+      "size": 0.112
     },
-    "jewelSlots": 0,
+    "flatStats": {},
     "statOverrides": {},
-    "flags": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Range and Size.",
+    "obtainedBy": [
+      "Treasure Charts"
+    ],
     "tags": [
       "gem",
       "mystic"
-    ]
-  },
-  {
-    "id": "aventurine",
-    "name": "Aventurine",
-    "type": "gem",
-    "rarity": "Mystic",
-    "minLevel": 1,
-    "maxLevel": 175,
-    "scaling": {
-      "regeneration": 0.217143
-    },
-    "jewelSlots": 0,
-    "statOverrides": {},
+    ],
     "flags": {},
-    "tags": [
-      "gem",
-      "mystic"
-    ]
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/bd/Variscite.png"
   },
   {
-    "id": "azurite",
+    "id": "azu",
     "name": "Azurite",
     "type": "gem",
+    "equipType": "gem",
     "rarity": "Mystic",
     "minLevel": 1,
     "maxLevel": 175,
     "scaling": {
-      "resistance": 0.217143
+      "resistance": 0.224
     },
-    "jewelSlots": 0,
+    "flatStats": {},
     "statOverrides": {},
-    "flags": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Resistance.",
+    "obtainedBy": [
+      "Chests",
+      "Sealed Chests",
+      "Treasure Charts",
+      "Breaking Rocks"
+    ],
     "tags": [
       "gem",
       "mystic"
-    ]
-  },
-  {
-    "id": "haste-gem",
-    "name": "Haste Gem",
-    "type": "gem",
-    "rarity": "Rare",
-    "minLevel": 1,
-    "maxLevel": 175,
-    "scaling": {
-      "haste": 0.148571
-    },
-    "jewelSlots": 0,
-    "statOverrides": {},
+    ],
     "flags": {},
-    "tags": [
-      "gem",
-      "rare"
-    ]
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ee/Azurite.png"
   },
   {
-    "id": "dexterity-gem",
-    "name": "Dexterity Gem",
+    "id": "ave",
+    "name": "Aventurine",
     "type": "gem",
-    "rarity": "Rare",
-    "minLevel": 1,
-    "maxLevel": 175,
-    "scaling": {
-      "dexterity": 0.148571
-    },
-    "jewelSlots": 0,
-    "statOverrides": {},
-    "flags": {},
-    "tags": [
-      "gem",
-      "rare"
-    ]
-  },
-  {
-    "id": "candelaria",
-    "name": "Candelaria",
-    "type": "gem",
+    "equipType": "gem",
     "rarity": "Mystic",
     "minLevel": 1,
     "maxLevel": 175,
     "scaling": {
-      "power": 0.072562,
-      "dexterity": 0.068571
+      "regeneration": 0.224
     },
-    "jewelSlots": 0,
+    "flatStats": {},
     "statOverrides": {},
-    "flags": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Regeneration.",
+    "obtainedBy": [
+      "Chests",
+      "Sealed Chests",
+      "Treasure Charts",
+      "Breaking Rocks"
+    ],
     "tags": [
       "gem",
       "mystic"
-    ]
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3d/Aventurine_Gem_Picture.png"
+  },
+  {
+    "id": "fir",
+    "name": "Fire Opal",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "pierce": 0.224
+    },
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "Increases Pierce.",
+    "obtainedBy": [
+      "Chests",
+      "Sealed Chests",
+      "Treasure Charts",
+      "Breaking Rocks"
+    ],
+    "tags": [
+      "gem",
+      "mystic"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/60/Fire_Opal.png"
+  },
+  {
+    "id": "gli",
+    "name": "Glitched Gem",
+    "type": "gem",
+    "equipType": "gem",
+    "rarity": "Special",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {},
+    "flatStats": {},
+    "statOverrides": {},
+    "jewelSlots": 0,
+    "statType": "Normal",
+    "description": "No title, no description, temporarily breaks GUI when hovered over. Was a rare drop from chests during the Potion Update before being hotfixed.",
+    "obtainedBy": [
+      "Unobtainable"
+    ],
+    "tags": [
+      "gem",
+      "special"
+    ],
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c7/Glitched_Gem.png"
   }
 ]
