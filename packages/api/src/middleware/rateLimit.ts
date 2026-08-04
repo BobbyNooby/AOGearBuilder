@@ -5,12 +5,7 @@ import { hasPermission } from '@aotools/shared';
 const WINDOW_MS = 60_000;
 
 function getClientIp(request: Request): string {
-	return (
-		request.headers.get('cf-connecting-ip') ??
-		request.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
-		request.headers.get('x-real-ip') ??
-		'unknown'
-	);
+	return request.headers.get('cf-connecting-ip') ?? 'unknown';
 }
 
 export function rateLimitKey(auth: AuthContext, request: Request): { key: string; max: number } | null {

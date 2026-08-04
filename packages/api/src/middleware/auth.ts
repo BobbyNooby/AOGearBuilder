@@ -10,7 +10,8 @@ export type { AuthContext } from './types';
 async function validateApiKey(key: string): Promise<AuthContext | null> {
 	const db = getDb();
 	const col = db.collection<any>('apiKeys');
-	const docs = await col.find({ active: true }).toArray();
+	const prefix = key.slice(-4);
+	const docs = await col.find({ active: true, keyPrefix: prefix }).toArray();
 
 	for (const doc of docs) {
 		const ok = await Bun.password.verify(key, doc.keyHash);
@@ -40,7 +41,7 @@ export async function resolveAuth(request: Request, headers: Record<string, stri
 	if (typeof apiKey === 'string' && apiKey) {
 		const ctx = await validateApiKey(apiKey);
 		if (ctx) return ctx;
-		throw new Error('Invalid API key');
+		return { type: 'invalidApiKey' };
 	}
 
 	try {
