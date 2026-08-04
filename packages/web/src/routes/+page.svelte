@@ -1,55 +1,11 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { page } from '$app/state';
-	import { Cog, Library, Package, Settings } from 'lucide-svelte';
-	import { hasAnyPermission, PERMISSIONS } from '@aotools/shared';
+	import { appLinks, getAdminLinks, hasAdminAccess } from '$lib/navigation';
 
 	const permissions: string[] = $derived(page.data.permissions ?? []);
-
-	const canAccessGameAdmin = $derived(
-		hasAnyPermission(permissions, [
-			PERMISSIONS.ITEMS_READ,
-			PERMISSIONS.MODIFIERS_READ,
-			PERMISSIONS.CONFIG_READ,
-			PERMISSIONS.FORMULAS_READ
-		])
-	);
-
-	const canAccessPlatformAdmin = $derived(
-		hasAnyPermission(permissions, [
-			PERMISSIONS.ADMIN_PANEL,
-			PERMISSIONS.USERS_READ,
-			PERMISSIONS.ROLES_READ,
-			PERMISSIONS.KEYS_READ,
-			PERMISSIONS.INTERNAL_KEYS_READ,
-			PERMISSIONS.ADMIN_IDS_READ
-		])
-	);
-
-	const showAdminSection = $derived(canAccessGameAdmin || canAccessPlatformAdmin);
-
-	const appLinks = [
-		{ href: '/builder', label: 'Gear Builder', icon: Cog, desc: 'Design and share your gear builds' },
-		{ href: '/atlas', label: 'Atlas', icon: Library, desc: 'Browse and search all items' }
-	];
-
-	const adminLinks = $derived(
-		[
-			...(canAccessGameAdmin
-				? [{ href: '/admin', label: 'Game Data', icon: Package, desc: 'Manage items, modifiers, and config' }]
-				: []),
-			...(canAccessPlatformAdmin
-				? [
-						{
-							href: '/admin/platform',
-							label: 'Platform',
-							icon: Settings,
-							desc: 'Manage users, roles, and API keys'
-						}
-					]
-				: [])
-		]
-	);
+	const adminLinks = $derived(getAdminLinks(permissions));
+	const showAdminSection = $derived(hasAdminAccess(permissions));
 </script>
 
 <svelte:head>
@@ -84,7 +40,6 @@
 
 	<div class="w-full max-w-2xl space-y-8">
 		<section>
-			<p class="mb-3 text-center text-xs font-bold uppercase tracking-wider text-gray-500">App</p>
 			<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
 				{#each appLinks as link}
 					<a
