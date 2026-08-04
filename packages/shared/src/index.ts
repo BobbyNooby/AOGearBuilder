@@ -6,6 +6,7 @@ export * from './schema/build';
 export * from './engine/build-calcs';
 export * from './engine/formulas';
 export * from './engine/load-jsonc';
+export * from './engine/gem-fusion';
 export * from './buildCode/base64';
 export * from './buildCode/legacy';
 export * from './buildCode';
