@@ -2,11 +2,12 @@
 	import GearSlot from '$lib/components/Builder/GearSlot.svelte';
 	import BuildStats from '$lib/components/Builder/BuildStats.svelte';
 	import PlayerStatMenu from '$lib/components/Builder/PlayerStatMenu.svelte';
+	import SaveBuildModal from '$lib/components/Builder/SaveBuildModal.svelte';
+	import LoadBuildModal from '$lib/components/Builder/LoadBuildModal.svelte';
 	import { BuildManager } from '$lib/builder/BuildManager.svelte';
-	import { saveLocalBuild } from '$lib/buildStorage';
-	import { apiClient } from '$lib/api/client';
 	import { authClient } from '$lib/auth/client';
 	import { Share2, Download, Upload, Link } from 'lucide-svelte';
+	import type { BuildObject } from '@aotools/shared';
 
 	let { data }: { data: Record<string, any> } = $props();
 
@@ -17,6 +18,10 @@
 	const shortId = data.shortId;
 
 	let toast = $state('');
+	let saveModalOpen = $state(false);
+	let saveModalMode = $state<'local' | 'online'>('local');
+	let loadModalOpen = $state(false);
+	let loadModalTab = $state<'local' | 'online'>('local');
 
 	// svelte-ignore state_referenced_locally
 	if (data.initialBuild) {
@@ -26,6 +31,24 @@
 	function notify(msg: string) {
 		toast = msg;
 		setTimeout(() => (toast = ''), 2500);
+	}
+
+	function openSaveModal(mode: 'local' | 'online') {
+		if (mode === 'online' && !$session.data) {
+			notify('Sign in to save online');
+			return;
+		}
+		saveModalMode = mode;
+		saveModalOpen = true;
+	}
+
+	function openLoadModal(tab: 'local' | 'online') {
+		if (tab === 'online' && !$session.data) {
+			notify('Sign in to load online builds');
+			return;
+		}
+		loadModalTab = tab;
+		loadModalOpen = true;
 	}
 
 	async function shareBuild() {
@@ -48,47 +71,13 @@
 		notify(result.ok ? 'Build loaded' : 'Invalid build code');
 	}
 
-	function saveLocal() {
-		const name = prompt('Build name');
-		if (!name) return;
-		const saved = {
-			id: crypto.randomUUID(),
-			name,
-			version: '2026.1',
-			build: bm.toBuildObject(),
-			savedAt: new Date().toISOString(),
-			source: 'local' as const
-		};
-		saveLocalBuild(saved);
-		notify('Saved to this browser');
+	function applyLoadedBuild(build: BuildObject) {
+		bm.applyBuildObject(build);
+		notify('Build loaded');
 	}
 
-	async function saveOnline() {
-		if (!$session.data) {
-			notify('Sign in to save online');
-			return;
-		}
-		const name = prompt('Build name');
-		if (!name) return;
-		try {
-			if (shortId) {
-				await apiClient(`/api/builds/${encodeURIComponent(shortId)}`, {
-					method: 'PATCH',
-					body: JSON.stringify({ name, build: bm.toBuildObject(), isPublic: true })
-				});
-				notify('Online build updated');
-			} else {
-				const res = await apiClient('/api/builds', {
-					method: 'POST',
-					body: JSON.stringify({ type: 'gear', name, build: bm.toBuildObject(), isPublic: true })
-				});
-				const shortUrl = `${window.location.origin}/b/${res.shortId}`;
-				await navigator.clipboard.writeText(shortUrl);
-				notify('Saved online — short link copied');
-			}
-		} catch (e: any) {
-			notify('Save failed: ' + e.message);
-		}
+	function onSaved(msg: string) {
+		notify(msg);
 	}
 </script>
 
@@ -105,14 +94,20 @@
 		<p class="text-7xl text-white" style="font-family:Merriweather,serif">Gear Builder</p>
 	</div>
 
-	<div class="mb-5 flex flex-row flex-wrap justify-center gap-3">
-		<button onclick={() => bm.randomize()} class="w-56 border border-white bg-black px-4 py-2 text-lg font-bold text-white" style="font-family:Merriweather,serif">Random Build</button>
-		<button onclick={() => bm.reset()} class="w-56 border border-white bg-black px-4 py-2 text-lg font-bold text-white" style="font-family:Merriweather,serif">Reset</button>
-		<button onclick={shareBuild} class="flex w-56 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-lg font-bold text-white" style="font-family:Merriweather,serif"><Share2 class="h-4 w-4" /> Share</button>
-		<button onclick={copyCode} class="flex w-56 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-lg font-bold text-white" style="font-family:Merriweather,serif"><Link class="h-4 w-4" /> Copy Code</button>
-		<button onclick={loadFromCode} class="flex w-56 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-lg font-bold text-white" style="font-family:Merriweather,serif"><Download class="h-4 w-4" /> Load Code</button>
-		<button onclick={saveLocal} class="flex w-56 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-lg font-bold text-white" style="font-family:Merriweather,serif"><Download class="h-4 w-4" /> Save Local</button>
-		<button onclick={saveOnline} class="flex w-56 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-lg font-bold text-white" style="font-family:Merriweather,serif"><Upload class="h-4 w-4" /> Save Online</button>
+	<div class="mb-5 flex flex-col items-center gap-3">
+		<div class="flex flex-row flex-wrap justify-center gap-3">
+			<button onclick={() => bm.randomize()} class="w-44 border border-white bg-black px-4 py-2 text-base font-bold text-white" style="font-family:Merriweather,serif">Random Build</button>
+			<button onclick={() => bm.reset()} class="w-44 border border-white bg-black px-4 py-2 text-base font-bold text-white" style="font-family:Merriweather,serif">Reset</button>
+			<button onclick={shareBuild} class="flex w-44 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-base font-bold text-white" style="font-family:Merriweather,serif"><Share2 class="h-4 w-4" /> Share</button>
+			<button onclick={copyCode} class="flex w-44 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-base font-bold text-white" style="font-family:Merriweather,serif"><Link class="h-4 w-4" /> Copy Code</button>
+			<button onclick={loadFromCode} class="flex w-44 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-base font-bold text-white" style="font-family:Merriweather,serif"><Download class="h-4 w-4" /> Load Code</button>
+		</div>
+		<div class="flex flex-row flex-wrap justify-center gap-3">
+		    <button onclick={() => openSaveModal('local')} class="flex w-44 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-base font-bold text-white" style="font-family:Merriweather,serif"><Download class="h-4 w-4" /> Save Local</button>
+			<button onclick={() => openLoadModal('local')} class="flex w-44 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-base font-bold text-white" style="font-family:Merriweather,serif"><Download class="h-4 w-4" /> Load Local</button>
+			<button onclick={() => openSaveModal('online')} class="flex w-44 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-base font-bold text-white" style="font-family:Merriweather,serif"><Upload class="h-4 w-4" /> Save Online</button>
+			<button onclick={() => openLoadModal('online')} class="flex w-44 items-center justify-center gap-2 border border-white bg-black px-4 py-2 text-base font-bold text-white" style="font-family:Merriweather,serif"><Download class="h-4 w-4" /> Load Online</button>
+		</div>
 	</div>
 
 	<div class="flex flex-row space-x-10">
@@ -142,4 +137,23 @@
 	<div class="mt-6 w-full max-w-6xl">
 		<PlayerStatMenu {bm} />
 	</div>
+
+	<SaveBuildModal
+		show={saveModalOpen}
+		mode={saveModalMode}
+		{bm}
+		{shortId}
+		onSaved={onSaved}
+		onClose={() => (saveModalOpen = false)}
+	/>
+
+	<LoadBuildModal
+		show={loadModalOpen}
+		tab={loadModalTab}
+		allItems={bm.allItems}
+		modifiers={bm.modifiers}
+		config={bm.config}
+		onClose={() => (loadModalOpen = false)}
+		onLoad={applyLoadedBuild}
+	/>
 </div>
