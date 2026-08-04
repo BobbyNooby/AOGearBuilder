@@ -12,6 +12,12 @@
     "imbuedMulti": {},
     "dragon": { "colors": [] }
   },
+  "gemFusion": {
+    "_comment": "Fused stat = round(reduction * (gemA_stat + gemB_stat)). Same-gem = 'Empowered', different-gem = hyphenated.",
+    "enabled": true,
+    "maxFuseLevel": 1,
+    "reduction": 0.55
+  },
   "statRegistry": {
     "power": { "category": "primary", "epPerPoint": 3.333, "scaling": "level", "imageUrl": "https://raw.githubusercontent.com/BobbyNooby/AOGearBuilderImages/main/stats/power.png" },
     "defense": { "category": "primary", "epPerPoint": 0.333, "scaling": "level", "imageUrl": "https://raw.githubusercontent.com/BobbyNooby/AOGearBuilderImages/main/stats/defense.png" },
