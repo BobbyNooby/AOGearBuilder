@@ -118,9 +118,9 @@
 			{/each}
 		</div>
 
-		<!-- Chestplate / Pants -->
+		<!-- Chestplate / Pants / Weapon -->
 		<div>
-			{#each bm.slots.slice(3, 5) as slot, i (slot.key)}
+			{#each bm.slots.slice(3, 6) as slot, i (slot.key)}
 				<GearSlot slotIndex={i + 3} {bm} />
 			{/each}
 		</div>

@@ -9,11 +9,12 @@
 
 	let {
 		show, items, field, onSelect, onClose,
-		validate
+		validate, subtitle = ''
 	}: {
 		show: boolean; items: Record<string, any>[]; field: string;
 		onSelect: (id: string) => void; onClose: () => void;
 		validate?: (item: Record<string, any>) => { valid: boolean; reason?: string };
+		subtitle?: string;
 	} = $props();
 
 	let search = $state('');
@@ -158,6 +159,7 @@
 	function noneImageUrl() {
 		const first = items[0];
 		let kind = field;
+		if (first?.type === 'weapon') return '/images/weapon/0.png';
 		if (first?.type === 'armor') kind = first.equipType === 'legging' ? 'pants' : 'chestplate';
 		else if (first?.type === 'accessory') kind = 'accessory';
 		else if (field === 'gem') kind = 'gem';
@@ -189,7 +191,12 @@
 			<!-- Left sidebar -->
 			<div class="flex w-56 shrink-0 flex-col gap-2 border-r border-white/10 p-3">
 				<div class="flex items-center justify-between">
-					<span class="text-xs font-bold uppercase tracking-wider text-gray-400">{field}</span>
+					<div>
+						<span class="text-xs font-bold uppercase tracking-wider text-gray-400">{field}</span>
+						{#if subtitle}
+							<p class="text-xs text-yellow-400 mt-0.5">{subtitle}</p>
+						{/if}
+					</div>
 					<button
 						aria-label="Close menu"
 						onclick={onClose}
@@ -240,7 +247,9 @@
 			<div class="flex flex-1 overflow-y-auto p-3">
 				<div class="grid grid-cols-[repeat(auto-fill,minmax(80px,1fr))] gap-8 w-full content-start">
 					<button onclick={selectNone} class="aspect-square w-full cursor-pointer">
-						<Item item={noneItem} />
+						<div class="aspect-square w-24 cursor-pointer mx-auto">
+							<Item item={noneItem} />
+						</div>
 					</button>
 
 					{#each filtered as it (it.id || it._id)}
