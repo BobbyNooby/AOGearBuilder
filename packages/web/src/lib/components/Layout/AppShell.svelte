@@ -62,7 +62,10 @@
 			{#if $session.data}
 				<span class="text-sm text-gray-300">{$session.data.user.name}</span>
 				<button
-					onclick={() => authClient.signOut()}
+					onclick={async () => {
+						await authClient.signOut();
+						window.location.reload();
+					}}
 					class="rounded border border-white/30 px-3 py-1 text-xs hover:bg-white/10"
 				>
 					Sign out
