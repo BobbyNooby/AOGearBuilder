@@ -4,16 +4,36 @@
 	import RecordNumberEditor from './editors/RecordNumberEditor.svelte';
 	import RecordObjectEditor from './editors/RecordObjectEditor.svelte';
 	import ObjectArrayEditor from './editors/ObjectArrayEditor.svelte';
+	import LevelRangeSlider from './LevelRangeSlider.svelte';
+	import StatPicker from './StatPicker.svelte';
+	import { typeFields } from '$lib/adminSchemas';
+
+	const baseFields = new Set([
+		'id', 'name', 'type', 'rarity', 'minLevel', 'scaling',
+		'description', 'imageUrl', 'obtainedBy', 'tags', 'isEndgame', 'flags'
+	]);
 
 	let {
 		schema,
 		value = {},
-		onChange
+		onChange,
+		typeFilter = '',
+		config = undefined as any
 	}: {
 		schema: Schema;
 		value: Record<string, any>;
 		onChange: (v: Record<string, any>) => void;
+		typeFilter?: string;
+		config?: any;
 	} = $props();
+
+	const visibleSchema = $derived(typeFilter
+		? schema.filter((f) => {
+			const allowed = typeFields[typeFilter] || [];
+			return baseFields.has(f.key) || allowed.includes(f.key);
+		})
+		: schema
+	);
 
 	function setValue(key: string, next: any) {
 		onChange({ ...value, [key]: next });
@@ -28,6 +48,29 @@
 		}
 	}
 
+	function handleRange(minVal: number, maxVal: number) {
+		onChange({ ...value, minLevel: minVal, maxLevel: maxVal });
+	}
+
+	function getSelectOptions(field: SchemaField): string[] {
+		if (field.constrainedBy === 'type') {
+			const t = typeFilter || value.type;
+			if (!t || !config?.equipTypes) return field.options ?? [];
+			return Object.entries(config.equipTypes as Record<string, { appliesTo?: string[] }>)
+				.filter(([, def]) => def.appliesTo?.includes(t))
+				.map(([key]) => key);
+		}
+		return field.options ?? [];
+	}
+
+	function getOptionLabel(field: SchemaField, opt: string): string {
+		if (field.labels) return field.labels[opt] ?? opt;
+		if (field.constrainedBy === 'type' && config?.equipTypes?.[opt]) {
+			return config.equipTypes[opt].label ?? opt;
+		}
+		return opt;
+	}
+
 	function ensureType(field: SchemaField): any {
 		if (value[field.key] !== undefined) return value[field.key];
 		switch (field.type) {
@@ -36,6 +79,7 @@
 				return [];
 			case 'record:number':
 			case 'record:object':
+			case 'stat-map':
 				return {};
 			case 'boolean':
 				return false;
@@ -60,15 +104,14 @@
 		try {
 			setValue(key, JSON.parse(raw));
 		} catch {
-			// ignore invalid JSON while typing
 		}
 	}
 </script>
 
 <div class="grid gap-4 sm:grid-cols-2">
-	{#each schema as field (field.key)}
+	{#each visibleSchema as field (field.key)}
 		{@const v = ensureType(field)}
-		<div class="{field.type === 'json' || field.type === 'array:object' || field.type === 'record:object' ? 'sm:col-span-2' : ''}">
+		<div class="{field.type === 'json' || field.type === 'array:object' || field.type === 'record:object' || field.type === 'stat-map' || field.type === 'range' ? 'sm:col-span-2' : ''}">
 			<label class="block text-xs font-bold uppercase tracking-wider text-gray-400">
 				<span class="mb-1 block">{field.label ?? field.key}{field.required ? ' *' : ''}</span>
 
@@ -95,6 +138,8 @@
 				<input
 					type="number"
 					value={v ?? (field.nullable ? '' : 0)}
+					min={field.min ?? undefined}
+					max={field.max ?? undefined}
 					oninput={(e) => handleNumber(field.key, (e.target as HTMLInputElement).value, field.nullable)}
 					readonly={field.readonly}
 					class="w-full rounded border border-gray-600 bg-black px-3 py-2 text-sm text-white focus:border-white focus:outline-none {field.readonly ? 'cursor-not-allowed opacity-70' : ''}"
@@ -120,8 +165,8 @@
 					disabled={field.readonly}
 					class="w-full rounded border border-gray-600 bg-black px-3 py-2 text-sm text-white focus:border-white focus:outline-none disabled:cursor-not-allowed disabled:opacity-70"
 				>
-					{#each field.options ?? [] as opt}
-						<option value={opt}>{opt}</option>
+					{#each getSelectOptions(field) as opt}
+						<option value={opt}>{field.constrainedBy ? getOptionLabel(field, opt) : (field.labels ? (field.labels[opt] ?? opt) : opt)}</option>
 					{/each}
 				</select>
 			{:else if field.type === 'multiselect'}
@@ -153,6 +198,22 @@
 					oninput={(e) => jsonUpdate(field.key, (e.target as HTMLTextAreaElement).value)}
 					class="min-h-[10rem] w-full rounded border border-gray-600 bg-black px-3 py-2 font-mono text-xs text-white focus:border-white focus:outline-none"
 				></textarea>
+			{:else if field.type === 'range'}
+				<LevelRangeSlider
+					min={field.min ?? 10}
+					max={config?.maxLevel ?? field.max ?? 175}
+					minValue={value.minLevel ?? 10}
+					maxValue={value.maxLevel ?? config?.maxLevel ?? 175}
+					step={field.step ?? 10}
+					onChange={handleRange}
+				/>
+			{:else if field.type === 'stat-map'}
+				<StatPicker
+					value={v ?? {}}
+					stats={config?.statRegistry ? Object.keys(config.statRegistry) : []}
+					{config}
+					onChange={(next) => setValue(field.key, next)}
+				/>
 			{/if}
 			</label>
 		</div>
