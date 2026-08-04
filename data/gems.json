@@ -1,29 +1,320 @@
 [
   {
-    "id": "gem-p",
+    "id": "power-gem",
     "name": "Power Gem",
     "type": "gem",
-    "rarity": "Common",
+    "rarity": "Rare",
     "minLevel": 1,
     "maxLevel": 175,
-    "scaling": { "power": 0.5 }
+    "scaling": {
+      "power": 0.072562
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "rare"
+    ]
   },
   {
-    "id": "gem-d",
+    "id": "defense-gem",
     "name": "Defense Gem",
     "type": "gem",
-    "rarity": "Common",
+    "rarity": "Rare",
     "minLevel": 1,
     "maxLevel": 175,
-    "scaling": { "defense": 1.5 }
+    "scaling": {
+      "defense": 0.08254
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "rare"
+    ]
   },
   {
-    "id": "gem-sz",
-    "name": "Size Gem",
+    "id": "lapis-lazuli",
+    "name": "Lapis Lazuli",
     "type": "gem",
-    "rarity": "Common",
+    "rarity": "Mystic",
     "minLevel": 1,
     "maxLevel": 175,
-    "scaling": { "size": 1 }
+    "scaling": {
+      "dexterity": 0.102857,
+      "range": 0.102857
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "agate",
+    "name": "Agate",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "defense": 0.08254,
+      "size": 0.068571
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "malachite",
+    "name": "Malachite",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "power": 0.072562,
+      "size": 0.068571
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "painite",
+    "name": "Painite",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "defense": 0.397883
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {
+      "tertiary": {
+        "drawback": 1
+      }
+    },
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "kyanite",
+    "name": "Kyanite",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "range": 0.102857,
+      "haste": 0.102857
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "fire-opal",
+    "name": "Fire Opal",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "pierce": 0.217143
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "size-gem",
+    "name": "Size Gem",
+    "type": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "size": 0.148571
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "rare"
+    ]
+  },
+  {
+    "id": "larimar",
+    "name": "Larimar",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "dexterity": 0.102857,
+      "haste": 0.102857
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "morenci",
+    "name": "Morenci",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "power": 0.072562,
+      "range": 0.068571
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "variscite",
+    "name": "Variscite",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "range": 0.102857,
+      "size": 0.102857
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "aventurine",
+    "name": "Aventurine",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "regeneration": 0.217143
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "azurite",
+    "name": "Azurite",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "resistance": 0.217143
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
+  },
+  {
+    "id": "haste-gem",
+    "name": "Haste Gem",
+    "type": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "haste": 0.148571
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "rare"
+    ]
+  },
+  {
+    "id": "dexterity-gem",
+    "name": "Dexterity Gem",
+    "type": "gem",
+    "rarity": "Rare",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "dexterity": 0.148571
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "rare"
+    ]
+  },
+  {
+    "id": "candelaria",
+    "name": "Candelaria",
+    "type": "gem",
+    "rarity": "Mystic",
+    "minLevel": 1,
+    "maxLevel": 175,
+    "scaling": {
+      "power": 0.072562,
+      "dexterity": 0.068571
+    },
+    "jewelSlots": 0,
+    "statOverrides": {},
+    "flags": {},
+    "tags": [
+      "gem",
+      "mystic"
+    ]
   }
 ]
