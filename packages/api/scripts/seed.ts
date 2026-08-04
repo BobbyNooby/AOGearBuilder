@@ -15,7 +15,7 @@ function readJsonc(p: string) { return JSON.parse(stripJsonc(readFileSync(p, 'ut
 const client = new MongoClient(URL);
 await client.connect();
 const db = client.db();
-const base = resolve(import.meta.dirname, '../../data');
+const base = resolve(import.meta.dirname, '../../../data');
 
 // 1. items (gear + weapons + gems)
 const items = readJson(resolve(base, 'items.json'));
