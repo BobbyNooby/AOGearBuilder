@@ -1,6 +1,6 @@
 import type { BuildObject, BuildSlot, BuildPlayer } from '../schema/build';
 
-export const CURRENT_BUILD_VERSION = '2026.1';
+export const CURRENT_BUILD_VERSION = '2026.2';
 
 export function isNumericSegment(seg: string): boolean {
 	return /^[0-9]+(\.[0-9]+)?$/.test(seg);
@@ -46,12 +46,25 @@ export function migrateLegacyCodeString(code: string): BuildObject | null {
 			const modifierId = segs[2] || undefined;
 			const gemIds = segs.slice(3, segs.length - 1).filter(Boolean);
 			slots.push({
-				key: expectedKeys[slots.length] || `slot${slots.length}`,
+				key: expectedKeys[slots.length] ?? `slot${slots.length}`,
 				armorId,
 				enchantId,
 				modifierId,
 				gemIds,
 				level,
+				attunement: null,
+				amuletVariant: null
+			});
+		}
+
+		while (slots.length < expectedKeys.length) {
+			slots.push({
+				key: expectedKeys[slots.length],
+				armorId: undefined,
+				enchantId: undefined,
+				modifierId: undefined,
+				gemIds: [],
+				level: 0,
 				attunement: null,
 				amuletVariant: null
 			});
