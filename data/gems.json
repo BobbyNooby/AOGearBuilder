@@ -54,8 +54,7 @@
       "gem",
       "rare"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/45/Diamond_2.png"
+    "flags": {}
   },
   {
     "id": "ony",
@@ -83,8 +82,7 @@
       "gem",
       "rare"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fb/Onyx.png"
+    "flags": {}
   },
   {
     "id": "rub",
@@ -112,8 +110,7 @@
       "gem",
       "rare"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a9/Ruby.png"
+    "flags": {}
   },
   {
     "id": "sun",
@@ -199,8 +196,7 @@
       "gem",
       "rare"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/5d/Saphire.png"
+    "flags": {}
   },
   {
     "id": "tan",
@@ -228,8 +224,7 @@
       "gem",
       "rare"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8d/Tanzanite.png"
+    "flags": {}
   },
   {
     "id": "eme",
@@ -456,8 +451,7 @@
       "gem",
       "mystic"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/ba/Larimar.png"
+    "flags": {}
   },
   {
     "id": "aga",
@@ -483,8 +477,7 @@
       "gem",
       "mystic"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/52/Agate_2.png"
+    "flags": {}
   },
   {
     "id": "mal",
@@ -510,8 +503,7 @@
       "gem",
       "mystic"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f9/Malachite_2.png"
+    "flags": {}
   },
   {
     "id": "can",
@@ -564,8 +556,7 @@
       "gem",
       "mystic"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/26/MorenciFix.png"
+    "flags": {}
   },
   {
     "id": "mus",
@@ -588,8 +579,7 @@
       "gem",
       "mystic"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/57/Musgravite_2.png"
+    "flags": {}
   },
   {
     "id": "pai",
@@ -618,8 +608,7 @@
       "tertiary": {
         "drawback": 1
       }
-    },
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/20/Painite_2.png"
+    }
   },
   {
     "id": "kya",
@@ -645,8 +634,7 @@
       "gem",
       "mystic"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e4/Kyanite.png"
+    "flags": {}
   },
   {
     "id": "var",
@@ -730,8 +718,7 @@
       "gem",
       "mystic"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3d/Aventurine_Gem_Picture.png"
+    "flags": {}
   },
   {
     "id": "fir",
@@ -759,8 +746,7 @@
       "gem",
       "mystic"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/60/Fire_Opal.png"
+    "flags": {}
   },
   {
     "id": "gli",
@@ -783,7 +769,6 @@
       "gem",
       "special"
     ],
-    "flags": {},
-    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c7/Glitched_Gem.png"
+    "flags": {}
   }
 ]
