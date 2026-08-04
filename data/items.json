@@ -406,7 +406,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a7/Dark_Leather_Gauntlets.png"
   },
   {
     "id": "HUN",
@@ -477,7 +478,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b0/Fisherman's_Hat.png"
   },
   {
     "id": "FI1",
@@ -500,7 +502,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e3/Fisherman's_Jacket.png"
   },
   {
     "id": "FRO",
@@ -643,7 +646,8 @@
       "Samerian Army"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2e/Samerian_Armbands.png"
   },
   {
     "id": "SA1",
@@ -666,7 +670,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9d/Samerian_Chestpiece.png"
   },
   {
     "id": "SA2",
@@ -690,7 +695,8 @@
       "Samerian Army"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fe/Samerian_Faulds.png"
   },
   {
     "id": "CHE",
@@ -713,7 +719,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e4/Chef's_Hat.png"
   },
   {
     "id": "CH1",
@@ -736,7 +743,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e4/Chef's_Jacket.png"
   },
   {
     "id": "CH2",
@@ -760,7 +768,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0c/Checkered_Scarf.png"
   },
   {
     "id": "FOR",
@@ -784,7 +793,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/99/Formal_Dress.png"
   },
   {
     "id": "DRE",
@@ -808,7 +818,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/76/Dress_Bottom.png"
   },
   {
     "id": "DIV",
@@ -879,7 +890,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c9/Fitted_Jacket.png"
   },
   {
     "id": "MIL",
@@ -903,7 +915,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/07/Military_Cap.png"
   },
   {
     "id": "POP",
@@ -926,7 +939,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6f/Popped_Collar_Shirt.png"
   },
   {
     "id": "SHI",
@@ -949,7 +963,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f8/Shirt_and_Tie.png"
   },
   {
     "id": "SHO",
@@ -972,7 +987,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/24/Short-Sleeved_Popped_Collar_Shirt.png"
   },
   {
     "id": "SHA",
@@ -1069,7 +1085,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/80/Victorian_Shirt.png"
   },
   {
     "id": "DEE",
@@ -1091,7 +1108,8 @@
       "Deer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1f/Deer_Hat.png"
   },
   {
     "id": "DE1",
@@ -1113,7 +1131,8 @@
       "Deer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f4/Deer_Cape.png"
   },
   {
     "id": "DE2",
@@ -1135,7 +1154,8 @@
       "Deer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a0/Deer_Tunic.png"
   },
   {
     "id": "REI",
@@ -1157,7 +1177,8 @@
       "Reindeer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e7/Reindeer_Hat.png"
   },
   {
     "id": "RE1",
@@ -1179,7 +1200,8 @@
       "Reindeer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/64/Reindeer_Cape.png"
   },
   {
     "id": "RE2",
@@ -1201,7 +1223,8 @@
       "Reindeer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/65/Reindeer_Tunic.png"
   },
   {
     "id": "BOA",
@@ -1223,7 +1246,8 @@
       "Boar"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b8/Boar_Helmet.png"
   },
   {
     "id": "BO1",
@@ -1245,7 +1269,8 @@
       "Boar"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1c/Boar_Vest.png"
   },
   {
     "id": "BO2",
@@ -1267,7 +1292,8 @@
       "Boar"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b7/Boar_Waistcloth.png"
   },
   {
     "id": "BLA",
@@ -1289,7 +1315,8 @@
       "Black Boar"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/5f/Black_Boar_Vest.png"
   },
   {
     "id": "BL1",
@@ -1311,7 +1338,8 @@
       "Black Boar"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d9/Black_Boar_Waistcloth.png"
   },
   {
     "id": "BRO",
@@ -1333,7 +1361,8 @@
       "Brown Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f7/Brown_Bear_Hood.png"
   },
   {
     "id": "BR5",
@@ -1355,7 +1384,8 @@
       "Brown Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9c/Brown_Bear_Cloak.png"
   },
   {
     "id": "BR6",
@@ -1377,7 +1407,8 @@
       "Brown Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6c/Brown_Bear_Belt.png"
   },
   {
     "id": "BL2",
@@ -1399,7 +1430,8 @@
       "Black Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d8/Black_Bear_Hood.png"
   },
   {
     "id": "BL3",
@@ -1421,7 +1453,8 @@
       "Black Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2d/Black_Bear_Cloak.png"
   },
   {
     "id": "BL4",
@@ -1443,7 +1476,8 @@
       "Black Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/97/Black_Bear_Belt.png"
   },
   {
     "id": "ALP",
@@ -1465,7 +1499,8 @@
       "Alpha Black Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/95/Alpha_Black_Bear_Hood.png"
   },
   {
     "id": "AL1",
@@ -1487,7 +1522,8 @@
       "Alpha Black Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6c/Alpha_Black_Bear_Cloak.png"
   },
   {
     "id": "AL2",
@@ -1509,7 +1545,8 @@
       "Alpha Black Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/5f/Alpha_Black_Bear_Belt.png"
   },
   {
     "id": "ANC",
@@ -1531,7 +1568,8 @@
       "Ancient Cave Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/82/Ancient_Cave_Bear_Hood.png"
   },
   {
     "id": "AN1",
@@ -1553,7 +1591,8 @@
       "Ancient Cave Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9b/Ancient_Cave_Bear_Belt.png"
   },
   {
     "id": "AN2",
@@ -1575,7 +1614,8 @@
       "Ancient Cave Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/65/Ancient_Cave_Bear_Cloak.png"
   },
   {
     "id": "TIG",
@@ -1597,7 +1637,8 @@
       "Tiger"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/14/Tiger_Cape.png"
   },
   {
     "id": "TI1",
@@ -1619,7 +1660,8 @@
       "Tiger"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ea/Tiger_Belt.png"
   },
   {
     "id": "WHI",
@@ -1641,7 +1683,8 @@
       "White Tiger"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1c/White_Tiger_Cape.png"
   },
   {
     "id": "WH1",
@@ -1663,7 +1706,8 @@
       "White Tiger"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7b/White_Tiger_Belt.png"
   },
   {
     "id": "PAN",
@@ -1685,7 +1729,8 @@
       "Panther"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/28/Panther_Cape.png"
   },
   {
     "id": "PA1",
@@ -1707,7 +1752,8 @@
       "Panther"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0d/Panther_Belt.png"
   },
   {
     "id": "WOL",
@@ -1729,7 +1775,8 @@
       "Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/df/Wolf_Hood.png"
   },
   {
     "id": "WO1",
@@ -1751,7 +1798,8 @@
       "Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/64/Wolf_Cloak.png"
   },
   {
     "id": "WO2",
@@ -1773,7 +1821,8 @@
       "Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/ca/Wolf_Belt.png"
   },
   {
     "id": "WO3",
@@ -1795,7 +1844,8 @@
       "Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1f/Wolf_Boots.png"
   },
   {
     "id": "BR7",
@@ -1817,7 +1867,8 @@
       "Brown Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8b/Brown_Wolf_Hood.png"
   },
   {
     "id": "BR8",
@@ -1839,7 +1890,8 @@
       "Brown Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/05/Brown_Wolf_Cloak.png"
   },
   {
     "id": "BR9",
@@ -1861,7 +1913,8 @@
       "Brown Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fb/Brown_Wolf_Belt.png"
   },
   {
     "id": "BR10",
@@ -1883,7 +1936,8 @@
       "Brown Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a4/Brown_Wolf_Boots.png"
   },
   {
     "id": "WH2",
@@ -1905,7 +1959,8 @@
       "White Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/85/White_Wolf_Hood.png"
   },
   {
     "id": "WH3",
@@ -1927,7 +1982,8 @@
       "White Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/54/White_Wolf_Cloak.png"
   },
   {
     "id": "WH4",
@@ -1949,7 +2005,8 @@
       "White Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c7/White_Wolf_Belt.png"
   },
   {
     "id": "WH5",
@@ -1971,7 +2028,8 @@
       "White Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4d/White_Wolf_Boots.png"
   },
   {
     "id": "NEP",
@@ -1994,7 +2052,8 @@
       "Helewyse"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/dc/Nephrite_Amulet.png"
   },
   {
     "id": "JAS",
@@ -2017,7 +2076,8 @@
       "Lord Derrick"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b4/Jasper_Amulet.png"
   },
   {
     "id": "GRA",
@@ -2039,7 +2099,8 @@
       "Grey Ones"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fc/Grass_Cape.png"
   },
   {
     "id": "LAR",
@@ -2062,7 +2123,8 @@
       "Grey Chief"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b1/Large_Grass_Cape.png"
   },
   {
     "id": "BON",
@@ -2084,7 +2146,8 @@
       "Grey Chief"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/67/Bone_Crown.png"
   },
   {
     "id": "BO3",
@@ -2130,7 +2193,8 @@
       "Grey Chief"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4c/Bone_Bracelets.png"
   },
   {
     "id": "NIM",
@@ -2152,7 +2216,8 @@
       "Grey Ones"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/88/Nimbus_Wilds_Dress.png"
   },
   {
     "id": "NI1",
@@ -2196,7 +2261,8 @@
       "Grey Chief"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ed/Nimbus_Wilds_Waistcloth.png"
   },
   {
     "id": "CLO",
@@ -2218,7 +2284,8 @@
       "Grey Ones"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/25/Cloth_Chest_Wrap.png"
   },
   {
     "id": "ANE",
@@ -2240,7 +2307,8 @@
       "Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3f/Aneignos_Scholar_Tunic.png"
   },
   {
     "id": "AN3",
@@ -2262,7 +2330,8 @@
       "Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0e/Aneignos_Scholar_Pants.png"
   },
   {
     "id": "BUT",
@@ -2285,7 +2354,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b7/Butler's_Jacket.png"
   },
   {
     "id": "BU1",
@@ -2308,7 +2378,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3f/Butler's_Pants.png"
   },
   {
     "id": "MAI",
@@ -2526,7 +2597,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8d/Archer_Boots.png"
   },
   {
     "id": "IRO",
@@ -2575,7 +2647,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8e/Iron_Bucket_Helmet.png"
   },
   {
     "id": "IR2",
@@ -2599,7 +2672,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fe/Iron_Gladiator_Helmet.png"
   },
   {
     "id": "IR3",
@@ -2623,7 +2697,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c2/Red_Iron_Plumed_Helmet.png"
   },
   {
     "id": "IR4",
@@ -2647,7 +2722,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/73/Iron_Sallet_Helmet.png"
   },
   {
     "id": "IR5",
@@ -2671,7 +2747,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/32/Iron_Kettle_Helmet.png"
   },
   {
     "id": "IR6",
@@ -2695,7 +2772,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/30/Iron_Armor.png"
   },
   {
     "id": "IR7",
@@ -2718,7 +2796,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7b/Iron_Chainmail_Shirt.png"
   },
   {
     "id": "IR8",
@@ -2791,7 +2870,8 @@
       "Greenwish Cultist"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7b/Greenwish_cultist_cowl.png"
   },
   {
     "id": "GR1",
@@ -2814,7 +2894,8 @@
       "Greenwish Cultist"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/ab/Greenwish_cultist_faulds.png"
   },
   {
     "id": "GR2",
@@ -2837,7 +2918,8 @@
       "Greenwish Cultist"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/65/Greenwish_cultist_robe.png"
   },
   {
     "id": "GR3",
@@ -2886,7 +2968,7 @@
     ],
     "tags": [],
     "flags": {},
-    "imageUrl": "https://github.com/BobbyNooby/AOGearBuilder/blob/typescript/static/assets/images/Armor/lowlevel/wolfPeltCloat.jpg?raw=true"
+    "imageUrl": "https://raw.githubusercontent.com/BobbyNooby/AOGearBuilderImages/main/Armor/Wind-Row%20Wolves/WolfPeltCloak.webp"
   },
   {
     "id": "MOU",
@@ -2910,8 +2992,7 @@
       "Wind-Row Wolves"
     ],
     "tags": [],
-    "flags": {},
-    "imageUrl": "https://github.com/BobbyNooby/AOGearBuilder/blob/typescript/static/assets/images/Armor/lowlevel/mountaineerBoots.jpg?raw=true"
+    "flags": {}
   },
   {
     "id": "STE",
@@ -2984,7 +3065,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/23/Steel_Chainmail_Shirt.png"
   },
   {
     "id": "ST3",
@@ -3058,7 +3140,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c4/Red_Steel_Plumed_Helmet.png"
   },
   {
     "id": "ST6",
@@ -3082,7 +3165,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b0/Steel_Gladiator_Helmet.png"
   },
   {
     "id": "ST7",
@@ -3106,7 +3190,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/30/Steel_Bucket_Helmet.png"
   },
   {
     "id": "ST8",
@@ -3266,7 +3351,8 @@
     "tags": [
       "lost-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6e/Lost_Envoy_Robes.png"
   },
   {
     "id": "LO1",
@@ -3316,7 +3402,8 @@
     "tags": [
       "lost-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/60/Lost_Envoy_Pauldrons.png"
   },
   {
     "id": "COR",
@@ -3437,7 +3524,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f6/Frilled_Top.png"
   },
   {
     "id": "FAN",
@@ -3486,7 +3574,8 @@
       "Samerian Army"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a1/Samerian_Captain_Pauldrons.png"
   },
   {
     "id": "SIL",
@@ -3509,7 +3598,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4e/Silk_Shirt.png"
   },
   {
     "id": "LO3",
@@ -3534,7 +3624,8 @@
     "tags": [
       "lost-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/66/Lost_Chief_Cloak.png"
   },
   {
     "id": "LO4",
@@ -3559,7 +3650,8 @@
     "tags": [
       "lost-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/75/Lost_Chief_Armor.png"
   },
   {
     "id": "LO5",
@@ -3584,7 +3676,8 @@
     "tags": [
       "lost-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/45/Lost_Chief_Boots.png"
   },
   {
     "id": "GOL",
@@ -3606,7 +3699,8 @@
       "Golden Ones Mercenaries"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a1/Golden_Ones_Armor.PNG"
   },
   {
     "id": "GO1",
@@ -3628,7 +3722,8 @@
       "Golden Ones Mercenaries"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6d/Golden_Ones_Leggings.PNG"
   },
   {
     "id": "GO2",
@@ -3650,7 +3745,8 @@
       "Golden Ones Mercenaries"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ee/Golden_Ones_Cloak.PNG"
   },
   {
     "id": "GO3",
@@ -3672,7 +3768,8 @@
       "Golden Ones Mercenaries"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fd/Golden_Ones_Helmet.PNG"
   },
   {
     "id": "BUC",
@@ -3697,7 +3794,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/79/Pine_Bucket.png"
   },
   {
     "id": "DEL",
@@ -3796,7 +3894,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/19/Samurai_Helmet.png"
   },
   {
     "id": "SA5",
@@ -3820,7 +3919,8 @@
       "Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e6/Samurai_Armor.png"
   },
   {
     "id": "SA6",
@@ -3844,7 +3944,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/29/Samurai_Leggings.png"
   },
   {
     "id": "JUG",
@@ -3868,7 +3969,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/91/Black_Juggernaut_Armor.png"
   },
   {
     "id": "JU1",
@@ -3892,7 +3994,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0c/Juggernaut_Boots.png"
   },
   {
     "id": "LO6",
@@ -3943,7 +4046,8 @@
     "tags": [
       "lost-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0b/Lost_Diplomat_Pants.png"
   },
   {
     "id": "LO8",
@@ -3968,7 +4072,8 @@
     "tags": [
       "lost-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3b/Lost_Diplomat_Pauldrons.png"
   },
   {
     "id": "RE3",
@@ -3991,7 +4096,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/eb/Beige_Reinforced_Helmet.png"
   },
   {
     "id": "RE4",
@@ -4014,7 +4120,8 @@
       "Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c5/Beige_Reinforced_Armor.png"
   },
   {
     "id": "RE5",
@@ -4037,7 +4144,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/46/Beige_Reinforced_Pants.png"
   },
   {
     "id": "RE6",
@@ -4060,7 +4168,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d3/Beige_Reinforced_Shoulderpads.png"
   },
   {
     "id": "RE7",
@@ -4083,7 +4192,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/06/Beige_Reinforced_Gauntlets.png"
   },
   {
     "id": "RA3",
@@ -4228,7 +4338,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a8/Sorcerer_Spectacles.png"
   },
   {
     "id": "TIT",
@@ -4274,7 +4385,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0a/Titanium_Armor_T.png"
   },
   {
     "id": "TI3",
@@ -4297,7 +4409,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2e/Titanium_Leggings_L.png"
   },
   {
     "id": "TI4",
@@ -4320,7 +4433,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2c/Titanium_Pauldrons.png"
   },
   {
     "id": "VIS",
@@ -4345,7 +4459,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/88/Visigoth_Chestplate.png"
   },
   {
     "id": "VI1",
@@ -4370,7 +4485,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/ba/Visigoth_Leggings.png"
   },
   {
     "id": "VI2",
@@ -4395,7 +4511,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/ac/Visigoth_Pauldrons.png"
   },
   {
     "id": "VI3",
@@ -4420,7 +4537,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/84/Visigoth_Helmet.png"
   },
   {
     "id": "PI3",
@@ -4444,7 +4562,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/49/Pirate_Lord's_Hat.png"
   },
   {
     "id": "PI4",
@@ -4468,7 +4587,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/eb/Pirate_Lord's_Cloak.png"
   },
   {
     "id": "PI5",
@@ -4492,7 +4612,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a5/Pirate_Lord's_Legs.png"
   },
   {
     "id": "SIR",
@@ -4889,7 +5010,8 @@
       "Dark Sealed Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b1/Aereus_Hat.png"
   },
   {
     "id": "DA5",
@@ -4987,7 +5109,8 @@
     "tags": [
       "diatrys-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/72/Diatrys_Hood.png"
   },
   {
     "id": "DI1",
@@ -5013,7 +5136,8 @@
     "tags": [
       "diatrys-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d1/Diatrys_Armor.png"
   },
   {
     "id": "DI2",
@@ -5039,7 +5163,8 @@
     "tags": [
       "diatrys-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9d/Diatrys_Leggings.png"
   },
   {
     "id": "SOP",
@@ -5062,7 +5187,8 @@
       "Dark Sealed Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/58/Sophragos_Hood.png"
   },
   {
     "id": "SO4",
@@ -5085,7 +5211,8 @@
       "Dark Sealed Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/54/Sophragos_Pants.png"
   },
   {
     "id": "SO5",
@@ -5108,7 +5235,8 @@
       "Dark Sealed Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/43/Sophragos_Robes.png"
   },
   {
     "id": "DRO",
@@ -5132,7 +5260,8 @@
       "Dark Sealed Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b2/Dromeas_Trappings.png"
   },
   {
     "id": "DR1",
@@ -5156,7 +5285,8 @@
       "Dark Sealed Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b8/Dromeas_Boots.png"
   },
   {
     "id": "DR2",
@@ -5180,7 +5310,8 @@
       "Dark Sealed Chests"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a3/Dromeas_Tunic.png"
   },
   {
     "id": "AR3",
@@ -5203,7 +5334,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/dc/Arcmancer_Hat.png"
   },
   {
     "id": "AR4",
@@ -5226,7 +5358,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/ca/Arcmancer_Robes.png"
   },
   {
     "id": "AR5",
@@ -5249,7 +5382,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2a/Arcmancer_Pants.png"
   },
   {
     "id": "AR6",
@@ -5273,7 +5407,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6f/Arcanium_Helmet.png"
   },
   {
     "id": "AR7",
@@ -5297,7 +5432,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/30/Arcanium_Armor.png"
   },
   {
     "id": "AR8",
@@ -5321,7 +5457,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3b/Arcanium_Boots.png"
   },
   {
     "id": "AR9",
@@ -5345,7 +5482,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/19/Arcanium_Mage_Hat.png"
   },
   {
     "id": "AR10",
@@ -5369,7 +5507,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/19/Arcanium_Mage_Hat.png"
   },
   {
     "id": "AR11",
@@ -5393,7 +5532,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7a/Arcanium_Mage_Pants.png"
   },
   {
     "id": "FIG",
@@ -5416,7 +5556,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/23/Fighting_Armor.png"
   },
   {
     "id": "FI2",
@@ -5439,7 +5580,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d3/Fighting_Leggings.png"
   },
   {
     "id": "FI3",
@@ -5462,7 +5604,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9b/Fighting_Shoulderpads.png"
   },
   {
     "id": "FI4",
@@ -5485,7 +5628,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e5/Fighting_Belt.png"
   },
   {
     "id": "FI5",
@@ -5508,7 +5652,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0e/Fighting_Chestplate.png"
   },
   {
     "id": "FI6",
@@ -5532,7 +5677,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/00/Fighting_Greaves.png"
   },
   {
     "id": "FI7",
@@ -5556,7 +5702,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a6/Fighting_Balteus.png"
   },
   {
     "id": "FI8",
@@ -5579,7 +5726,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8d/Fighting_Robes.png"
   },
   {
     "id": "FI9",
@@ -5602,7 +5750,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7b/Fighting_Boots.png"
   },
   {
     "id": "FI10",
@@ -5625,7 +5774,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e6/Fighting_Handwraps.png"
   },
   {
     "id": "FI11",
@@ -5648,7 +5798,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ec/Fighting_Headband.png"
   },
   {
     "id": "ORA",
@@ -5674,7 +5825,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/dc/Oracle_Hat.png"
   },
   {
     "id": "OR1",
@@ -5700,7 +5852,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/03/Oracle_Robes.png"
   },
   {
     "id": "OR2",
@@ -5726,7 +5879,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0a/Oracle_Pants.png"
   },
   {
     "id": "OR3",
@@ -5752,7 +5906,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c3/Oracle_Helmet.png"
   },
   {
     "id": "OR4",
@@ -5778,7 +5933,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/bf/Oracle_Armor.png"
   },
   {
     "id": "OR5",
@@ -5804,7 +5960,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/bc/Oracle_Leggings.png"
   },
   {
     "id": "ALI",
@@ -5830,7 +5987,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/74/Alitheia_Hat.png"
   },
   {
     "id": "AL3",
@@ -5856,7 +6014,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/ca/Alitheia_Robes.png"
   },
   {
     "id": "AL4",
@@ -5882,7 +6041,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/12/Alitheia_Pants.png"
   },
   {
     "id": "SU3",
@@ -5910,7 +6070,8 @@
       "sunken-set",
       "uncapped"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6b/Sunken_Warrior_Helmet.png"
   },
   {
     "id": "SU4",
@@ -5992,7 +6153,8 @@
       "Treasure Charts"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/ff/Rusty_Helmet.png"
   },
   {
     "id": "RU1",
@@ -6016,7 +6178,8 @@
       "Treasure Charts"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f8/Rusty_Armor.png"
   },
   {
     "id": "RU2",
@@ -6040,7 +6203,8 @@
       "Treasure Charts"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b0/Rusty_Leggings.png"
   },
   {
     "id": "AR12",
@@ -6065,7 +6229,8 @@
       "Wandering Merchants"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/da/Arcsphere_Thumbnail.png"
   },
   {
     "id": "AR13",
@@ -6112,7 +6277,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/68/Titanium_Chainmail_Shirt.png"
   },
   {
     "id": "ROY",
@@ -6135,7 +6301,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/64/Royal_Dress_Top.png"
   },
   {
     "id": "RO1",
@@ -6158,7 +6325,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4d/Royal_Dress_Bottom.png"
   },
   {
     "id": "MAR",
@@ -6182,7 +6350,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/61/Marauder's_Cloak.png"
   },
   {
     "id": "ADV",
@@ -6206,7 +6375,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fb/Adventurer's_Jacket.png"
   },
   {
     "id": "WEA",
@@ -6254,7 +6424,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d7/Aviator_Jacket.png"
   },
   {
     "id": "OVE",
@@ -6425,7 +6596,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/ae/Titanium_Bucket_Helmet.png"
   },
   {
     "id": "TI8",
@@ -6448,7 +6620,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c6/Titanium_Gladiator_Helmet.png"
   },
   {
     "id": "OR6",
@@ -6474,7 +6647,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/98/Oracle_Bracelet.png"
   },
   {
     "id": "OR7",
@@ -6500,7 +6674,8 @@
     "tags": [
       "vitality-scaling"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f5/Oracle_Amulet_(Poor).png"
   },
   {
     "id": "FLO",
@@ -6524,7 +6699,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/59/Floral_Blossom.png"
   },
   {
     "id": "ROS",
@@ -6548,7 +6724,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/42/Rosey_Blossom.png"
   },
   {
     "id": "GO6",
@@ -6572,7 +6749,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4b/Gold_Studded_Band.png"
   },
   {
     "id": "SI3",
@@ -6596,7 +6774,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/19/Silver_Studded_Band.png"
   },
   {
     "id": "LA1",
@@ -6619,7 +6798,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/66/Large_Cape.png"
   },
   {
     "id": "SA7",
@@ -6643,7 +6823,8 @@
       "Samerian Army"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/23/Samerian_Commander_Pauldrons.png"
   },
   {
     "id": "SPI",
@@ -6667,7 +6848,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/11/Spiked_Bracelets.png"
   },
   {
     "id": "TRI",
@@ -6692,7 +6874,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/81/Trimmed_Cape.png"
   },
   {
     "id": "DAP",
@@ -6716,7 +6899,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e0/Dapper_Witch_Hat.png"
   },
   {
     "id": "FI12",
@@ -6740,7 +6924,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b0/Purple_Fighter_Jacket.png"
   },
   {
     "id": "FI13",
@@ -6764,7 +6949,8 @@
       "Fishing"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3f/White_Fighter_Pants.png"
   },
   {
     "id": "FO1",
@@ -6856,7 +7042,8 @@
       "Dragons"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a5/Dragon_Tooth_Necklace.png"
   },
   {
     "id": "SHR",
@@ -7167,7 +7354,8 @@
       "General Argos"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/69/Argos_Cape_NEW.png"
   },
   {
     "id": "RA7",
@@ -7310,7 +7498,8 @@
       "Evander"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/77/Mountain_Breaker_Armor.png"
   },
   {
     "id": "MO2",
@@ -7333,7 +7522,8 @@
       "Evander"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a6/Mountainbreaker_Boots.png"
   },
   {
     "id": "MO3",
@@ -7356,7 +7546,8 @@
       "Evander"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/41/Mountainbreaker_Cape.png"
   },
   {
     "id": "TH4",
@@ -7382,7 +7573,8 @@
     "tags": [
       "lost-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9f/Calvus_Crown_New.png"
   },
   {
     "id": "RA12",
@@ -7406,7 +7598,8 @@
       "King Calvus IV"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1a/Ravenna_Fallen_King_Armor.png"
   },
   {
     "id": "RA13",
@@ -7430,7 +7623,8 @@
       "King Calvus IV"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9f/Ravenna_Fallen_King_Boots.png"
   },
   {
     "id": "MAN",
@@ -7526,7 +7720,8 @@
       "Captain Maria"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b9/Captain_Maria's_Hat.png"
   },
   {
     "id": "CA6",
@@ -7549,7 +7744,8 @@
       "Captain Maria"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/dc/Maria's_cloak_in_the_inventory.png"
   },
   {
     "id": "SCO",
@@ -7573,7 +7769,8 @@
       "General Valerii"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c4/Scorching_Sentinel_Armor.png"
   },
   {
     "id": "SC1",
@@ -7597,7 +7794,8 @@
       "General Valerii"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a3/Scorching_sentinel_leggings.png"
   },
   {
     "id": "SC2",
@@ -7621,7 +7819,8 @@
       "General Valerii"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/02/Scorching_Sentinel_Helmet.png"
   },
   {
     "id": "SC3",
@@ -7645,7 +7844,8 @@
       "General Valerii"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/69/Scorching_Sentinel_Pauldrons.png"
   },
   {
     "id": "SC4",
@@ -7669,7 +7869,8 @@
       "General Valerii"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c0/Valerii_mask.png"
   },
   {
     "id": "VER",
@@ -7717,7 +7918,8 @@
       "Rear Admiral Amelia"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/5d/Rear_Admiral_Amelia%E2%80%99s_Tarnished_Cloak.png"
   },
   {
     "id": "AR15",
@@ -7740,7 +7942,8 @@
       "Architect Kalliste"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/60/Architect_Kalliste's_Cape.png"
   },
   {
     "id": "OME",
@@ -7763,7 +7966,8 @@
       "The Omen"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/dc/Omen_Cloak.png"
   },
   {
     "id": "OM1",
@@ -7786,7 +7990,8 @@
       "The Omen"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/14/Omen_Armor.png"
   },
   {
     "id": "OM2",
@@ -7809,7 +8014,8 @@
       "The Omen"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0d/Omen_Leggings.png"
   },
   {
     "id": "KRA",
@@ -7833,7 +8039,8 @@
       "[[Sea Monsters#Behemoth|Kraken]]"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/38/Kraken_Band.png"
   },
   {
     "id": "APE",
@@ -7856,7 +8063,8 @@
       "White Eyes"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8b/Apex_Armor.png"
   },
   {
     "id": "AP1",
@@ -7879,7 +8087,8 @@
       "White Eyes"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/94/Apex_Leggings.png"
   },
   {
     "id": "AP2",
@@ -7902,7 +8111,8 @@
       "White Eyes"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6c/Apex_Cloak.png"
   },
   {
     "id": "LEV",
@@ -7926,7 +8136,8 @@
       "Leviathan"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7c/Leviathan_Armor.png"
   },
   {
     "id": "LE5",
@@ -7950,7 +8161,8 @@
       "Leviathan"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/64/Leviathan_Boots.png"
   },
   {
     "id": "LE6",
@@ -7974,7 +8186,8 @@
       "Leviathan"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/bc/Leviathan_Robe.png"
   },
   {
     "id": "LE7",
@@ -8022,7 +8235,8 @@
       "Leviathan"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/40/Widow's_Tear.png"
   },
   {
     "id": "BLE",
@@ -8045,7 +8259,8 @@
       "Delamere"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7c/Blessed_Knight_Armor.PNG"
   },
   {
     "id": "BL5",
@@ -8068,7 +8283,8 @@
       "Delamere"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1e/Blessed_Knight_Leggings.png"
   },
   {
     "id": "BL6",
@@ -8091,7 +8307,8 @@
       "Delamere"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/5f/Blessed_Knight_Greathelm.png"
   },
   {
     "id": "BL7",
@@ -8114,7 +8331,8 @@
       "Delamere"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e8/Blessed_Knight_Cloak.png"
   },
   {
     "id": "OBO",
@@ -8137,7 +8355,8 @@
       "Obolus"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/17/Obolus_Mantle.png"
   },
   {
     "id": "OB1",
@@ -8160,7 +8379,8 @@
       "Obolus"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/82/Obolus_Bracelet.png"
   },
   {
     "id": "POI",
@@ -8183,7 +8403,8 @@
       "Poison Jaws"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6d/Poison-Jaw_Pauldrons.png"
   },
   {
     "id": "PO1",
@@ -8206,7 +8427,8 @@
       "Poison Jaws"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d5/Poison-Jaw_Cloak.png"
   },
   {
     "id": "RA14",
@@ -8230,7 +8452,8 @@
       "King Octavious"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/13/Ravenna_Undying_King_Helmet_.png"
   },
   {
     "id": "RA15",
@@ -8254,7 +8477,8 @@
       "King Octavious"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8c/Ravenna_Undying_King_Armor.png"
   },
   {
     "id": "RA16",
@@ -8278,7 +8502,8 @@
       "King Octavious"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/71/Undying_cloakkk.png"
   },
   {
     "id": "RA17",
@@ -8302,7 +8527,8 @@
       "King Octavious"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/24/Ravenna_Undying_King_Boots.png"
   },
   {
     "id": "STO",
@@ -8324,7 +8550,8 @@
       "Stonetusk Boar"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/94/Stonetusk_Boar_Helmet.png"
   },
   {
     "id": "ST10",
@@ -8346,7 +8573,8 @@
       "Stonetusk Boar"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/07/Stonetusk_Boar_Vest.png"
   },
   {
     "id": "ST11",
@@ -8368,7 +8596,8 @@
       "Stonetusk Boar"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/47/Stonetusk_Boar_Waistcloth.png"
   },
   {
     "id": "KRY",
@@ -8390,7 +8619,8 @@
       "Krystoros"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/79/Krystoros_Helmet.png"
   },
   {
     "id": "KR1",
@@ -8412,7 +8642,8 @@
       "Krystoros"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f9/Krystoros_Vest.png"
   },
   {
     "id": "KR2",
@@ -8434,7 +8665,8 @@
       "Krystoros"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/ad/Krystoros_Waistcloth.png"
   },
   {
     "id": "BEA",
@@ -8456,7 +8688,8 @@
       "Armored Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/60/Bearscale_Hood.png"
   },
   {
     "id": "BE1",
@@ -8478,7 +8711,8 @@
       "Armored Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/44/Bearscale_Cloak.png"
   },
   {
     "id": "BE2",
@@ -8500,7 +8734,8 @@
       "Armored Bear"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ed/Bearscale_Belt.png"
   },
   {
     "id": "THY",
@@ -8522,7 +8757,8 @@
       "Thymos"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b5/Thymos_Hood.png"
   },
   {
     "id": "TH5",
@@ -8544,7 +8780,8 @@
       "Thymos"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f8/Thymos_Cloak.png"
   },
   {
     "id": "TH6",
@@ -8566,7 +8803,8 @@
       "Thymos"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/5f/Thymos_Belt.png"
   },
   {
     "id": "SH1",
@@ -8588,7 +8826,8 @@
       "Shadow Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4e/Shadowhide_Hood.png"
   },
   {
     "id": "SH2",
@@ -8610,7 +8849,8 @@
       "Shadow Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/20/Shadowhide_Cloak.png"
   },
   {
     "id": "SH3",
@@ -8632,7 +8872,8 @@
       "Shadow Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/bd/Shadowhide_Belt.png"
   },
   {
     "id": "SH4",
@@ -8654,7 +8895,8 @@
       "Shadow Wolf"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/10/Shadowhide_Boots.png"
   },
   {
     "id": "PNE",
@@ -8676,7 +8918,8 @@
       "Pnevma"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8f/Pnevma_Hood.png"
   },
   {
     "id": "PN1",
@@ -8698,7 +8941,8 @@
       "Pnevma"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ed/Pnevma_Cloak.png"
   },
   {
     "id": "PN2",
@@ -8720,7 +8964,8 @@
       "Pnevma"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c2/Pnevma_Belt.png"
   },
   {
     "id": "PN3",
@@ -8742,7 +8987,8 @@
       "Pnevma"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e2/Pnevma_Boots.png"
   },
   {
     "id": "BLO",
@@ -8764,7 +9010,8 @@
       "Blood Tiger"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/5b/Blood_Tiger_Cape.png"
   },
   {
     "id": "BL8",
@@ -8786,7 +9033,8 @@
       "Blood Tiger"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2c/Blood_Tiger_Belt.png"
   },
   {
     "id": "KYN",
@@ -8808,7 +9056,8 @@
       "Kynatos"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0f/Kynatos_Cape.png"
   },
   {
     "id": "KY1",
@@ -8830,7 +9079,8 @@
       "Kynatos"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9f/Kynatos_Belt.png"
   },
   {
     "id": "BE3",
@@ -8853,7 +9103,8 @@
       "Bearpaw Bandits"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/40/Bearpaw_Bandit_Shoulderpads.png"
   },
   {
     "id": "BE4",
@@ -8876,7 +9127,8 @@
       "Bearpaw Bandits"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1b/Bearpaw_Bandit_Sash.png"
   },
   {
     "id": "BE5",
@@ -8899,7 +9151,8 @@
       "Bearpaw Bandits"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/84/Bearpaw_Bandit_Belt.png"
   },
   {
     "id": "BE6",
@@ -8922,7 +9175,8 @@
       "Bearpaw Bandits"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7a/Bearpaw_Bandit_Cloak.png"
   },
   {
     "id": "BE7",
@@ -8945,7 +9199,8 @@
       "Bearpaw Bandits"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e2/Bearpaw_Bandit_Hood.png"
   },
   {
     "id": "BE8",
@@ -8968,7 +9223,8 @@
       "Bearpaw Bandits"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ea/Bearpaw_Bandit_Shirt.png"
   },
   {
     "id": "BE9",
@@ -8991,7 +9247,8 @@
       "Bearpaw Bandits"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/88/Bearpaw_Bandit_Boots.png"
   },
   {
     "id": "BE10",
@@ -9014,7 +9271,8 @@
       "Harzog"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a4/Bearpaw_Leader_Vest.png"
   },
   {
     "id": "BE11",
@@ -9037,7 +9295,8 @@
       "Harzog"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/33/Bearpaw_Leader_Cloak.png"
   },
   {
     "id": "JAW",
@@ -9060,7 +9319,8 @@
       "Jaw Pirates"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/10/Jaw_Pirate_Necklace.png"
   },
   {
     "id": "JA1",
@@ -9083,7 +9343,8 @@
       "Jaw Pirates"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/cc/Jaw_Pirate_Sash.png"
   },
   {
     "id": "JA2",
@@ -9106,7 +9367,8 @@
       "Jaw Pirates"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/cf/Jaw_Pirate_Cape.png"
   },
   {
     "id": "JA3",
@@ -9129,7 +9391,8 @@
       "Jaw Pirates"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d9/Jaw_Pirate_Boots.png"
   },
   {
     "id": "JA4",
@@ -9221,7 +9484,8 @@
       "Maine"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2b/Hunter_Tunic.png"
   },
   {
     "id": "HU3",
@@ -9243,7 +9507,8 @@
       "Maine"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/66/Hunter_Boots.png"
   },
   {
     "id": "HU4",
@@ -9265,7 +9530,8 @@
       "Maine"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/03/Hunter_Pauldron_Cape.png"
   },
   {
     "id": "QUI",
@@ -9311,7 +9577,8 @@
       "Veridian Hunters"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/52/Veridian_Hunter_Bandana.png"
   },
   {
     "id": "VE2",
@@ -9334,7 +9601,8 @@
       "Veridian Hunters"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a2/Veridian_Hunter_Scarf.png"
   },
   {
     "id": "VE3",
@@ -9357,7 +9625,8 @@
       "Veridian Hunters"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/74/Veridian_Huntress_Attire.png"
   },
   {
     "id": "VE4",
@@ -9380,7 +9649,8 @@
       "Veridian Hunters"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f9/Veridian_Hunter_Attire.png"
   },
   {
     "id": "VE5",
@@ -9403,7 +9673,8 @@
       "Veridian Hunters"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4d/Veridian_Hunter_Boots.png"
   },
   {
     "id": "VE6",
@@ -9426,7 +9697,8 @@
       "Veyne"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/98/Veridian_Leader_Coat.png"
   },
   {
     "id": "VE7",
@@ -9472,7 +9744,8 @@
       "Veyne"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/16/Veridian_Leader_Pants.png"
   },
   {
     "id": "VE9",
@@ -9495,7 +9768,8 @@
       "Veyne"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e1/Veridian_Leader_Cloak.png"
   },
   {
     "id": "DA8",
@@ -9518,7 +9792,8 @@
       "Dusk"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/70/Dark_Oracle_Mask.png"
   },
   {
     "id": "JA7",
@@ -9542,7 +9817,8 @@
       "Jorund"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d4/Jaw_Captain_Hat.png"
   },
   {
     "id": "JA8",
@@ -9566,7 +9842,8 @@
       "Jorund"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b9/Jaw_Captain_Cape.png"
   },
   {
     "id": "JA9",
@@ -9590,7 +9867,8 @@
       "Jorund"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4a/Jaw_Captain_Coat.png"
   },
   {
     "id": "BOG",
@@ -9615,7 +9893,8 @@
       "Treasure Charts"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b6/Bogatyr_Helmet.png"
   },
   {
     "id": "BO5",
@@ -9640,7 +9919,8 @@
       "Treasure Charts"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/67/Bogatyr_Cape.png"
   },
   {
     "id": "BO6",
@@ -9665,7 +9945,8 @@
       "Treasure Charts"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/56/Bogatyr_Armor.png"
   },
   {
     "id": "BO7",
@@ -9690,7 +9971,8 @@
       "Treasure Charts"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3c/Bogatyr_Faulds.png"
   },
   {
     "id": "BO8",
@@ -9715,7 +9997,8 @@
       "Treasure Charts"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8b/Bogatyr_Boots.png"
   },
   {
     "id": "ASS",
@@ -9737,7 +10020,8 @@
       "The One Beyond Reach"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e8/Assassin_Hunter_Cloak.png"
   },
   {
     "id": "AS1",
@@ -9759,7 +10043,8 @@
       "The One Beyond Reach"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/83/Assassin_Hunter_Armor.png"
   },
   {
     "id": "AS2",
@@ -9781,7 +10066,8 @@
       "The One Beyond Reach"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/46/Assassin_Hunter_Boots.png"
   },
   {
     "id": "SH5",
@@ -9804,7 +10090,8 @@
       "Shadow Ravens"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/08/Shadow_Raven_Armor.png"
   },
   {
     "id": "SH6",
@@ -9827,7 +10114,8 @@
       "Shadow Ravens"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/10/Shadow_Raven_Garb.png"
   },
   {
     "id": "SH7",
@@ -9850,7 +10138,8 @@
       "Shadow Ravens"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/df/Shadow_Raven_Boots.png"
   },
   {
     "id": "SH8",
@@ -9896,7 +10185,8 @@
       "Shadow Ravens"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e8/Shadow_Raven_Cloak.png"
   },
   {
     "id": "LA2",
@@ -9919,7 +10209,8 @@
       "Shadow Ravens"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/41/Large_Shadow_Raven_Cloak.png"
   },
   {
     "id": "GO7",
@@ -9941,7 +10232,8 @@
       "Goldsail Pirates"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3e/Goldsail_Pirate_Coat.png"
   },
   {
     "id": "GO8",
@@ -9963,7 +10255,8 @@
       "Goldsail Pirates"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/af/Goldsail_Pirate_Boots.png"
   },
   {
     "id": "GO9",
@@ -9985,7 +10278,8 @@
       "Goldsail Pirates"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4f/Goldsail_Pirate_Cloak.png"
   },
   {
     "id": "GO10",
@@ -10008,7 +10302,8 @@
       "Crowe"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/33/Goldsail_Captain_Hat.png"
   },
   {
     "id": "OCE",
@@ -10032,7 +10327,8 @@
       "Crowe"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/5e/Ocean_Amulet.png"
   },
   {
     "id": "GO11",
@@ -10055,7 +10351,8 @@
       "Crowe"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e9/Goldsail_Captain_Cloak.png"
   },
   {
     "id": "GO12",
@@ -10078,7 +10375,8 @@
       "Crowe"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/18/Goldsail_Captain_Coat.png"
   },
   {
     "id": "GO13",
@@ -10101,7 +10399,8 @@
       "Crowe"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f4/Goldsail_Captain_Boots.png"
   },
   {
     "id": "SWI",
@@ -10149,7 +10448,8 @@
       "Lysara"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b2/SwiftstriderLeaderCapeImagePlaceholder.png"
   },
   {
     "id": "SW2",
@@ -10173,7 +10473,8 @@
       "Lysara"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0e/Swiftstrider_Leader_Attire.png"
   },
   {
     "id": "SW3",
@@ -10197,7 +10498,8 @@
       "Lysara"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/85/Swiftstrider_Leader_Boots.png"
   },
   {
     "id": "SW4",
@@ -10220,7 +10522,8 @@
       "Swiftstriders"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/17/Swiftstrider_Hat.png"
   },
   {
     "id": "SW5",
@@ -10243,7 +10546,8 @@
       "Swiftstriders"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0e/Swiftstrider_Feathered_Hat.png"
   },
   {
     "id": "SW6",
@@ -10266,7 +10570,8 @@
       "Swiftstriders"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ed/Swiftstrider_Pauldrons.png"
   },
   {
     "id": "SW7",
@@ -10289,7 +10594,8 @@
       "Swiftstriders"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/42/Swiftstrider_Bandana.png"
   },
   {
     "id": "SW8",
@@ -10312,7 +10618,8 @@
       "Swiftstriders"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e6/Swiftstrider_Bracelets.png"
   },
   {
     "id": "SW9",
@@ -10335,7 +10642,8 @@
       "Swiftstriders"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/45/Swiftstrider_Cloak.png"
   },
   {
     "id": "SW10",
@@ -10358,7 +10666,8 @@
       "Swiftstriders"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e3/Swiftstrider_Attire.png"
   },
   {
     "id": "SW11",
@@ -10381,7 +10690,8 @@
       "Swiftstriders"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/cb/Swiftstrider_Jacket.png"
   },
   {
     "id": "SKY",
@@ -10403,7 +10713,8 @@
       "Unexpected Ally"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/19/Skyhall_Champion_Cape.png"
   },
   {
     "id": "SK1",
@@ -10425,7 +10736,8 @@
       "Unexpected Ally"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/37/Skyhall_Champion_Armor.png"
   },
   {
     "id": "SK2",
@@ -10447,7 +10759,8 @@
       "Unexpected Ally"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/79/Skyhall_Champion_Boots.png"
   },
   {
     "id": "SK3",
@@ -10469,7 +10782,8 @@
       "Lord Emerson"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d7/Skyhall_Protector_Helmet.png"
   },
   {
     "id": "SK4",
@@ -10491,7 +10805,8 @@
       "Lord Emerson"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ef/Skyhall_Protector_Cloak.png"
   },
   {
     "id": "SK5",
@@ -10513,7 +10828,8 @@
       "Lord Emerson"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7e/Skyhall_Protector_Armor.png"
   },
   {
     "id": "SK6",
@@ -10535,7 +10851,8 @@
       "Lord Emerson"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d7/Skyhall_Protector_Leggings.png"
   },
   {
     "id": "SK7",
@@ -10557,7 +10874,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/ba/Skyhall_Guard_Helmet.png"
   },
   {
     "id": "SK8",
@@ -10579,7 +10897,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1e/Skyhall_Guard_Coif.png"
   },
   {
     "id": "SK9",
@@ -10601,7 +10920,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9e/Skyhall_Guard_Hat.png"
   },
   {
     "id": "SK10",
@@ -10623,7 +10943,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fc/Skyhall_Guard_Cape.png"
   },
   {
     "id": "SK11",
@@ -10645,7 +10966,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7d/Skyhall_Guard_Armor.png"
   },
   {
     "id": "SK12",
@@ -10667,7 +10989,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/56/Skyhall_Guard_Pants.png"
   },
   {
     "id": "SK13",
@@ -10689,7 +11012,8 @@
       "Armorer"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/45/Skyhall_Guard_Leggings.png"
   },
   {
     "id": "SK14",
@@ -10711,7 +11035,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1f/Skyhall_Shirt.png"
   },
   {
     "id": "SK15",
@@ -10733,7 +11058,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7b/Skyhall_Robes.png"
   },
   {
     "id": "SK16",
@@ -10755,7 +11081,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4d/Skyhall_Pants.png"
   },
   {
     "id": "SK17",
@@ -10777,7 +11104,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4d/Skyhall_Pants.png"
   },
   {
     "id": "SK18",
@@ -10799,7 +11127,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/73/Skyhall_Boots.png"
   },
   {
     "id": "SK19",
@@ -10821,7 +11150,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/27/Skyhall_Commoner_Shirt.png"
   },
   {
     "id": "SK20",
@@ -10843,7 +11173,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c2/Skyhall_Commoner_Top.png"
   },
   {
     "id": "SK21",
@@ -10865,7 +11196,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/5c/Skyhall_Commoner_Dress_Top.png"
   },
   {
     "id": "SK22",
@@ -10887,7 +11219,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2e/Skyhall_Commoner_Long_Coat.png"
   },
   {
     "id": "SK23",
@@ -10909,7 +11242,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/98/Skyhall_Commoner_Dress.png"
   },
   {
     "id": "SK24",
@@ -10931,7 +11265,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/19/Skyhall_Commoner_Boots.png"
   },
   {
     "id": "MOR",
@@ -10954,7 +11289,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/ff/Morrigan_Family_Cape.png"
   },
   {
     "id": "MO4",
@@ -10977,7 +11313,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e6/Morrigan_Family_Robes.png"
   },
   {
     "id": "MO5",
@@ -11000,7 +11337,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/45/Morrigan_Family_Pants.png"
   },
   {
     "id": "CAR",
@@ -11023,7 +11361,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/31/Carver_Family_Cape.png"
   },
   {
     "id": "CA7",
@@ -11046,7 +11385,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d6/Carver_Family_Robes.png"
   },
   {
     "id": "CA8",
@@ -11069,7 +11409,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/ce/Carver_Family_Pants.png"
   },
   {
     "id": "AST",
@@ -11092,7 +11433,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d4/Astralis_Family_Cape.png"
   },
   {
     "id": "AS3",
@@ -11115,7 +11457,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d6/Astralis_Family_Robes.png"
   },
   {
     "id": "AS4",
@@ -11138,7 +11481,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ed/Astralis_Family_Pants.png"
   },
   {
     "id": "FLE",
@@ -11161,7 +11505,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/47/Flemming_Family_Cape.png"
   },
   {
     "id": "FL1",
@@ -11184,7 +11529,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/78/Flemming_Family_Robes.png"
   },
   {
     "id": "FL2",
@@ -11207,7 +11553,8 @@
       "Tailor"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/40/Flemming_Family_Pants.png"
   },
   {
     "id": "CRY",
@@ -11230,7 +11577,8 @@
       "Ormolu"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6d/Crystal_Remnant_Helmet.png"
   },
   {
     "id": "CR1",
@@ -11253,7 +11601,8 @@
       "Ormolu"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/50/Crystal_Remnant_Armor.png"
   },
   {
     "id": "CR2",
@@ -11276,7 +11625,8 @@
       "Ormolu"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f0/Crystal_Remnant_Leggings.png"
   },
   {
     "id": "CR3",
@@ -11324,7 +11674,8 @@
       "Ormolu"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f7/Crystal_Fury_Armor.png"
   },
   {
     "id": "CR5",
@@ -11348,7 +11699,8 @@
       "Ormolu"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b8/Crystal_Fury_Leggings.png"
   },
   {
     "id": "OAT",
@@ -11370,7 +11722,8 @@
       "Hale"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3f/Oathkeeper_Squire_Armor.PNG"
   },
   {
     "id": "OA1",
@@ -11392,7 +11745,8 @@
       "Hale"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/92/Oathkeeper_Squire_Boots.PNG"
   },
   {
     "id": "OA2",
@@ -11414,7 +11768,8 @@
       "Hale"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/aa/Oathkeeper_Squire_Cape.PNG"
   },
   {
     "id": "OA3",
@@ -11436,7 +11791,8 @@
       "Hale"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/57/Oathkeeper_Honored_Armor.PNG"
   },
   {
     "id": "OA4",
@@ -11458,7 +11814,8 @@
       "Hale"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/31/Oathkeeper_Honored_Leggings.PNG"
   },
   {
     "id": "OA5",
@@ -11480,7 +11837,8 @@
       "Hale"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/38/Oathkeeper_Honored_Cloak.PNG"
   },
   {
     "id": "TH7",
@@ -11506,7 +11864,8 @@
     "tags": [
       "lost-set"
     ],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/dd/The_Lost_Coronet_of_Skyhall.PNG"
   },
   {
     "id": "BR12",
@@ -11530,7 +11889,8 @@
       "Allanon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/02/Broken_Prince_Shirt.PNG"
   },
   {
     "id": "BR13",
@@ -11554,7 +11914,8 @@
       "Allanon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/da/Broken_Prince_Pants.PNG"
   },
   {
     "id": "BR14",
@@ -11578,7 +11939,8 @@
       "Allanon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/c/c3/Broken_Prince_Cape.PNG"
   },
   {
     "id": "MUR",
@@ -11600,7 +11962,8 @@
       "The Crone"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f5/Murderous_Hat.png"
   },
   {
     "id": "MU1",
@@ -11622,7 +11985,8 @@
       "The Crone"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/8f/Murderous_Robe.png"
   },
   {
     "id": "MU2",
@@ -11644,7 +12008,8 @@
       "The Crone"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fe/Murderous_Boots.png"
   },
   {
     "id": "ROB",
@@ -11666,7 +12031,8 @@
       "The Crone"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1c/Robe_Flaps.png"
   },
   {
     "id": "STA",
@@ -11688,7 +12054,8 @@
       "The Crone"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/45/Stacked_Red_Bracelets.png"
   },
   {
     "id": "LIG",
@@ -11712,7 +12079,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a5/Light_Purple_Dragon_Helmet.png"
   },
   {
     "id": "LI3",
@@ -11736,7 +12104,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d1/Light_Purple_Dragon_Armor.png"
   },
   {
     "id": "LI4",
@@ -11760,7 +12129,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4c/Light_Purple_Dragon_Boots.png"
   },
   {
     "id": "LI5",
@@ -11784,7 +12154,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b8/Light_Purple_Dragon_Cape.png"
   },
   {
     "id": "LES",
@@ -11808,7 +12179,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/76/Lesser_Purple_Dragoneye_Amulet.png"
   },
   {
     "id": "LI6",
@@ -11832,7 +12204,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e8/Light_Black_Dragon_Helmet.png"
   },
   {
     "id": "LI7",
@@ -11856,7 +12229,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e0/Light_Black_Dragon_Armor.png"
   },
   {
     "id": "LI8",
@@ -11880,7 +12254,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/8/82/Light_Black_Dragon_Boots.png"
   },
   {
     "id": "LI9",
@@ -11904,7 +12279,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1e/Light_Black_Dragon_Cape.png"
   },
   {
     "id": "LE8",
@@ -11928,7 +12304,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a0/Lesser_Black_Dragoneye_Amulet.png"
   },
   {
     "id": "LI10",
@@ -11951,7 +12328,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9d/Light_Brown_Dragon_Helmet.png"
   },
   {
     "id": "LI11",
@@ -11974,7 +12352,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0c/Light_Brown_Dragon_Armor.png"
   },
   {
     "id": "LI12",
@@ -11997,7 +12376,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/63/Light_Brown_Dragon_Boots.png"
   },
   {
     "id": "LI13",
@@ -12020,7 +12400,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/05/Light_Brown_Dragon_Cape.png"
   },
   {
     "id": "LE9",
@@ -12043,7 +12424,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/4a/Lesser_Brown_Dragoneye_Amulet.png"
   },
   {
     "id": "LI14",
@@ -12067,7 +12449,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/1e/Light_Golden_Dragon_Helmet.png"
   },
   {
     "id": "LI15",
@@ -12091,7 +12474,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b9/Light_Golden_Dragon_Armor.png"
   },
   {
     "id": "LI16",
@@ -12115,7 +12499,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2c/Light_Golden_Dragon_Boots.png"
   },
   {
     "id": "LI17",
@@ -12139,7 +12524,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/fe/Light_Golden_Dragon_Cape.png"
   },
   {
     "id": "LE10",
@@ -12163,7 +12549,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/65/Lesser_Golden_Dragoneye_Amulet.png"
   },
   {
     "id": "LI18",
@@ -12211,7 +12598,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0f/Light_White_Dragon_Armor.png"
   },
   {
     "id": "LI20",
@@ -12235,7 +12623,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b9/Light_White_Dragon_Boots.png"
   },
   {
     "id": "LI21",
@@ -12259,7 +12648,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/97/Light_White_Dragon_Cape.png"
   },
   {
     "id": "LE11",
@@ -12283,7 +12673,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e2/Lesser_White_Dragoneye_Amulet.png"
   },
   {
     "id": "LI22",
@@ -12307,7 +12698,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/05/Light_Red_Dragon_Helmet.png"
   },
   {
     "id": "LI23",
@@ -12331,7 +12723,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/6c/Light_Red_Dragon_Armor.png"
   },
   {
     "id": "LI24",
@@ -12355,7 +12748,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e5/Light_Red_Dragon_Boots.png"
   },
   {
     "id": "LI25",
@@ -12379,7 +12773,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/af/Light_Red_Dragon_Cape.png"
   },
   {
     "id": "LE12",
@@ -12403,7 +12798,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0f/Lesser_Red_Dragoneye_Amulet.png"
   },
   {
     "id": "LI26",
@@ -12426,7 +12822,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/79/Light_Blue_Dragon_Helmet.png"
   },
   {
     "id": "LI27",
@@ -12449,7 +12846,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/4/40/Light_Blue_Dragon_Armor.png"
   },
   {
     "id": "LI28",
@@ -12472,7 +12870,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/b/b9/Light_Blue_Dragon_Boots.png"
   },
   {
     "id": "LI29",
@@ -12495,7 +12894,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/0b/Light_Blue_Dragon_Cape.png"
   },
   {
     "id": "LE13",
@@ -12518,7 +12918,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/0/07/Lesser_Blue_Dragoneye_Amulet.png"
   },
   {
     "id": "LI30",
@@ -12542,7 +12943,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ee/Light_Teal_Dragon_Helmet.png"
   },
   {
     "id": "LI31",
@@ -12566,7 +12968,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/ff/Light_Teal_Dragon_Armor.png"
   },
   {
     "id": "LI32",
@@ -12590,7 +12993,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f8/Light_Teal_Dragon_Boots.png"
   },
   {
     "id": "LI33",
@@ -12614,7 +13018,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/19/Light_Teal_Dragon_Cape.png"
   },
   {
     "id": "LE14",
@@ -12638,7 +13043,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/98/Lesser_Teal_Dragoneye_Amulet.png"
   },
   {
     "id": "LI34",
@@ -12662,7 +13068,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3d/Light_Green_Dragon_Helmet.png"
   },
   {
     "id": "LI35",
@@ -12686,7 +13093,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/64/Light_Green_Dragon_Armor.png"
   },
   {
     "id": "LI36",
@@ -12710,7 +13118,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/22/Light_Green_Dragon_Boots.png"
   },
   {
     "id": "LI37",
@@ -12734,7 +13143,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/51/Light_Green_Dragon_Cape.png"
   },
   {
     "id": "LE15",
@@ -12758,7 +13168,8 @@
       "Dragons#Young|Young Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/a/a4/Lesser_Green_Dragoneye_Amulet.png"
   },
   {
     "id": "HEA",
@@ -13898,7 +14309,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ea/Corrupted_Blood_Dragon_Helmet.png"
   },
   {
     "id": "CO2",
@@ -13923,7 +14335,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/2d/Corrupted_Blood_Dragon_Armor.png"
   },
   {
     "id": "CO3",
@@ -13948,7 +14361,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/66/Corrupted_Blood_Dragon_Boots.png"
   },
   {
     "id": "CO4",
@@ -13998,7 +14412,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/e4/Corrupted_Molten_Dragon_Helmet.png"
   },
   {
     "id": "CO6",
@@ -14023,7 +14438,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/9/9e/Corrupted_Molten_Dragon_Armor.png"
   },
   {
     "id": "CO7",
@@ -14048,7 +14464,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f6/Corrupted_Molten_Dragon_Boots.png"
   },
   {
     "id": "CO8",
@@ -14098,7 +14515,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/1/12/Corrupted_Dragon_Helmet.png"
   },
   {
     "id": "CO10",
@@ -14123,7 +14541,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f1/Corrupted_Dragon_Armor.png"
   },
   {
     "id": "CO11",
@@ -14148,7 +14567,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/7/7b/Corrupted_Dragon_Boots.png"
   },
   {
     "id": "CO12",
@@ -14198,7 +14618,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/6/65/Corrupted_Crystal_Dragon_Helmet.png"
   },
   {
     "id": "CO14",
@@ -14223,7 +14644,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/df/Corrupted_Crystal_Dragon_Armor.png"
   },
   {
     "id": "CO15",
@@ -14248,7 +14670,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/3/3d/Corrupted_Crystal_Dragon_Boots.png"
   },
   {
     "id": "CO16",
@@ -14298,7 +14721,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/2/29/Corrupted_Stone_Dragon_Helmet.png"
   },
   {
     "id": "CO18",
@@ -14323,7 +14747,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/d/d4/Corrupted_Stone_Dragon_Armor.png"
   },
   {
     "id": "CO19",
@@ -14348,7 +14773,8 @@
       "Dragons#Atlantean/Corrupted|Corrupted Full Grown/Powerful Dragon"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/f/f8/Corrupted_Stone_Dragon_Boots.png"
   },
   {
     "id": "CO20",
@@ -14400,7 +14826,8 @@
       "Dragons#Dragonlord|Dragonlord"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/5/53/Screenshot_2026-06-29_221439-removebg-preview.png"
   },
   {
     "id": "HE37",
@@ -14427,7 +14854,8 @@
       "Dragons#Dragonlord|Dragonlord"
     ],
     "tags": [],
-    "flags": {}
+    "flags": {},
+    "imageUrl": "https://static.wikia.nocookie.net/roblox-arcane-odyssey/images/e/ed/Screenshot_2026-06-29_221357-removebg-preview.png"
   },
   {
     "id": "HE38",
